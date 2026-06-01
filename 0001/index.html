@@ -34,6 +34,12 @@
       /* keep author image proportions but avoid aggressive cropping */
       #autor img { object-fit: contain !important; max-width: 100% !important; width: auto !important; }
     }
+    /* Hero typography and layout for medium and large screens */
+    #lanzamiento h1 { font-size: clamp(2.6rem,5.5vw,5.2rem); line-height:1.02; word-break:break-word; max-width:100%; }
+    @media (min-width: 1024px){
+      #lanzamiento h1 { font-size: clamp(3rem,4.5vw,6rem); }
+      #lanzamiento { min-height: calc(var(--vh,1vh) * 75); }
+    }
     @media (prefers-reduced-motion: reduce){
       #cellCanvas{display:none !important;}
     }
@@ -81,7 +87,7 @@
 
 <main id="inicio">
 
-  <section id="lanzamiento" class="uk-light uk-position-relative uk-overflow-hidden" style="height:calc(var(--vh,1vh) * 100);display:flex;align-items:center;background:radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%),linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98));">
+  <section id="lanzamiento" class="uk-light uk-position-relative uk-overflow-hidden" style="min-height:calc(var(--vh,1vh) * 70);height:auto;overflow:visible;display:flex;align-items:center;background:radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%),linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98));">
     <canvas id="cellCanvas" style="position:absolute;inset:0;"></canvas>
     <div class="uk-position-cover uk-background-cover uk-background-right-center uk-visible@m" style="background-image:linear-gradient(90deg,rgba(0,102,255,.0),rgba(0,102,255,.15)),url('');opacity:.38;"></div>
     <div class="uk-container uk-container-expand uk-position-relative" style="padding:2rem;">
@@ -103,7 +109,7 @@
           <p class="uk-text-small uk-margin-medium-top"><a class="uk-link-reset" href="#libro" style="color:#fff;text-decoration:underline;">Qué encontrarás</a></p>
         </div>
         <div class="uk-width-1-2@m uk-text-center">
-          <img src="assets/libro.png" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:760px;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
+          <img src="assets/libro.png" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:60vh;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
         </div>
       </div>
     </div>
