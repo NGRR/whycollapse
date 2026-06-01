@@ -27,6 +27,12 @@
       #lanzamiento .uk-container { padding-top: 1rem !important; padding-bottom: 0.5rem !important; }
       /* Force grid children to stack vertically in descending order */
       #lanzamiento .uk-grid-large > div { width: 100% !important; max-width: 100% !important; }
+      /* Autor section: change horizontal split to vertical on mobile to avoid cutting text */
+      #autor { background: linear-gradient(180deg, var(--azul-profundo) 0%, var(--azul-profundo) 46%, var(--papel) 46%, var(--papel) 100%) !important; }
+      /* Ensure the lower column text is readable on paper background */
+      #autor .uk-padding-large:last-of-type, #autor blockquote, #autor .uk-text-muted { color: var(--azul-profundo) !important; }
+      /* keep author image proportions but avoid aggressive cropping */
+      #autor img { object-fit: contain !important; max-width: 100% !important; width: auto !important; }
     }
     @media (prefers-reduced-motion: reduce){
       #cellCanvas{display:none !important;}
@@ -313,7 +319,7 @@
           <a class="uk-button uk-button-text" href="https://www.linkedin.com/in/marcelolasagna" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <div class="uk-width-1-3@m uk-width-1-1@s uk-text-center">
-          <img src="assets/author.webp" alt="Marcelo Lasagna" style="max-height:420px;width:100%;object-fit:cover;object-position:center top;">
+          <img src="assets/author.webp" alt="Marcelo Lasagna" style="max-height:600px;max-width:100%;width:auto;object-fit:contain;display:block;margin:0 auto;">
         </div>
         <div class="uk-width-1-3@m uk-width-1-1@s uk-padding-large">
           <blockquote class="uk-text-large">
@@ -426,8 +432,8 @@
     const isTouch = window.__isTouch === true;
     const reduceMotion = window.__reduceMotion === true;
 
-    if(isTouch || reduceMotion){
-      // Ocultar canvas en dispositivos táctiles o cuando el usuario solicita reducir movimiento
+    if(reduceMotion){
+      // Ocultar canvas solo cuando el usuario solicita reducir movimiento
       canvas.style.display = 'none';
       return;
     }
@@ -578,6 +584,28 @@
     });
     
     document.addEventListener('mouseleave', () => {
+      pointer.active = false;
+    });
+    
+    // Manejo táctil: trasladar coordenadas de touch a puntero para interacción en móviles
+    document.addEventListener('touchstart', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+      pointer.active = true;
+    }, {passive:true});
+
+    document.addEventListener('touchmove', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+    }, {passive:true});
+
+    document.addEventListener('touchend', () => {
       pointer.active = false;
     });
   })();
