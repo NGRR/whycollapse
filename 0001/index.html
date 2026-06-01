@@ -8,13 +8,14 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
   <style>
-    :root{--azul:#0066ff;--azul-profundo:#061f41;--naranja:#ff5a00;--marfil:#f3efe8;--papel:#fbfaf7;--grafito:#1c1f22;}
+    :root{--azul:#0066ff;--azul-profundo:#061f41;--naranja:#ff5a00;--marfil:#f3efe8;--papel:#fbfaf7;--grafito:#1c1f22;--celeste:#7fd0ff;}
     html{scroll-behavior:smooth;}
     body{background:var(--papel);color:var(--azul-profundo);}
     h1,h2,h3,h4,h5,h6,.uk-navbar-nav>li>a{color:var(--azul-profundo);}
     a{color:var(--azul-profundo);}
     mark{background:linear-gradient(transparent 62%,rgba(255,90,0,.22) 0);color:inherit;}
     ::selection{background:var(--azul);color:#fff;}
+    #cellCanvas{position:absolute;inset:0;pointer-events:none;opacity:.85;}
   </style>
 </head>
 <body>
@@ -59,13 +60,16 @@
 
 <main id="inicio">
 
-  <section id="lanzamiento" class="uk-section uk-section-large uk-light uk-position-relative uk-overflow-hidden" style="min-height:96vh;background:radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%),linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98));">
-    <div class="uk-position-cover uk-background-cover uk-background-right-center uk-visible@m" style="background-image:linear-gradient(90deg,rgba(0,102,255,.0),rgba(0,102,255,.15)),url('assets/blue-nautilus.webp');opacity:.38;"></div>
-    <div class="uk-container uk-container-expand uk-position-relative uk-padding-large">
+  <section id="lanzamiento" class="uk-light uk-position-relative uk-overflow-hidden" style="height:100vh;display:flex;align-items:center;background:radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%),linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98));">
+    <canvas id="cellCanvas" style="position:absolute;inset:0;"></canvas>
+    <div class="uk-position-cover uk-background-cover uk-background-right-center uk-visible@m" style="background-image:linear-gradient(90deg,rgba(0,102,255,.0),rgba(0,102,255,.15)),url('');opacity:.38;"></div>
+    <div class="uk-container uk-container-expand uk-position-relative" style="padding:2rem;">
       <div class="uk-grid-large uk-flex-middle" uk-grid>
         <div class="uk-width-1-2@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Nuevo libro de Marcelo Lasagna</p>
-          <h1 class="uk-heading-xlarge uk-margin-remove-top" style="color:#fff;font-size:clamp(3.2rem,9vw,8.8rem);line-height:.86;letter-spacing:-.07em;">ESTÁS SEGURO QUE TU EMPRESA SEGUIRÁ VIGENTE</h1>
+          <h1 class="uk-heading-xlarge uk-margin-remove-top" style="color:#fff;font-size:clamp(3rem,8vw,7.2rem);line-height:1.0;letter-spacing:-.07em;">
+            ESTÁS SEGURO QUE TU EMPRESA <span style="color:var(--naranja);">SEGUIRÁ VIGENTE?</span>
+          </h1>
           <h2 class="uk-h1 uk-margin-medium-top" style="color:#fff;max-width:920px;">La adaptabilidad define quién permanece y quién se convierte en memoria.</h2>
           <blockquote class="uk-text-lead uk-margin-medium-top" style="color:#fff;max-width:740px;border-left:4px solid rgba(255,255,255,.36);padding-left:1.1rem;">
             <p>“La única certeza es que solo sobreviven los sistemas que se reinventan en cada ola de cambio.”</p>
@@ -78,9 +82,7 @@
           <p class="uk-text-small uk-margin-medium-top"><a class="uk-link-reset" href="#libro" style="color:#fff;text-decoration:underline;">Qué encontrarás</a></p>
         </div>
         <div class="uk-width-1-2@m uk-text-center">
-          <div class="uk-inline uk-box-shadow-large" style="background:rgba(255,255,255,.08);padding:28px;border:1px solid rgba(255,255,255,.18);">
-            <img src="assets/book.webp" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:760px;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
-          </div>
+          <img src="assets/libro.png" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:760px;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
         </div>
       </div>
     </div>
@@ -91,7 +93,7 @@
       <div class="uk-grid-large" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Señales</p>
-          <h2 class="uk-heading-medium">Muchas organizaciones no colapsan por falta de estrategia.</h2>
+          <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">Muchas organizaciones no colapsan por falta de estrategia.</h2>
           <p class="uk-text-lead">Colapsan porque su capacidad de respuesta llega después que el cambio.</p>
         </div>
         <div class="uk-width-2-3@m">
@@ -130,7 +132,7 @@
     <div class="uk-container">
       <div class="uk-text-center uk-margin-large-bottom">
         <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Paradigma</p>
-        <h2 class="uk-heading-large">Las organizaciones no son máquinas.</h2>
+        <h2 class="uk-heading-large" style="font-size:clamp(1.75rem,4vw,2.4rem);">Las organizaciones no son máquinas.</h2>
         <p class="uk-text-lead uk-width-2-3@m uk-margin-auto">Son sistemas vivos que prosperan en la incertidumbre y la transformación permanente.</p>
       </div>
       <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
@@ -159,16 +161,16 @@
       <div class="uk-grid-large uk-flex-middle" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Capacidades adaptativas</p>
-          <h2 class="uk-heading-large" style="color:#fff;">5 capacidades para evitar la obsolescencia</h2>
+          <h2 class="uk-heading-medium" style="color:#fff;font-size:clamp(1.75rem,4vw,2.4rem);">5 capacidades para evitar la obsolescencia</h2>
           <p>Anticipación, agilidad, aprendizaje, adecuación y antifragilidad ordenan el mapa para mantener vigencia.</p>
         </div>
         <div class="uk-width-2-3@m">
-          <div class="uk-child-width-1-5@m uk-child-width-1-2@s uk-grid-small uk-grid-match" uk-grid>
-            <div><div class="uk-card uk-card-body uk-text-center uk-height-1-1" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);"><img src="assets/icons.webp" alt="Anticipación" style="height:95px;width:100%;object-fit:cover;object-position:0 0;"><h3 style="color:#fff;">Anticipación</h3><p class="uk-text-small">Leer señales débiles antes de que se vuelvan crisis.</p></div></div>
-            <div><div class="uk-card uk-card-body uk-text-center uk-height-1-1" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);"><img src="assets/blue-wave.webp" alt="Agilidad" style="height:95px;width:100%;object-fit:cover;"><h3 style="color:#fff;">Agilidad</h3><p class="uk-text-small">Moverse con inteligencia, dirección y propósito.</p></div></div>
-            <div><div class="uk-card uk-card-body uk-text-center uk-height-1-1" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);"><img src="assets/blue-spiral.webp" alt="Aprendizaje" style="height:95px;width:100%;object-fit:cover;"><h3 style="color:#fff;">Aprendizaje</h3><p class="uk-text-small">Convertir conocimiento en ventaja evolutiva sostenible.</p></div></div>
-            <div><div class="uk-card uk-card-body uk-text-center uk-height-1-1" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);"><img src="assets/triadic.webp" alt="Adecuación" style="height:95px;width:100%;object-fit:cover;"><h3 style="color:#fff;">Adecuación</h3><p class="uk-text-small">Alinear estructuras, procesos y cultura con el entorno real.</p></div></div>
-            <div><div class="uk-card uk-card-body uk-text-center uk-height-1-1" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);"><img src="assets/blue-ring.webp" alt="Antifragilidad" style="height:95px;width:100%;object-fit:cover;"><h3 style="color:#fff;">Antifragilidad</h3><p class="uk-text-small">Fortalecerse en la presión y aprender del shock adaptativo.</p></div></div>
+          <div class="uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s uk-grid-small uk-grid-match" uk-grid>
+            <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="assets/am01.webp" alt="Anticipación" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Anticipación</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Leer señales débiles antes de que se vuelvan crisis.</p></div></div></div>
+            <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="assets/am02.webp" alt="Agilidad" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Agilidad</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Moverse con inteligencia, dirección y propósito.</p></div></div></div>
+            <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="assets/am03.webp" alt="Aprendizaje" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Aprendizaje</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Convertir conocimiento en ventaja evolutiva sostenible.</p></div></div></div>
+            <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="assets/am04.webp" alt="Adecuación" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Adecuación</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Alinear estructuras, procesos y cultura con el entorno real.</p></div></div></div>
+            <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="assets/am05.webp" alt="Antifragilidad" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Antifragilidad</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Fortalecerse en la presión y aprender del shock adaptativo.</p></div></div></div>
           </div>
         </div>
       </div>
@@ -180,7 +182,7 @@
       <div class="uk-grid-large" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Qué encontrarás</p>
-          <h2 class="uk-heading-medium">CUATRO PERSPECTIVAS PARA CONVERTIRTE EN UNA ORGANIZACIÓN ADAPTATIVA</h2>
+          <h2 class="uk-heading-medium" style="font-size:clamp(1.4rem,2.8vw,1.9rem);">CUATRO PERSPECTIVAS PARA CONVERTIRTE EN UNA ORGANIZACIÓN ADAPTATIVA</h2>
           <p class="uk-text-lead">Un recorrido editorial por el colapso, el marco de la triarquía, los desafíos reales y el futuro de la adaptabilidad.</p>
         </div>
         <div class="uk-width-2-3@m">
@@ -220,7 +222,7 @@
       <div class="uk-grid-large uk-flex-middle" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">La adaptabilidad en imágenes</p>
-          <h2 class="uk-heading-medium">La adaptabilidad en imágenes</h2>
+          <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">La adaptabilidad en imágenes</h2>
           <p>Una colección visual que hace tangible la tensión entre rigidez y movimiento adaptativo.</p>
         </div>
         <div class="uk-width-2-3@m">
@@ -249,7 +251,7 @@
       <div class="uk-grid-large" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Próximas presentaciones</p>
-          <h2 class="uk-heading-medium">Encuentros para conversar sobre lo que ya cambió.</h2>
+          <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">Encuentros para conversar sobre lo que ya cambió.</h2>
         </div>
         <div class="uk-width-2-3@m">
           <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
@@ -288,7 +290,7 @@
       <div class="uk-grid-collapse uk-flex-middle" uk-grid>
         <div class="uk-width-1-3@m uk-light uk-padding-large">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Sobre el autor</p>
-          <h2 style="color:#fff;">Marcelo Lasagna</h2>
+          <h2 style="color:#fff;font-size:clamp(1.5rem,3vw,2rem);">Marcelo Lasagna</h2>
           <p>PhD (c) en Ciencias Políticas.</p>
           <p>Fundador de Protea Becoming Adaptive y cofundador de Lead To Change Chile.</p>
           <p>Desde hace más de 30 años acompaña procesos de transformación e innovación en organizaciones públicas y privadas de Europa y América Latina.</p>
@@ -314,7 +316,7 @@
       <div class="uk-grid-large" uk-grid>
         <div class="uk-width-1-3@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Qué opinan</p>
-          <h2>Voces con autoridad</h2>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem);">Voces con autoridad</h2>
           <p class="uk-text-muted">Tres testimonios que conectan el libro con la práctica, la academia y la institucionalidad.</p>
         </div>
         <div class="uk-width-2-3@m">
@@ -351,7 +353,7 @@
       <div class="uk-grid-large uk-flex-middle" uk-grid>
         <div class="uk-width-1-2@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Newsletter / comunidad</p>
-          <h2 class="uk-heading-medium">El efecto Colibrí</h2>
+          <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">El efecto Colibrí</h2>
           <p class="uk-text-lead">Reflexiones sobre complejidad, adaptabilidad e innovación en tiempos inciertos.</p>
         </div>
         <div class="uk-width-1-2@m">
@@ -387,5 +389,159 @@
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+<script>
+  // Sistema de células flotantes interactivas
+  const canvas = document.getElementById('cellCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resizeCanvas(){
+    const hero = document.getElementById('lanzamiento');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  const cells = [];
+  const cellCount = 72;
+  const pointer = { x: -9999, y: -9999, active: false };
+  
+  class Cell {
+    constructor(){
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      // Velocidad muy lenta para flotación más espesa
+      this.vx = (Math.random() - 0.5) * 0.15;
+      this.vy = (Math.random() - 0.5) * 0.15;
+      this.isOrange = Math.random() < 0.3; // 30% de células naranjas
+      
+      // Células naranjas más pequeñas
+      if(this.isOrange){
+        this.radius = 1 + Math.random() * 2;
+      } else {
+        this.radius = 2 + Math.random() * 4;
+      }
+      
+      this.maxRadius = this.radius;
+      this.life = Math.random() * 0.5 + 0.5;
+      this.pulse = Math.random() * Math.PI * 2;
+      
+      // Movimiento orgánico muy suave (más espeso)
+      this.wobbleX = Math.random() * Math.PI * 2;
+      this.wobbleY = Math.random() * Math.PI * 2;
+      this.wobbleSpeedX = 0.0025 + Math.random() * 0.0025;
+      this.wobbleSpeedY = 0.0025 + Math.random() * 0.0025;
+    }
+    
+    update(){
+      // Movimiento base
+      this.x += this.vx;
+      this.y += this.vy;
+      this.pulse += 0.02;
+      
+      // Movimiento ondulante orgánico muy lento (ambiente más espeso)
+      this.wobbleX += this.wobbleSpeedX;
+      this.wobbleY += this.wobbleSpeedY;
+      this.vx += Math.sin(this.wobbleX) * 0.01;
+      this.vy += Math.cos(this.wobbleY) * 0.01;
+      
+      // Rebotar en bordes
+      if(this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.vx *= -1;
+      if(this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.vy *= -1;
+      
+      this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x));
+      this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y));
+      
+      // Reacción al mouse: repulsión suave
+      const dx = this.x - pointer.x;
+      const dy = this.y - pointer.y;
+      const dist = Math.hypot(dx, dy);
+      const repulseDistance = 120;
+      
+      if(pointer.active && dist < repulseDistance){
+        const force = (1 - dist / repulseDistance) * 0.3;
+        this.vx += (dx / dist) * force;
+        this.vy += (dy / dist) * force;
+      }
+      
+      // Fricción muy alta para flotación espesa
+      this.vx *= 0.99;
+      this.vy *= 0.99;
+      
+      // Pulsación
+      this.radius = this.maxRadius + Math.sin(this.pulse) * (this.maxRadius * 0.3);
+    }
+    
+    draw(){
+      const alpha = this.life * 0.65;
+      if(this.isOrange){
+        // Células naranjas: color puro y sólido
+        ctx.fillStyle = `rgba(255, 90, 0, 0.9)`;
+        ctx.strokeStyle = `rgba(255, 90, 0, 0.6)`;
+      } else {
+        ctx.fillStyle = `rgba(127, 208, 255, ${alpha})`;
+        ctx.strokeStyle = `rgba(127, 208, 255, ${alpha * 0.6})`;
+      }
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+  }
+  
+  // Crear células
+  for(let i = 0; i < cellCount; i++){
+    cells.push(new Cell());
+  }
+  
+  function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    cells.forEach(cell => {
+      cell.update();
+      cell.draw();
+    });
+    
+    // Dibujar conexiones entre células cercanas (nodos)
+    const connectionDistance = 120;
+    for(let i = 0; i < cells.length; i++){
+      for(let j = i + 1; j < cells.length; j++){
+        const dx = cells[i].x - cells[j].x;
+        const dy = cells[i].y - cells[j].y;
+        const dist = Math.hypot(dx, dy);
+        
+        if(dist < connectionDistance){
+          const opacity = (1 - dist / connectionDistance) * 0.5;
+          ctx.strokeStyle = `rgba(127, 208, 255, ${opacity})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(cells[i].x, cells[i].y);
+          ctx.lineTo(cells[j].x, cells[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+  
+  // Detectar movimiento del mouse
+  document.addEventListener('mousemove', (e) => {
+    const hero = document.getElementById('lanzamiento');
+    const rect = hero.getBoundingClientRect();
+    pointer.x = e.clientX - rect.left;
+    pointer.y = e.clientY - rect.top;
+    pointer.active = true;
+  });
+  
+  document.addEventListener('mouseleave', () => {
+    pointer.active = false;
+  });
+</script>
 </body>
 </html>
