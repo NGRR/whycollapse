@@ -56,6 +56,11 @@
     .hero-quote{ color:#fff; max-width:740px; border-left:4px solid rgba(255,255,255,.36); padding-left:1.1rem; }
     .hero-cta-primary{ background:#fff; color:var(--azul-profundo); }
     .hero-cta-secondary{ border-color:#fff; color:#fff; }
+    .hero-link{ text-decoration:none; color:rgba(255,255,255,0.95); font-weight:600; font-size:clamp(0.85rem,1.6vw,1rem); display:inline-block; margin-top:0.25rem; }
+    .hero-link-btn{ display:inline-flex; align-items:center; gap:.5rem; padding:0.45rem 0.7rem; border-radius:6px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); }
+    .hero-link-btn span{ transform:translateX(0); transition:transform .18s ease; }
+    .hero-link-btn:hover{ background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.22); }
+    .hero-link-btn:hover span{ transform:translateX(4px); }
     /* Author section styles moved from inline */
     .author-section{ background: linear-gradient(90deg,var(--azul-profundo) 0%,var(--azul-profundo) 42%,var(--papel) 42%,var(--papel) 100%); }
     .author-image{ max-height:600px; max-width:100%; width:auto; object-fit:contain; display:block; margin:0 auto; }
@@ -107,26 +112,26 @@
   <section id="lanzamiento" class="uk-light uk-position-relative uk-overflow-hidden hero-section">
     <canvas id="cellCanvas"></canvas>
     <div class="uk-position-cover uk-background-cover uk-background-right-center uk-visible@m hero-fade"></div>
-    <div class="uk-container uk-container-expand uk-position-relative hero-container">
+    <div class="uk-container uk-position-relative hero-container">
       <div class="uk-grid-large uk-flex-middle" uk-grid>
         <div class="uk-width-1-2@m">
           <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Nuevo libro de Marcelo Lasagna</p>
           <h1 class="uk-heading-xlarge uk-margin-remove-top hero-title">
             ESTÁS SEGURO QUE TU EMPRESA <span style="color:var(--naranja);">SEGUIRÁ VIGENTE?</span>
           </h1>
-          <h2 class="uk-heading-medium uk-margin-medium-top hero-subtitle">La adaptabilidad define quién permanece y quién se convierte en memoria.</h2>
+          <h2 class="uk-heading-medium uk-margin-medium-top hero-subtitle">La estabilidad es la muerte silenciosa ¿Por qué las organizaciones colapsan, aunque todo parezca funcionar?</h2>
           <blockquote class="uk-text-lead uk-margin-medium-top hero-quote">
-            <p>“La única certeza es que solo sobreviven los sistemas que se reinventan en cada ola de cambio.”</p>
-            <footer style="color:rgba(255,255,255,.70);margin-top:.75rem;">Xavier Marcet</footer>
+            <p>“Hay una complejidad que nos somete y hay una complejidad que nos inspira. Marcelo Lasagna hace que la complejidad sea inspiradora.”</p>
+            <footer style="color:rgba(255,255,255,.70);margin-top:.75rem;">Xavier Marcet, autor del prólogo de "¿Por qué colapsan las organizaciones?"</footer>
           </blockquote>
           <div class="uk-grid-small uk-flex uk-flex-wrap uk-margin-medium-top" uk-grid>
             <div><a class="uk-button uk-button-primary uk-button-large hero-cta-primary" href="#presentaciones">Reservar presentación</a></div>
             <div><a class="uk-button uk-button-default uk-button-large hero-cta-secondary" href="https://www.amazon.com/" target="_blank" rel="noopener">Comprar libro</a></div>
           </div>
-          <p class="uk-text-small uk-margin-medium-top"><a class="uk-link-reset" href="#libro" style="text-decoration:underline;color:inherit;">Qué encontrarás</a></p>
+          <p class="uk-text-small uk-margin-medium-top"><a class="hero-link hero-link-btn" href="#libro" aria-label="Ir a Qué encontrarás">Qué encontrarás <span aria-hidden="true">→</span></a></p>
         </div>
         <div class="uk-width-1-2@m uk-text-center">
-          <img id="coverImg" src="assets/libro.png" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:60vh;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
+          <img id="coverImg" src="assets/book.webp" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:60vh;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
         </div>
       </div>
     </div>
@@ -234,25 +239,25 @@
             <div>
               <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
                 <h3>El colapso</h3>
-                <p>Por qué la pérdida de adaptabilidad precede al fracaso visible y qué señales no puedes ignorar.</p>
+                <p>¿Qué ha hecho que las empresas colapsen?: casos y evidencia.</p>
               </div>
             </div>
             <div>
               <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
                 <h3>La triarquía</h3>
-                <p>Cómo equilibrar estrategia, entorno y ejecución para no quedar fuera de ritmo.</p>
+                <p>Sin complejidad, estancamiento. Sin adaptabilidad, el cambio desborda. Sin innovación, lo de siempre ya no sirve.</p>
               </div>
             </div>
             <div>
               <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
                 <h3>Los desafíos</h3>
-                <p>Los límites de la organización mecánica ante la volatilidad, la incertidumbre y la complejidad.</p>
+                <p>Los 8 retos de las organizaciones de hoy. Un lenguaje común para los nuevos tiempos: glosario aforístico.</p>
               </div>
             </div>
             <div>
               <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
                 <h3>El futuro</h3>
-                <p>Un mapa para líderes que quieren organizar su supervivencia y su ventaja competitiva.</p>
+                <p>Las 8 acciones que las organizaciones no pueden dejar de hacer.</p>
               </div>
             </div>
           </div>
