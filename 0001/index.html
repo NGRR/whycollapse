@@ -9,62 +9,59 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
   <style>
     :root{--azul:#0066ff;--azul-profundo:#061f41;--naranja:#ff5a00;--marfil:#f3efe8;--papel:#fbfaf7;--grafito:#1c1f22;--celeste:#7fd0ff;}
+
     html{scroll-behavior:smooth;}
     body{background:var(--papel);color:var(--azul-profundo);}
     h1,h2,h3,h4,h5,h6,.uk-navbar-nav>li>a{color:var(--azul-profundo);}
     a{color:var(--azul-profundo);}
     mark{background:linear-gradient(transparent 62%,rgba(255,90,0,.22) 0);color:inherit;}
     ::selection{background:var(--azul);color:#fff;}
+
     #cellCanvas{position:absolute;inset:0;pointer-events:none;opacity:.85;}
-    /* Responsive hero adjustments */
-    @media (max-width: 767px){
-      #lanzamiento { align-items: flex-start; padding-top: 2.5rem; padding-bottom: 2rem; height:auto !important; min-height: auto !important; }
-      /* Override inline styles on the H1 for small screens */
-      /* Use fixed, non-vw sizes on mobile to avoid viewport-driven scaling */
-      #lanzamiento h1 { font-size: 2.4rem !important; letter-spacing: normal !important; line-height:1.06 !important; margin-top:0 !important; }
-      #lanzamiento h2 { font-size: 1.15rem !important; }
-      #lanzamiento img { max-height: 45vh; width: auto; }
-      #lanzamiento .uk-container { padding-top: 1rem !important; padding-bottom: 0.5rem !important; }
-      /* Force grid children to stack vertically in descending order */
-      #lanzamiento .uk-grid-large > div { width: 100% !important; max-width: 100% !important; }
-      /* Autor section: change horizontal split to vertical on mobile to avoid cutting text */
-      #autor { background: linear-gradient(180deg, var(--azul-profundo) 0%, var(--azul-profundo) 46%, var(--papel) 46%, var(--papel) 100%) !important; }
-      /* Ensure the lower column text is readable on paper background */
-      #autor .uk-padding-large:last-of-type, #autor blockquote, #autor .uk-text-muted { color: var(--azul-profundo) !important; }
-      /* keep author image proportions but avoid aggressive cropping */
-      #autor img { object-fit: contain !important; max-width: 100% !important; width: auto !important; }
+
+    .site-nav{background:rgba(251,250,247,.92);backdrop-filter:blur(10px);}
+
+    .hero-section{display:flex;align-items:center;background:radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%),linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98));min-height:calc(var(--vh,1vh) * 70);height:auto;overflow:visible;}
+    .hero-fade{background-image:linear-gradient(90deg,rgba(0,102,255,0),rgba(0,102,255,.15));opacity:.38;}
+    .hero-container{padding:2rem;}
+    .hero-title{color:#fff;font-size:clamp(2.6rem,5.5vw,5.2rem);line-height:1.02;letter-spacing:-.07em;}
+    .hero-subtitle{color:#fff;max-width:920px;font-size:clamp(1rem,2.2vw,1.25rem);}
+    .hero-quote{color:#fff;max-width:740px;border-left:4px solid rgba(255,255,255,.36);padding-left:1.1rem;}
+    .hero-cta-primary{background:#fff;color:var(--azul-profundo);}
+    .hero-cta-secondary{border-color:#fff;color:#fff;}
+    .hero-link{text-decoration:none;color:rgba(255,255,255,0.95);font-weight:600;font-size:clamp(0.85rem,1.6vw,1rem);display:inline-block;margin-top:0.25rem;}
+    .hero-link-btn{display:inline-flex;align-items:center;gap:.5rem;padding:0.45rem 0.7rem;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);}
+    .hero-link-btn span{transform:translateX(0);transition:transform .18s ease;}
+    .hero-link-btn:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.22);}
+    .hero-link-btn:hover span{transform:translateX(4px);}
+
+    .author-section{background:linear-gradient(90deg,var(--azul-profundo) 0%,var(--azul-profundo) 42%,var(--papel) 42%,var(--papel) 100%);}
+    .author-image{max-height:600px;max-width:100%;width:auto;object-fit:contain;display:block;margin:0 auto;}
+    .author-column-text{color:#fff;}
+
+    #lanzamiento h1{font-size:clamp(2.86rem,6.05vw,5.72rem);line-height:1.02;word-break:break-word;max-width:100%;}
+
+    @media (max-width:767px){
+      #lanzamiento{align-items:flex-start;padding-top:2.5rem;padding-bottom:2rem;height:auto !important;min-height:auto !important;}
+      #lanzamiento h1{font-size:2.4rem !important;letter-spacing:normal !important;line-height:1.06 !important;margin-top:0 !important;}
+      #lanzamiento h2{font-size:1.15rem !important;}
+      #lanzamiento img{max-height:45vh;width:auto;}
+      #lanzamiento .uk-container{padding-top:1rem !important;padding-bottom:0.5rem !important;}
+      #lanzamiento .uk-grid-large>div{width:100% !important;max-width:100% !important;}
+      #autor{background:linear-gradient(180deg,var(--azul-profundo) 0%,var(--azul-profundo) 46%,var(--papel) 46%,var(--papel) 100%) !important;}
+      #autor .uk-padding-large:last-of-type,#autor blockquote,#autor .uk-text-muted{color:var(--azul-profundo) !important;}
+      #autor img{object-fit:contain !important;max-width:100% !important;width:auto !important;}
     }
-    /* Hero typography and layout for medium and large screens (10% larger) */
-    #lanzamiento h1 { font-size: clamp(2.86rem,6.05vw,5.72rem); line-height:1.02; word-break:break-word; max-width:100%; }
-    @media (min-width: 1024px){
-      /* Increase H1 for desktop viewports (10% larger) */
-      #lanzamiento h1 { font-size: clamp(3.3rem,5.5vw,6.6rem) !important; }
-      #lanzamiento { min-height: calc(var(--vh,1vh) * 75); }
-      /* Make cover image larger on desktop */
-      #coverImg { max-height: 80vh !important; width: auto !important; }
+
+    @media (min-width:1024px){
+      #lanzamiento h1{font-size:clamp(3.3rem,5.5vw,6.6rem) !important;}
+      #lanzamiento{min-height:calc(var(--vh,1vh) * 75);}
+      #coverImg{max-height:80vh !important;width:auto !important;}
     }
-    @media (prefers-reduced-motion: reduce){
+
+    @media (prefers-reduced-motion:reduce){
       #cellCanvas{display:none !important;}
     }
-    /* Organized site styles (moved from inline) */
-    .site-nav{ background: rgba(251,250,247,.92); backdrop-filter: blur(10px); }
-    .hero-section{ display:flex; align-items:center; background: radial-gradient(circle at 72% 20%,rgba(255,90,0,.26),transparent 18%), linear-gradient(110deg,rgba(0,102,255,.98),rgba(0,60,170,.96) 42%,rgba(6,31,65,.98)); min-height: calc(var(--vh,1vh) * 70); height:auto; overflow:visible; }
-    .hero-fade{ background-image: linear-gradient(90deg,rgba(0,102,255,0),rgba(0,102,255,.15)); opacity:.38; }
-    .hero-container{ padding:2rem; }
-    .hero-title{ color:#fff; font-size:clamp(2.6rem,5.5vw,5.2rem); line-height:1.02; letter-spacing:-.07em; }
-    .hero-subtitle{ color:#fff; max-width:920px; font-size:clamp(1rem,2.2vw,1.25rem); }
-    .hero-quote{ color:#fff; max-width:740px; border-left:4px solid rgba(255,255,255,.36); padding-left:1.1rem; }
-    .hero-cta-primary{ background:#fff; color:var(--azul-profundo); }
-    .hero-cta-secondary{ border-color:#fff; color:#fff; }
-    .hero-link{ text-decoration:none; color:rgba(255,255,255,0.95); font-weight:600; font-size:clamp(0.85rem,1.6vw,1rem); display:inline-block; margin-top:0.25rem; }
-    .hero-link-btn{ display:inline-flex; align-items:center; gap:.5rem; padding:0.45rem 0.7rem; border-radius:6px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); }
-    .hero-link-btn span{ transform:translateX(0); transition:transform .18s ease; }
-    .hero-link-btn:hover{ background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.22); }
-    .hero-link-btn:hover span{ transform:translateX(4px); }
-    /* Author section styles moved from inline */
-    .author-section{ background: linear-gradient(90deg,var(--azul-profundo) 0%,var(--azul-profundo) 42%,var(--papel) 42%,var(--papel) 100%); }
-    .author-image{ max-height:600px; max-width:100%; width:auto; object-fit:contain; display:block; margin:0 auto; }
-    .author-column-text{ color: #fff; }
   </style>
 </head>
 <body>
@@ -354,7 +351,7 @@
             <p>“La adaptabilidad no es una opción, es la única ventaja competitiva para habitar la complejidad.”</p>
           </blockquote>
           <hr>
-          <p class="uk-text-muted">Las organizaciones pierden vigencia cuando no evolucionan al ritmo del entorno.</p>
+          <p class="uk-text-muted">El libro propone una hipótesis, las organizaciones pierden vigencia cuando se vuelven incapaces de evolucionar al ritmo de su entorno.</p>
         </div>
       </div>
     </div>
