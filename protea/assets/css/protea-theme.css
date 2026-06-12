@@ -27,3 +27,74 @@ body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",san
 .protea-number{font-family:Georgia,"Times New Roman",serif;font-size:2.2rem;color:rgba(255,255,255,.7);margin-bottom:12px}.protea-chip{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);padding:6px 12px;border-radius:999px;color:rgba(255,255,255,.76);display:inline-block;margin:4px 4px 0 0;font-size:.82rem}.protea-divider{height:1px;background:var(--protea-line);margin:42px 0}.protea-sticky-cta{position:fixed;right:24px;bottom:24px;z-index:1000;display:flex;gap:10px;align-items:center}.protea-footer{background:rgba(0,9,31,.58)}
 .uk-navbar-nav>li>a{color:rgba(255,255,255,.78);text-transform:none;font-size:.86rem}.uk-navbar-nav>li>a:hover{color:#fff}.uk-offcanvas-bar{background:#001133}.uk-input,.uk-select,.uk-textarea{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.24)!important;color:#fff!important}.uk-input::placeholder,.uk-textarea::placeholder{color:rgba(255,255,255,.45)}
 @media(max-width:959px){.protea-section{padding:64px 0}.protea-box-large{min-height:320px}.protea-sticky-cta{left:14px;right:14px;bottom:14px}.protea-sticky-cta .uk-button{flex:1;padding:0 12px;font-size:.78rem}}
+
+/* Contrast fix 2026-06-12 */
+body,
+.protea-page,
+.uk-section,
+.uk-container,
+.uk-card,
+.uk-card-body{
+  color:#f7fbff;
+}
+
+h1,h2,h3,h4,h5,h6,
+.uk-heading-large,
+.uk-heading-medium,
+.uk-heading-small,
+.uk-h1,.uk-h2,.uk-h3,.uk-h4,.uk-h5,.uk-h6,
+.protea-title{
+  color:#ffffff !important;
+}
+
+p,li,dd,dt,
+.uk-list li,
+.uk-text-lead,
+.protea-lead{
+  color:rgba(255,255,255,.90) !important;
+}
+
+.uk-text-muted,
+.protea-muted,
+.protea-kicker{
+  color:rgba(255,255,255,.76) !important;
+}
+
+.protea-card,
+.uk-card-default.protea-card,
+.uk-card-default{
+  background:rgba(0,12,42,.74) !important;
+  border:1px solid rgba(255,255,255,.32) !important;
+  color:#f7fbff !important;
+}
+
+.protea-card p,
+.uk-card-default p,
+.uk-card-default li{
+  color:rgba(255,255,255,.86) !important;
+}
+
+.protea-card .uk-text-muted,
+.uk-card-default .uk-text-muted{
+  color:rgba(255,255,255,.72) !important;
+}
+
+.protea-frame{
+  background:linear-gradient(135deg,rgba(0,28,90,.88),rgba(0,8,32,.74)) !important;
+}
+
+.uk-navbar-nav>li>a,
+.uk-logo,
+.uk-button-text{
+  color:#ffffff !important;
+}
+
+.protea-button-secondary{
+  background:rgba(0,8,32,.52) !important;
+  border-color:rgba(255,255,255,.52) !important;
+}
+
+.protea-button-secondary:hover,
+.protea-button-text:hover{
+  color:#ffb199 !important;
+}
