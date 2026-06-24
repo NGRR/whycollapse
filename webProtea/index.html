@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protea · Home storytelling UIkit</title>
+  <meta name="description" content="Esqueleto UIkit para home inmersivo Protea: percepción, capacidad adaptativa e inteligencia adaptativa.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
+  <link rel="stylesheet" href="assets/css/protea.css">
+</head>
+<body>
+
+<div class="protea-shell">
+  <aside class="section-rail uk-visible@m" aria-label="Indicador narrativo">
+    <a href="#observatorio" class="rail-item is-active"><span>01</span><small>El observatorio</small></a>
+    <a href="#colapso" class="rail-item"><span>02</span><small>Colapso silencioso</small></a>
+    <a href="#capacidad" class="rail-item"><span>03</span><small>Capacidad adaptativa</small></a>
+    <a href="#inteligencia" class="rail-item"><span>04</span><small>Inteligencia adaptativa</small></a>
+    <a href="#protea" class="rail-item"><span>05</span><small>Protea</small></a>
+  </aside>
+
+  <main class="protea-main">
+    <header class="site-nav uk-position-top uk-position-z-index">
+      <div class="uk-container uk-container-expand">
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+          <div class="uk-navbar-left">
+            <a class="brand" href="#observatorio" aria-label="Protea inicio">
+              <span class="brand-mark">pr✣tea</span>
+              <span class="brand-claim">BECOMING ADAPTIVE</span>
+            </a>
+          </div>
+          <div class="uk-navbar-center uk-visible@m">
+            <ul class="uk-navbar-nav">
+              <li><a href="#capacidad">Enfoque</a></li>
+              <li><a href="#protea">Soluciones</a></li>
+              <li><a href="#inteligencia">Metodología</a></li>
+              <li><a href="pages/insights.html">Insights</a></li>
+              <li><a href="pages/contacto.html">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="uk-navbar-right">
+            <a class="uk-button uk-button-default protea-button" href="#contacto-final">Conversemos →</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section id="observatorio" class="story-section hero-section uk-section uk-flex uk-flex-middle">
+      <canvas id="protea-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="canvas-injection-note" aria-hidden="true">
+        <!-- Punto de inyección: reemplazar o extender #protea-canvas con el código de lente/canvas magnético. -->
+      </div>
+      <div class="uk-container uk-container-large uk-position-relative">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-5-12@m">
+            <p class="eyebrow">Lo importante</p>
+            <h1 class="hero-title">rara vez<br><em>es evidente.</em></h1>
+            <p class="hero-copy">Todo sistema desarrolla una forma de percibir. La diferencia está en lo que somos capaces de ver.</p>
+            <div class="uk-margin-medium-top">
+              <a class="uk-button uk-button-primary protea-button-primary" href="#colapso">Explorar →</a>
+              <a class="uk-button uk-button-text uk-margin-left" href="#protea">Ver ruta Protea</a>
+            </div>
+          </div>
+          <div class="uk-width-7-12@m">
+            <div class="lens-placeholder">
+              <div class="lens-core">
+                <span>PROTEA LENS</span>
+                <strong>percibir</strong>
+              </div>
+              <div class="lens-label label-a">Señales detectadas</div>
+              <div class="lens-label label-b">Patrones emergentes</div>
+              <div class="lens-label label-c">Tensiones estructurales</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="colapso" class="story-section dark-section uk-section uk-section-large">
+      <div class="uk-container uk-container-large">
+        <div class="section-kicker uk-hidden@m">02 · El colapso silencioso</div>
+        <div uk-slideshow="animation: slide; ratio: 16:7; autoplay: false; finite: false">
+          <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+            <ul class="uk-slideshow-items">
+              <li>
+                <div class="slide-card uk-flex uk-flex-middle uk-flex-center">
+                  <div class="slide-object orb-object"></div>
+                  <div class="slide-caption">
+                    <h2>Las señales siempre estuvieron ahí.</h2>
+                    <p>El entorno cambia constantemente. Las señales existen. No siempre las percibimos.</p>
+                    <small>Comentario para cliente: esta entrada evita abrir con modelo. Primero instala reconocimiento.</small>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="slide-card uk-flex uk-flex-middle uk-flex-center">
+                  <div class="slide-object dust-object"></div>
+                  <div class="slide-caption">
+                    <h2>Lo que no vemos se acumula.</h2>
+                    <p>Lo invisible se convierte en fricción. Lo pequeño se vuelve sistémico.</p>
+                    <small>Comentario para cliente: el colapso no aparece como evento; aparece como acumulación.</small>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="slide-card uk-flex uk-flex-middle uk-flex-center">
+                  <div class="slide-object shell-object"></div>
+                  <div class="slide-caption">
+                    <h2>Colapsan cuando dejan de percibirlo.</h2>
+                    <p>Antes de perder adaptación, una organización pierde sensibilidad.</p>
+                    <small>Comentario para cliente: esta es nuestra diferencia frente al brief V2: percepción antes que adaptabilidad.</small>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
+          </div>
+          <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="capacidad" class="story-section light-section uk-section uk-section-large">
+      <div class="uk-container uk-container-large">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="eyebrow">03 · Capacidad adaptativa</p>
+            <h2>La capacidad de comprender, responder y evolucionar lo cambia todo.</h2>
+            <p>Algunas organizaciones aprenden antes. Esa es su ventaja real y sostenible.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-5@m uk-child-width-1-2@s uk-grid-small" uk-grid>
+              <div><article class="mini-card"><span>01</span><h3>Percibir</h3><p>Detectar señales relevantes en medio del ruido.</p></article></div>
+              <div><article class="mini-card"><span>02</span><h3>Comprender</h3><p>Dar sentido y relacionar lo aparente.</p></article></div>
+              <div><article class="mini-card"><span>03</span><h3>Aprender</h3><p>Convertir experiencia en conocimiento accionable.</p></article></div>
+              <div><article class="mini-card"><span>04</span><h3>Responder</h3><p>Actuar con criterio, oportunidad y coherencia.</p></article></div>
+              <div><article class="mini-card"><span>05</span><h3>Evolucionar</h3><p>Adaptarse mejor, más rápido y de forma sostenible.</p></article></div>
+            </div>
+          </div>
+        </div>
+        <p class="client-note">Comentario para cliente: proponemos que “capacidad adaptativa” sea el puente entre colapso e inteligencia adaptativa, pero con una capa previa: percepción.</p>
+      </div>
+    </section>
+
+    <section id="inteligencia" class="story-section dark-section uk-section uk-section-large">
+      <div class="uk-container uk-container-large">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-2@m">
+            <p class="eyebrow">04 · Inteligencia adaptativa</p>
+            <h2>Un sistema que integra percepción, comprensión, anticipación y aprendizaje.</h2>
+            <p>La Inteligencia Adaptativa no aparece como un concepto abstracto, sino como capacidad organizacional convertida en criterio para decidir y crear valor.</p>
+          </div>
+          <div class="uk-width-1-2@m">
+            <div class="triad-diagram">
+              <div><strong>Complejidad</strong><span>Comprender el sistema y sus interdependencias.</span></div>
+              <div><strong>Adaptabilidad</strong><span>Desarrollar capacidad para ajustarse y aprender.</span></div>
+              <div><strong>Innovación</strong><span>Transformar capacidad en valor y futuro.</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="client-note dark">Comentario para cliente: la Triarquía no abre el relato. Aparece como consecuencia de una experiencia previa de percepción y colapso silencioso.</p>
+      </div>
+    </section>
+
+    <section id="protea" class="story-section light-section uk-section uk-section-large">
+      <div class="uk-container uk-container-large">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="eyebrow">05 · Protea</p>
+            <h2>Protea ayuda a las organizaciones a recuperar la capacidad de percibir.</h2>
+            <p>Y desde ella, aprender, responder y evolucionar con intención.</p>
+            <a class="uk-button uk-button-primary protea-button-primary" href="#contacto-final">Conversemos →</a>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-5@m uk-child-width-1-2@s uk-grid-small" uk-grid>
+              <div><article class="device-card"><h3>IAO</h3><p>Instrumento para saber dónde está la organización.</p></article></div>
+              <div><article class="device-card"><h3>DIAGNOS</h3><p>Lectura adaptativa que revela patrones y prioridades.</p></article></div>
+              <div><article class="device-card"><h3>Training</h3><p>Desarrollo de competencias adaptativas.</p></article></div>
+              <div><article class="device-card"><h3>Lab</h3><p>Experimentación sobre desafíos complejos.</p></article></div>
+              <div><article class="device-card"><h3>Hub</h3><p>Memoria adaptativa e inteligencia colectiva.</p></article></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto-final" class="footer-cta uk-section uk-section-large">
+      <div class="uk-container uk-container-large uk-text-center">
+        <h2>No es cuestión de hacer más. <em>Es cuestión de ver mejor.</em></h2>
+        <p>Hablemos sobre tu contexto y construyamos juntos una ruta adaptativa.</p>
+        <a class="uk-button uk-button-default protea-button" href="pages/contacto.html">Conversemos sobre tu organización →</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+<script src="assets/js/protea.js"></script>
+</body>
+</html>

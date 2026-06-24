@@ -1,0 +1,37 @@
+﻿<header uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-box-shadow-small; offset: 0">
+  <nav class="uk-navbar-container uk-navbar-transparent uk-padding-small site-nav" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#inicio" aria-label="Protea Becoming Adaptive">
+        <img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/1be720e0-7a2f-4def-a4af-d6ca8e8147fe/p.png?content-type=image%2Fpng" alt="Protea Becoming Adaptive" width="60">
+      </a>
+    </div>
+    <div class="uk-navbar-center uk-visible@m">
+      <ul class="uk-navbar-nav">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#senales">Señales</a></li>
+        <li><a href="#paradigma">Paradigma</a></li>
+        <li><a href="#libro">Qué encontrarás</a></li>
+        <li><a href="#autor">Autor</a></li>
+        <li><a href="#elogios">Elogios</a></li>
+      </ul>
+    </div>
+    <div class="uk-navbar-right">
+      <a class="uk-button uk-button-primary uk-border-pill uk-visible@s" href="#presentaciones" style="background:var(--azul-profundo);color:#fff;">Reservar presentación</a>
+      <a class="uk-navbar-toggle uk-hidden@m" href="#menu" uk-navbar-toggle-icon uk-toggle></a>
+    </div>
+  </nav>
+</header>
+
+<div id="menu" uk-offcanvas="overlay:true">
+  <div class="uk-offcanvas-bar" style="background:var(--azul-profundo);">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <ul class="uk-nav uk-nav-default uk-margin-large-top">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#senales">Señales</a></li>
+      <li><a href="#paradigma">Paradigma</a></li>
+      <li><a href="#libro">Qué encontrarás</a></li>
+      <li><a href="#autor">Autor</a></li>
+        <li><a href="#elogios">Elogios</a></li>
+    </ul>
+  </div>
+</div>
