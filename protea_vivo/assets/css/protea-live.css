@@ -1,0 +1,170 @@
+/* Integracion del modelo vivo: rail lateral + hero canvas. */
+@media(min-width:960px){
+  .protea-shell{
+    display:grid;
+    grid-template-columns:132px minmax(0,1fr);
+  }
+
+  .section-rail{
+    position:sticky;
+    top:0;
+    grid-column:1;
+    width:132px;
+    height:100vh;
+  }
+
+  .protea-main{
+    grid-column:2;
+    min-width:0;
+    padding-left:0;
+    position:relative;
+  }
+
+  .site-nav{
+    left:0;
+    right:0;
+    background:rgba(243,239,232,.10);
+    backdrop-filter:blur(14px);
+  }
+}
+
+.hero-section{
+  min-height:100svh;
+  background:#020826;
+  color:white;
+}
+
+.hero-section .uk-container{
+  z-index:2;
+}
+
+.hero-section>.uk-container,
+.hero-section .uk-container-large{
+  width:100%;
+  max-width:none!important;
+  margin-left:0;
+  margin-right:0;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+@media(min-width:960px){
+  .hero-section .uk-container{
+    max-width:none;
+    padding-left:0;
+    padding-right:0;
+  }
+
+  .hero-section .uk-grid-large{
+    width:100%;
+    margin-left:0;
+  }
+
+  .hero-section .uk-grid-large>*{
+    padding-left:0;
+  }
+}
+
+.hero-section:before{
+  z-index:1;
+  opacity:.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+}
+
+.hero-canvas{
+  display:block;
+  pointer-events:none;
+  background:#020826;
+}
+
+.hero-copy-panel{
+  position:relative;
+  z-index:2;
+  padding-block:72px;
+}
+
+@media(min-width:960px){
+  .hero-section .hero-copy-panel{
+    padding-left:68px;
+    padding-right:24px;
+  }
+
+  .hero-section .hero-copy-panel>*{
+    max-width:440px;
+  }
+}
+
+.hero-canvas-space{
+  min-height:620px;
+}
+
+.hero-title{
+  color:white;
+  text-shadow:0 18px 70px rgba(0,0,0,.48);
+}
+
+.hero-copy{
+  color:rgba(255,255,255,.78);
+}
+
+.hero-section .uk-button-text{
+  color:rgba(255,255,255,.84);
+}
+
+.hero-section .uk-button-text:hover{
+  color:white;
+}
+
+.lens-placeholder{
+  display:none;
+}
+
+@media(min-width:960px){
+  .site-nav .uk-navbar-nav>li>a{
+    color:rgba(255,255,255,.78);
+  }
+
+  .site-nav .uk-navbar-nav>li>a:hover{
+    color:white;
+  }
+
+  .site-nav .protea-button{
+    border-color:rgba(255,255,255,.7);
+    color:white;
+  }
+}
+
+@media(max-width:959px){
+  .hero-section{
+    min-height:760px;
+  }
+
+  .hero-copy-panel{
+    padding-block:56px 24px;
+    padding-left:24px!important;
+    padding-right:24px!important;
+    text-align:center;
+  }
+
+  .hero-copy-panel>*{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-copy-panel .uk-margin-medium-top{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .hero-copy-panel .uk-margin-medium-top .uk-margin-left{
+    margin-left:0!important;
+  }
+
+  .hero-canvas-space{
+    min-height:260px;
+  }
+}
