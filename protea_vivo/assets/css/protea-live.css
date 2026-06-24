@@ -29,7 +29,8 @@
 }
 
 .hero-section{
-  min-height:100svh;
+  height:100vh;
+  min-height:760px;
   background:#020826;
   color:white;
 }
@@ -241,6 +242,7 @@
   }
 
   .hero-section{
+    height:auto;
     min-height:calc(100svh - 122px);
     display:block;
     touch-action:pan-y;

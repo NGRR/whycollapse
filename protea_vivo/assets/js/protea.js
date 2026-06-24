@@ -44,6 +44,7 @@
   const clamp = (v, mn, mx) => Math.max(mn, Math.min(mx, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const isMobileLayout = () => window.matchMedia('(max-width: 959px)').matches;
+  let resizeQueued = false;
   const smoothstep = (a, b, x) => {
     const t = clamp((x - a) / (b - a), 0, 1);
     return t * t * (3 - 2 * t);
@@ -63,9 +64,17 @@
 
   function resize() {
     const rect = hero.getBoundingClientRect();
-    state.w = Math.max(1, Math.round(rect.width));
-    state.h = Math.max(1, Math.round(rect.height));
-    state.dpr = Math.min(window.devicePixelRatio || 1, CFG.dprMax);
+    const nextW = Math.max(1, Math.round(rect.width));
+    const nextH = Math.max(1, Math.round(rect.height));
+    const nextDpr = Math.min(window.devicePixelRatio || 1, CFG.dprMax);
+    if (nextW === state.w && nextH === state.h && nextDpr === state.dpr) {
+      render();
+      return;
+    }
+
+    state.w = nextW;
+    state.h = nextH;
+    state.dpr = nextDpr;
     canvas.width = Math.round(state.w * state.dpr);
     canvas.height = Math.round(state.h * state.dpr);
     canvas.style.width = `${state.w}px`;
@@ -87,6 +96,17 @@
     state.pointer.active = false;
     updatePointerNorm();
     render();
+  }
+
+  function queueResize() {
+    if (resizeQueued) return;
+    resizeQueued = true;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        resizeQueued = false;
+        resize();
+      });
+    });
   }
 
   function updatePointerNorm() {
@@ -513,14 +533,20 @@
     updatePointerNorm();
   }
 
-  window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('resize', queueResize, { passive: true });
+  window.addEventListener('load', queueResize, { passive: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueResize);
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(queueResize);
+    ro.observe(hero);
+  }
   hero.addEventListener('pointermove', setPointer, { passive: true });
   hero.addEventListener('pointerdown', setPointer, { passive: true });
   hero.addEventListener('pointerleave', () => { state.pointer.active = false; }, { passive: true });
 
   loadImages()
     .then(() => {
-      resize();
+      queueResize();
       requestAnimationFrame(frame);
     })
     .catch(err => console.error('No se pudieron cargar los assets del hero', err));
