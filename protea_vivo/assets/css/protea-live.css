@@ -139,8 +139,8 @@
 
 @media(max-width:959px){
   :root{
-    --mobile-nav-h:68px;
-    --mobile-story-h:54px;
+    --mobile-nav-h:62px;
+    --mobile-story-h:46px;
     --mobile-safe-b:env(safe-area-inset-bottom,0px);
     --mobile-critical-h:calc(100vh - var(--mobile-nav-h) - var(--mobile-story-h) - var(--mobile-safe-b));
   }
@@ -169,7 +169,7 @@
     top:0;
     z-index:80;
     min-height:var(--mobile-nav-h);
-    padding:12px 16px;
+    padding:9px 16px;
     background:rgba(243,239,232,.86)!important;
     backdrop-filter:blur(16px);
     border-bottom:1px solid rgba(7,18,38,.12);
@@ -193,8 +193,8 @@
   }
 
   .mobile-menu-button{
-    width:44px;
-    height:44px;
+    width:40px;
+    height:40px;
     display:inline-grid;
     place-content:center;
     gap:7px;
@@ -232,103 +232,19 @@
     border-right:1px solid rgba(7,18,38,.10);
   }
 
-  .nav-icon{
-    position:relative;
-    width:30px;
-    height:30px;
-    display:block;
+  .mobile-story-nav .uk-icon{
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
     border:1px solid rgba(0,102,255,.42);
     border-radius:50%;
     background:rgba(255,255,255,.28);
   }
 
-  .nav-icon:before,
-  .nav-icon:after{
-    content:"";
-    position:absolute;
-    display:block;
-  }
-
-  .nav-icon-eye:before{
-    inset:8px 5px;
-    border:2px solid currentColor;
-    border-radius:50% 50% 44% 44%;
-    transform:rotate(-12deg);
-  }
-
-  .nav-icon-eye:after{
-    width:6px;
-    height:6px;
-    left:12px;
-    top:12px;
-    border-radius:50%;
-    background:currentColor;
-  }
-
-  .nav-icon-pulse:before{
-    left:6px;
-    right:6px;
-    top:14px;
-    height:2px;
-    background:currentColor;
-    box-shadow:6px -6px 0 -1px currentColor,12px 6px 0 -1px currentColor;
-    transform:skewX(-28deg);
-  }
-
-  .nav-icon-cycle:before{
-    inset:7px;
-    border:2px solid currentColor;
-    border-left-color:transparent;
-    border-radius:50%;
-  }
-
-  .nav-icon-cycle:after{
-    right:5px;
-    top:7px;
-    border-left:6px solid currentColor;
-    border-top:4px solid transparent;
-    border-bottom:4px solid transparent;
-  }
-
-  .nav-icon-network:before{
-    width:5px;
-    height:5px;
-    left:7px;
-    top:8px;
-    border-radius:50%;
-    background:currentColor;
-    box-shadow:13px 3px 0 currentColor,7px 14px 0 currentColor;
-  }
-
-  .nav-icon-network:after{
-    left:10px;
-    top:12px;
-    width:15px;
-    height:13px;
-    border-top:1px solid currentColor;
-    border-left:1px solid currentColor;
-    transform:skewY(22deg);
-    opacity:.8;
-  }
-
-  .nav-icon-seed:before{
-    width:13px;
-    height:19px;
-    left:9px;
-    top:5px;
-    border:2px solid currentColor;
-    border-radius:70% 30% 70% 30%;
-    transform:rotate(34deg);
-  }
-
-  .nav-icon-seed:after{
-    width:1px;
+  .mobile-story-nav svg{
+    width:18px;
     height:18px;
-    left:15px;
-    top:7px;
-    background:currentColor;
-    transform:rotate(34deg);
-    opacity:.65;
   }
 
   .mobile-offcanvas .uk-offcanvas-bar{
@@ -377,7 +293,7 @@
 
   .hero-copy-panel{
     width:100%;
-    padding-block:38px 10px;
+    padding-block:24px 8px;
     padding-left:28px!important;
     padding-right:28px!important;
     text-align:center;
@@ -426,13 +342,60 @@
   .footer-cta>.uk-container{
     width:100%;
     max-height:var(--mobile-critical-h);
-    padding-block:30px;
+    padding-block:16px;
     overflow:hidden;
   }
 
   .light-section .uk-grid-large,
   .dark-section .uk-grid-large{
-    row-gap:20px;
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    align-items:stretch;
+    gap:14px;
+    min-height:auto;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:24px;
+    padding:4px 24px 18px;
+    margin-left:-24px!important;
+    margin-right:-24px;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .light-section .uk-grid-large::-webkit-scrollbar,
+  .dark-section .uk-grid-large::-webkit-scrollbar{
+    display:none;
+  }
+
+  .light-section .uk-grid-large>*,
+  .dark-section .uk-grid-large>*{
+    flex:0 0 min(82vw,330px);
+    width:min(82vw,330px)!important;
+    min-width:min(82vw,330px);
+    padding-left:0!important;
+    scroll-snap-align:center;
+  }
+
+  .light-section .uk-grid-large>:first-child,
+  .dark-section .uk-grid-large>:first-child{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:min(58dvh,430px);
+    padding:24px!important;
+    border:1px solid var(--protea-line);
+    background:rgba(255,255,255,.34);
+  }
+
+  .dark-section .uk-grid-large>:first-child{
+    border-color:var(--protea-line-dark);
+    background:rgba(255,255,255,.04);
+  }
+
+  .light-section .uk-grid-large>:nth-child(2),
+  .dark-section .uk-grid-large>:nth-child(2){
+    display:contents;
   }
 
   .light-section h2,
@@ -447,32 +410,20 @@
   }
 
   .light-section .uk-child-width-1-5\@m,
-  .light-section .uk-child-width-1-2\@s,
-  .triad-diagram{
-    display:flex!important;
-    flex-wrap:nowrap!important;
-    gap:14px;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scroll-snap-type:x mandatory;
-    scroll-padding-inline:24px;
-    padding:4px 24px 18px;
-    margin-left:-24px;
-    margin-right:-24px;
-    -webkit-overflow-scrolling:touch;
+  .light-section .uk-child-width-1-2\@s{
+    display:contents!important;
   }
 
-  .light-section .uk-child-width-1-5\@m::-webkit-scrollbar,
-  .light-section .uk-child-width-1-2\@s::-webkit-scrollbar,
-  .triad-diagram::-webkit-scrollbar{
-    display:none;
+  .triad-diagram{
+    display:contents!important;
   }
 
   .light-section .uk-child-width-1-5\@m>*,
   .light-section .uk-child-width-1-2\@s>*,
   .triad-diagram>div{
-    width:min(78vw,310px)!important;
-    min-width:min(78vw,310px);
+    flex:0 0 min(82vw,330px);
+    width:min(82vw,330px)!important;
+    min-width:min(82vw,330px);
     padding-left:0!important;
     scroll-snap-align:center;
   }
@@ -480,7 +431,9 @@
   .mini-card,
   .device-card,
   .triad-diagram div{
-    min-height:250px;
+    min-height:min(58dvh,430px);
+    height:100%;
+    padding:24px;
   }
 
   .slide-card{
