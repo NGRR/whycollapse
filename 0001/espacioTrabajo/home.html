@@ -1,0 +1,584 @@
+﻿<header uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-box-shadow-small; offset: 0">
+  <nav class="uk-navbar-container uk-navbar-transparent uk-padding-small site-nav" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#inicio" aria-label="Protea Becoming Adaptive">
+        <img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/1be720e0-7a2f-4def-a4af-d6ca8e8147fe/p.png?content-type=image%2Fpng" alt="Protea Becoming Adaptive" width="60">
+      </a>
+    </div>
+    <div class="uk-navbar-center uk-visible@m">
+      <ul class="uk-navbar-nav">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#senales">Señales</a></li>
+        <li><a href="#paradigma">Paradigma</a></li>
+        <li><a href="#libro">Qué encontrarás</a></li>
+        <li><a href="#autor">Autor</a></li>
+        <li><a href="#elogios">Elogios</a></li>
+      </ul>
+    </div>
+    <div class="uk-navbar-right">
+      <a class="uk-button uk-button-primary uk-border-pill uk-visible@s" href="#presentaciones" style="background:var(--azul-profundo);color:#fff;">Reservar presentación</a>
+      <a class="uk-navbar-toggle uk-hidden@m" href="#menu" uk-navbar-toggle-icon uk-toggle></a>
+    </div>
+  </nav>
+</header>
+
+<div id="menu" uk-offcanvas="overlay:true">
+  <div class="uk-offcanvas-bar" style="background:var(--azul-profundo);">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <ul class="uk-nav uk-nav-default uk-margin-large-top">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#senales">Señales</a></li>
+      <li><a href="#paradigma">Paradigma</a></li>
+      <li><a href="#libro">Qué encontrarás</a></li>
+      <li><a href="#autor">Autor</a></li>
+        <li><a href="#elogios">Elogios</a></li>
+    </ul>
+  </div>
+</div>
+<main id="inicio">
+
+  <section id="lanzamiento" class="uk-light uk-position-relative uk-overflow-hidden hero-section">
+      <canvas id="cellCanvas"></canvas>
+      <div class="uk-position-cover uk-background-cover uk-background-right-center uk-visible@m hero-fade"></div>
+      <div class="uk-container uk-position-relative hero-container">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-2@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Nuevo libro de Marcelo Lasagna</p>
+            <h1 class="uk-heading-xlarge uk-margin-remove-top hero-title">
+              ¿ESTÁS SEGURO QUE TU EMPRESA <span style="color:var(--naranja);">SEGUIRÁ VIGENTE?</span>
+            </h1>
+            <h2 class="uk-heading-medium uk-margin-medium-top hero-subtitle">La estabilidad es la muerte silenciosa.<br><br>¿Por qué las organizaciones colapsan, aunque todo parezca funcionar?</h2>
+            <blockquote class="uk-text-lead uk-margin-medium-top hero-quote">
+              <p>“Hay una complejidad que nos somete y hay una complejidad que nos inspira. Marcelo Lasagna hace que la complejidad sea inspiradora.”</p>
+              <footer style="color:rgba(255,255,255,.70);margin-top:.75rem;">Xavier Marcet, autor del prólogo de "¿Por qué colapsan las organizaciones?"</footer>
+            </blockquote>
+            <div class="uk-grid-small uk-flex uk-flex-wrap uk-margin-medium-top" uk-grid>
+              <div><a class="uk-button uk-button-primary uk-button-large hero-cta-primary" href="#presentaciones">Reservar presentación</a></div>
+              <div><a class="uk-button uk-button-default uk-button-large hero-cta-secondary" href="https://www.amazon.com/dp/B0GVNC1CBH" target="_blank" rel="noopener">Comprar libro</a></div>
+            </div>
+            <p class="uk-text-small uk-margin-medium-top"><a class="hero-link hero-link-btn" href="#libro" aria-label="Ir a Qué encontrarás">Qué encontrarás <span aria-hidden="true">→</span></a></p>
+          </div>
+          <div class="uk-width-1-2@m uk-text-center">
+            <img id="coverImg" src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/88e717f0-8aa5-4609-99bb-f46a40680d37/book1.webp?content-type=image%2Fwebp" alt="Portada del libro ¿Por qué colapsan las organizaciones?" style="max-height:60vh;object-fit:contain;filter:drop-shadow(0 36px 62px rgba(0,0,0,.38));">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="senales" class="uk-section uk-section-large" style="background:#fff;">
+      <div class="uk-container">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Señales</p>
+            <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">Muchas organizaciones no colapsan por falta de estrategia.</h2>
+            <p class="uk-text-lead">Colapsan porque su capacidad de respuesta llega después que el cambio.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-2@s uk-grid-small uk-grid-match" uk-grid>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:linear-gradient(rgba(251,250,247,.94),rgba(251,250,247,.94)),url('assets/white-ring.webp') center/cover no-repeat;border-top:4px solid var(--naranja);">
+                  <h3 class="uk-h3">Detectan demasiado tarde los cambios</h3>
+                  <p>Las señales ya están en el entorno, pero la organización todavía lee la realidad desde indicadores del ciclo anterior.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:linear-gradient(rgba(251,250,247,.94),rgba(251,250,247,.94)),url('assets/white-leaf.webp') center/cover no-repeat;border-top:4px solid var(--naranja);">
+                  <h3 class="uk-h3">Aprenden demasiado lento</h3>
+                  <p>El conocimiento existe, pero no logra convertirse a tiempo en decisión, coordinación ni transformación efectiva.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:linear-gradient(rgba(251,250,247,.94),rgba(251,250,247,.94)),url('assets/white-wave.webp') center/cover no-repeat;border-top:4px solid var(--naranja);">
+                  <h3 class="uk-h3">Coordinan mal la complejidad</h3>
+                  <p>Áreas, equipos y liderazgos operan como piezas aisladas frente a problemas interdependientes.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:linear-gradient(rgba(251,250,247,.94),rgba(251,250,247,.94)),url('assets/white-spiral.webp') center/cover no-repeat;border-top:4px solid var(--naranja);">
+                  <h3 class="uk-h3">Siguen diseñadas para un mundo que ya no existe</h3>
+                  <p>Su arquitectura mental, organizacional y cultural responde a una estabilidad que dejó de ser el punto de partida.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="paradigma" class="uk-section uk-section-large" style="background:var(--marfil);">
+      <div class="uk-container">
+        <div class="uk-text-center uk-margin-large-bottom">
+          <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Paradigma</p>
+          <h2 class="uk-heading-large" style="font-size:clamp(1.75rem,4vw,2.4rem);">Las organizaciones no son máquinas.</h2>
+          <p class="uk-text-lead uk-width-2-3@m uk-margin-auto">Son sistemas vivos que prosperan en la incertidumbre y la transformación permanente.</p>
+        </div>
+        <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body uk-flex uk-flex-column" style="background:#fff;">
+              <img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/04b87dfb-1fb7-4486-8bab-f1215fcade35/mecanico.png?content-type=image%2Fpng" alt="Modelo mecanicista" style=";width:100%;object-fit:cover;">
+              <p class="uk-text-meta uk-text-uppercase uk-text-bold uk-margin-top">Modelo mecanicista</p>
+              <h3>Controlar un sistema como si fuera estable.</h3>
+              <p>La lógica mecanicista busca previsibilidad, repetición y eficiencia local. En entornos complejos, esa misma estabilidad puede transformarse en fragilidad.</p>
+            </div>
+          </div>
+          <div>
+            <div class="uk-card uk-card-primary uk-card-body uk-flex uk-flex-column" style="background:var(--azul-profundo);">
+              <img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/317d06d7-54e5-48f2-a8cd-3ed747a7c85d/adaptativo.png?content-type=image%2Fpng" alt="Modelo adaptativo" style=";width:100%;object-fit:cover;">
+              <p class="uk-text-meta uk-text-uppercase uk-text-bold uk-margin-top" style="color:#ffb070;">Modelo adaptativo</p>
+              <h3 style="color:#fff;">Cultivar capacidades para evolucionar.</h3>
+              <p>El libro propone abandonar la lógica de estabilidad y comprender cómo cultivar capacidades adaptativas para sostener vigencia en entornos complejos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="capacidades" class="uk-section uk-section-large uk-light" style="background:linear-gradient(100deg,rgba(6,31,65,.98),rgba(0,102,255,.90)),url('assets/blue-helix.webp') right center/contain no-repeat;">
+      <div class="uk-container">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Capacidades adaptativas</p>
+            <h2 class="uk-heading-medium" style="color:#fff;font-size:clamp(1.75rem,4vw,2.4rem);">5 capacidades para evitar la obsolescencia</h2>
+            <p>Anticipación, agilidad, aprendizaje, adecuación y antifragilidad ordenan el mapa para mantener vigencia.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-3@l uk-child-width-1-2@m uk-child-width-1-2@s uk-grid-small uk-grid-match" uk-grid>
+              <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/1b3973f5-36d7-463e-bf63-d1c4fac4c251/am01.webp?content-type=image%2Fwebp" alt="Anticipación" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Anticipación</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Leer señales débiles antes de que se vuelvan crisis.</p></div></div></div>
+              <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/37c4153e-83de-4764-8e58-4fe5c21dadaa/am02.webp?content-type=image%2Fwebp" alt="Agilidad" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Agilidad</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Moverse con inteligencia, dirección y propósito.</p></div></div></div>
+              <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/5b14d481-1f63-419f-9ca8-853558f2b2a8/am03.webp?content-type=image%2Fwebp" alt="Aprendizaje" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Aprendizaje</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Convertir conocimiento en ventaja evolutiva sostenible.</p></div></div></div>
+              <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/c5b9bb06-b010-46e1-962c-8dfeed7599d4/am04.webp?content-type=image%2Fwebp" alt="Adecuación" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Adecuación</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Alinear estructuras, procesos y cultura con el entorno real.</p></div></div></div>
+              <div><div class="uk-card uk-height-1-1" style="background:var(--papel);overflow:hidden;display:flex;flex-direction:column;"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/711470ff-994a-4433-abf1-d82c449a2818/am05.webp?content-type=image%2Fwebp" alt="Antifragilidad" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;flex-shrink:0;"><div class="uk-card-body uk-text-center" style="padding:0.75rem;flex:1;"><h3 style="color:var(--azul-profundo);margin:0 0 0.25rem 0;">Antifragilidad</h3><p class="uk-text-small" style="color:var(--azul-profundo);margin:0;">Fortalecerse en la presión y aprender del shock adaptativo.</p></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="libro" class="uk-section uk-section-large" style="background:#fff;">
+      <div class="uk-container">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Qué encontrarás</p>
+            <h2 class="uk-heading-medium" style="font-size:clamp(1.4rem,2.8vw,1.9rem);">CUATRO PERSPECTIVAS PARA CONVERTIRTE EN UNA ORGANIZACIÓN ADAPTATIVA</h2>
+            <p class="uk-text-lead">Un recorrido editorial por el colapso, el marco de la triarquía, los desafíos reales y el futuro de la adaptabilidad.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-2@s uk-grid-small uk-grid-match" uk-grid>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
+                  <h3>El colapso</h3>
+                  <p>¿Qué ha hecho que las empresas colapsen?: casos y evidencia.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
+                  <h3>La triarquía</h3>
+                  <p>Sin complejidad, estancamiento. Sin adaptabilidad, el cambio desborda. Sin innovación, lo de siempre ya no sirve.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
+                  <h3>Los desafíos</h3>
+                  <p>Los 8 retos de las organizaciones de hoy. Un lenguaje común para los nuevos tiempos: glosario aforístico.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-body uk-height-1-1" style="background:var(--marfil);">
+                  <h3>El futuro</h3>
+                  <p>Las 8 acciones que las organizaciones no pueden dejar de hacer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="uk-section uk-section-large" style="background:var(--papel);">
+      <div class="uk-container">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">La adaptabilidad en imágenes</p>
+            <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">La adaptabilidad en imágenes</h2>
+            <p>Una colección visual que hace tangible la tensión entre rigidez y movimiento adaptativo.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div uk-slideshow="animation: push; ratio: 16:9; autoplay: true; autoplay-interval: 4300">
+              <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                <ul class="uk-slideshow-items">
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/0d78735b-b2d7-43ec-900d-2f67ddf6dcc4/0001.png?content-type=image%2Fpng" alt="Triarquía" uk-cover></li>
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/0f009b46-e27e-4a9e-82b5-349726d389f8/0002.png?content-type=image%2Fpng" alt="Life" uk-cover></li>
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/9188db53-16b4-4478-ad0f-066b947054ab/0003.png?content-type=image%2Fpng" alt="Funciones de la adaptabilidad" uk-cover></li>
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/ee1e97c1-5990-4c0a-b511-0e78ae6fcaaf/0004.png?content-type=image%2Fpng" alt="5 aminoácidos" uk-cover></li>
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/cc367dd6-c011-4d1b-8d3b-99f1638f0b25/0005.png?content-type=image%2Fpng" alt="Sistema helicoidal blanco" uk-cover></li>
+                  <li><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/4e246e7e-a838-4ba3-a675-cfd145c80895/0006.png?content-type=image%2Fpng" alt="Sistema orgánico blanco" uk-cover></li>
+                </ul>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
+              </div>
+              <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="presentaciones" class="uk-section uk-section-large" style="background:#fff;">
+      <div class="uk-container">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Próximas presentaciones</p>
+            <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">Encuentros para conversar sobre lo que ya cambió.</h2>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <h3>Barcelona</h3>
+                  <p class="uk-text-bold">Casa del Libro · Rambla Catalunya, 37 · 2 de julio · 19:00</p>
+                  <p>Una conversación exclusiva junto a Xavier Marcet sobre complejidad, adaptabilidad y vigencia organizacional.</p>
+                  <a class="uk-button uk-button-primary" href="https://www.eventbrite.es/e/por-que-colapsan-las-organizaciones-tickets-1990783396730?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=wsa&aff=ebdsshwebmobile" style="background:var(--azul-profundo);color:#fff;">Reservar plaza</a>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <h3>Madrid</h3>
+                  <p class="uk-text-bold">Fecha por confirmar</p>
+                  <p>Un encuentro para equipos directivos que quieren anticipar el cambio real.</p>
+                  <a class="uk-button uk-button-default" href="#">Próximamente</a>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <h3>Santiago de Chile</h3>
+                  <p class="uk-text-bold">Fecha por confirmar</p>
+                  <p>Presentación diseñada para empresas e instituciones en América Latina.</p>
+                  <a class="uk-button uk-button-default" href="#">Próximamente</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="autor" class="uk-section uk-section-large author-section">
+      <div class="uk-container">
+        <div class="uk-grid uk-flex-middle" uk-grid>
+          <div class="uk-width-1-3@m uk-width-1-1@s uk-light uk-padding-large">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:#ffb070;letter-spacing:.12em;">Sobre el autor</p>
+            <h2 style="color:#fff;font-size:clamp(1.5rem,3vw,2rem);">Marcelo Lasagna</h2>
+            <p>PhD (c) en Ciencias Políticas.</p>
+            <p>Fundador de Protea Becoming Adaptive y cofundador de Lead To Change Chile.</p>
+            <p>Desde hace más de 30 años acompaña procesos de transformación e innovación en organizaciones públicas y privadas de Europa y América Latina.</p>
+            <p>Especialista en sistemas complejos adaptativos aplicados a organizaciones.</p>
+            <a class="uk-button uk-button-text" href="https://www.linkedin.com/in/mlasagna" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="uk-width-1-3@m uk-width-1-1@s uk-text-center">
+            <img class="author-image" src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/99845f01-7466-4c99-8cc9-c3b1d0238727/author.webp?content-type=image%2Fwebp" alt="Marcelo Lasagna">
+          </div>
+          <div class="uk-width-1-3@m uk-width-1-1@s uk-padding-large">
+            <blockquote class="uk-text-large">
+              <p>“La adaptabilidad no es una opción, es la única ventaja competitiva para habitar la complejidad.”</p>
+            </blockquote>
+            <hr>
+            <p class="uk-text-muted">El libro propone una hipótesis, las organizaciones pierden vigencia cuando se vuelven incapaces de evolucionar al ritmo de su entorno.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="elogios" class="uk-section uk-section-large" style="background:var(--marfil);">
+      <style>
+        #elogios .testimonial-copy {
+          font-size:clamp(0.98rem,1.5vw,1.12rem);
+          line-height:1.45;
+        }
+      </style>
+      <div class="uk-container">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Qué opinan</p>
+            <h2 style="font-size:clamp(1.5rem,3vw,2rem);">Voces con autoridad</h2>
+            <p class="uk-text-muted">Testimonios que conectan el libro con la práctica, la academia y la institucionalidad.</p>
+          </div>
+          <div class="uk-width-2-3@m">
+            <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <p class="uk-text-large testimonial-copy">“El libro de Marcelo Lasagna me ha hecho reflexionar sobre la necesidad de trabajar la complejidad y la adaptabilidad para asegurar la evolución y la supervivencia. Léanlo: les va a sorprender y van a encontrar respuestas a preguntas difíciles sobre el futuro de las organizaciones”</p>
+                  <p class="uk-text-bold">Óscar Hernández</p>
+                  <p class="uk-text-small uk-text-muted">Director de Asuntos Públicos, Comunicación y Sostenibilidad de Pascual</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <p class="uk-text-large testimonial-copy">“Dirigir hoy no es controlar el futuro, sino crear las condiciones para habitar la incertidumbre. Un libro necesario para quienes dirigen organizaciones y quieran entender que el cambio es la única infraestructura que no caduca.”</p>
+                  <p class="uk-text-bold">Jordi Marin</p>
+                  <p class="uk-text-small uk-text-muted">CEO UOC y ex CEO Catalunya Microsoft</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <p class="uk-text-large testimonial-copy">“Marcelo nos brinda una nueva mirada para entender las organizaciones. Unas lentes que nos ayudan a explorar la riqueza de la complejidad, lejos de discursos catastrofistas. Una propuesta profunda y necesaria. Un nuevo mapa del tesoro para entender el mundo”</p>
+                  <p class="uk-text-bold">Meritxell Batet</p>
+                  <p class="uk-text-small uk-text-muted">Consejera de Ebro Foods y Satelio IOT. | Ex presidenta del Congreso de los Diputados de España.</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <p class="uk-text-large testimonial-copy">“En el ámbito público, hablar o leer a Marcelo siempre me permite incorporar una nueva mirada sobre la realidad organizativa. Este libro es una llamada a detenernos y repensar antes de que la inercia nos arrastre. Aquí la adaptación es oportunidad y no problema. Cuando los mapas dejan de encajar y el territorio cambia mientras avanzamos, no se trata de resistir, sino de evolucionar. Entender la organización pública como un ecosistema vivo implica asumir aprendizaje continuo, adaptabilidad e innovación como una responsabilidad para generar valor público y dar respuestas en contextos cada vez más complejos”.</p>
+                  <p class="uk-text-bold">Toni Merino</p>
+                  <p class="uk-text-small uk-text-muted">Gerente del Ayuntamiento de Mataró</p>
+                </div>
+              </div>
+              <div>
+                <div class="uk-card uk-card-default uk-card-body uk-height-1-1">
+                  <p class="uk-text-large testimonial-copy">“Más que un libro, una llamada a la acción. Lectura obligada para profesionales que no se conforman con gestionar el presente y para ejecutivos que queremos construir organizaciones que creen valor y sobrevivan en el largo plazo”.</p>
+                  <p class="uk-text-bold">Francisco Valenzuela</p>
+                  <p class="uk-text-small uk-text-muted">CEO LATAM CARDIF BNP PARIBAS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="comunidad" class="uk-section uk-section-large" style="background:linear-gradient(90deg,rgba(251,250,247,.96),rgba(251,250,247,.76)),url('assets/white-leaf.webp') right center/contain no-repeat;">
+      <div class="uk-container">
+        <div class="uk-grid-large uk-flex-middle" uk-grid>
+          <div class="uk-width-1-2@m">
+            <p class="uk-text-meta uk-text-uppercase uk-text-bold" style="color:var(--naranja);letter-spacing:.12em;">Newsletter / comunidad</p>
+            <h2 class="uk-heading-medium" style="font-size:clamp(1.5rem,3vw,2rem);">El efecto Colibrí</h2>
+            <p class="uk-text-lead">Reflexiones sobre complejidad, adaptabilidad e innovación en tiempos inciertos.</p>
+          </div>
+          <div class="uk-width-1-2@m">
+            <a class="uk-button uk-button-primary uk-button-large" href="https://www.linkedin.com/newsletters/el-efecto-colibr%C3%AD-7442508350438694912/" target="_blank" rel="noopener" style="background:var(--azul-profundo);color:#fff;">Unirme al efecto Colibrí</a>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+<footer class="uk-section uk-section-small uk-light" style="background:var(--azul-profundo);">
+  <div class="uk-container">
+    <div class="uk-grid-large uk-flex-middle" uk-grid>
+      <div class="uk-width-1-4@m"><img src="https://images.squarespace-cdn.com/content/5ed4ad5da4ef5771f578ea0d/1be720e0-7a2f-4def-a4af-d6ca8e8147fe/p.png?content-type=image%2Fpng" alt="Protea" width="60" style=""></div>
+      <div class="uk-width-1-2@m">
+        <ul class="uk-subnav uk-subnav-divider" uk-margin>
+          <li><a href="https://www.amazon.com/dp/B0GVNC1CBH">Libro</a></li>
+          <li><a href="#presentaciones">Eventos</a></li>
+          <li><a href="https://www.linkedin.com/in/mlasagna" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="uk-width-1-4@m uk-text-right@m">
+        <a class="uk-button uk-button-default uk-button-small" href="https://www.amazon.com/dp/B0GVNC1CBH" target="_blank" rel="noopener" style="border-color:#fff;color:#fff;">Comprar libro</a>
+        <a class="uk-button uk-button-primary uk-button-small uk-margin-small-left" href="#presentaciones" style="background:#fff;color:var(--azul-profundo);">Reservar presentación</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fix mobile 100vh behaviour and reduced-motion/touch handling
+  (function(){
+    function setVh(){
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    // Expose flags for later use by the canvas animation
+    window.__isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    window.__reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  })();
+
+  // Sistema de células flotantes interactivas (inicializa solo en no-touch y si no se pidió reduced-motion)
+  (function(){
+    const canvas = document.getElementById('cellCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const isTouch = window.__isTouch === true;
+    const reduceMotion = window.__reduceMotion === true;
+
+    if(reduceMotion){
+      // Ocultar canvas solo cuando el usuario solicita reducir movimiento
+      canvas.style.display = 'none';
+      return;
+    }
+
+    function resizeCanvas(){
+      const hero = document.getElementById('lanzamiento');
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const cells = [];
+    const cellCount = Math.max(24, Math.min(72, Math.floor((canvas.width * canvas.height) / 12000))); // reduce en pantallas pequeñas
+    const pointer = { x: -9999, y: -9999, active: false };
+
+    class Cell {
+      constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        // Velocidad muy lenta para flotación más espesa
+        this.vx = (Math.random() - 0.5) * 0.15;
+        this.vy = (Math.random() - 0.5) * 0.15;
+        this.isOrange = Math.random() < 0.3; // 30% de células naranjas
+        
+        // Células naranjas más pequeñas
+        if(this.isOrange){
+          this.radius = 1 + Math.random() * 2;
+        } else {
+          this.radius = 2 + Math.random() * 4;
+        }
+        
+        this.maxRadius = this.radius;
+        this.life = Math.random() * 0.5 + 0.5;
+        this.pulse = Math.random() * Math.PI * 2;
+        
+        // Movimiento orgánico muy suave (más espeso)
+        this.wobbleX = Math.random() * Math.PI * 2;
+        this.wobbleY = Math.random() * Math.PI * 2;
+        this.wobbleSpeedX = 0.0025 + Math.random() * 0.0025;
+        this.wobbleSpeedY = 0.0025 + Math.random() * 0.0025;
+      }
+      
+      update(){
+        // Movimiento base
+        this.x += this.vx;
+        this.y += this.vy;
+        this.pulse += 0.02;
+        
+        // Movimiento ondulante orgánico muy lento (ambiente más espeso)
+        this.wobbleX += this.wobbleSpeedX;
+        this.wobbleY += this.wobbleSpeedY;
+        this.vx += Math.sin(this.wobbleX) * 0.01;
+        this.vy += Math.cos(this.wobbleY) * 0.01;
+        
+        // Rebotar en bordes
+        if(this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.vx *= -1;
+        if(this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.vy *= -1;
+        
+        this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x));
+        this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y));
+        
+        // Reacción al mouse: repulsión suave
+        const dx = this.x - pointer.x;
+        const dy = this.y - pointer.y;
+        const dist = Math.hypot(dx, dy);
+        const repulseDistance = 120;
+        
+        if(pointer.active && dist < repulseDistance){
+          const force = (1 - dist / repulseDistance) * 0.3;
+          this.vx += (dx / dist) * force;
+          this.vy += (dy / dist) * force;
+        }
+        
+        // Fricción muy alta para flotación espesa
+        this.vx *= 0.99;
+        this.vy *= 0.99;
+        
+        // Pulsación
+        this.radius = this.maxRadius + Math.sin(this.pulse) * (this.maxRadius * 0.3);
+      }
+      
+      draw(){
+        const alpha = this.life * 0.65;
+        if(this.isOrange){
+          // Células naranjas: color puro y sólido
+          ctx.fillStyle = `rgba(255, 90, 0, 0.9)`;
+          ctx.strokeStyle = `rgba(255, 90, 0, 0.6)`;
+        } else {
+          ctx.fillStyle = `rgba(127, 208, 255, ${alpha})`;
+          ctx.strokeStyle = `rgba(127, 208, 255, ${alpha * 0.6})`;
+        }
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+    
+    // Crear células
+    for(let i = 0; i < cellCount; i++){
+      cells.push(new Cell());
+    }
+    
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      cells.forEach(cell => {
+        cell.update();
+        cell.draw();
+      });
+      
+      // Dibujar conexiones entre células cercanas (nodos)
+      const connectionDistance = 120;
+      for(let i = 0; i < cells.length; i++){
+        for(let j = i + 1; j < cells.length; j++){
+          const dx = cells[i].x - cells[j].x;
+          const dy = cells[i].y - cells[j].y;
+          const dist = Math.hypot(dx, dy);
+          
+          if(dist < connectionDistance){
+            const opacity = (1 - dist / connectionDistance) * 0.5;
+            ctx.strokeStyle = `rgba(127, 208, 255, ${opacity})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(cells[i].x, cells[i].y);
+            ctx.lineTo(cells[j].x, cells[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Detectar movimiento del mouse
+    document.addEventListener('mousemove', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      pointer.x = e.clientX - rect.left;
+      pointer.y = e.clientY - rect.top;
+      pointer.active = true;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      pointer.active = false;
+    });
+    
+    // Manejo táctil: trasladar coordenadas de touch a puntero para interacción en móviles
+    document.addEventListener('touchstart', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+      pointer.active = true;
+    }, {passive:true});
+
+    document.addEventListener('touchmove', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+    }, {passive:true});
+
+    document.addEventListener('touchend', () => {
+      pointer.active = false;
+    });
+  })();
+</script>

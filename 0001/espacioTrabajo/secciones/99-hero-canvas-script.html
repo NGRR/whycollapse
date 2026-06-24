@@ -1,0 +1,200 @@
+﻿<script>
+  // Fix mobile 100vh behaviour and reduced-motion/touch handling
+  (function(){
+    function setVh(){
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    // Expose flags for later use by the canvas animation
+    window.__isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    window.__reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  })();
+
+  // Sistema de células flotantes interactivas (inicializa solo en no-touch y si no se pidió reduced-motion)
+  (function(){
+    const canvas = document.getElementById('cellCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const isTouch = window.__isTouch === true;
+    const reduceMotion = window.__reduceMotion === true;
+
+    if(reduceMotion){
+      // Ocultar canvas solo cuando el usuario solicita reducir movimiento
+      canvas.style.display = 'none';
+      return;
+    }
+
+    function resizeCanvas(){
+      const hero = document.getElementById('lanzamiento');
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const cells = [];
+    const cellCount = Math.max(24, Math.min(72, Math.floor((canvas.width * canvas.height) / 12000))); // reduce en pantallas pequeñas
+    const pointer = { x: -9999, y: -9999, active: false };
+
+    class Cell {
+      constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        // Velocidad muy lenta para flotación más espesa
+        this.vx = (Math.random() - 0.5) * 0.15;
+        this.vy = (Math.random() - 0.5) * 0.15;
+        this.isOrange = Math.random() < 0.3; // 30% de células naranjas
+        
+        // Células naranjas más pequeñas
+        if(this.isOrange){
+          this.radius = 1 + Math.random() * 2;
+        } else {
+          this.radius = 2 + Math.random() * 4;
+        }
+        
+        this.maxRadius = this.radius;
+        this.life = Math.random() * 0.5 + 0.5;
+        this.pulse = Math.random() * Math.PI * 2;
+        
+        // Movimiento orgánico muy suave (más espeso)
+        this.wobbleX = Math.random() * Math.PI * 2;
+        this.wobbleY = Math.random() * Math.PI * 2;
+        this.wobbleSpeedX = 0.0025 + Math.random() * 0.0025;
+        this.wobbleSpeedY = 0.0025 + Math.random() * 0.0025;
+      }
+      
+      update(){
+        // Movimiento base
+        this.x += this.vx;
+        this.y += this.vy;
+        this.pulse += 0.02;
+        
+        // Movimiento ondulante orgánico muy lento (ambiente más espeso)
+        this.wobbleX += this.wobbleSpeedX;
+        this.wobbleY += this.wobbleSpeedY;
+        this.vx += Math.sin(this.wobbleX) * 0.01;
+        this.vy += Math.cos(this.wobbleY) * 0.01;
+        
+        // Rebotar en bordes
+        if(this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.vx *= -1;
+        if(this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.vy *= -1;
+        
+        this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x));
+        this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y));
+        
+        // Reacción al mouse: repulsión suave
+        const dx = this.x - pointer.x;
+        const dy = this.y - pointer.y;
+        const dist = Math.hypot(dx, dy);
+        const repulseDistance = 120;
+        
+        if(pointer.active && dist < repulseDistance){
+          const force = (1 - dist / repulseDistance) * 0.3;
+          this.vx += (dx / dist) * force;
+          this.vy += (dy / dist) * force;
+        }
+        
+        // Fricción muy alta para flotación espesa
+        this.vx *= 0.99;
+        this.vy *= 0.99;
+        
+        // Pulsación
+        this.radius = this.maxRadius + Math.sin(this.pulse) * (this.maxRadius * 0.3);
+      }
+      
+      draw(){
+        const alpha = this.life * 0.65;
+        if(this.isOrange){
+          // Células naranjas: color puro y sólido
+          ctx.fillStyle = `rgba(255, 90, 0, 0.9)`;
+          ctx.strokeStyle = `rgba(255, 90, 0, 0.6)`;
+        } else {
+          ctx.fillStyle = `rgba(127, 208, 255, ${alpha})`;
+          ctx.strokeStyle = `rgba(127, 208, 255, ${alpha * 0.6})`;
+        }
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+    
+    // Crear células
+    for(let i = 0; i < cellCount; i++){
+      cells.push(new Cell());
+    }
+    
+    function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      cells.forEach(cell => {
+        cell.update();
+        cell.draw();
+      });
+      
+      // Dibujar conexiones entre células cercanas (nodos)
+      const connectionDistance = 120;
+      for(let i = 0; i < cells.length; i++){
+        for(let j = i + 1; j < cells.length; j++){
+          const dx = cells[i].x - cells[j].x;
+          const dy = cells[i].y - cells[j].y;
+          const dist = Math.hypot(dx, dy);
+          
+          if(dist < connectionDistance){
+            const opacity = (1 - dist / connectionDistance) * 0.5;
+            ctx.strokeStyle = `rgba(127, 208, 255, ${opacity})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(cells[i].x, cells[i].y);
+            ctx.lineTo(cells[j].x, cells[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Detectar movimiento del mouse
+    document.addEventListener('mousemove', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      pointer.x = e.clientX - rect.left;
+      pointer.y = e.clientY - rect.top;
+      pointer.active = true;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      pointer.active = false;
+    });
+    
+    // Manejo táctil: trasladar coordenadas de touch a puntero para interacción en móviles
+    document.addEventListener('touchstart', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+      pointer.active = true;
+    }, {passive:true});
+
+    document.addEventListener('touchmove', (e) => {
+      const hero = document.getElementById('lanzamiento');
+      const rect = hero.getBoundingClientRect();
+      const t = e.touches[0];
+      pointer.x = t.clientX - rect.left;
+      pointer.y = t.clientY - rect.top;
+    }, {passive:true});
+
+    document.addEventListener('touchend', () => {
+      pointer.active = false;
+    });
+  })();
+</script>
