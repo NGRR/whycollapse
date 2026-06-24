@@ -37,6 +37,28 @@
     small {
       color: #aaa;
     }
+
+    .version-history {
+      margin: 10px 0 0;
+      color: #aaa;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .version-history div {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 8px;
+    }
+
+    .version-history dt {
+      color: #f3f3f3;
+      font-weight: 600;
+    }
+
+    .version-history dd {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -49,9 +71,13 @@
     </a>
     
         <a href="./protea_vivo">
-      <strong>Modelo storytelling <small>v20260624-6 · c672540 · 2026-06-24 15:10</small></strong><br>
-      <small>Actual: iconos UIkit, menos padding móvil y slides por sección con intro.</small><br>
-      <small>Anteriores: v20260624-5 a4dab00 · sliders móviles / v20260624-4 fdc3547 · UI móvil adaptativa / v20260624-3 c3466b7 · canvas estable.</small>
+      <strong>Modelo storytelling <small>v20260624-7 · 2026-06-24 15:16</small></strong><br>
+      <small>Actual: nav inferior tipo red social, historial dl/dt/dd y carruseles con pista de deslizamiento.</small>
+      <dl class="version-history">
+        <div><dt>v20260624-6</dt><dd>c672540 · iconos UIkit y slides con intro</dd></div>
+        <div><dt>v20260624-5</dt><dd>a4dab00 · sliders móviles</dd></div>
+        <div><dt>v20260624-4</dt><dd>fdc3547 · UI móvil adaptativa</dd></div>
+      </dl>
     </a>
     <a href="./protea/sitemap.txt">
       <strong>Mapa de sitio</strong><br>

@@ -153,7 +153,8 @@
 
   html{
     scroll-snap-type:y mandatory;
-    scroll-padding-top:calc(var(--mobile-nav-h) + var(--mobile-story-h));
+    scroll-padding-top:var(--mobile-nav-h);
+    scroll-padding-bottom:calc(var(--mobile-story-h) + var(--mobile-safe-b));
   }
 
   .story-section,
@@ -212,15 +213,20 @@
   }
 
   .mobile-story-nav{
-    position:sticky;
-    top:var(--mobile-nav-h);
-    z-index:70;
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:calc(10px + var(--mobile-safe-b));
+    z-index:90;
     display:grid;
     grid-template-columns:repeat(5,1fr);
     min-height:var(--mobile-story-h);
-    background:rgba(243,239,232,.78);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(7,18,38,.12);
+    overflow:hidden;
+    border:1px solid rgba(7,18,38,.12);
+    border-radius:999px;
+    background:rgba(243,239,232,.88);
+    box-shadow:0 14px 36px rgba(7,18,38,.18);
+    backdrop-filter:blur(18px);
   }
 
   .mobile-story-nav a{
@@ -229,17 +235,15 @@
     place-items:center;
     color:var(--protea-blue);
     text-decoration:none;
-    border-right:1px solid rgba(7,18,38,.10);
   }
 
   .mobile-story-nav .uk-icon{
-    width:32px;
-    height:32px;
+    width:34px;
+    height:34px;
     display:grid;
     place-items:center;
-    border:1px solid rgba(0,102,255,.42);
     border-radius:50%;
-    background:rgba(255,255,255,.28);
+    background:transparent;
   }
 
   .mobile-story-nav svg{
@@ -287,7 +291,7 @@
 
   .hero-section .uk-grid-large{
     display:grid!important;
-    grid-template-rows:auto 1fr;
+    grid-template-rows:auto minmax(190px,1fr);
     align-items:center;
   }
 
@@ -342,7 +346,7 @@
   .footer-cta>.uk-container{
     width:100%;
     max-height:var(--mobile-critical-h);
-    padding-block:16px;
+    padding:14px 0 calc(var(--mobile-story-h) + 22px);
     overflow:hidden;
   }
 
@@ -357,10 +361,17 @@
     overflow-y:hidden;
     scroll-snap-type:x mandatory;
     scroll-padding-inline:24px;
-    padding:4px 24px 18px;
-    margin-left:-24px!important;
-    margin-right:-24px;
+    width:100%;
+    padding:4px 24px 20px;
+    margin-left:0!important;
+    margin-right:0;
     -webkit-overflow-scrolling:touch;
+  }
+
+  .light-section .uk-grid-large:after,
+  .dark-section .uk-grid-large:after{
+    content:"";
+    flex:0 0 10px;
   }
 
   .light-section .uk-grid-large::-webkit-scrollbar,
@@ -370,9 +381,9 @@
 
   .light-section .uk-grid-large>*,
   .dark-section .uk-grid-large>*{
-    flex:0 0 min(82vw,330px);
-    width:min(82vw,330px)!important;
-    min-width:min(82vw,330px);
+    flex:0 0 min(80vw,330px);
+    width:min(80vw,330px)!important;
+    min-width:min(80vw,330px);
     padding-left:0!important;
     scroll-snap-align:center;
   }
@@ -382,10 +393,27 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    min-height:min(58dvh,430px);
+    position:relative;
+    min-height:min(52dvh,390px);
     padding:24px!important;
     border:1px solid var(--protea-line);
     background:rgba(255,255,255,.34);
+  }
+
+  .light-section .uk-grid-large>:first-child:after,
+  .dark-section .uk-grid-large>:first-child:after{
+    content:"Desliza →";
+    display:inline-flex;
+    width:max-content;
+    margin-top:22px;
+    padding:7px 12px;
+    border:1px solid currentColor;
+    border-radius:999px;
+    color:var(--protea-blue);
+    font:700 10px/1 var(--font-head);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    opacity:.86;
   }
 
   .dark-section .uk-grid-large>:first-child{
@@ -421,9 +449,9 @@
   .light-section .uk-child-width-1-5\@m>*,
   .light-section .uk-child-width-1-2\@s>*,
   .triad-diagram>div{
-    flex:0 0 min(82vw,330px);
-    width:min(82vw,330px)!important;
-    min-width:min(82vw,330px);
+    flex:0 0 min(80vw,330px);
+    width:min(80vw,330px)!important;
+    min-width:min(80vw,330px);
     padding-left:0!important;
     scroll-snap-align:center;
   }
@@ -431,9 +459,10 @@
   .mini-card,
   .device-card,
   .triad-diagram div{
-    min-height:min(58dvh,430px);
+    min-height:min(52dvh,390px);
     height:100%;
     padding:24px;
+    overflow:auto;
   }
 
   .slide-card{
