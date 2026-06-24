@@ -43,6 +43,7 @@
 
   const clamp = (v, mn, mx) => Math.max(mn, Math.min(mx, v));
   const lerp = (a, b, t) => a + (b - a) * t;
+  const isMobileLayout = () => window.matchMedia('(max-width: 959px)').matches;
   const smoothstep = (a, b, x) => {
     const t = clamp((x - a) / (b - a), 0, 1);
     return t * t * (3 - 2 * t);
@@ -72,9 +73,10 @@
     ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
 
     const lens = state.lens;
-    lens.r = clamp(Math.min(state.w * 0.34, state.h * 0.255), 118, 310);
-    lens.ax = state.w * (state.w < 760 ? 0.58 : 0.76) - (state.w < 760 ? 0 : 50);
-    lens.ay = state.h * (state.w < 760 ? 0.68 : 0.52);
+    const mobile = isMobileLayout();
+    lens.r = mobile ? clamp(Math.min(state.w * 0.38, state.h * 0.19), 96, 156) : clamp(Math.min(state.w * 0.34, state.h * 0.255), 118, 310);
+    lens.ax = mobile ? state.w * 0.5 : state.w * 0.76 - 50;
+    lens.ay = mobile ? state.h * 0.72 : state.h * 0.52;
     lens.x = lens.ax;
     lens.y = lens.ay;
     lens.tx = lens.ax;
@@ -82,6 +84,7 @@
 
     state.pointer.x = lens.ax;
     state.pointer.y = lens.ay;
+    state.pointer.active = false;
     updatePointerNorm();
     render();
   }
@@ -132,6 +135,16 @@
     lens.spin = lerp(lens.spin, delta * magnet, 0.06);
     lens.angle += lens.spin * 0.055 + dt * (0.04 + magnet * 0.16);
     lens.magnet = lerp(lens.magnet, magnet, 0.08);
+  }
+
+  function updateMobileParallax() {
+    if (!isMobileLayout()) return;
+    const rect = hero.getBoundingClientRect();
+    const progress = clamp(-rect.top / Math.max(1, rect.height), -1, 1);
+    state.pointer.x = state.lens.ax + Math.sin(state.t * 0.45) * state.lens.r * 0.22;
+    state.pointer.y = state.lens.ay + progress * state.lens.r * 0.32 + Math.cos(state.t * 0.38) * state.lens.r * 0.14;
+    state.pointer.active = false;
+    updatePointerNorm();
   }
 
   function drawBackgroundLayers() {
@@ -484,6 +497,7 @@
       const dt = Math.min(0.05, state.acc / 1000);
       state.acc = 0;
       state.t += dt;
+      updateMobileParallax();
       updateLens(dt);
       render();
     }
@@ -491,6 +505,7 @@
   }
 
   function setPointer(e) {
+    if (isMobileLayout()) return;
     const rect = canvas.getBoundingClientRect();
     state.pointer.x = e.clientX - rect.left;
     state.pointer.y = e.clientY - rect.top;

@@ -45,11 +45,23 @@
             </ul>
           </div>
           <div class="uk-navbar-right">
+            <button class="mobile-menu-button uk-hidden@m" type="button" aria-label="Abrir menu" uk-toggle="target: #mobile-menu">
+              <span></span>
+              <span></span>
+            </button>
             <a class="uk-button uk-button-default protea-button" href="#contacto-final">Conversemos →</a>
           </div>
         </nav>
       </div>
     </header>
+
+    <nav class="mobile-story-nav uk-hidden@m" aria-label="Progreso narrativo">
+      <a href="#observatorio">01</a>
+      <a href="#colapso">02</a>
+      <a href="#capacidad">03</a>
+      <a href="#inteligencia">04</a>
+      <a href="#protea">05</a>
+    </nav>
 
     <section id="observatorio" class="story-section hero-section uk-section uk-flex uk-flex-middle">
       <canvas id="protea-canvas" class="hero-canvas" aria-hidden="true"></canvas>
@@ -199,6 +211,25 @@
       </div>
     </section>
   </main>
+</div>
+
+<div id="mobile-menu" class="mobile-offcanvas" uk-offcanvas="overlay: true; flip: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <a class="brand" href="#observatorio" aria-label="Protea inicio">
+      <span class="brand-mark">protea</span>
+      <span class="brand-claim">BECOMING ADAPTIVE</span>
+    </a>
+    <ul class="mobile-menu-list">
+      <li><a href="#observatorio">El observatorio</a></li>
+      <li><a href="#colapso">Colapso silencioso</a></li>
+      <li><a href="#capacidad">Capacidad adaptativa</a></li>
+      <li><a href="#inteligencia">Inteligencia adaptativa</a></li>
+      <li><a href="#protea">Protea</a></li>
+      <li><a href="pages/insights.html">Insights</a></li>
+      <li><a href="pages/contacto.html">Contacto</a></li>
+    </ul>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
