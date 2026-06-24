@@ -1,0 +1,129 @@
+protea.blue/
+├── Inicio
+│   ├── Hero / tesis
+│   ├── Triarquía Protea
+│   ├── Problema adaptativo
+│   ├── Inteligencia Adaptativa
+│   ├── IAO
+│   ├── Sistema Protea
+│   ├── Dos rutas de entrada
+│   ├── Marcelo / pensamiento
+│   └── CTA conversación
+│
+├── Inteligencia Adaptativa
+│   ├── Qué es
+│   ├── Por qué importa
+│   ├── Síntomas de baja adaptabilidad
+│   ├── Cinco capacidades adaptativas
+│   ├── Cómo se desarrolla
+│   └── CTA: conocer riesgo adaptativo
+│
+├── IAO
+│   ├── Qué es el IAO
+│   ├── Qué mide
+│   ├── Cinco aminoácidos adaptativos
+│   ├── Dashboard / visualización
+│   ├── Qué recibe el cliente
+│   ├── Formatos
+│   │   ├── IAO Snapshot
+│   │   ├── IAO Strategic
+│   │   ├── IAO + DIAGNOS Integral
+│   │   └── IAO Seguimiento
+│   ├── Confidencialidad
+│   └── CTA: solicitar evaluación IAO
+│
+├── Cómo trabajamos
+│   ├── Tesis metodológica
+│   ├── Triarquía
+│   ├── Sistema Protea
+│   ├── Plan Adaptativo
+│   ├── Dispositivos
+│   │   ├── DIAGNOS
+│   │   ├── Training
+│   │   ├── Lab
+│   │   └── Hub
+│   ├── Casos de uso
+│   └── CTA: diseñar Plan Adaptativo
+│
+├── Soluciones
+│   ├── Comprender qué está pasando
+│   │   └── DIAGNOS + Plan Adaptativo
+│   ├── Medir adaptabilidad
+│   │   └── IAO
+│   ├── Entrenar capacidades
+│   │   └── Training
+│   ├── Resolver un desafío real
+│   │   └── Lab
+│   ├── Sostener el cambio
+│   │   └── Hub
+│   ├── Innovar con sentido
+│   │   └── Training + Lab
+│   └── Liderazgo adaptativo
+│       └── PAI + Training
+│
+├── Test de Obsolescencia
+│   ├── Landing
+│   ├── Formulario breve
+│   ├── Resultado preliminar
+│   ├── Recomendación hacia IAO
+│   └── CTA: conversación experta
+│
+├── Plan Adaptativo
+│   ├── Qué es
+│   ├── Estado actual
+│   ├── Riesgo adaptativo
+│   ├── Capacidades críticas
+│   ├── Tensiones estructurales
+│   ├── Prioridades
+│   ├── Ruta recomendada
+│   ├── Indicadores
+│   └── CTA: diseñar ruta
+│
+├── Dispositivos
+│   ├── DIAGNOS
+│   │   ├── DIAGNOS Inicial
+│   │   ├── DIAGNOS Integral
+│   │   └── DIAGNOS Sectorial
+│   ├── Training
+│   ├── Lab
+│   └── Hub
+│
+├── Insights
+│   ├── Artículos
+│   ├── Recursos descargables
+│   ├── Complejidad organizacional
+│   ├── Adaptabilidad organizacional
+│   ├── Innovación adaptativa
+│   ├── Liderazgo adaptativo
+│   ├── Colapso organizacional
+│   ├── Sector público
+│   └── Newsletter
+│
+├── Marcelo Lasagna
+│   ├── Perfil editorial
+│   ├── Trayectoria
+│   ├── Libro
+│   ├── Conferencias
+│   ├── Pensamiento
+│   └── CTA: invitar / conversar
+│
+├── Nosotros
+│   ├── Manifiesto
+│   ├── Equipo
+│   ├── Red de capacidades
+│   ├── Alianzas
+│   └── CTA institucional
+│
+├── Contacto
+│   ├── Formulario general
+│   ├── Solicitud IAO
+│   ├── Solicitud conversación
+│   ├── Agenda
+│   ├── Datos de contacto
+│   └── Microcopy de confianza
+│
+└── Legales
+    ├── Privacidad
+    ├── Términos
+    ├── Cookies
+    └── Confidencialidad IAO
