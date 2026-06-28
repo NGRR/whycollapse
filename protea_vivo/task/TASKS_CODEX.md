@@ -515,3 +515,37 @@ No introducir nuevas metáforas.
 Cuando exista una duda conceptual, detener el desarrollo y documentar la observación en el README de la tarea correspondiente.
 
 La prioridad es construir una base técnica sólida que permita incorporar posteriormente el sistema visual definitivo y las ilustraciones finales sin necesidad de rehacer la arquitectura.
+
+---
+
+# Bitacora de avance local
+
+## 2026-06-28 - Registro de proceso
+
+### Carpeta activa
+
+`task_01_20260628_2333UTC`
+
+### Directrices reconocidas
+
+* Trabajar una tarea por vez.
+* No modificar Hero, canvas ni storytelling sin autorizacion expresa.
+* Mantener UIkit como framework principal.
+* No incorporar Bootstrap, Tailwind ni frameworks adicionales.
+* Documentar archivos modificados, decisiones, riesgos y checklist de aceptacion.
+* Actualizar este archivo al cierre de cada avance con briefing de forma y fondo.
+* Considerar `protea_vivo/task/` como parte del repositorio para coordinacion entre operadores.
+
+### Archivos de tarea detectados
+
+* `task/task_01_20260628_2333UTC/task/TASKS_CODEX.md`
+* `task/task_01_20260628_2333UTC/sprint-01/01_HOME_SECCIONES_02_04.md`
+* `task/task_01_20260628_2333UTC/sprint-01/02_HOME_REFINAMIENTO.md`
+* `task/task_01_20260628_2333UTC/sprint-01/03_PRODUCTOS_BASE.md`
+* `task/task_01_20260628_2333UTC/sprint-01/04_HUB_BASE.md`
+* `task/task_01_20260628_2333UTC/sprint-01/05_CONTENIDOS_BASE.md`
+* `task/task_01_20260628_2333UTC/sprint-01/06_RELEASE.md`
+
+### Estado
+
+Directrices leidas y reconocidas. Sin ejecucion de tareas de desarrollo en este paso.
