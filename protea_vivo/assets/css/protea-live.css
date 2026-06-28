@@ -122,6 +122,165 @@
   display:none;
 }
 
+.collapse-section{
+  isolation:isolate;
+}
+
+.collapse-field{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  --collapse-drift:0px;
+  background:
+    radial-gradient(circle at calc(18% + var(--collapse-drift)) 24%,rgba(255,90,0,.14),transparent 17%),
+    radial-gradient(circle at 70% calc(56% - var(--collapse-drift)),rgba(0,102,255,.18),transparent 24%),
+    linear-gradient(120deg,rgba(255,255,255,.06),transparent 42%);
+}
+
+.collapse-field:before,
+.collapse-field:after{
+  content:"";
+  position:absolute;
+  inset:-15%;
+  background:
+    repeating-radial-gradient(circle at 48% 52%,transparent 0 44px,rgba(255,255,255,.07) 45px,transparent 46px),
+    linear-gradient(90deg,transparent,rgba(255,90,0,.08),transparent);
+  transform:translate3d(calc(var(--collapse-drift) * .2),calc(var(--collapse-drift) * -.18),0) rotate(-8deg);
+  opacity:.62;
+}
+
+.collapse-field:after{
+  inset:-25%;
+  background-image:
+    linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:110px 110px;
+  opacity:.16;
+  transform:translate3d(calc(var(--collapse-drift) * -.35),calc(var(--collapse-drift) * .22),0);
+}
+
+.collapse-section>.uk-container,
+.collapse-section .uk-position-relative{
+  position:relative;
+  z-index:1;
+}
+
+.sensitivity-object{
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 56% 46%,rgba(255,90,0,.82),transparent 4px),
+    radial-gradient(circle at 48% 52%,rgba(255,255,255,.12),transparent 58%),
+    conic-gradient(from 20deg,rgba(255,255,255,.06),rgba(0,102,255,.28),rgba(255,90,0,.18),rgba(255,255,255,.06));
+}
+
+.collapse-object{
+  border-radius:42% 58% 48% 52%;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.08),transparent 40%),
+    repeating-linear-gradient(35deg,rgba(255,255,255,.12) 0 1px,transparent 1px 20px),
+    radial-gradient(circle at 50% 50%,rgba(0,102,255,.34),rgba(255,90,0,.18),transparent 68%);
+}
+
+.question-object{
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(255,90,0,.92) 0 4px,transparent 5px),
+    radial-gradient(circle at 50% 50%,rgba(255,90,0,.18),transparent 38%),
+    repeating-radial-gradient(circle,transparent 0 26px,rgba(255,255,255,.14) 27px,transparent 28px);
+}
+
+.adaptive-section{
+  isolation:isolate;
+}
+
+.adaptive-section:after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:42%;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(0,102,255,.06));
+}
+
+.section-intro-card{
+  position:relative;
+}
+
+.capability-card{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(0,102,255,.12),transparent 28%),
+    rgba(255,255,255,.44);
+}
+
+.capability-card i{
+  display:block;
+  width:54px;
+  aspect-ratio:1;
+  margin-bottom:30px;
+  border:1px solid rgba(0,102,255,.30);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(255,90,0,.95) 0 3px,transparent 4px),
+    repeating-radial-gradient(circle,transparent 0 10px,rgba(0,102,255,.18) 11px,transparent 12px);
+}
+
+.capability-card:nth-child(odd) i{
+  border-radius:38% 62% 52% 48%;
+}
+
+.triarchy-section{
+  isolation:isolate;
+}
+
+.triarchy-stage{
+  position:relative;
+  min-height:440px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items:center;
+  gap:16px;
+}
+
+.triarchy-stage:before{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(0,102,255,.18),transparent 48%),
+    conic-gradient(from 40deg,rgba(255,90,0,.16),rgba(0,102,255,.24),rgba(255,255,255,.08),rgba(255,90,0,.16));
+  opacity:.72;
+}
+
+.triad-node{
+  position:relative;
+  z-index:1;
+  min-height:230px;
+}
+
+.triarchy-core{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  width:112px;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:50%;
+  color:white;
+  background:rgba(0,17,51,.54);
+  box-shadow:0 0 48px rgba(0,102,255,.28);
+  font:600 22px/1 var(--font-head);
+  letter-spacing:.12em;
+}
+
 @media(min-width:960px){
   .site-nav .uk-navbar-nav>li>a{
     color:rgba(255,255,255,.78);
@@ -444,6 +603,11 @@
 
   .triad-diagram{
     display:contents!important;
+  }
+
+  .triarchy-core,
+  .triarchy-stage:before{
+    display:none;
   }
 
   .light-section .uk-child-width-1-5\@m>*,

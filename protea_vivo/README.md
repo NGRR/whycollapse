@@ -599,3 +599,98 @@ Opcion de composicion:
 - Ubicar `hero-copy-panel` con `position: relative`.
 - Permitir que invada parte del campo visual.
 - Mantener la lente desplazada a derecha como objeto focal.
+
+## TASK-002 / Sprint 01 - 01_HOME_SECCIONES_02_04
+
+### Alcance ejecutado
+
+Se inicio el desarrollo de las secciones 02, 03 y 04 del Home sin modificar Hero, canvas principal, footer ni navegacion conceptual.
+
+### Seccion 02 - El colapso silencioso
+
+Cambios:
+
+- Se mantiene slideshow UIkit.
+- Se agrega contenedor `collapse-field` para fondo vivo.
+- Se completa secuencia de 5 slides:
+  1. Las señales siempre estuvieron ahi.
+  2. Lo que no vemos se acumula.
+  3. La perdida de sensibilidad.
+  4. El colapso silencioso.
+  5. La pregunta.
+- Se agrega soporte visual para nuevos objetos:
+  - `sensitivity-object`
+  - `collapse-object`
+  - `question-object`
+- Se agrega `assets/js/protea-sections.js` para animacion ligera de fondo mediante CSS variables.
+
+Decision tecnica:
+
+- No se utiliza video.
+- No se agregan librerias externas.
+- El fondo vivo queda desacoplado del motor canvas del Hero.
+
+### Seccion 03 - Capacidad Adaptativa
+
+Cambios:
+
+- Se agrega clase de seccion `adaptive-section`.
+- Se agrega `section-intro-card` para que la intro funcione como primer objeto narrativo en movil.
+- Las cards pasan a usar `capability-card`.
+- Se agregan placeholders visuales internos con `<i aria-hidden="true"></i>` para futura iconografia definitiva.
+
+Decision tecnica:
+
+- Se evita una tarjeta corporativa tradicional mediante fondos radiales, marcas de sistema y placeholders abstractos.
+- No se incorpora iconografia final.
+
+### Seccion 04 - Inteligencia Adaptativa
+
+Cambios:
+
+- Se agrega clase de seccion `triarchy-section`.
+- `triad-diagram` se extiende con `triarchy-stage`.
+- Cada elemento se formaliza como `triad-node`.
+- Se agrega `triarchy-core` como nucleo visual `IA`.
+
+Decision tecnica:
+
+- La seccion funciona como puente conceptual, no como pagina de producto.
+- Queda preparada para reemplazar el stage por un diagrama final sin rehacer la estructura.
+- En movil se oculta `triarchy-core` para no generar una slide accidental.
+
+### Archivos modificados
+
+```txt
+index.html
+assets/css/protea-live.css
+README.md
+task/TASKS_CODEX.md
+```
+
+### Archivos creados
+
+```txt
+assets/js/protea-sections.js
+```
+
+### Checklist de aceptacion parcial
+
+- [x] No se modifica Hero.
+- [x] No se modifica canvas principal.
+- [x] No se modifica footer.
+- [x] No se altera navegacion conceptual.
+- [x] UIkit se mantiene como framework principal.
+- [x] Sin librerias externas nuevas.
+- [x] Seccion 02 mantiene slideshow.
+- [x] Seccion 02 tiene fondo vivo JS + CSS.
+- [x] Seccion 03 incorpora sistema visual de capacidades.
+- [x] Seccion 04 incorpora stage visual de Triarquia.
+- [x] README actualizado.
+- [x] Task root actualizado.
+
+### Observaciones
+
+- La calidad final de las ilustraciones queda pendiente para una etapa visual posterior.
+- Los nuevos objetos visuales son placeholders estructurales.
+- Conviene revisar visualmente la relacion entre slideshow y fondo vivo antes de avanzar al refinamiento responsive.

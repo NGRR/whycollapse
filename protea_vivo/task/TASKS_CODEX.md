@@ -549,3 +549,54 @@ La prioridad es construir una base técnica sólida que permita incorporar poste
 ### Estado
 
 Directrices leidas y reconocidas. Sin ejecucion de tareas de desarrollo en este paso.
+
+---
+
+## 2026-06-28 - Avance TASK-002 / 01_HOME_SECCIONES_02_04
+
+### Briefing de fondo
+
+Se inicia el desarrollo de las secciones 02, 03 y 04 del Home manteniendo intacto el Hero, el canvas principal, el footer y la navegacion conceptual. El objetivo fue fortalecer el relato existente sin redisenar la experiencia aprobada.
+
+### Briefing de forma
+
+* Seccion 02 mantiene slideshow UIkit y suma fondo vivo ligero mediante CSS + JS desacoplado.
+* Seccion 03 incorpora un sistema visual de capacidades con placeholders para iconografia futura.
+* Seccion 04 incorpora un stage de Triarquia con nodos y nucleo conceptual preparado para diagrama final.
+
+### Archivos modificados
+
+* `index.html`
+* `assets/css/protea-live.css`
+* `README.md`
+* `task/TASKS_CODEX.md`
+
+### Archivos creados
+
+* `assets/js/protea-sections.js`
+
+### Decisiones tecnicas
+
+* No se agregan dependencias externas.
+* No se usa video.
+* El fondo vivo de seccion 02 queda separado del motor `protea.js`.
+* Los placeholders visuales son estructurales y reemplazables.
+
+### Riesgos y observaciones
+
+* Requiere revision visual posterior para ajustar densidad del fondo vivo.
+* La iconografia definitiva de capacidades queda pendiente.
+* El stage de Triarquia queda listo para una ilustracion final futura.
+
+### Checklist de aceptacion
+
+* [x] Hero no modificado.
+* [x] Canvas principal no modificado.
+* [x] Footer no modificado.
+* [x] Navegacion conceptual no modificada.
+* [x] UIkit preservado.
+* [x] Sin Bootstrap.
+* [x] Sin Tailwind.
+* [x] Sin dependencias nuevas.
+* [x] README actualizado.
+* [x] Bitacora de task actualizada.
