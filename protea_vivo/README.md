@@ -1,8 +1,8 @@
 # Protea Vivo - reporte tecnico del modelo storytelling
 
-Modelo web inmersivo para Protea construido sobre UIkit, con una experiencia desktop de canvas/lente y una adaptacion movil orientada a narrativa por secciones, tab bar inferior y carruseles horizontales.
+Modelo web inmersivo para Protea construido sobre UIkit, con una experiencia desktop basada en canvas/lente y una adaptacion movil orientada a narrativa por secciones, tab bar inferior y carruseles horizontales.
 
-Documento actualizado para consolidar criterios tecnicos, nombres de objetos, medidas y decisiones de interfaz antes de la siguiente iteracion.
+Este documento consolida la arquitectura tecnica, nombres de objetos, medidas, versionado, observaciones y el cierre de TASK-001.
 
 ## Version documentada
 
@@ -30,85 +30,89 @@ Documento actualizado para consolidar criterios tecnicos, nombres de objetos, me
 
 ```txt
 protea_vivo/
-├─ index.html
-├─ README.md
-├─ assets/
-│  ├─ css/
-│  │  ├─ protea.css
-│  │  └─ protea-live.css
-│  ├─ js/
-│  │  └─ protea.js
-│  └─ img/
-│     └─ reference-home.png
-├─ components/
-│  └─ hero/
-│     ├─ index.html
-│     ├─ style.css
-│     ├─ script.js
-│     └─ assets/
-│        ├─ base_sharp.png
-│        ├─ bg_far.png
-│        ├─ bg_mid.png
-│        ├─ glow_far.png
-│        ├─ glow_mid.png
-│        ├─ network_far.png
-│        ├─ network_mid.png
-│        ├─ network_near.png
-│        ├─ orbits_far.png
-│        └─ orbits_sharp.png
-└─ pages/
-   ├─ contacto.html
-   └─ insights.html
+|-- index.html
+|-- README.md
+|-- assets/
+|   |-- css/
+|   |   |-- protea.css
+|   |   `-- protea-live.css
+|   |-- js/
+|   |   `-- protea.js
+|   `-- img/
+|       `-- reference-home.png
+|-- components/
+|   `-- hero/
+|       |-- index.html
+|       |-- style.css
+|       |-- script.js
+|       `-- assets/
+|           |-- base_sharp.png
+|           |-- bg_far.png
+|           |-- bg_mid.png
+|           |-- glow_far.png
+|           |-- glow_mid.png
+|           |-- network_far.png
+|           |-- network_mid.png
+|           |-- network_near.png
+|           |-- orbits_far.png
+|           `-- orbits_sharp.png
+|-- pages/
+|   |-- contacto.html
+|   `-- insights.html
+`-- task/
+    `-- TASKS_CODEX.md
 ```
+
+Nota: `task/` es carpeta local de gestion y no debe ser versionada ni pusheada salvo instruccion explicita.
 
 ## Mapa de sitio
 
 ```txt
 /
-├─ protea/                  estructura general del rediseño
-├─ protea_vivo/             modelo storytelling vivo
-│  ├─ #observatorio         hero / tesis perceptiva
-│  ├─ #colapso              slideshow de colapso silencioso
-│  ├─ #capacidad            capacidades adaptativas
-│  ├─ #inteligencia         inteligencia adaptativa / triada
-│  ├─ #protea               soluciones Protea
-│  └─ #contacto-final       cierre CTA
-├─ protea/sitemap.txt
-├─ protea/Brief.md
-├─ Drive externo
-├─ 0001/
-└─ prototipos/aminoacidos/v2.9-memoria-adaptativa/
+|-- protea/                  estructura general del rediseno
+|-- protea_vivo/             modelo storytelling vivo
+|   |-- #observatorio         hero / tesis perceptiva
+|   |-- #colapso              slideshow de colapso silencioso
+|   |-- #capacidad            capacidades adaptativas
+|   |-- #inteligencia         inteligencia adaptativa / triada
+|   |-- #protea               soluciones Protea
+|   `-- #contacto-final       cierre CTA
+|-- protea/sitemap.txt
+|-- protea/Brief.md
+|-- Drive externo
+|-- 0001/
+`-- prototipos/aminoacidos/v2.9-memoria-adaptativa/
 ```
 
 ## Arquitectura de interfaz
 
 ```txt
 protea-shell
-├─ section-rail
-│  └─ rail-item
-├─ protea-main
-│  ├─ site-nav
-│  │  ├─ brand
-│  │  ├─ desktop navbar
-│  │  └─ mobile-menu-button
-│  ├─ mobile-story-nav
-│  ├─ story-section
-│  │  ├─ hero-section
-│  │  │  ├─ hero-canvas
-│  │  │  ├─ hero-copy-panel
-│  │  │  │  ├─ eyebrow
-│  │  │  │  ├─ hero-title
-│  │  │  │  ├─ hero-copy
-│  │  │  │  └─ CTA group
-│  │  │  └─ hero-canvas-space
-│  │  ├─ dark-section
-│  │  ├─ light-section
-│  │  ├─ slide-card
-│  │  ├─ mini-card
-│  │  ├─ device-card
-│  │  └─ triad-diagram
-│  └─ footer-cta
-└─ mobile-offcanvas
+|-- section-rail
+|   `-- rail-item
+|-- protea-main
+|   |-- site-nav
+|   |   |-- brand
+|   |   |-- desktop navbar
+|   |   `-- mobile-menu-button
+|   |-- mobile-story-nav
+|   |-- story-section
+|   |   |-- hero-section
+|   |   |   |-- hero-canvas
+|   |   |   |-- hero-copy-panel
+|   |   |   |   |-- eyebrow
+|   |   |   |   |-- hero-title
+|   |   |   |   |-- hero-copy
+|   |   |   |   `-- CTA group
+|   |   |   `-- hero-canvas-space
+|   |   |-- dark-section
+|   |   |-- light-section
+|   |   |-- slide-card
+|   |   |-- mini-card
+|   |   |-- device-card
+|   |   `-- triad-diagram
+|   `-- footer-cta
+`-- mobile-offcanvas
 ```
 
 ## Glosario tecnico de objetos UI
@@ -134,7 +138,7 @@ Rail narrativo lateral desktop. Funciona como indice vertical de secciones y ref
 Navegacion superior. Contiene marca, enlaces desktop, boton de contacto y boton hamburguesa movil.
 
 - Desktop: transparente/papel 10% con blur.
-- Movil: sticky superior, fondo papel translúcido, boton menu.
+- Movil: sticky superior, fondo papel translucido, boton menu.
 
 ### `mobile-story-nav`
 
@@ -171,7 +175,7 @@ Canvas absoluto de fondo. Renderiza lente, capas, redes, glow, cotas cientificas
 
 Bloque textual del hero, tambien llamado "panel de copia del hero".
 
-En el HTML actual:
+HTML actual:
 
 ```html
 <div class="uk-width-1-3@m hero-copy-panel">
@@ -203,7 +207,7 @@ Directriz tecnica sugerida:
 
 Columna visual reservada para la lente/canvas en desktop.
 
-En el HTML actual:
+HTML actual:
 
 ```html
 <div class="uk-width-2-3@m hero-canvas-space" aria-hidden="true">
@@ -427,27 +431,141 @@ v20260624-3
 - CTA final.
 - Cache busting en assets vivos.
 
+## TASK-001 - Consolidacion tecnica
+
+### Alcance ejecutado
+
+- Revision de estructura actual.
+- Revision de codificacion UTF-8.
+- Revision de enlaces internos y externos.
+- Revision de componentes UIkit usados.
+- Revision de tipografias declaradas.
+- Revision de organizacion de carpetas.
+- Actualizacion de README tecnico.
+
+### Resultado de codificacion
+
+- `index.html`: UTF-8 correcto.
+- `pages/contacto.html`: UTF-8 correcto.
+- `pages/insights.html`: UTF-8 correcto.
+- `README.md`: normalizado a diagramas ASCII para evitar mojibake en terminales.
+- `task/TASKS_CODEX.md`: se mantiene sin cambios por ser insumo local de trabajo.
+
+### Resultado de enlaces
+
+Enlaces revisados:
+
+- Anclas internas: `#observatorio`, `#colapso`, `#capacidad`, `#inteligencia`, `#protea`, `#contacto-final`.
+- Paginas internas: `pages/insights.html`, `pages/contacto.html`.
+- Assets CSS: `assets/css/protea.css`, `assets/css/protea-live.css`.
+- Assets JS: `assets/js/protea.js`.
+- CDN UIkit: CSS, JS e iconos.
+- Google Fonts: Montserrat y Roboto.
+
+Observacion:
+
+- No se modificaron rutas para no alterar comportamiento visual ni navegacion conceptual.
+- Las paginas `pages/contacto.html` y `pages/insights.html` son placeholders editoriales minimos; su desarrollo formal queda para TASK-003.
+
+### Resultado UIkit
+
+Componentes UIkit presentes:
+
+- Navbar.
+- Grid.
+- Slideshow.
+- Dotnav.
+- Slidenav.
+- Offcanvas.
+- Icons.
+- Utility classes responsive.
+
+Sin cambios funcionales en componentes.
+
+### Resultado CSS
+
+- Se mantiene `protea.css` como base historica.
+- Se mantiene `protea-live.css` como capa de integracion viva.
+- No se hicieron cambios visuales en TASK-001.
+- Se documenta deuda de futura modularizacion:
+  - separar layout shell
+  - separar hero
+  - separar mobile navigation
+  - separar cards/carruseles
+
+### Resultado JS
+
+- Se mantiene `assets/js/protea.js`.
+- No se modifico el Hero ni el canvas.
+- El script ya esta preparado con resize estable y `ResizeObserver`.
+
+### Estructura de carpetas
+
+Estructura actual aceptada para continuar:
+
+```txt
+assets/      recursos del sitio vivo
+components/  prototipos o componentes fuente reutilizables
+pages/       paginas internas placeholder
+task/        tareas locales no versionables
+```
+
+Observacion:
+
+- `components/hero/` funciona como fuente historica del hero inmersivo.
+- `assets/js/protea.js` contiene la version integrada en el sitio.
+- No se mueve ninguna carpeta en TASK-001 para evitar deuda por rutas rotas.
+
+### Archivos modificados
+
+```txt
+README.md
+```
+
+### Archivos creados
+
+```txt
+Ninguno
+```
+
+### Checklist de aceptacion TASK-001
+
+- [x] UIkit preservado como framework principal.
+- [x] Sin Bootstrap.
+- [x] Sin Tailwind.
+- [x] Sin dependencias nuevas.
+- [x] Hero no modificado.
+- [x] Canvas no modificado.
+- [x] Storytelling no modificado.
+- [x] Navegacion conceptual no modificada.
+- [x] Codificacion revisada.
+- [x] Enlaces revisados.
+- [x] Componentes UIkit revisados.
+- [x] Tipografias revisadas.
+- [x] Estructura de carpetas revisada.
+- [x] README actualizado.
+
 ## Riesgos y observaciones
 
-- El HTML conserva algunos textos con mojibake heredado (`Ã³`, `â†’`, etc.) en la fuente original. Visualmente algunos navegadores pueden interpretarlo bien si el archivo se sirve como UTF-8, pero conviene normalizar el encoding en una pasada dedicada.
 - `hero-copy-panel` desktop esta demasiado restringido para el texto actual.
 - La reticula desktop del hero favorece fuertemente la lente. Si se agranda el texto, habra que decidir si se reduce ligeramente el campo visual o si se superpone mas contenido sobre el canvas.
 - En movil, los carruseles horizontales dependen de gesto lateral. La pista `Desliza ->` ayuda, pero podria reforzarse con un "peek" mas evidente de la segunda card.
 - El tab bar inferior ocupa area visual critica; se compensa en CSS con `--mobile-critical-h`, pero requiere pruebas en Chrome Android y Safari iOS.
+- El desarrollo formal de paginas internas queda pendiente para TASK-003.
 
 ## Proxima directriz sugerida
 
 1. Ajustar ancho desktop de `hero-copy-panel`.
-2. Normalizar encoding de textos del prototipo.
-3. Definir una reticula editorial estable para desktop:
+2. Definir una reticula editorial estable para desktop:
    - `Hero Copy Panel`
    - `Visual Field`
    - `Narrative Rail`
    - `Section Intro Card`
    - `Concept Card`
    - `Mobile Tab Bar`
-4. Revisar balance entre lente y texto en desktop.
-5. Afinar affordance de carruseles moviles.
+3. Revisar balance entre lente y texto en desktop.
+4. Afinar affordance de carruseles moviles.
+5. Continuar con TASK-002 solo despues de revision.
 
 ## Directriz tecnica para ampliar "Lo importante"
 
@@ -469,7 +587,7 @@ y ajustar:
 }
 ```
 
-Opcion mas visual:
+Opcion visual:
 
 - Mantener `uk-width-1-3@m`.
 - Aumentar solo `max-width` a `520px`.
@@ -478,5 +596,6 @@ Opcion mas visual:
 Opcion de composicion:
 
 - Mantener el grid actual.
-- Ubicar `hero-copy-panel` con `position: relative` y permitir que invada parte del campo visual.
+- Ubicar `hero-copy-panel` con `position: relative`.
+- Permitir que invada parte del campo visual.
 - Mantener la lente desplazada a derecha como objeto focal.
