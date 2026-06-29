@@ -63,7 +63,7 @@ protea_vivo/
     `-- TASKS_CODEX.md
 ```
 
-Nota: `task/` es carpeta local de gestion y no debe ser versionada ni pusheada salvo instruccion explicita.
+Nota: `task/` ahora forma parte del repositorio por instruccion del proceso, para coordinar tareas con otros operadores.
 
 ## Mapa de sitio
 
@@ -694,3 +694,91 @@ assets/js/protea-sections.js
 - La calidad final de las ilustraciones queda pendiente para una etapa visual posterior.
 - Los nuevos objetos visuales son placeholders estructurales.
 - Conviene revisar visualmente la relacion entre slideshow y fondo vivo antes de avanzar al refinamiento responsive.
+
+## TASK 02 - Produccion estatica Protea Vivo
+
+### Alcance ejecutado
+
+Se ejecuta la tanda `task_02_20260629_0000UTC` como maqueta estatica completa: cierre visual del Home, paginas internas de dispositivos y conceptos, Hub estatico, navegacion relativa y reporte de release.
+
+### Archivos modificados
+
+```txt
+index.html
+assets/css/protea-live.css
+assets/js/protea-sections.js
+pages/contacto.html
+pages/insights.html
+README.md
+task/TASKS_CODEX.md
+```
+
+### Archivos creados
+
+```txt
+pages/iao.html
+pages/diagnos.html
+pages/training.html
+pages/lab.html
+pages/inteligencia-adaptativa.html
+pages/metodologia.html
+pages/observatorio.html
+pages/hub.html
+pages/hub-articulo.html
+pages/hub-caso.html
+pages/hub-comunidad.html
+pages/hub-biblioteca.html
+task/task_02_20260629_0000UTC/
+```
+
+### Cambios visibles
+
+- Home sin textos visibles de "Comentario para cliente".
+- Seccion 02 conserva slideshow de 5 slides y ajusta copy de colapso silencioso.
+- Fondo vivo `collapse-field` queda mas sobrio, con movimiento lento y respeto por `prefers-reduced-motion`.
+- Seccion 03 agrega CTA hacia Inteligencia Adaptativa.
+- Seccion 04 agrega CTA hacia Sistema Protea.
+- Cards de Protea pasan a ser enlaces semanticos hacia paginas internas.
+- Footer del Home suma enlaces a IAO, DIAGNOS, Training, Lab, Hub, Observatorio, Insights y Contacto.
+- Paginas internas comparten header, hero editorial, bloques de contenido, relacionados y CTA final.
+- Hub se presenta como comunidad de conocimiento con 8 cards estaticas y plantillas detalle.
+- Insights y Contacto dejan de ser placeholders minimos y adoptan el sistema editorial.
+
+### Que NO se implemento
+
+- No se implemento CMS.
+- No se implemento backend.
+- No se implementaron filtros dinamicos.
+- No se creo build system.
+- No se agregaron dependencias nuevas.
+- No se modifico el Hero ni `#protea-canvas`.
+
+### Riesgos pendientes
+
+- Requiere revision visual fina en mobile real para tarjetas largas y nav inferior.
+- El Hub todavia usa contenido placeholder; debe reemplazarse por contenido curatorial final.
+- Las paginas nuevas son estaticas y repetitivas por diseno; una futura migracion a Squarespace deberia convertirlas en plantillas visuales.
+- Falta revision visual completa 1440, 1280, 768 y 390.
+
+### Revision visual sugerida
+
+```txt
+Home:
+- Hero intacto.
+- Slideshow seccion 02.
+- CTA seccion 03 y 04.
+- Cards Protea enlazadas.
+- Footer links.
+
+Paginas:
+- IAO, DIAGNOS, Training, Lab.
+- Inteligencia Adaptativa, Sistema Protea, Observatorio.
+- Hub y plantillas detalle.
+- Insights y Contacto.
+
+Responsive:
+- Desktop 1440.
+- Notebook 1280.
+- Tablet 768.
+- Mobile 390.
+```

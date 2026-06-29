@@ -600,3 +600,81 @@ Se inicia el desarrollo de las secciones 02, 03 y 04 del Home manteniendo intact
 * [x] Sin dependencias nuevas.
 * [x] README actualizado.
 * [x] Bitacora de task actualizada.
+
+---
+
+## 2026-06-29 - Avance TASK 02 / Produccion estatica Protea Vivo
+
+### Carpeta activa
+
+`task_02_20260629_0000UTC`
+
+### Briefing de fondo
+
+Se ejecuta una maqueta estatica ampliada del ecosistema Protea Vivo. El Home conserva su Hero y su canvas principal, pero cierra la narrativa posterior con CTAs, enlaces semanticos y paginas internas que permiten revisar el sitio como sistema completo.
+
+### Briefing de forma
+
+* Home sin comentarios visibles para cliente.
+* Seccion 02 ajustada con copy final de colapso silencioso.
+* Secciones 03 y 04 conectadas a paginas conceptuales.
+* Cards de Protea convertidas en enlaces hacia dispositivos.
+* Paginas internas editoriales con UIkit, `protea.css` y `protea-live.css`.
+* Hub estatico construido como comunidad de conocimiento, no como blog.
+* Navegacion relativa preparada para GitHub Pages.
+
+### Archivos modificados
+
+* `index.html`
+* `assets/css/protea-live.css`
+* `assets/js/protea-sections.js`
+* `pages/contacto.html`
+* `pages/insights.html`
+* `README.md`
+* `task/TASKS_CODEX.md`
+
+### Archivos creados
+
+* `pages/iao.html`
+* `pages/diagnos.html`
+* `pages/training.html`
+* `pages/lab.html`
+* `pages/inteligencia-adaptativa.html`
+* `pages/metodologia.html`
+* `pages/observatorio.html`
+* `pages/hub.html`
+* `pages/hub-articulo.html`
+* `pages/hub-caso.html`
+* `pages/hub-comunidad.html`
+* `pages/hub-biblioteca.html`
+* `task/task_02_20260629_0000UTC/`
+
+### Que NO se implemento
+
+* CMS.
+* Backend.
+* Filtros dinamicos.
+* Build system.
+* Dependencias adicionales.
+* Cambios al Hero o `#protea-canvas`.
+
+### Riesgos y observaciones
+
+* Las paginas internas son estaticas y usan contenido inicial; requieren curatoria final.
+* El Hub queda como maqueta editorial/comunitaria para migracion futura.
+* Pendiente revision visual en dispositivos reales, especialmente mobile 390 y navegadores con barras visibles.
+
+### Checklist de aceptacion
+
+* [x] UIkit preservado.
+* [x] Sin Bootstrap.
+* [x] Sin Tailwind.
+* [x] Sin CMS.
+* [x] Sin backend.
+* [x] Sin build system.
+* [x] Hero no modificado.
+* [x] Canvas principal no modificado.
+* [x] Home conectado a paginas internas.
+* [x] Hub estatico creado.
+* [x] README actualizado.
+* [x] Bitacora de task actualizada.
