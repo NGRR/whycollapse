@@ -760,6 +760,22 @@ task/task_02_20260629_0000UTC/
 - Las paginas nuevas son estaticas y repetitivas por diseno; una futura migracion a Squarespace deberia convertirlas en plantillas visuales.
 - Falta revision visual completa 1440, 1280, 768 y 390.
 
+### Ajuste posterior de navegacion global
+
+Se normaliza el nav superior de todas las paginas internas para evitar perdida de orientacion. El menu global queda estable con:
+
+```txt
+Inicio
+Enfoque
+Inteligencia Adaptativa
+Sistema Protea
+Hub
+Insights
+Contacto
+```
+
+Los CTAs contextuales de cada pagina quedan dentro del contenido y no reemplazan elementos del nav global.
+
 ### Revision visual sugerida
 
 ```txt

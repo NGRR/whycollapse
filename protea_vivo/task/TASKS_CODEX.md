@@ -678,3 +678,11 @@ Se ejecuta una maqueta estatica ampliada del ecosistema Protea Vivo. El Home con
 * [x] Hub estatico creado.
 * [x] README actualizado.
 * [x] Bitacora de task actualizada.
+
+### Ajuste posterior - navegacion persistente
+
+Se unifica el nav superior de todas las paginas internas para que no cambie segun el contexto de pagina. El patron estable es:
+
+`Inicio / Enfoque / Inteligencia Adaptativa / Sistema Protea / Hub / Insights / Contacto`
+
+El boton derecho queda como CTA global `Conversemos ->`. Las acciones particulares de cada pagina se mantienen dentro de los bloques de contenido.
