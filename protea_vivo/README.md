@@ -776,6 +776,17 @@ Contacto
 
 Los CTAs contextuales de cada pagina quedan dentro del contenido y no reemplazan elementos del nav global.
 
+### Ajuste visual seccion 03 - Capacidad Adaptativa
+
+Se aproxima la seccion 03 del Home a un lenguaje de mockup tipo plano botanico/cientifico:
+
+- Fondo papel con grilla tecnica y marcas radiales sutiles.
+- Cards convertidas en laminas de proceso.
+- Areas de imagen en blanco preparadas para arte final.
+- Marcos finos con esquinas tecnicas.
+- Conectores entre cards con lineas punteadas y nodos naranjas.
+- Mobile conserva carrusel horizontal sin conectores laterales.
+
 ### Revision visual sugerida
 
 ```txt

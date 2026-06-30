@@ -686,3 +686,13 @@ Se unifica el nav superior de todas las paginas internas para que no cambie segu
 `Inicio / Enfoque / Inteligencia Adaptativa / Sistema Protea / Hub / Insights / Contacto`
 
 El boton derecho queda como CTA global `Conversemos ->`. Las acciones particulares de cada pagina se mantienen dentro de los bloques de contenido.
+
+### Ajuste posterior - seccion 03 como diagrama de proceso
+
+Se interviene la seccion `#capacidad` del Home para acercarla al mockup de referencia:
+
+* Fondo papel tecnico.
+* Cards tipo lamina con placeholder visual en blanco.
+* Marcos con esquinas y microdetalles.
+* Conectores punteados con nodos naranjas entre capacidades.
+* Mobile mantiene carrusel horizontal y oculta conectores.
