@@ -805,7 +805,7 @@ La seccion `#capacidad` incorpora cards expandibles:
 - Las demas pasan a thumbnails verticales con imagen pequena.
 - Click, Enter o Espacio cambian la lamina activa.
 - `aria-expanded` se actualiza por card.
-- En mobile se conserva el carrusel horizontal sin compresion de thumbnails.
+- En mobile se desactiva la expansion y se conserva solo el carrusel horizontal normal.
 
 ### Revision visual sugerida
 

@@ -2,15 +2,45 @@
   const process = document.querySelector('.capability-process');
   if (process) {
     const cards = Array.from(process.querySelectorAll('.capability-card'));
-    process.classList.add('is-expanded');
+    const desktopQuery = window.matchMedia('(min-width: 960px)');
 
     function activateCard(card) {
+      if (!desktopQuery.matches) return;
+
       cards.forEach((item) => {
         const isActive = item === card;
         item.classList.toggle('is-active', isActive);
         item.setAttribute('aria-expanded', String(isActive));
         item.parentElement?.classList.toggle('is-active-item', isActive);
       });
+    }
+
+    function disableCards() {
+      process.classList.remove('is-expanded');
+      cards.forEach((item) => {
+        item.classList.remove('is-active');
+        item.removeAttribute('role');
+        item.removeAttribute('tabindex');
+        item.removeAttribute('aria-expanded');
+        item.parentElement?.classList.remove('is-active-item');
+      });
+    }
+
+    function enableCards() {
+      process.classList.add('is-expanded');
+      cards.forEach((item) => {
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+      });
+      activateCard(cards.find((item) => item.classList.contains('is-active')) || cards[0]);
+    }
+
+    function syncInteractionMode() {
+      if (desktopQuery.matches) {
+        enableCards();
+      } else {
+        disableCards();
+      }
     }
 
     cards.forEach((card) => {
@@ -21,6 +51,9 @@
         activateCard(card);
       });
     });
+
+    syncInteractionMode();
+    desktopQuery.addEventListener('change', syncInteractionMode);
   }
 
   const collapseField = document.querySelector('.collapse-field');

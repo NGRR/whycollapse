@@ -714,6 +714,6 @@ Se agrega interaccion a las cards de la seccion 03:
 * Card activa expandida como lamina panoramica.
 * Cards inactivas comprimidas como thumbnails verticales.
 * Placeholder pequeno en modo thumbnail y panoramico en modo activo.
-* Soporte por click y teclado.
-* `aria-expanded` actualizado por JS.
-* Mobile conserva carrusel sin compresion.
+* Soporte por click y teclado solo en desktop.
+* `aria-expanded` actualizado por JS solo en desktop.
+* Mobile desactiva la expansion y conserva carrusel horizontal normal.
