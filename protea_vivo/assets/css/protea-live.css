@@ -93,7 +93,12 @@
   }
 
   .hero-section .hero-copy-panel>*{
-    max-width:440px;
+    max-width:620px;
+  }
+
+  .hero-title em{
+    display:inline-block;
+    white-space:nowrap;
   }
 }
 
@@ -107,6 +112,7 @@
 }
 
 .hero-copy{
+  max-width:520px;
   color:rgba(255,255,255,.78);
 }
 
