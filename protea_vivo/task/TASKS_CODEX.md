@@ -696,3 +696,13 @@ Se interviene la seccion `#capacidad` del Home para acercarla al mockup de refer
 * Marcos con esquinas y microdetalles.
 * Conectores punteados con nodos naranjas entre capacidades.
 * Mobile mantiene carrusel horizontal y oculta conectores.
+
+### Ajuste posterior - papel tecnico transversal
+
+Se aplica el mismo lenguaje de papel tecnico y marcos de lamina a las secciones blancas con cards:
+
+* `device-card` en seccion Protea del Home.
+* `content-card` en paginas internas.
+* `hub-card` en Hub.
+* Fondo claro con grilla, marcas radiales y esquinas tecnicas.
+* Cache bust actualizado a `protea-live.css?v=20260629-5`.

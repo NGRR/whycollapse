@@ -787,6 +787,16 @@ Se aproxima la seccion 03 del Home a un lenguaje de mockup tipo plano botanico/c
 - Conectores entre cards con lineas punteadas y nodos naranjas.
 - Mobile conserva carrusel horizontal sin conectores laterales.
 
+### Ajuste visual transversal - secciones claras con cards
+
+Se extiende el lenguaje de papel tecnico a las secciones blancas con tarjetas:
+
+- Seccion 05 del Home con `device-card`.
+- Bloques editoriales internos con `content-card`.
+- Hub con `hub-card`.
+
+El patron aplicado incluye fondo papel con grilla, marcas radiales discretas, marcos finos, esquinas tecnicas, microlinea naranja bajo titulos y sombras suaves de lamina.
+
 ### Revision visual sugerida
 
 ```txt
