@@ -797,6 +797,16 @@ Se extiende el lenguaje de papel tecnico a las secciones blancas con tarjetas:
 
 El patron aplicado incluye fondo papel con grilla, marcas radiales discretas, marcos finos, esquinas tecnicas, microlinea naranja bajo titulos y sombras suaves de lamina.
 
+### Interaccion seccion 03 - laminas expandibles
+
+La seccion `#capacidad` incorpora cards expandibles:
+
+- En desktop una lamina queda activa en formato panoramico.
+- Las demas pasan a thumbnails verticales con imagen pequena.
+- Click, Enter o Espacio cambian la lamina activa.
+- `aria-expanded` se actualiza por card.
+- En mobile se conserva el carrusel horizontal sin compresion de thumbnails.
+
 ### Revision visual sugerida
 
 ```txt

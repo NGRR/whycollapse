@@ -1,4 +1,28 @@
 (() => {
+  const process = document.querySelector('.capability-process');
+  if (process) {
+    const cards = Array.from(process.querySelectorAll('.capability-card'));
+    process.classList.add('is-expanded');
+
+    function activateCard(card) {
+      cards.forEach((item) => {
+        const isActive = item === card;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-expanded', String(isActive));
+        item.parentElement?.classList.toggle('is-active-item', isActive);
+      });
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => activateCard(card));
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        activateCard(card);
+      });
+    });
+  }
+
   const collapseField = document.querySelector('.collapse-field');
   if (!collapseField) return;
 

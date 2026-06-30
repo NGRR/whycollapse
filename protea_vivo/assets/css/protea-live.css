@@ -285,8 +285,29 @@
   z-index:1;
 }
 
+.capability-process.is-expanded{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  gap:12px;
+}
+
 .capability-process>div{
   position:relative;
+  transition:flex-basis .28s ease, max-width .28s ease, opacity .22s ease;
+}
+
+.capability-process.is-expanded>div{
+  flex:0 1 10%!important;
+  width:auto!important;
+  max-width:108px;
+  min-width:82px;
+  padding-left:0;
+}
+
+.capability-process.is-expanded>div.is-active-item{
+  flex:1 1 56%!important;
+  max-width:none;
+  min-width:360px;
 }
 
 .capability-process>div:not(:last-child):after{
@@ -327,7 +348,8 @@
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,.34),
     0 18px 50px rgba(7,18,38,.06);
-  transition:transform .22s ease, border-color .22s ease, background-color .22s ease;
+  cursor:pointer;
+  transition:transform .22s ease, border-color .22s ease, background-color .22s ease, padding .24s ease;
 }
 
 .capability-card:before,
@@ -359,6 +381,53 @@
   background-color:rgba(255,255,255,.48);
 }
 
+.capability-card:focus-visible{
+  outline:2px solid var(--protea-blue);
+  outline-offset:4px;
+}
+
+.capability-card.is-active{
+  border-color:rgba(255,90,0,.48);
+  background-color:rgba(255,255,255,.52);
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active){
+  min-height:470px;
+  padding:16px 12px;
+  align-items:center;
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active) span{
+  width:100%;
+  margin-bottom:16px;
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active) span:after{
+  width:24px;
+  height:24px;
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active) .capability-plate{
+  width:54px;
+  min-height:72px;
+  margin-bottom:18px;
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active) h3{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  margin:auto 0;
+  font-size:15px;
+  letter-spacing:.14em;
+  text-align:center;
+}
+
+.capability-process.is-expanded .capability-card:not(.is-active) h3:after,
+.capability-process.is-expanded .capability-card:not(.is-active) p,
+.capability-process.is-expanded .capability-card:not(.is-active) small{
+  display:none;
+}
+
 .capability-card span{
   display:flex;
   align-items:center;
@@ -386,6 +455,27 @@
     radial-gradient(circle at 50% 48%,rgba(7,18,38,.04),transparent 34%),
     linear-gradient(135deg,rgba(255,255,255,.56),rgba(255,255,255,.22));
   position:relative;
+  transition:min-height .26s ease, width .26s ease, margin .26s ease;
+}
+
+.capability-card.is-active .capability-plate{
+  min-height:230px;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(7,18,38,.035),transparent 30%),
+    linear-gradient(90deg,rgba(7,18,38,.035) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(7,18,38,.032) 1px,transparent 1px),
+    linear-gradient(135deg,rgba(255,255,255,.66),rgba(255,255,255,.26));
+  background-size:auto,18px 18px,18px 18px,auto;
+}
+
+.capability-card.is-active .capability-plate:before{
+  inset:24px 12%;
+  border-radius:999px;
+}
+
+.capability-card.is-active .capability-plate:after{
+  inset:48px 22%;
+  border-radius:999px;
 }
 
 .capability-plate:before,
@@ -1248,9 +1338,50 @@
     min-height:min(58dvh,430px);
   }
 
+  .capability-process.is-expanded .capability-card:not(.is-active){
+    min-height:min(58dvh,430px);
+    padding:24px;
+    align-items:stretch;
+  }
+
+  .capability-process.is-expanded .capability-card:not(.is-active) span{
+    width:auto;
+    margin-bottom:18px;
+  }
+
+  .capability-process.is-expanded .capability-card:not(.is-active) span:after{
+    width:38px;
+    height:38px;
+  }
+
   .capability-plate{
     min-height:118px;
     margin-bottom:18px;
+  }
+
+  .capability-card.is-active .capability-plate,
+  .capability-process.is-expanded .capability-card:not(.is-active) .capability-plate{
+    width:auto;
+    min-height:118px;
+    margin-bottom:18px;
+  }
+
+  .capability-process.is-expanded .capability-card:not(.is-active) h3{
+    writing-mode:horizontal-tb;
+    transform:none;
+    margin:0;
+    font-size:21px;
+    letter-spacing:.06em;
+    text-align:left;
+  }
+
+  .capability-process.is-expanded .capability-card:not(.is-active) h3:after{
+    display:block;
+  }
+
+  .capability-process.is-expanded .capability-card:not(.is-active) p,
+  .capability-process.is-expanded .capability-card:not(.is-active) small{
+    display:block;
   }
 
   .dark-section .uk-grid-large>:first-child{

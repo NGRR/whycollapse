@@ -705,4 +705,15 @@ Se aplica el mismo lenguaje de papel tecnico y marcos de lamina a las secciones 
 * `content-card` en paginas internas.
 * `hub-card` en Hub.
 * Fondo claro con grilla, marcas radiales y esquinas tecnicas.
-* Cache bust actualizado a `protea-live.css?v=20260629-5`.
+* Cache bust actualizado a `protea-live.css?v=20260629-6`.
+
+### Ajuste posterior - laminas expandibles en Capacidad Adaptativa
+
+Se agrega interaccion a las cards de la seccion 03:
+
+* Card activa expandida como lamina panoramica.
+* Cards inactivas comprimidas como thumbnails verticales.
+* Placeholder pequeno en modo thumbnail y panoramico en modo activo.
+* Soporte por click y teclado.
+* `aria-expanded` actualizado por JS.
+* Mobile conserva carrusel sin compresion.
