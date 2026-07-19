@@ -4,6 +4,9 @@
   if (!canvas || !hero) return;
 
   const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+  let heroVisible = true;
+  let pageVisible = !document.hidden;
+  let animationFrame = 0;
   const ASSET_BASE = 'components/hero/assets/';
   const ASSETS = {
     bgFar: 'bg_far.png',
@@ -521,7 +524,18 @@
       updateLens(dt);
       render();
     }
-    requestAnimationFrame(frame);
+    if (heroVisible && pageVisible) animationFrame = requestAnimationFrame(frame);
+  }
+
+  function startAnimation() {
+    if (!state.loaded || !heroVisible || !pageVisible || animationFrame) return;
+    state.last = 0;
+    animationFrame = requestAnimationFrame((now) => { animationFrame = 0; frame(now); });
+  }
+
+  function stopAnimation() {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
   }
 
   function setPointer(e) {
@@ -544,10 +558,22 @@
   hero.addEventListener('pointerdown', setPointer, { passive: true });
   hero.addEventListener('pointerleave', () => { state.pointer.active = false; }, { passive: true });
 
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      heroVisible = Boolean(entry && entry.isIntersecting);
+      if (heroVisible) startAnimation(); else stopAnimation();
+    }, { rootMargin: '180px 0px', threshold: 0.01 });
+    heroObserver.observe(hero);
+  }
+  document.addEventListener('visibilitychange', () => {
+    pageVisible = !document.hidden;
+    if (pageVisible) startAnimation(); else stopAnimation();
+  }, { passive: true });
+
   loadImages()
     .then(() => {
       queueResize();
-      requestAnimationFrame(frame);
+      startAnimation();
     })
     .catch(err => console.error('No se pudieron cargar los assets del hero', err));
 })();

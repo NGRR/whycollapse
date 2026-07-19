@@ -829,3 +829,10 @@ Responsive:
 - Tablet 768.
 - Mobile 390.
 ```
+
+## Revisión 03.1
+
+- El módulo de reconocimiento se traslada al final del recorrido, antes del CTA principal.
+- Las cinco capacidades incorporan cards UIkit abiertas con lienzos visuales de muestra.
+- Los cuatro momentos incorporan imágenes circulares de muestra.
+- Se inicia el comportamiento adaptativo de plataforma mediante contexto por segmento, selección persistente durante la sesión, orientación de ruta y continuidad hacia contacto.

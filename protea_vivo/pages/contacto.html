@@ -32,10 +32,54 @@
   </header>
   <main>
     <section class="page-hero"><div class="uk-container uk-container-large"><p class="eyebrow">Conversacion inicial</p><h1>Conversemos sobre tu organizacion.</h1><p class="page-lead">Cuentanos que esta cambiando, que senales aparecen y que necesita volver a mirar el sistema.</p><div class="page-meta"><span>IAO</span><span>DIAGNOS</span><span>Training</span><span>Lab</span></div></div></section>
-    <section class="content-band"><div class="uk-container uk-container-large"><div class="content-grid"><article class="content-card"><h3>Que traer</h3><p>Una pregunta, una tension o un desafio que todavia no encuentra forma clara.</p></article><article class="content-card"><h3>Que buscamos</h3><p>Entender el contexto antes de proponer una ruta Protea.</p></article><article class="content-card"><h3>Implementacion posterior</h3><p>Este formulario queda como placeholder para integracion futura en Squarespace o herramienta externa.</p></article></div></div></section>
+    <section class="content-band"><div class="uk-container uk-container-large">
+<div class="contact-handoff" data-contact-handoff hidden>
+  <p class="eyebrow">Orientación preparada</p>
+  <h2 data-handoff-title>Tu punto de partida sugerido.</h2>
+  <p data-handoff-copy></p>
+  <div class="contact-handoff__meta" data-handoff-signals></div>
+  <p><strong>Referencia:</strong> <span data-handoff-reference></span></p>
+  <div class="contact-handoff__actions">
+    <button class="uk-button uk-button-default" type="button" data-copy-handoff>Copiar orientación</button>
+  </div>
+  <p class="adaptive-state" data-copy-state>La referencia se conserva solo en esta sesión y no expone direcciones de correo ni credenciales en el HTML.</p>
+</div>
+<div class="content-grid"><article class="content-card"><h3>Que traer</h3><p>Una pregunta, una tension o un desafio que todavia no encuentra forma clara.</p></article><article class="content-card"><h3>Que buscamos</h3><p>Entender el contexto antes de proponer una ruta Protea.</p></article><article class="content-card"><h3>Continuidad</h3><p>La referencia del recorrido puede incorporarse al canal de contacto definitivo sin exponer direcciones ni abrir formularios inseguros.</p></article></div></div></section>
     <section class="content-band dark"><div class="uk-container uk-container-large"><h2>Rutas posibles</h2><div class="related-links"><a href="iao.html">Solicitar IAO</a><a href="diagnos.html">Iniciar DIAGNOS</a><a href="training.html">Disenar Training</a><a href="lab.html">Activar Lab</a></div></div></section>
   </main>
   <footer class="page-footer"><div class="uk-container uk-container-large"><nav class="site-footer-links"><a href="../index.html">Inicio</a><a href="observatorio.html">Observatorio</a><a href="hub.html">Hub</a><a href="insights.html">Insights</a></nav></div></footer>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+<script>
+(() => {
+  const box = document.querySelector('[data-contact-handoff]');
+  if (!box) return;
+  let data = null;
+  try { data = JSON.parse(sessionStorage.getItem('protea-contact-handoff-v1') || 'null'); } catch (_) {}
+  if (!data) return;
+  box.hidden = false;
+  box.querySelector('[data-handoff-title]').textContent = data.routeTitle || 'Tu punto de partida sugerido.';
+  box.querySelector('[data-handoff-copy]').textContent = data.recommendation || '';
+  box.querySelector('[data-handoff-reference]').textContent = data.reference || '';
+  box.querySelector('[data-handoff-signals]').innerHTML = (data.signals || []).map((item) => `<span>${item}</span>`).join('');
+  const copyButton = box.querySelector('[data-copy-handoff]');
+  const state = box.querySelector('[data-copy-state]');
+  copyButton.addEventListener('click', async () => {
+    const text = [
+      `Referencia: ${data.reference}`,
+      `Contexto: ${data.segmentLabel}`,
+      `Orientación: ${data.routeTitle}`,
+      data.recommendation,
+      `Señales: ${(data.signals || []).join(' | ')}`
+    ].join('
+');
+    try {
+      await navigator.clipboard.writeText(text);
+      state.textContent = 'Orientación copiada. Puede pegarse en el canal de contacto institucional que Protea defina.';
+    } catch (_) {
+      state.textContent = text;
+    }
+  });
+})();
+</script>
 </body>
 </html>
