@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+      Protea · Adaptarse a tiempo
+    </title>
+    <meta
+      content="Protea ayuda a las organizaciones a reconocer señales, desarrollar capacidad adaptativa y
+      sostener su vigencia."
+      name="description"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link
+
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" rel="stylesheet"/>
+    <link href="assets/css/protea.css" rel="stylesheet"/>
+    <link href="assets/css/protea-live.css?v=20260719-17" rel="stylesheet"/>
+    <link href="assets/css/protea-v4.css?v=20260719-1" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="protea-shell">
+      <aside aria-label="Indicador narrativo" class="section-rail uk-visible@m">
+        <div aria-hidden="true" class="rail-stem">
+          <i>
+          </i>
+        </div>
+        <a class="rail-item is-active" href="#observatorio">
+          <span>
+            01
+          </span>
+          <small>
+            Reconocer
+          </small>
+        </a>
+        <a class="rail-item" href="#colapso">
+          <span>
+            02
+          </span>
+          <small>
+            Comprender
+          </small>
+        </a>
+        <a class="rail-item" href="#capacidad">
+          <span>
+            03
+          </span>
+          <small>
+            Desarrollar
+          </small>
+        </a>
+        <a class="rail-item" href="#inteligencia">
+          <span>
+            04
+          </span>
+          <small>
+            Articular
+          </small>
+        </a>
+        <a class="rail-item" href="#protea">
+          <span>
+            05
+          </span>
+          <small>
+            Conectar
+          </small>
+        </a>
+      </aside>
+      <main class="protea-main">
+        <header class="site-nav uk-position-top uk-position-z-index">
+          <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar="">
+              <div class="uk-navbar-left">
+                <a aria-label="Protea inicio" class="brand" href="#observatorio">
+                  <span class="brand-mark">
+                    protea
+                  </span>
+                  <span class="brand-claim">
+                    BECOMING ADAPTIVE
+                  </span>
+                </a>
+              </div>
+              <div class="uk-navbar-center uk-visible@m">
+                <ul class="uk-navbar-nav">
+                  <li>
+                    <a href="#observatorio">
+                      Inicio
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#colapso">
+                      Por qué colapsan
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/inteligencia-adaptativa.html">
+                      Inteligencia Adaptativa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/metodologia.html">
+                      Cómo ayudamos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#protea">
+                      Marcelo y el libro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/insights.html">
+                      Insights
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/contacto.html">
+                      Contacto
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="uk-navbar-right">
+                <button
+                  aria-label="Abrir menu"
+                  class="mobile-menu-button uk-hidden@m"
+                  type="button"
+                  uk-toggle="target: #mobile-menu"
+                >
+                  <span>
+                  </span>
+                  <span>
+                  </span>
+                </button>
+                <a class="uk-button uk-button-default protea-button" href="#contacto-final">
+                  Conversemos →
+                </a>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <nav aria-label="Progreso narrativo" class="mobile-story-nav uk-hidden@m">
+          <a aria-label="Reconocer" href="#observatorio">
+            <span uk-icon="icon: search; ratio: 1.05">
+            </span>
+          </a>
+          <a aria-label="Comprender" href="#colapso">
+            <span uk-icon="icon: warning; ratio: 1.05">
+            </span>
+          </a>
+          <a aria-label="Desarrollar" href="#capacidad">
+            <span uk-icon="icon: refresh; ratio: 1.05">
+            </span>
+          </a>
+          <a aria-label="Articular" href="#inteligencia">
+            <span uk-icon="icon: bolt; ratio: 1.05">
+            </span>
+          </a>
+          <a aria-label="Conectar" href="#protea">
+            <span uk-icon="icon: link; ratio: 1.05">
+            </span>
+          </a>
+        </nav>
+        <div aria-hidden="true" class="living-stem">
+          <span>
+          </span>
+        </div>
+        <section class="story-section hero-section uk-section uk-flex uk-flex-middle" id="observatorio">
+          <canvas aria-hidden="true" class="hero-canvas" id="protea-canvas">
+          </canvas>
+          <div aria-hidden="true" class="canvas-injection-note">
+          </div>
+          <div class="uk-container uk-container-large uk-position-relative">
+            <div class="uk-grid-large uk-flex-middle" uk-grid="">
+              <div class="uk-width-2-5@m hero-copy-panel">
+                <p class="eyebrow">
+                  Adaptarse a tiempo
+                </p>
+                <h1 class="hero-title">
+                  <span>
+                    El problema
+                  </span>
+                  <span>
+                    no suele ser
+                  </span>
+                  <em>
+                    el que parece.
+                  </em>
+                </h1>
+                <p class="hero-copy">
+                  Las organizaciones rara vez colapsan por falta de esfuerzo, talento o recursos. Colapsan
+                  porque dejan de adaptarse a tiempo.
+                </p>
+                <div class="uk-margin-medium-top">
+                  <a class="uk-button uk-button-primary protea-button-primary" href="pages/contacto.html">
+                    Conversemos sobre tu organización
+                  </a>
+
+                </div>
+              </div>
+              <div aria-hidden="true" class="uk-width-3-5@m hero-canvas-space">
+              </div>
+            </div>
+          </div>
+          <div class="hero-transition-quote hero-transition-quote_right">
+            La falta de adaptabilidad es un riesgo existencial que comienza antes de que aparezca la crisis.
+          </div>
+        </section>
+        <section
+          class="story-section light-section collapse-section uk-section uk-section-large"
+          id="colapso"
+        >
+          <div aria-hidden="true" class="collapse-field">
+          </div>
+          <div class="uk-container uk-container-large">
+            <div class="section-heading-grid process-heading" uk-grid="">
+              <div class="uk-width-2-5@m process-heading__media">
+                <figure>
+                  <img
+                    alt="Lienzo de muestra para introducir las señales del colapso"
+                    decoding="async"
+                    loading="lazy"
+                    src="assets/img/protea/colibri-diagrama.jpg"
+                  />
+                </figure>
+              </div>
+              <div class="uk-width-3-5@m process-heading__copy">
+                <p class="eyebrow">
+                  02 · Comprender el proceso
+                </p>
+                <h2>
+                  El colapso comienza mucho antes de que se vuelva evidente.
+                </h2>
+                <p class="lead-copy">
+                  Las organizaciones pueden conservar resultados, talento y una apariencia de estabilidad
+                  mientras pierden capacidad para leer el entorno y coordinar una respuesta. Antes de la
+                  crisis visible aparecen señales más silenciosas.
+                </p>
+                <p class="process-bridge">
+                  Dos señales permiten reconocer el proceso antes de que se transforme en crisis: el talento deja de convertirse en aprendizaje y las funciones que sostienen la adaptación comienzan a debilitarse.
+                </p>
+              </div>
+            </div>
+            <div class="evidence-stack">
+              <article class="evidence-row">
+                <figure>
+                  <img
+                    alt="Diagrama de sistema vivo y entornos complejos"
+                    src="assets/img/protea/life-system.jpg"
+                  />
+                </figure>
+                <div>
+                  <small>
+                    Señal 01
+                  </small>
+                  <h3>
+                    No falta talento. Falta capacidad de hacerlo emerger.
+                  </h3>
+                  <p>
+                    La obsolescencia silenciosa comienza cuando la organización deja de aprender con velocidad
+                    y protege más sus certezas que su capacidad de comprender lo que cambia afuera.
+                  </p>
+                </div>
+              </article>
+              <article class="evidence-row is-reversed">
+                <figure>
+                  <img
+                    alt="Funciones fundamentales de la adaptabilidad"
+                    src="assets/img/protea/funciones-adaptabilidad.jpg"
+                  />
+                </figure>
+                <div>
+                  <small>
+                    Señal 02
+                  </small>
+                  <h3>
+                    El colapso no es un evento. Es un proceso.
+                  </h3>
+                  <p>
+                    Percibir, comprender y adaptarse son funciones que pueden deteriorarse mientras la
+                    organización todavía parece estable.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="section-quote">
+            Ignorar el ruido del mundo es la forma más elegante de financiar el colapso.
+          </div>
+        </section>
+        <section
+          class="story-section light-section adaptive-section uk-section uk-section-large"
+          id="capacidad"
+        >
+          <div class="uk-container uk-container-large">
+            <div class="uk-grid-large uk-flex-middle" uk-grid="">
+              <div class="uk-width-2-5@m section-intro-card">
+                <p class="eyebrow">
+                  03 · Desarrollar capacidad
+                </p>
+                <h2>
+                  La adaptabilidad es el gen de la longevidad organizacional.
+                </h2>
+                <p>
+                  Adaptarse no es reaccionar. Es desarrollar la capacidad de cambiar antes de que el entorno
+                  obligue a hacerlo.
+                </p>
+                <img
+                  alt="Cinco capacidades adaptativas representadas como diagramas científicos"
+                  class="capability-master-image"
+                  src="assets/img/protea/capacidades.jpg"
+                />
+              </div>
+              <div class="uk-width-3-5@m">
+                <div class="canonical-capabilities">
+                  <article class="uk-card uk-card-default capability-item" data-capability="anticipación">
+                    <div class="uk-card-body capability-copy">
+                      <span>
+                        01
+                      </span>
+                      <h3>
+                        Anticipación
+                      </h3>
+                      <p>
+                        Leer señales y preparar posibilidades antes de que se conviertan en urgencias.
+                      </p>
+                    </div>
+                    <figure class="capability-image uk-card-media-right">
+                      <img
+                        alt="Lienzo de muestra para Anticipación"
+                        decoding="async"
+                        loading="lazy"
+                        src="assets/img/protea/anticipacion.png"
+                      />
+                    </figure>
+                  </article>
+                  <article class="uk-card uk-card-default capability-item" data-capability="agilidad">
+                    <div class="uk-card-body capability-copy">
+                      <span>
+                        02
+                      </span>
+                      <h3>
+                        Agilidad
+                      </h3>
+                      <p>
+                        Decidir y actuar con oportunidad sin perder criterio ni coordinación.
+                      </p>
+                    </div>
+                    <figure class="capability-image uk-card-media-right">
+                      <img
+                        alt="Lienzo de muestra para Agilidad"
+                        decoding="async"
+                        loading="lazy"
+                        src="assets/img/protea/agilidad.png"
+                      />
+                    </figure>
+                  </article>
+                  <article class="uk-card uk-card-default capability-item" data-capability="adecuación">
+                    <div class="uk-card-body capability-copy">
+                      <span>
+                        03
+                      </span>
+                      <h3>
+                        Adecuación
+                      </h3>
+                      <p>
+                        Ajustar respuestas al contexto real, no a modelos heredados.
+                      </p>
+                    </div>
+                    <figure class="capability-image uk-card-media-right">
+                      <img
+                        alt="Lienzo de muestra para Adecuación"
+                        decoding="async"
+                        loading="lazy"
+                        src="assets/img/protea/adecuacion.png"
+                      />
+                    </figure>
+                  </article>
+                  <article class="uk-card uk-card-default capability-item" data-capability="aprendizaje">
+                    <div class="uk-card-body capability-copy">
+                      <span>
+                        04
+                      </span>
+                      <h3>
+                        Aprendizaje
+                      </h3>
+                      <p>
+                        Convertir experiencia, error y evidencia en capacidad acumulada.
+                      </p>
+                    </div>
+                    <figure class="capability-image uk-card-media-right">
+                      <img
+                        alt="Lienzo de muestra para Aprendizaje"
+                        decoding="async"
+                        loading="lazy"
+                        src="assets/img/protea/aprendizaje.png"
+                      />
+                    </figure>
+                  </article>
+                  <article class="uk-card uk-card-default capability-item" data-capability="antifragilidad">
+                    <div class="uk-card-body capability-copy">
+                      <span>
+                        05
+                      </span>
+                      <h3>
+                        Antifragilidad
+                      </h3>
+                      <p>
+                        Usar la presión y la incertidumbre para fortalecer el sistema.
+                      </p>
+                    </div>
+                    <figure class="capability-image uk-card-media-right">
+                      <img
+                        alt="Lienzo de muestra para Antifragilidad"
+                        decoding="async"
+                        loading="lazy"
+                        src="assets/img/protea/antifragilidad.png"
+                      />
+                    </figure>
+                  </article>
+                </div>
+                <a
+                  class="uk-button uk-button-primary protea-button-primary"
+                  href="pages/inteligencia-adaptativa.html"
+                >
+                  Quiero desarrollar capacidad adaptativa
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="section-quote light">
+            Dejar de reducir la complejidad para empezar a habitarla.
+          </div>
+        </section>
+        <section
+          class="story-section light-section triarchy-section uk-section uk-section-large"
+          id="inteligencia"
+        >
+          <div class="uk-container uk-container-large">
+            <div class="uk-grid-large uk-flex-middle" uk-grid="">
+              <div class="uk-width-2-5@m section-intro-card">
+                <p class="eyebrow">
+                  04 · Articular el sistema
+                </p>
+                <h2>
+                  La complejidad presiona. La adaptabilidad responde. La innovación emerge.
+                </h2>
+                <p>
+                  Inteligencia Adaptativa es la capacidad de comprender, anticipar, responder y aprender de
+                  forma coordinada.
+                </p>
+              </div>
+              <div class="uk-width-3-5@m triarchy-visual">
+                <img
+                  alt="Triarquía entre complejidad, adaptabilidad e innovación"
+                  src="assets/img/protea/triarquia.jpg"
+                />
+              </div>
+            </div>
+            <div aria-label="Ruta de experiencias Protea" class="journey-line">
+              <a data-route="diagnos" href="pages/diagnos.html">
+                <figure class="journey-image">
+                  <img
+                    alt="Lienzo de muestra para diagnos"
+                    decoding="async"
+                    loading="lazy"
+                    src="assets/img/protea/conciencia.jpg"
+                  />
+                </figure>
+                <b>
+                  01
+                </b>
+                <span>
+                  Consciencia
+                </span>
+                <small>
+                  Comprendemos qué ocurre.
+                </small>
+                <em>
+                  IAO · DIAGNOS
+                </em>
+              </a>
+              <a data-route="training" href="pages/training.html">
+                <figure class="journey-image">
+                  <img
+                    alt="Lienzo de muestra para training"
+                    decoding="async"
+                    loading="lazy"
+                    src="assets/img/protea/entrenamiento.jpg"
+                  />
+                </figure>
+                <b>
+                  02
+                </b>
+                <span>
+                  Entrenamiento
+                </span>
+                <small>
+                  Entrenamos capacidades.
+                </small>
+                <em>
+                  Training
+                </em>
+              </a>
+              <a data-route="lab" href="pages/lab.html">
+                <figure class="journey-image">
+                  <img
+                    alt="Lienzo de muestra para lab"
+                    decoding="async"
+                    loading="lazy"
+                    src="assets/img/protea/arraigo.jpg"
+                  />
+                </figure>
+                <b>
+                  03
+                </b>
+                <span>
+                  Arraigo
+                </span>
+                <small>
+                  Activamos sobre desafíos reales.
+                </small>
+                <em>
+                  Lab
+                </em>
+              </a>
+              <a data-route="hub" href="pages/hub.html">
+                <figure class="journey-image">
+                  <img
+                    alt="Lienzo de muestra para hub"
+                    decoding="async"
+                    loading="lazy"
+                    src="assets/img/protea/huella.jpg"
+                  />
+                </figure>
+                <b>
+                  04
+                </b>
+                <span>
+                  Huella
+                </span>
+                <small>
+                  Sostenemos el aprendizaje.
+                </small>
+                <em>
+                  Hub
+                </em>
+              </a>
+            </div>
+            <div class="section-action">
+              <a class="section-link" href="pages/metodologia.html">
+                Necesito una ruta
+              </a>
+            </div>
+          </div>
+          <div class="section-quote">
+            No sobrevive quien mejor planifica, sino quien mejor se adapta.
+          </div>
+        </section>
+        <section
+          class="story-section light-section authority-section uk-section uk-section-large"
+          id="protea"
+        >
+          <div class="uk-container uk-container-large">
+            <div class="uk-grid-large uk-flex-middle" uk-grid="">
+              <div class="uk-width-1-3@m book-stage">
+                <img
+                  alt="Portada del libro ¿Por qué colapsan las organizaciones? de Marcelo Lasagna"
+                  src="assets/img/protea/libro-cover-oficial.webp"
+                />
+              </div>
+              <div class="uk-width-2-3@m">
+                <p class="eyebrow">
+                  05 · Conectar conocimiento y acción
+                </p>
+                <h2>
+                  ¿Por qué algunas organizaciones permanecen vigentes mientras otras desaparecen?
+                </h2>
+                <p class="authority-lead">
+                  Entender por qué colapsan las organizaciones es el primer paso para evitar que la tuya sea
+                  la siguiente.
+                </p>
+                <div class="authority-grid">
+                  <article>
+                    <small>
+                      Marcelo Lasagna
+                    </small>
+                    <h3>
+                      Autor, investigador y pensador organizacional.
+                    </h3>
+                    <p>
+                      Su trabajo conecta ciencias de la complejidad, innovación, estrategia y aprendizaje
+                      organizacional.
+                    </p>
+                    <a href="pages/contacto.html">
+                      Invitar a Marcelo
+                    </a>
+                  </article>
+                  <article>
+                    <small>
+                      Protea
+                    </small>
+                    <h3>
+                      Habilitadores, no proveedores de respuestas.
+                    </h3>
+                    <p>
+                      Medimos, entrenamos, arraigamos y sostenemos capacidad adaptativa para que permanezca
+                      instalada en la organización.
+                    </p>
+                    <a href="pages/metodologia.html">
+                      Conocer cómo ayudamos
+                    </a>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="story-section light-section orientation-section uk-section uk-section-large"
+          id="orientacion"
+        >
+          <div aria-hidden="true" class="collapse-field">
+          </div>
+          <div class="uk-container uk-container-large">
+            <div class="recognition-heading">
+              <p class="eyebrow">
+                Reconocimiento adaptativo
+              </p>
+              <h2>
+                ¿Qué señales reconoces en tu organización?
+              </h2>
+              <p class="lead-copy">
+                Al final del recorrido, selecciona las situaciones que hoy resultan más cercanas. La web
+                organiza una orientación inicial sin convertirla en test ni diagnóstico.
+              </p>
+              <figure class="recognition-heading__media" aria-hidden="true">
+                <img
+                  alt=""
+                  decoding="async"
+                  loading="lazy"
+                  src="assets/img/protea/reconocimiento.jpg"
+                />
+              </figure>
+            </div>
+            <div class="recognition-box">
+              <div class="adaptive-platform" data-adaptive-platform="">
+                <div class="adaptive-platform__intro">
+                  <small>
+                    La página se adapta a tu contexto
+                  </small>
+                  <strong>
+                    Selecciona un punto de vista antes de reconocer las señales.
+                  </strong>
+                </div>
+                <div aria-label="Tipo de organización" class="adaptive-segment" role="group">
+                  <button aria-pressed="false" data-segment="empresa" type="button">
+                    Empresa
+                  </button>
+                  <button aria-pressed="false" data-segment="publica" type="button">
+                    Administración pública
+                  </button>
+                </div>
+                <div aria-live="polite" class="adaptive-state" data-adaptive-state="">
+                  Sin contexto definido. La orientación será general.
+                </div>
+              </div>
+              <div class="signal-grid" data-signal-grid="">
+                <button data-route="diagnos" data-signal="s1" type="button">
+                  <span>
+                    01
+                  </span>
+                  Las decisiones llegan tarde.
+                </button>
+                <button data-route="iao" data-signal="s2" type="button">
+                  <span>
+                    02
+                  </span>
+                  Sabemos que algo cambia, pero no logramos nombrarlo.
+                </button>
+                <button data-route="lab" data-signal="s3" type="button">
+                  <span>
+                    03
+                  </span>
+                  Hay iniciativas, pero no modifican la operación.
+                </button>
+                <button data-route="hub" data-signal="s4" type="button">
+                  <span>
+                    04
+                  </span>
+                  El aprendizaje se pierde entre áreas.
+                </button>
+                <button data-route="training" data-signal="s5" type="button">
+                  <span>
+                    05
+                  </span>
+                  La urgencia desplaza la reflexión.
+                </button>
+                <button data-route="diagnos" data-signal="s6" type="button">
+                  <span>
+                    06
+                  </span>
+                  Dependemos de personas clave para sostener el sistema.
+                </button>
+              </div>
+              <div aria-live="polite" class="signal-response" data-signal-response="">
+                <strong>
+                  Si reconoces una o más señales, hay un desafío adaptativo.
+                </strong>
+                <span>
+                  Selecciona situaciones para visualizar una orientación inicial.
+                </span>
+              </div>
+              <div class="selected-signals" data-selected-signals hidden>
+                <div class="selected-signals__header">
+                  <small>
+                    Señales seleccionadas
+                  </small>
+                  <span>
+                    Puedes quitar o ajustar cualquiera antes de confirmar.
+                  </span>
+                </div>
+                <div class="selected-signals__list" data-selected-signals-list>
+                </div>
+                <div class="selected-signals__action">
+                  <button
+                    class="uk-button orientation-confirm-button"
+                    data-confirm-orientation
+                    type="button"
+                    disabled
+                  >
+                    <span>
+                      Tomar esta orientación
+                    </span>
+                    <b aria-hidden="true">
+                      ↓
+                    </b>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="footer-cta uk-section uk-section-large" id="contacto-final">
+          <div class="uk-container uk-container-large uk-text-center">
+            <div class="adaptive-summary" data-adaptive-summary="" hidden="" tabindex="-1">
+              <small>
+                Orientación construida durante el recorrido
+              </small>
+              <strong data-summary-title="">
+                Tu punto de partida sugerido.
+              </strong>
+              <p data-summary-copy="">
+              </p>
+              <div class="adaptive-summary__signals" data-summary-signals>
+              </div>
+              <div class="adaptive-summary__reference">
+                <span>
+                  Referencia de conversación
+                </span>
+                <strong data-summary-reference>
+                </strong>
+              </div>
+            </div>
+            <h2>
+              Hablemos de lo que está ocurriendo en
+              <em>
+                tu organización.
+              </em>
+            </h2>
+            <p>
+              La orientación que construiste es el punto de partida. La conversación permite convertirla en una ruta ajustada a tu organización.
+            </p>
+            <a
+              class="uk-button uk-button-default protea-button final-debrief-button"
+              data-final-debrief
+              href="pages/debrief.html"
+            >
+              Preparar conversación →
+            </a>
+            <nav aria-label="Enlaces Protea" class="site-footer-links">
+              <a href="pages/iao.html">
+                IAO
+              </a>
+              <a href="pages/diagnos.html">
+                DIAGNOS
+              </a>
+              <a href="pages/training.html">
+                Training
+              </a>
+              <a href="pages/lab.html">
+                Lab
+              </a>
+              <a href="pages/hub.html">
+                Hub
+              </a>
+              <a href="#colapso">
+                Comprender el proceso
+              </a>
+              <a href="pages/insights.html">
+                Insights
+              </a>
+              <a href="pages/contacto.html">
+                Contacto
+              </a>
+            </nav>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="mobile-offcanvas" id="mobile-menu" uk-offcanvas="overlay: true; flip: true">
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close="">
+        </button>
+        <a aria-label="Protea inicio" class="brand" href="#observatorio">
+          <span class="brand-mark">
+            protea
+          </span>
+          <span class="brand-claim">
+            BECOMING ADAPTIVE
+          </span>
+        </a>
+        <ul class="mobile-menu-list">
+          <li>
+            <a href="#protea">
+              Marcelo y el libro
+            </a>
+          </li>
+          <li>
+            <a href="#inteligencia">
+              Articular el sistema
+            </a>
+          </li>
+          <li>
+            <a href="#capacidad">
+              Desarrollar capacidad
+            </a>
+          </li>
+          <li>
+            <a href="#colapso">
+              Comprender el proceso
+            </a>
+          </li>
+          <li>
+            <a href="#observatorio">
+              Reconocer el problema
+            </a>
+          </li>
+          <li>
+            <a href="pages/inteligencia-adaptativa.html">
+              Inteligencia adaptativa
+            </a>
+          </li>
+          <li>
+            <a href="pages/metodologia.html">
+              Cómo ayudamos
+            </a>
+          </li>
+          <li>
+            <a href="pages/iao.html">
+              IAO
+            </a>
+          </li>
+          <li>
+            <a href="pages/diagnos.html">
+              DIAGNOS
+            </a>
+          </li>
+          <li>
+            <a href="pages/training.html">
+              Training
+            </a>
+          </li>
+          <li>
+            <a href="pages/lab.html">
+              Lab
+            </a>
+          </li>
+          <li>
+            <a href="pages/hub.html">
+              Hub
+            </a>
+          </li>
+          <li>
+            <a href="pages/insights.html">
+              Insights
+            </a>
+          </li>
+          <li>
+            <a href="pages/contacto.html">
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js">
+    </script>
+    <script src="assets/js/protea.js?v=20260719-2">
+    </script>
+    <script src="assets/js/protea-sections.js?v=20260719-6">
+    </script>
+  </body>
+</html>

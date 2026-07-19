@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preparar conversación — Protea</title>
+  <meta name="description" content="Revisa la orientación construida durante el recorrido y prepara una conversación con Protea.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
+  <link rel="stylesheet" href="../assets/css/protea.css">
+  <link rel="stylesheet" href="../assets/css/protea-live.css?v=20260719-7">
+</head>
+<body class="page-shell debrief-page">
+  <header class="page-nav">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+      <div class="uk-navbar-left"><a class="brand" href="../index.html"><span class="brand-mark">protea</span><span class="brand-claim">BECOMING ADAPTIVE</span></a></div>
+      <div class="uk-navbar-center uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#colapso">Por qué colapsan</a></li>
+          <li><a href="inteligencia-adaptativa.html">Inteligencia Adaptativa</a></li>
+          <li><a href="metodologia.html">Cómo ayudamos</a></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right"><a class="uk-button uk-button-default protea-button" href="../index.html#orientacion">Editar señales</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero debrief-hero">
+      <div class="uk-container uk-container-large">
+        <p class="eyebrow">Debrief del recorrido</p>
+        <h1>Revisa la orientación antes de conversar.</h1>
+        <p class="page-lead">Este resumen no es un diagnóstico. Ordena las señales seleccionadas y prepara un punto de partida claro para una conversación con Protea.</p>
+      </div>
+    </section>
+
+    <section class="content-band debrief-band">
+      <div class="uk-container uk-container-large">
+        <div class="debrief-layout">
+          <article class="debrief-summary" data-debrief-summary>
+            <p class="eyebrow">Orientación construida</p>
+            <h2 data-debrief-title>Conversación inicial sobre capacidad adaptativa.</h2>
+            <p data-debrief-copy>Vuelve al reconocimiento adaptativo para seleccionar señales y construir una orientación.</p>
+            <div class="debrief-meta">
+              <div><small>Contexto</small><strong data-debrief-segment>Sin contexto definido</strong></div>
+              <div><small>Referencia</small><strong data-debrief-reference>PROTEA-GENERAL</strong></div>
+            </div>
+            <div class="debrief-signals" data-debrief-signals></div>
+          </article>
+
+          <form class="debrief-form" data-debrief-form>
+            <p class="eyebrow">Preparar mensaje</p>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="debrief-name">Nombre</label>
+              <input class="uk-input" id="debrief-name" name="name" autocomplete="name" maxlength="100">
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="debrief-org">Organización</label>
+              <input class="uk-input" id="debrief-org" name="organization" autocomplete="organization" maxlength="140">
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="debrief-email">Correo de contacto</label>
+              <input class="uk-input" id="debrief-email" name="email" type="email" autocomplete="email" maxlength="180">
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="debrief-note">Qué necesitamos conversar</label>
+              <textarea class="uk-textarea" id="debrief-note" name="note" rows="6" maxlength="1600" placeholder="Agrega contexto, restricciones o una pregunta concreta."></textarea>
+            </div>
+            <div class="debrief-actions">
+              <button class="uk-button uk-button-primary protea-button-primary" type="button" data-open-email>Abrir borrador de correo</button>
+              <button class="uk-button uk-button-default" type="button" data-copy-message>Copiar resumen</button>
+            </div>
+            <p class="adaptive-state" data-debrief-state>La información se procesa localmente en el navegador. No se envía a ningún servidor desde esta maqueta.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer"><div class="uk-container uk-container-large"><nav class="site-footer-links"><a href="../index.html">Inicio</a><a href="../index.html#orientacion">Editar señales</a><a href="contacto.html">Contacto general</a></nav></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+  <script>
+  (() => {
+    const HANDOFF_KEY = 'protea-contact-handoff-v1';
+    const CONTACT_RECIPIENT = ''; // Configurar aquí el correo institucional antes de publicar.
+    let data = null;
+    try { data = JSON.parse(sessionStorage.getItem(HANDOFF_KEY) || 'null'); } catch (_) {}
+
+    const title = document.querySelector('[data-debrief-title]');
+    const copy = document.querySelector('[data-debrief-copy]');
+    const segment = document.querySelector('[data-debrief-segment]');
+    const reference = document.querySelector('[data-debrief-reference]');
+    const signals = document.querySelector('[data-debrief-signals]');
+    const state = document.querySelector('[data-debrief-state]');
+    const form = document.querySelector('[data-debrief-form]');
+
+    if (data) {
+      title.textContent = data.routeTitle || title.textContent;
+      copy.textContent = data.recommendation || copy.textContent;
+      segment.textContent = data.segmentLabel || 'Sin contexto definido';
+      reference.textContent = data.reference || 'PROTEA-GENERAL';
+      signals.innerHTML = (data.signals || []).map(item => `<span>${item}</span>`).join('');
+    }
+
+    function composeMessage() {
+      const values = new FormData(form);
+      const lines = [
+        'Hola,',
+        '',
+        'Quisiera conversar con Protea a partir de la orientación construida en la web.',
+        '',
+        `Referencia: ${data?.reference || 'PROTEA-GENERAL'}`,
+        `Contexto: ${data?.segmentLabel || 'Sin contexto definido'}`,
+        `Orientación sugerida: ${data?.routeTitle || 'Conversación inicial sobre capacidad adaptativa'}`,
+        data?.recommendation || '',
+        `Señales reconocidas: ${(data?.signals || []).join(' | ') || 'No especificadas'}`,
+        '',
+        `Nombre: ${values.get('name') || ''}`,
+        `Organización: ${values.get('organization') || ''}`,
+        `Correo: ${values.get('email') || ''}`,
+        '',
+        `Contexto adicional: ${values.get('note') || ''}`
+      ];
+      return lines.join('\n');
+    }
+
+    document.querySelector('[data-copy-message]').addEventListener('click', async () => {
+      const message = composeMessage();
+      try {
+        await navigator.clipboard.writeText(message);
+        state.textContent = 'Resumen copiado. Puedes pegarlo en el canal institucional de Protea.';
+      } catch (_) {
+        state.textContent = 'No fue posible acceder al portapapeles. Selecciona y copia el contenido desde tu cliente de correo.';
+      }
+    });
+
+    document.querySelector('[data-open-email]').addEventListener('click', () => {
+      const subject = `Conversación Protea · ${data?.reference || 'orientación inicial'}`;
+      const mailto = `mailto:${CONTACT_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(composeMessage())}`;
+      window.location.href = mailto;
+      state.textContent = CONTACT_RECIPIENT
+        ? 'Se abrió un borrador en tu aplicación de correo.'
+        : 'Se abrió un borrador sin destinatario. Configura CONTACT_RECIPIENT antes de publicar para completar el flujo.';
+    });
+  })();
+  </script>
+</body>
+</html>
