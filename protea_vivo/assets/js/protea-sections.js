@@ -202,7 +202,11 @@
 (() => {
   const railLinks = Array.from(document.querySelectorAll('.section-rail .rail-item'));
   const mobileLinks = Array.from(document.querySelectorAll('.mobile-story-nav a'));
-  const sections = railLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const sectionIds = [...railLinks, ...mobileLinks]
+    .map((link) => link.getAttribute('href'))
+    .filter((href) => href && href.startsWith('#'))
+    .filter((href, index, list) => list.indexOf(href) === index);
+  const sections = sectionIds.map((href) => document.querySelector(href)).filter(Boolean);
   if (!sections.length) return;
 
   function setActive(id) {
