@@ -1,0 +1,375 @@
+:root {
+  --editor-width: 430px;
+  --editor-bg: rgba(14, 17, 35, 0.94);
+  --editor-card: rgba(255, 255, 255, 0.055);
+  --editor-line: rgba(255, 255, 255, 0.12);
+  --editor-text: rgba(255, 255, 255, 0.92);
+  --editor-muted: rgba(255, 255, 255, 0.58);
+  --editor-accent: #ff5b48;
+}
+
+.editor-page {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.editor-page #organic-canvas {
+  right: var(--editor-width);
+  width: calc(100vw - var(--editor-width));
+}
+
+.editor-stage-header {
+  position: fixed;
+  z-index: 3;
+  top: 22px;
+  left: 24px;
+  display: grid;
+  gap: 4px;
+  max-width: 330px;
+  color: rgba(255, 255, 255, 0.92);
+  pointer-events: none;
+}
+
+.editor-stage-header__kicker,
+.editor-stage-header span:last-child {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.editor-stage-header__kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.editor-hud {
+  right: calc(var(--editor-width) + 18px);
+  left: auto;
+}
+
+.configurator {
+  position: fixed;
+  z-index: 10;
+  inset: 0 0 0 auto;
+  width: var(--editor-width);
+  overflow-y: auto;
+  padding: 18px;
+  color: var(--editor-text);
+  background: var(--editor-bg);
+  border-left: 1px solid var(--editor-line);
+  backdrop-filter: blur(22px);
+  transition: transform 220ms ease;
+}
+
+.configurator.is-collapsed {
+  transform: translateX(100%);
+}
+
+.configurator__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.configurator__header h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.configurator__eyebrow {
+  margin: 0 0 4px;
+  color: var(--editor-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.icon-button,
+.toolbar button,
+.file-button,
+.primary-button,
+.secondary-button,
+.checkpoint-row button,
+.raw-config button,
+.editor-reopen {
+  border: 1px solid var(--editor-line);
+  color: var(--editor-text);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+}
+
+.primary-button {
+  background: rgba(255, 91, 72, 0.22);
+  border-color: rgba(255, 91, 72, 0.54);
+}
+
+.timeline-card,
+.control-group,
+.raw-config {
+  border: 1px solid var(--editor-line);
+  border-radius: 12px;
+  background: var(--editor-card);
+}
+
+.timeline-card {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.timeline-card__top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.timeline-card button,
+.raw-config button {
+  padding: 8px 11px;
+}
+
+.compact-field,
+.switch-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--editor-muted);
+  font-size: 12px;
+}
+
+.compact-field input {
+  width: 54px;
+  padding: 6px;
+  border: 1px solid var(--editor-line);
+  border-radius: 6px;
+  color: var(--editor-text);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.progress-control {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  font-size: 12px;
+  color: var(--editor-muted);
+}
+
+.progress-control input {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.progress-control output {
+  color: var(--editor-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.checkpoint-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.checkpoint-row button {
+  padding: 6px 4px;
+  font-size: 11px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.toolbar button,
+.file-button {
+  min-height: 34px;
+  padding: 7px 9px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.file-button input {
+  display: none;
+}
+
+.control-groups {
+  display: grid;
+  gap: 10px;
+}
+
+.control-group {
+  overflow: hidden;
+}
+
+.control-group > summary,
+.raw-config > summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 650;
+  font-size: 13px;
+  border-bottom: 1px solid transparent;
+}
+
+.control-group[open] > summary,
+.raw-config[open] > summary {
+  border-bottom-color: var(--editor-line);
+}
+
+.control-group__body {
+  display: grid;
+  gap: 12px;
+  padding: 12px 14px 14px;
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: minmax(105px, 1fr) minmax(100px, 1.3fr) 72px;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-row--toggle {
+  grid-template-columns: 1fr auto;
+}
+
+.control-row--text {
+  grid-template-columns: 1fr;
+}
+
+.control-row label,
+.control-row__label {
+  color: var(--editor-muted);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.control-row input[type="range"] {
+  width: 100%;
+}
+
+.control-row input[type="number"],
+.control-row input[type="text"],
+.layer-card input {
+  min-width: 0;
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--editor-line);
+  border-radius: 6px;
+  color: var(--editor-text);
+  background: rgba(0, 0, 0, 0.24);
+  font: inherit;
+  font-size: 12px;
+}
+
+.control-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.layer-card {
+  display: grid;
+  gap: 9px;
+  padding: 11px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.layer-card__title {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.layer-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.layer-card label {
+  display: grid;
+  gap: 4px;
+  color: var(--editor-muted);
+  font-size: 11px;
+}
+
+.layer-card label:first-child {
+  grid-column: 1 / -1;
+}
+
+.raw-config {
+  margin-top: 12px;
+}
+
+.raw-config p {
+  margin: 0;
+  padding: 0 14px 10px;
+  color: var(--editor-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.raw-config textarea {
+  display: block;
+  width: calc(100% - 28px);
+  min-height: 280px;
+  margin: 0 14px;
+  padding: 11px;
+  resize: vertical;
+  border: 1px solid var(--editor-line);
+  border-radius: 8px;
+  color: #ffd6d1;
+  background: rgba(0, 0, 0, 0.32);
+  font: 11px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.raw-config__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 14px;
+}
+
+#editorStatus {
+  font-size: 11px;
+  color: var(--editor-muted);
+}
+
+.editor-reopen {
+  position: fixed;
+  z-index: 12;
+  top: 16px;
+  right: 16px;
+  padding: 9px 12px;
+}
+
+input[type="range"] {
+  accent-color: var(--editor-accent);
+}
+
+@media (max-width: 900px) {
+  :root { --editor-width: min(92vw, 430px); }
+  .editor-page #organic-canvas {
+    right: 0;
+    width: 100vw;
+  }
+  .editor-stage-header {
+    display: none;
+  }
+}
