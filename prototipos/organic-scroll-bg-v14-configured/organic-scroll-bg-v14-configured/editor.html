@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editor de animación orgánica v9</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body class="editor-page">
+  <canvas id="organic-canvas" aria-hidden="true"></canvas>
+
+  <header class="editor-stage-header">
+    <span class="editor-stage-header__kicker">Canvas 2D · editor en vivo</span>
+    <strong>Organic Animation Configurator v9</strong>
+    <span>Ajusta, previsualiza y exporta un JSON reproducible.</span>
+  </header>
+
+  <div class="hud editor-hud">
+    <div class="hud__label">progress</div>
+    <div class="hud__value" id="progressLabel">000</div>
+  </div>
+
+  <aside class="configurator" id="configurator" aria-label="Editor de parámetros">
+    <div class="configurator__header">
+      <div>
+        <p class="configurator__eyebrow">Editor manual</p>
+        <h1>Parámetros</h1>
+      </div>
+      <button class="icon-button" id="collapseEditor" type="button" title="Contraer editor">⇥</button>
+    </div>
+
+    <section class="timeline-card">
+      <div class="timeline-card__top">
+        <button class="primary-button" id="playPreview" type="button">Reproducir</button>
+        <button class="secondary-button" id="stopPreview" type="button">Detener</button>
+        <label class="compact-field">
+          <span>Duración</span>
+          <input id="previewDuration" type="number" min="2" max="120" step="1" value="20">
+          <small>s</small>
+        </label>
+        <label class="switch-field">
+          <input id="previewLoop" type="checkbox" checked>
+          <span>Loop</span>
+        </label>
+      </div>
+      <label class="progress-control">
+        <span>Progreso de construcción</span>
+        <output id="previewProgressOutput">0.000</output>
+        <input id="previewProgress" type="range" min="0" max="1" step="0.001" value="0">
+      </label>
+      <div class="checkpoint-row" id="checkpoints"></div>
+    </section>
+
+    <div class="toolbar">
+      <button id="saveLocal" type="button">Guardar local</button>
+      <button id="copyJson" type="button">Copiar JSON</button>
+      <button id="downloadJson" type="button">Descargar JSON</button>
+      <label class="file-button">
+        Importar JSON
+        <input id="importJson" type="file" accept="application/json,.json">
+      </label>
+      <button id="resetConfig" type="button">Restablecer</button>
+    </div>
+
+    <div id="controlGroups" class="control-groups"></div>
+
+    <details class="raw-config" open>
+      <summary>JSON completo</summary>
+      <p>Este es el archivo que puedes enviarme para reconstruir el paquete definitivo.</p>
+      <textarea id="jsonEditor" spellcheck="false" aria-label="Configuración JSON"></textarea>
+      <div class="raw-config__actions">
+        <button class="primary-button" id="applyJson" type="button">Aplicar JSON</button>
+        <span id="editorStatus" role="status">Listo</span>
+      </div>
+    </details>
+  </aside>
+
+  <button class="editor-reopen" id="reopenEditor" type="button" hidden>Abrir editor</button>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>
