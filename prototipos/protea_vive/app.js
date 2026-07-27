@@ -380,7 +380,7 @@
   function drawStrands(time, spin, geo, frontPass, alphaMultiplier = 1, mode = "all") {
     const steps = state.mobile ? CONFIG.strandStepsMobile : CONFIG.strandStepsDesktop;
     const matured = smoothstep(0.82, 1, state.progress);
-    const cleaned = smoothstep(0.90, 1, state.progress);
+    const cleaned = smoothstep(0.86, 1, state.progress);
     const sorted = state.strands.slice().sort((a, b) => {
       const za = Math.sin(a.phase + a.turns * Math.PI + spin);
       const zb = Math.sin(b.phase + b.turns * Math.PI + spin);
@@ -580,7 +580,7 @@
 
   function drawOrbits(time, orbitSpinValue, geo, frontPass, alphaMultiplier = 1, mode = "all") {
     const reveal = smoothstep(0.03, 0.60, state.progress);
-    const cleaned = smoothstep(0.88, 1, state.progress);
+    const cleaned = smoothstep(0.84, 1, state.progress);
     if (reveal <= 0) return;
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
@@ -690,60 +690,162 @@
     switch (kind) {
       case "bud":
         return [
-          { cx: 0.50, cy: 0.54, rx: 0.13, ry: 0.16, rotation: -0.25, lobes: 4, wobble: 0.10, seed: 1.2 },
-          { cx: 0.50, cy: 0.40, rx: 0.10, ry: 0.13, rotation: 0.22, lobes: 5, wobble: 0.10, seed: 2.8 }
+          { cx: 0.50, cy: 0.56, rx: 0.11, ry: 0.16, rotation: -0.18, lobes: 4, wobble: 0.08, seed: 1.2 },
+          { cx: 0.46, cy: 0.45, rx: 0.08, ry: 0.11, rotation: -0.44, lobes: 5, wobble: 0.08, seed: 1.9 },
+          { cx: 0.54, cy: 0.44, rx: 0.08, ry: 0.11, rotation: 0.44, lobes: 5, wobble: 0.08, seed: 2.6 }
         ];
       case "petals":
         return [
-          { cx: 0.41, cy: 0.50, rx: 0.14, ry: 0.20, rotation: -0.55, lobes: 5, wobble: 0.12, seed: 3.5 },
-          { cx: 0.59, cy: 0.49, rx: 0.14, ry: 0.20, rotation: 0.55, lobes: 5, wobble: 0.12, seed: 4.2 },
-          { cx: 0.50, cy: 0.63, rx: 0.10, ry: 0.16, rotation: 0.00, lobes: 4, wobble: 0.11, seed: 4.9 }
+          { cx: 0.40, cy: 0.50, rx: 0.12, ry: 0.19, rotation: -0.62, lobes: 5, wobble: 0.09, seed: 3.2 },
+          { cx: 0.60, cy: 0.49, rx: 0.12, ry: 0.19, rotation: 0.62, lobes: 5, wobble: 0.09, seed: 3.8 },
+          { cx: 0.50, cy: 0.59, rx: 0.11, ry: 0.16, rotation: 0.00, lobes: 5, wobble: 0.09, seed: 4.4 },
+          { cx: 0.50, cy: 0.37, rx: 0.10, ry: 0.13, rotation: 0.00, lobes: 4, wobble: 0.08, seed: 4.9 }
         ];
       case "bloom":
         return [
-          { cx: 0.50, cy: 0.52, rx: 0.20, ry: 0.25, rotation: 0.00, lobes: 6, wobble: 0.12, seed: 5.7 },
-          { cx: 0.50, cy: 0.34, rx: 0.18, ry: 0.16, rotation: 0.06, lobes: 6, wobble: 0.10, seed: 6.2 }
+          { cx: 0.50, cy: 0.54, rx: 0.17, ry: 0.24, rotation: 0.00, lobes: 6, wobble: 0.10, seed: 5.2 },
+          { cx: 0.38, cy: 0.48, rx: 0.12, ry: 0.18, rotation: -0.54, lobes: 5, wobble: 0.08, seed: 5.8 },
+          { cx: 0.62, cy: 0.48, rx: 0.12, ry: 0.18, rotation: 0.54, lobes: 5, wobble: 0.08, seed: 6.1 },
+          { cx: 0.50, cy: 0.31, rx: 0.16, ry: 0.14, rotation: 0.02, lobes: 5, wobble: 0.07, seed: 6.7 }
+        ];
+      case "mature-lower":
+        return [
+          { cx: 0.50, cy: 0.76, rx: 0.15, ry: 0.14, rotation: 0.00, lobes: 6, wobble: 0.07, seed: 7.1 },
+          { cx: 0.43, cy: 0.66, rx: 0.11, ry: 0.14, rotation: -0.54, lobes: 5, wobble: 0.07, seed: 7.4 },
+          { cx: 0.57, cy: 0.66, rx: 0.11, ry: 0.14, rotation: 0.54, lobes: 5, wobble: 0.07, seed: 7.8 }
+        ];
+      case "mature-upper":
+        return [
+          { cx: 0.50, cy: 0.22, rx: 0.17, ry: 0.14, rotation: 0.00, lobes: 5, wobble: 0.06, seed: 8.3 },
+          { cx: 0.50, cy: 0.34, rx: 0.20, ry: 0.18, rotation: 0.00, lobes: 6, wobble: 0.06, seed: 8.8 }
+        ];
+      case "mature-front":
+        return [
+          { cx: 0.40, cy: 0.50, rx: 0.12, ry: 0.22, rotation: -0.62, lobes: 5, wobble: 0.07, seed: 9.2 },
+          { cx: 0.60, cy: 0.50, rx: 0.12, ry: 0.22, rotation: 0.62, lobes: 5, wobble: 0.07, seed: 9.7 },
+          { cx: 0.50, cy: 0.29, rx: 0.15, ry: 0.15, rotation: 0.00, lobes: 5, wobble: 0.06, seed: 10.1 }
         ];
       case "mature":
       default:
         return [
-          { cx: 0.50, cy: 0.54, rx: 0.26, ry: 0.40, rotation: 0.00, lobes: 7, wobble: 0.10, seed: 7.1 },
-          { cx: 0.50, cy: 0.22, rx: 0.18, ry: 0.16, rotation: 0.00, lobes: 5, wobble: 0.08, seed: 8.4 }
+          { cx: 0.50, cy: 0.54, rx: 0.22, ry: 0.35, rotation: 0.00, lobes: 7, wobble: 0.08, seed: 7.1 },
+          { cx: 0.40, cy: 0.48, rx: 0.12, ry: 0.22, rotation: -0.58, lobes: 5, wobble: 0.07, seed: 7.9 },
+          { cx: 0.60, cy: 0.48, rx: 0.12, ry: 0.22, rotation: 0.58, lobes: 5, wobble: 0.07, seed: 8.2 },
+          { cx: 0.50, cy: 0.24, rx: 0.16, ry: 0.14, rotation: 0.00, lobes: 5, wobble: 0.06, seed: 8.6 }
         ];
     }
   }
 
+  function getOffscreenSurface(key, width, height) {
+    if (!state[key]) {
+      const canvas = document.createElement("canvas");
+      state[key] = { canvas, ctx: canvas.getContext("2d", { alpha: true }) };
+    }
+    const surface = state[key];
+    if (surface.canvas.width !== width || surface.canvas.height !== height) {
+      surface.canvas.width = width;
+      surface.canvas.height = height;
+    }
+    surface.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    surface.ctx.globalAlpha = 1;
+    surface.ctx.globalCompositeOperation = "source-over";
+    surface.ctx.filter = "none";
+    surface.ctx.clearRect(0, 0, width, height);
+    return surface;
+  }
+
+  function organicBlobPathOn(context, rect, blob, reveal, time, inflate = 0) {
+    const cx = rect.x + rect.w * blob.cx;
+    const cy = rect.y + rect.h * blob.cy;
+    const rx = rect.w * blob.rx * (0.48 + reveal * 0.62) + inflate;
+    const ry = rect.h * blob.ry * (0.48 + reveal * 0.62) + inflate;
+    const steps = 40;
+    const wobble = blob.wobble || 0.10;
+    context.beginPath();
+    for (let i = 0; i <= steps; i += 1) {
+      const a = i / steps * TAU;
+      const wave = 1 + Math.sin(a * blob.lobes + blob.seed + time * 0.00025) * wobble + Math.sin(a * (blob.lobes * 0.5 + 1.3) + blob.seed * 0.7) * wobble * 0.45;
+      const x = Math.cos(a) * rx * wave;
+      const y = Math.sin(a) * ry * wave;
+      const xr = x * Math.cos(blob.rotation) - y * Math.sin(blob.rotation);
+      const yr = x * Math.sin(blob.rotation) + y * Math.cos(blob.rotation);
+      if (i === 0) context.moveTo(cx + xr, cy + yr);
+      else context.lineTo(cx + xr, cy + yr);
+    }
+    context.closePath();
+  }
+
+  function drawSoftMaskedImageRect(image, rect, params) {
+    const { alpha, reveal, time, xOffset = 0, yOffset = 0, blobs = [] } = params;
+    if (!image || alpha <= 0.001 || reveal <= 0.001 || !blobs.length) return;
+
+    const pad = 32;
+    const width = Math.max(2, Math.ceil(rect.w + pad * 2));
+    const height = Math.max(2, Math.ceil(rect.h + pad * 2));
+    const imageSurface = getOffscreenSurface("imageSurface", width, height);
+    const maskSurface = getOffscreenSurface("maskSurface", width, height);
+    const ictx = imageSurface.ctx;
+    const mctx = maskSurface.ctx;
+    const localRect = { x: pad, y: pad, w: rect.w, h: rect.h };
+
+    // Imagen fuente intacta en una superficie independiente.
+    ictx.drawImage(image, localRect.x + xOffset, localRect.y + yOffset, localRect.w, localRect.h);
+
+    // La máscara se construye como unión de todas las partes orgánicas.
+    // No se aplica destination-in por cada blob, porque eso intersectaría las formas
+    // y terminaría eliminando casi toda la imagen.
+    for (const blob of blobs) {
+      organicBlobPathOn(mctx, localRect, blob, reveal, time, 12);
+      mctx.save();
+      mctx.filter = "blur(16px)";
+      mctx.fillStyle = "rgba(255,255,255,0.34)";
+      mctx.fill();
+      mctx.restore();
+
+      organicBlobPathOn(mctx, localRect, blob, reveal, time, 5);
+      mctx.save();
+      mctx.filter = "blur(7px)";
+      mctx.fillStyle = "rgba(255,255,255,0.68)";
+      mctx.fill();
+      mctx.restore();
+
+      organicBlobPathOn(mctx, localRect, blob, reveal, time, 0);
+      mctx.fillStyle = "rgba(255,255,255,1)";
+      mctx.fill();
+    }
+
+    // Aplicar la unión de la máscara una sola vez.
+    ictx.globalCompositeOperation = "destination-in";
+    ictx.drawImage(maskSurface.canvas, 0, 0);
+    ictx.globalCompositeOperation = "source-over";
+
+    ctx.save();
+    ctx.globalAlpha = clamp(alpha, 0, 1);
+    ctx.drawImage(imageSurface.canvas, rect.x - pad, rect.y - pad);
+    ctx.restore();
+  }
+
   function drawOrganicMaskedLayer(image, geo, params) {
-    const { alpha, reveal, time, scale = 1, yOffset = 0, xOffset = 0, blobs = [], composite = "source-over" } = params;
+    const { alpha, reveal, time, scale = 1, yOffset = 0, xOffset = 0, blobs = [] } = params;
     if (!image || alpha <= 0.001 || reveal <= 0.001) return;
     const rect = fittedRect(image, geo, scale, yOffset);
-    ctx.save();
-    ctx.globalCompositeOperation = composite;
-    for (const blob of blobs) {
-      ctx.save();
-      organicBlobPath(rect, blob, reveal, time);
-      ctx.clip();
-      const drift = (1 - reveal) * 10 + Math.sin(time * 0.00035 + blob.seed) * 1.8;
-      ctx.globalAlpha = alpha;
-      ctx.drawImage(image, rect.x + xOffset + drift * Math.cos(blob.rotation), rect.y + drift * 0.15, rect.w, rect.h);
-      ctx.restore();
-    }
-    ctx.restore();
+    drawSoftMaskedImageRect(image, rect, { alpha, reveal, time, xOffset, yOffset: 0, blobs });
   }
 
   function drawGrowthLayers(time, geo) {
     for (const layer of state.growthLayers) {
-      const window = growthWindow(layer.start, layer.peak, layer.end, state.progress);
+      const endValue = layer.kind === "mature" ? Math.max(layer.end, 0.985) : layer.end;
+      const window = growthWindow(layer.start, layer.peak, endValue, state.progress);
       if (window <= 0.001 || !layer.image) continue;
       const reveal = smoothstep(layer.start, layer.peak, state.progress);
-      const settle = smoothstep(layer.peak, layer.end, state.progress);
+      const settle = smoothstep(layer.peak, endValue, state.progress);
       drawOrganicMaskedLayer(layer.image, geo, {
-        alpha: layer.opacity * (0.55 + window * 0.85),
+        alpha: layer.opacity * (0.46 + window * 0.82),
         reveal,
         time,
-        scale: (Number(layer.scale) || 1) * lerp(0.97, 1.01, settle),
-        yOffset: (1 - reveal) * geo.h * 0.016 + (Number(layer.yOffset) || 0) * geo.h,
-        xOffset: Math.sin(time * 0.00022 + layer.start * 10) * (Number(layer.drift) || 0),
+        scale: (Number(layer.scale) || 1) * lerp(0.985, 1.008, settle),
+        yOffset: (1 - reveal) * geo.h * 0.012 + (Number(layer.yOffset) || 0) * geo.h,
+        xOffset: Math.sin(time * 0.00022 + layer.start * 10) * (Number(layer.drift) || 0) * (1 - settle * 0.6),
         blobs: layerBlobs(layer.kind)
       });
     }
@@ -774,74 +876,46 @@
     const growth = smoothstep(CONFIG.finalTextureStart, CONFIG.finalTextureFull, state.progress);
     if (growth <= 0.001) return;
     const baseAlpha = CONFIG.finalBaseAlpha * smoothstep(0, 0.35, growth);
-    const frontAlpha = CONFIG.finalFrontAlpha * smoothstep(0.25, 1, growth);
+    const frontAlpha = CONFIG.finalFrontAlpha * smoothstep(0.18, 1, growth);
     const breatheAmount = Number(CONFIG.finalTextureBreathing) || 0;
     const breathe = reducedMotion ? 1 : 1 + Math.sin(time * 0.00058) * breatheAmount;
-    const settleScale = lerp(0.978, 1.0, easeOutCubic(growth)) * breathe * (Number(CONFIG.finalTextureScale) || 1);
+    const settleScale = lerp(0.988, 1.0, easeOutCubic(growth)) * breathe * (Number(CONFIG.finalTextureScale) || 1);
     const finalYOffset = (Number(CONFIG.finalTextureYOffset) || 0) * geo.h;
-    const rect = fittedRect(image, geo, settleScale, (1 - easeOutCubic(growth)) * geo.h * 0.012 + finalYOffset);
+    const rect = fittedRect(image, geo, settleScale, (1 - easeOutCubic(growth)) * geo.h * 0.008 + finalYOffset);
 
     if (!drawFrontVeils) {
-      // Capa base completa, detrás de los vectores frontales.
       ctx.save();
       ctx.globalAlpha = baseAlpha;
       ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
       ctx.restore();
 
-      // Tres capas orgánicas traseras: base inferior, masa media y cápsula superior.
-      const backLayers = [
-        { type: "band", y1: 0.58, y2: 1.02, wave: 0.016, alpha: CONFIG.finalBackLowerAlpha },
-        { type: "blob", alpha: CONFIG.finalBackMiddleAlpha, blobs: layerBlobs("mature") },
-        { type: "band", y1: 0.00, y2: 0.30, wave: 0.010, alpha: CONFIG.finalBackUpperAlpha }
-      ];
-      for (const layer of backLayers) {
-        ctx.save();
-        if (layer.type === "band") {
-          bandPath(rect, layer.y1, layer.y2, layer.wave, time, layer.y1 * 10 + 1.3);
-          ctx.clip();
-          ctx.globalAlpha = layer.alpha * growth;
-          ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
-        } else {
-          ctx.globalAlpha = layer.alpha * growth;
-          for (const blob of layer.blobs) {
-            ctx.save();
-            organicBlobPath(rect, blob, growth, time);
-            ctx.clip();
-            ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
-            ctx.restore();
-          }
-        }
-        ctx.restore();
-      }
+      drawSoftMaskedImageRect(image, rect, {
+        alpha: CONFIG.finalBackLowerAlpha * growth,
+        reveal: growth,
+        time,
+        blobs: layerBlobs("mature-lower")
+      });
+      drawSoftMaskedImageRect(image, rect, {
+        alpha: CONFIG.finalBackMiddleAlpha * growth,
+        reveal: growth,
+        time,
+        blobs: layerBlobs("mature")
+      });
+      drawSoftMaskedImageRect(image, rect, {
+        alpha: CONFIG.finalBackUpperAlpha * growth,
+        reveal: growth,
+        time,
+        blobs: layerBlobs("mature-upper")
+      });
       return;
     }
 
-    // Veils frontales transparentes. No cubren todo: sólo envuelven partes de la figura.
-    const veils = [
-      { type: "blob", alpha: frontAlpha * 0.70, blobs: [{ cx: 0.42, cy: 0.49, rx: 0.13, ry: 0.22, rotation: -0.55, lobes: 5, wobble: 0.08, seed: 20.1 }, { cx: 0.58, cy: 0.49, rx: 0.13, ry: 0.22, rotation: 0.55, lobes: 5, wobble: 0.08, seed: 20.8 }] },
-      { type: "blob", alpha: frontAlpha * 0.50, blobs: [{ cx: 0.50, cy: 0.28, rx: 0.15, ry: 0.15, rotation: 0.02, lobes: 6, wobble: 0.06, seed: 21.6 }] },
-      { type: "band", alpha: frontAlpha * 0.28, y1: 0.74, y2: 1.02, wave: 0.018 }
-    ];
-
-    for (const veil of veils) {
-      ctx.save();
-      if (veil.type === "band") {
-        bandPath(rect, veil.y1, veil.y2, veil.wave, time, veil.y1 * 11 + 0.4);
-        ctx.clip();
-        ctx.globalAlpha = veil.alpha;
-        ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
-      } else {
-        for (const blob of veil.blobs) {
-          ctx.save();
-          organicBlobPath(rect, blob, growth, time);
-          ctx.clip();
-          ctx.globalAlpha = veil.alpha;
-          ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h);
-          ctx.restore();
-        }
-      }
-      ctx.restore();
-    }
+    drawSoftMaskedImageRect(image, rect, {
+      alpha: frontAlpha * 0.86,
+      reveal: growth,
+      time,
+      blobs: layerBlobs("mature-front")
+    });
   }
 
   function drawGlow(geo) {
@@ -887,7 +961,7 @@
       drawFinalComposite(time, geo, true);
     }
 
-    const finalized = smoothstep(0.88, 1, state.progress);
+    const finalized = smoothstep(0.90, 1, state.progress);
     const accentStrands = lerp(CONFIG.accentStrandAlpha, CONFIG.accentStrandAlpha * 0.84, finalized);
     const accentOrbitals = lerp(CONFIG.accentOrbitalAlpha, CONFIG.accentOrbitalAlpha * 0.86, finalized);
     if (CONFIG.showStrands) drawStrands(time, sSpin, geo, true, accentStrands, "accent");

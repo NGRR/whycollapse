@@ -57,8 +57,8 @@ window.ORGANIC_CONFIG = {
     {
       "path": "assets/stage-09-mature.webp",
       "start": 0.64,
-      "peak": 0.8,
-      "end": 0.95,
+      "peak": 0.82,
+      "end": 0.985,
       "opacity": 0.48,
       "scale": 1.095,
       "yOffset": 0,

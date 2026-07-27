@@ -1,28 +1,30 @@
-# Organic Scroll Background — v11 Configurado
+# Organic Scroll Background — v13 Configurado
 
-Paquete regenerado con el JSON más reciente.
+Corrección del sistema de máscaras suaves introducido en v12.
 
-Cambios principales respecto al preset anterior:
+## Problema corregido
 
-- `previewDurationSeconds`: 10
-- `previewLoop`: false
-- `strandBackAlpha`: 0.7
-- `petalBackAlpha`: 1.03
-- `strandFrontBaseAlpha`: 0.69
-- `petalFrontBaseAlpha`: 0.19
+La versión anterior aplicaba `destination-in` repetidamente sobre cada forma de la máscara. En Canvas 2D, cada aplicación vuelve a intersectar el contenido existente. Como las formas orgánicas estaban separadas, la intersección resultante era mínima y las imágenes prácticamente desaparecían.
 
-## Archivos clave
+## Solución
 
-- `index.html` — demo configurada.
-- `editor.html` — editor visual cargado con esta configuración.
-- `config.js` — configuración aplicada en runtime.
-- `organic-animation-config.user.json` — JSON base entregado.
-- `organic-animation-config.default.json` — sincronizado con el mismo estado.
+- Se separó la imagen y la máscara en dos canvases auxiliares.
+- Todas las formas orgánicas se suman primero en una única máscara.
+- La máscara completa se aplica una sola vez sobre la imagen.
+- Los bordes suaves se conservan mediante tres niveles de expansión y blur.
+- La opacidad final se limita correctamente al rango `0–1`.
+
+## Resultado esperado
+
+- Frames intermedios nuevamente visibles.
+- Imagen final visible según el preset configurado.
+- Recortes suaves y orgánicos, sin convertir las capas en paneles rectangulares.
+- Persistencia del suavizado entre 93 y 100.
 
 ## Uso
 
 ```bash
-cd organic-scroll-bg-v11-configured
+cd organic-scroll-bg-v13-configured
 python -m http.server 8080
 ```
 
