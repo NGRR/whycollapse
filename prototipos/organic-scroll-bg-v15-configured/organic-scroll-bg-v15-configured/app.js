@@ -63,7 +63,7 @@
     petalBackAlpha: 0.80,
     podAlpha: 0.76,
     clusterAlpha: 0.70,
-    strandFrontBaseAlpha: 0.42,
+    strandFrontBaseAlpha: 0.32,
     petalFrontBaseAlpha: 0.28,
     orbitFrontBaseAlpha: 0.18
   };
@@ -159,16 +159,16 @@
 
     const strandCount = state.mobile ? CONFIG.strandCountMobile : CONFIG.strandCountDesktop;
     for (let i = 0; i < strandCount; i += 1) {
-      const scaffold = i < (state.mobile ? 12 : 18);
+      const scaffold = i < (state.mobile ? 9 : 14);
       state.strands.push({
         phase: scaffold ? rand(-0.52, 0.52) : rand(0, TAU),
         turns: scaffold ? rand(1.10, 2.55) * (i % 2 ? 1 : -1) : rand(1.55, 4.85) * (random() > 0.48 ? 1 : -1),
-        radius: scaffold ? rand(0.30, 0.76) : rand(0.44, 1.08),
-        sway: scaffold ? rand(0.16, 0.62) : rand(0.30, 1.08),
+        radius: scaffold ? rand(0.33, 0.72) : rand(0.44, 1.08),
+        sway: scaffold ? rand(0.18, 0.58) : rand(0.30, 1.08),
         drift: rand(-1, 1),
-        width: scaffold ? rand(1.35, 2.35) : rand(0.34, 1.02),
-        start: scaffold ? rand(-0.52, -0.28) : rand(0.03, 0.43),
-        finish: scaffold ? rand(0.38, 0.58) : rand(0.46, 0.93),
+        width: scaffold ? rand(0.70, 1.48) : rand(0.34, 1.02),
+        start: scaffold ? rand(-0.40, -0.20) : rand(0.03, 0.43),
+        finish: scaffold ? rand(0.24, 0.42) : rand(0.46, 0.93),
         brightness: rand(0.62, 1),
         scaffold,
         introTone: scaffold ? (i % 3 === 0 ? "white" : "orange") : "orange",
@@ -383,7 +383,6 @@
     const steps = state.mobile ? CONFIG.strandStepsMobile : CONFIG.strandStepsDesktop;
     const matured = smoothstep(0.82, 1, state.progress);
     const cleaned = smoothstep(0.86, 1, state.progress);
-    const introFade = 1 - smoothstep(0.44, 0.58, state.progress);
     const sorted = state.strands.slice().sort((a, b) => {
       const za = Math.sin(a.phase + a.turns * Math.PI + spin);
       const zb = Math.sin(b.phase + b.turns * Math.PI + spin);
@@ -404,7 +403,7 @@
       const reveal = smoothstep(spec.start, spec.finish, state.progress);
       if (reveal <= 0) continue;
 
-      const endT = Math.max(0.05, easeOutCubic(reveal));
+      const endT = Math.max(0.035, easeOutCubic(reveal));
       const effectiveEndT = endT * (spec.hero ? 1 : lerp(1, spec.crownTaper, matured));
       const alphaDepth = isFront ? 1 : 0.42;
       const clarity = mode === "accent"
@@ -412,36 +411,36 @@
         : isFront
           ? (spec.hero ? lerp(1, 0.62, cleaned) : lerp(1, 0.18, cleaned))
           : lerp(1, 0.28, cleaned);
+      const introPresence = spec.scaffold ? (1 - smoothstep(0.44, 0.58, state.progress)) : 0;
 
       ctx.beginPath();
       let begun = false;
-      const count = Math.max(4, Math.floor(steps * effectiveEndT));
+      const count = Math.max(3, Math.floor(steps * effectiveEndT));
       for (let i = 0; i <= count; i += 1) {
         const t = i / steps;
         const point = strandPoint(spec, t, spin, geo);
         if (!begun) { ctx.moveTo(point.x, point.y); begun = true; }
         else ctx.lineTo(point.x, point.y);
       }
-
       const pulse = 0.86 + Math.sin(time * 0.0012 + spec.seed) * 0.14;
+      const baseAlpha = alphaDepth * reveal * (0.18 + spec.brightness * 0.24) * pulse * clarity * alphaMultiplier;
       let strokeR = 255;
       let strokeG = 52 + spec.brightness * 34;
       let strokeB = 43;
-      let finalAlpha = alphaDepth * reveal * (0.18 + spec.brightness * 0.24) * pulse * clarity * alphaMultiplier;
       let lineWidth = spec.width * (isFront ? 1.0 : 0.68) * (0.70 + reveal * 0.54) * lerp(1, 0.88, cleaned);
+      let finalAlpha = baseAlpha;
 
-      if (spec.scaffold && introFade > 0.001) {
-        const tintMix = 0.88 * introFade;
+      if (spec.scaffold && introPresence > 0.001) {
+        const tintMix = 0.72 * introPresence;
         if (spec.introTone === "white") {
           strokeG = lerp(strokeG, 245, tintMix);
           strokeB = lerp(strokeB, 255, tintMix);
         } else {
-          strokeG = lerp(strokeG, 172, tintMix);
-          strokeB = lerp(strokeB, 92, tintMix * 0.85);
+          strokeG = lerp(strokeG, 154, tintMix);
+          strokeB = lerp(strokeB, 78, tintMix * 0.8);
         }
-        const introAlpha = (isFront ? 0.58 : 0.34) * introFade * alphaMultiplier;
-        finalAlpha = Math.max(finalAlpha, introAlpha);
-        lineWidth *= isFront ? (1.55 - 0.35 * (1 - introFade)) : (1.28 - 0.18 * (1 - introFade));
+        finalAlpha = Math.max(finalAlpha, (isFront ? 0.18 : 0.10) * introPresence * alphaMultiplier);
+        lineWidth *= lerp(1.24, 1.0, 1 - introPresence);
       }
 
       ctx.strokeStyle = `rgba(${strokeR}, ${strokeG}, ${strokeB}, ${finalAlpha})`;

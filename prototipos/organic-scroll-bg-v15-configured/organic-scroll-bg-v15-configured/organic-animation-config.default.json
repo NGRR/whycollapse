@@ -89,11 +89,11 @@
   "showFinalTexture": true,
   "rootAlpha": 0,
   "orbitBackAlpha": 0.53,
-  "strandBackAlpha": 0.62,
+  "strandBackAlpha": 0.7,
   "petalBackAlpha": 1.03,
   "podAlpha": 0.37,
   "clusterAlpha": 0.93,
-  "strandFrontBaseAlpha": 0.42,
+  "strandFrontBaseAlpha": 0.69,
   "petalFrontBaseAlpha": 0.19,
   "orbitFrontBaseAlpha": 0.18
 }
