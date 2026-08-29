@@ -1,0 +1,455 @@
+/* ==========================================================
+   PROTEA UI PREVIEW
+   ----------------------------------------------------------
+   Archivo pensado como inventario visual y capa de referencia.
+   No depende de UIkit para poder abrirse offline, pero las piezas
+   están construidas para mapear fácilmente a uk-card, uk-button,
+   uk-form-* y grids de UIkit cuando se lleven a producción.
+   ========================================================== */
+
+/* 01. TOKENS ------------------------------------------------ */
+:root {
+  /* Marca */
+  --protea-blue: #0066ff;
+  --protea-orange: #ff5a00;
+  --protea-navy: #001133;
+  --protea-navy-2: #071226;
+
+  /* Neutros */
+  --protea-white: #ffffff;
+  --protea-cream: #f3efe8;
+  --protea-paper: #f8f7f4;
+  --protea-stone: #d9d5ce;
+  --protea-line: rgba(7, 18, 38, 0.14);
+  --protea-line-strong: rgba(7, 18, 38, 0.24);
+  --protea-muted: rgba(7, 18, 38, 0.62);
+
+  /* Tipografía */
+  --font-head: "Montserrat", Arial, sans-serif;
+  --font-body: "Roboto", Arial, sans-serif;
+  --font-editorial: Georgia, "Times New Roman", serif;
+
+  /* Geometría */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --container: 1320px;
+
+  /* Ritmo */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 36px;
+  --space-6: 56px;
+  --space-7: 80px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --speed: 220ms;
+}
+
+/* 02. RESET / BASE ------------------------------------------ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--protea-white);
+  color: var(--protea-navy-2);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; }
+
+/* 03. ESTRUCTURA DEL PREVIEW ------------------------------- */
+.ui-shell {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+.ui-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--protea-line);
+}
+.ui-topbar__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.ui-brand { text-decoration: none; }
+.ui-brand strong {
+  display: block;
+  color: var(--protea-blue);
+  font: 500 28px/1 var(--font-head);
+  letter-spacing: -.07em;
+}
+.ui-brand small {
+  color: var(--protea-orange);
+  font: 700 9px/1 var(--font-head);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.ui-meta {
+  color: var(--protea-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.ui-index {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font: 600 11px/1 var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.ui-index a { text-decoration: none; color: var(--protea-muted); }
+.ui-index a:hover { color: var(--protea-orange); }
+
+.ui-section {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 72px;
+  padding: 78px 0;
+  border-bottom: 1px solid var(--protea-line);
+}
+.ui-section__intro {
+  position: sticky;
+  top: 104px;
+  align-self: start;
+}
+.ui-section__number {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--protea-orange);
+  font: 700 11px/1 var(--font-head);
+  letter-spacing: .14em;
+}
+.ui-section__intro h2 {
+  margin: 0 0 14px;
+  font: 500 28px/1.05 var(--font-head);
+  letter-spacing: -.035em;
+}
+.ui-section__intro p {
+  margin: 0;
+  color: var(--protea-muted);
+  font-size: 14px;
+}
+.ui-specimen + .ui-specimen { margin-top: 46px; }
+.ui-specimen__title {
+  margin: 0 0 14px;
+  color: var(--protea-muted);
+  font: 700 11px/1 var(--font-head);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.ui-demo {
+  border: 1px solid var(--protea-line);
+  background: var(--protea-white);
+  padding: 28px;
+}
+.ui-demo--dark { background: var(--protea-navy); color: white; border-color: transparent; }
+.ui-grid { display: grid; gap: 18px; }
+.ui-grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.ui-grid--3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.ui-grid--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.ui-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* 04. TIPOGRAFÍA ------------------------------------------ */
+.type-display {
+  margin: 0;
+  font: 500 clamp(54px, 7vw, 104px)/.9 var(--font-head);
+  letter-spacing: -.065em;
+}
+.type-display em { font-family: var(--font-editorial); font-weight: 400; color: var(--protea-orange); }
+.type-h1 { font: 500 58px/1 var(--font-head); letter-spacing: -.045em; margin: 0; }
+.type-h2 { font: 500 40px/1.04 var(--font-head); letter-spacing: -.04em; margin: 0; }
+.type-h3 { font: 600 22px/1.1 var(--font-head); letter-spacing: -.025em; margin: 0; }
+.type-body-lg { font-size: 20px; line-height: 1.5; max-width: 680px; }
+.type-body { max-width: 680px; }
+.type-caption { color: var(--protea-muted); font-size: 13px; }
+.protea-eyebrow {
+  display: inline-block;
+  color: var(--protea-orange);
+  font: 700 11px/1 var(--font-head);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.protea-quote {
+  padding-left: 24px;
+  border-left: 2px solid var(--protea-orange);
+  font: 400 28px/1.25 var(--font-editorial);
+  color: var(--protea-navy-2);
+}
+
+/* 05. COLOR ------------------------------------------------ */
+.color-swatch { border: 1px solid var(--protea-line); min-height: 140px; display: flex; flex-direction: column; justify-content: flex-end; }
+.color-swatch__sample { min-height: 90px; }
+.color-swatch__meta { padding: 12px; font-size: 12px; background: white; }
+.color-swatch__meta strong { display: block; font-family: var(--font-head); }
+.c-blue { background: var(--protea-blue); }
+.c-orange { background: var(--protea-orange); }
+.c-navy { background: var(--protea-navy); }
+.c-ink { background: var(--protea-navy-2); }
+.c-cream { background: var(--protea-cream); }
+.c-paper { background: var(--protea-paper); }
+
+/* 06. BOTONES Y ENLACES ----------------------------------- */
+.protea-btn {
+  appearance: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--protea-navy-2);
+  cursor: pointer;
+  text-decoration: none;
+  font: 700 11px/1 var(--font-head);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  transition: transform var(--speed) var(--ease), background var(--speed) var(--ease), border-color var(--speed) var(--ease);
+}
+.protea-btn:hover { transform: translateY(-2px); }
+.protea-btn--primary { background: var(--protea-blue); color: white; }
+.protea-btn--accent { background: var(--protea-orange); color: white; }
+.protea-btn--outline { border-color: var(--protea-blue); color: var(--protea-blue); }
+.protea-btn--dark { background: var(--protea-navy); color: white; }
+.protea-btn[disabled] { opacity: .38; cursor: not-allowed; transform: none; }
+.protea-link {
+  color: var(--protea-blue);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,102,255,.35);
+}
+.protea-link:hover { border-color: var(--protea-orange); color: var(--protea-orange); }
+
+/* 07. BADGES / TAGS / ESTADOS ----------------------------- */
+.protea-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--protea-line);
+  border-radius: var(--radius-pill);
+  color: var(--protea-muted);
+  background: white;
+  font: 700 10px/1 var(--font-head);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.protea-badge--blue { color: var(--protea-blue); border-color: rgba(0,102,255,.28); background: rgba(0,102,255,.05); }
+.protea-badge--orange { color: var(--protea-orange); border-color: rgba(255,90,0,.3); background: rgba(255,90,0,.06); }
+.protea-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--protea-blue);
+  color: white;
+  font-size: 13px;
+}
+.protea-tag button { border: 0; background: transparent; color: inherit; cursor: pointer; opacity: .8; }
+
+/* 08. FORMULARIOS ------------------------------------------ */
+.protea-field { display: grid; gap: 8px; }
+.protea-label { font: 700 11px/1 var(--font-head); letter-spacing: .08em; text-transform: uppercase; }
+.protea-input,
+.protea-select,
+.protea-textarea {
+  width: 100%;
+  border: 1px solid var(--protea-line-strong);
+  background: white;
+  color: var(--protea-navy-2);
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+.protea-input:focus,
+.protea-select:focus,
+.protea-textarea:focus {
+  border-color: var(--protea-blue);
+  box-shadow: 0 0 0 3px rgba(0,102,255,.08);
+}
+.protea-textarea { min-height: 116px; resize: vertical; }
+.protea-check { display: inline-flex; gap: 10px; align-items: center; cursor: pointer; }
+.protea-check input { accent-color: var(--protea-blue); width: 17px; height: 17px; }
+.protea-segmented {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--protea-line);
+  background: var(--protea-paper);
+  border-radius: var(--radius-pill);
+}
+.protea-segmented button {
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  padding: 9px 14px;
+  cursor: pointer;
+  color: var(--protea-muted);
+  font-size: 13px;
+}
+.protea-segmented button.is-active { background: var(--protea-navy); color: white; }
+
+/* 09. NAVEGACIÓN ------------------------------------------ */
+.protea-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 76px;
+}
+.protea-logo strong { display: block; color: var(--protea-blue); font: 500 30px/1 var(--font-head); letter-spacing: -.07em; }
+.protea-logo small { display: block; color: var(--protea-orange); font: 700 8px/1 var(--font-head); letter-spacing: .12em; text-transform: uppercase; margin-top: 5px; }
+.protea-nav__links { display: flex; gap: 22px; align-items: center; }
+.protea-nav__links a { text-decoration: none; font: 700 10px/1 var(--font-head); letter-spacing: .09em; text-transform: uppercase; }
+.protea-nav__links a:hover, .protea-nav__links a.is-active { color: var(--protea-orange); }
+
+.protea-rail { display: grid; width: 150px; border: 1px solid var(--protea-line); background: white; }
+.protea-rail a { position: relative; display: block; padding: 18px 16px 18px 32px; text-decoration: none; border-bottom: 1px solid var(--protea-line); }
+.protea-rail a:last-child { border-bottom: 0; }
+.protea-rail a::before { content: ""; position: absolute; left: 14px; top: 18px; bottom: 18px; width: 2px; background: rgba(255,90,0,.26); transition: background var(--speed), transform var(--speed); }
+.protea-rail a:hover::before { background: var(--protea-orange); transform: scaleY(1.2); }
+.protea-rail a.is-active::before { background: var(--protea-blue); }
+.protea-rail strong { display: block; color: var(--protea-blue); font: 600 22px/1 var(--font-head); }
+.protea-rail small { display: block; margin-top: 6px; font: 700 9px/1.2 var(--font-head); text-transform: uppercase; letter-spacing: .06em; }
+
+/* 10. CARDS ------------------------------------------------ */
+.protea-card {
+  border: 1px solid var(--protea-line);
+  background: white;
+  padding: 24px;
+}
+.protea-card h3 { margin: 0 0 8px; font: 600 20px/1.1 var(--font-head); }
+.protea-card p { margin: 0; color: var(--protea-muted); }
+.protea-card--media { padding: 0; overflow: hidden; }
+.protea-card--media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.protea-card--media .protea-card__body { padding: 22px; }
+
+/* Capacidad: equivalente a las cards de aminoácidos del Home */
+.capability-card {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  border: 1px solid var(--protea-line);
+  background: white;
+  min-height: 156px;
+  overflow: hidden;
+}
+.capability-card__body { padding: 22px; }
+.capability-card__number { color: var(--protea-orange); font: 700 11px/1 var(--font-head); }
+.capability-card h3 { margin: 7px 0; font: 600 19px/1.05 var(--font-head); }
+.capability-card p { margin: 0; color: var(--protea-muted); font-size: 13px; }
+.capability-card__image { background: var(--protea-paper); display: grid; place-items: center; }
+.capability-card__image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Cuatro momentos */
+.journey-card { text-align: center; padding: 14px; }
+.journey-card__image { width: 92px; height: 92px; margin: 0 auto 16px; border-radius: 50%; object-fit: cover; }
+.journey-card strong { display: block; font: 700 11px/1 var(--font-head); color: var(--protea-orange); text-transform: uppercase; letter-spacing: .08em; }
+.journey-card h3 { margin: 8px 0 6px; font: 600 18px/1 var(--font-head); }
+.journey-card p { margin: 0; color: var(--protea-muted); font-size: 13px; }
+
+/* Article / Insight */
+.insight-card { display: grid; grid-template-columns: 160px 1fr; gap: 22px; border-top: 1px solid var(--protea-line); padding: 22px 0; }
+.insight-card img { width: 160px; aspect-ratio: 1; object-fit: cover; }
+.insight-card h3 { margin: 4px 0 8px; font: 600 22px/1.08 var(--font-head); }
+.insight-card p { margin: 0; color: var(--protea-muted); }
+
+/* 11. RECONOCIMIENTO ADAPTATIVO --------------------------- */
+.recognition-box { border: 1px solid var(--protea-line); padding: 28px; background: white; }
+.signal-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.signal-button {
+  min-height: 112px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid var(--protea-line);
+  background: white;
+  cursor: pointer;
+  color: var(--protea-navy-2);
+  transition: background var(--speed), color var(--speed), border-color var(--speed), transform var(--speed);
+}
+.signal-button:hover { border-color: var(--protea-blue); transform: translateY(-2px); }
+.signal-button.is-selected { background: var(--protea-blue); color: white; border-color: var(--protea-blue); }
+.signal-button strong { display: block; margin-bottom: 8px; font: 600 14px/1.25 var(--font-head); }
+.signal-button small { opacity: .72; }
+.selection-summary { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--protea-line); }
+.selection-summary__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.orientation-card { border: 1px solid rgba(0,102,255,.38); border-left: 5px solid var(--protea-orange); padding: 28px; background: linear-gradient(135deg, rgba(0,102,255,.035), white 55%); }
+.orientation-card__route { color: var(--protea-blue); font: 600 38px/1 var(--font-head); letter-spacing: -.04em; }
+.orientation-card__meta { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 20px; color: var(--protea-muted); font-size: 13px; }
+
+/* 12. ALERTAS / FEEDBACK ---------------------------------- */
+.protea-alert { padding: 16px 18px; border-left: 4px solid var(--protea-blue); background: rgba(0,102,255,.05); }
+.protea-alert--warning { border-color: var(--protea-orange); background: rgba(255,90,0,.06); }
+.protea-progress { height: 4px; background: var(--protea-stone); overflow: hidden; }
+.protea-progress > span { display: block; height: 100%; width: 62%; background: linear-gradient(90deg, var(--protea-orange), var(--protea-blue)); }
+
+/* 13. ACORDEÓN / PESTAÑAS --------------------------------- */
+.protea-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--protea-line); }
+.protea-tabs button { border: 0; background: transparent; padding: 14px 18px; cursor: pointer; font: 700 10px/1 var(--font-head); text-transform: uppercase; letter-spacing: .07em; color: var(--protea-muted); border-bottom: 2px solid transparent; }
+.protea-tabs button.is-active { color: var(--protea-blue); border-color: var(--protea-blue); }
+.protea-accordion details { border-top: 1px solid var(--protea-line); padding: 16px 0; }
+.protea-accordion details:last-child { border-bottom: 1px solid var(--protea-line); }
+.protea-accordion summary { cursor: pointer; font: 600 16px var(--font-head); }
+.protea-accordion p { color: var(--protea-muted); max-width: 720px; }
+
+/* 14. CTA FINAL ------------------------------------------- */
+.protea-cta {
+  position: relative;
+  overflow: hidden;
+  padding: 56px;
+  background: linear-gradient(135deg, var(--protea-navy), #020826);
+  color: white;
+}
+.protea-cta::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  top: -120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,102,255,.52), transparent 67%);
+}
+.protea-cta h2 { position: relative; z-index: 1; margin: 8px 0 14px; max-width: 760px; font: 500 52px/.98 var(--font-head); letter-spacing: -.045em; }
+.protea-cta p { position: relative; z-index: 1; max-width: 650px; color: rgba(255,255,255,.72); }
+.protea-cta .protea-btn { position: relative; z-index: 1; }
+
+/* 15. RESPONSIVE ------------------------------------------ */
+@media (max-width: 900px) {
+  .ui-topbar__inner { align-items: flex-start; padding: 16px 0; flex-direction: column; }
+  .ui-section { grid-template-columns: 1fr; gap: 28px; padding: 56px 0; }
+  .ui-section__intro { position: static; }
+  .ui-grid--4, .ui-grid--3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .signal-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .protea-nav__links { display: none; }
+}
+@media (max-width: 620px) {
+  .ui-shell { width: min(100% - 24px, var(--container)); }
+  .ui-demo { padding: 18px; }
+  .ui-grid--2, .ui-grid--3, .ui-grid--4, .signal-grid { grid-template-columns: 1fr; }
+  .type-h1 { font-size: 42px; }
+  .capability-card { grid-template-columns: 1fr; }
+  .capability-card__image { min-height: 150px; order: -1; }
+  .selection-summary { align-items: stretch; flex-direction: column; }
+  .insight-card { grid-template-columns: 92px 1fr; }
+  .insight-card img { width: 92px; }
+  .protea-cta { padding: 34px 24px; }
+  .protea-cta h2 { font-size: 39px; }
+}

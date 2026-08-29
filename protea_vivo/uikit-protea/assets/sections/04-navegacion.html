@@ -1,0 +1,75 @@
+<section class="kit-section dark" id="navegacion">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>03</span>
+            <h2>Navegacion</h2>
+            <p>Navbar, nav, subnav, breadcrumb, pagination, tab, switcher, dropdown y offcanvas.</p>
+          </div>
+
+          <div class="spec-card dark-card">
+            <nav class="uk-navbar-container uk-navbar-transparent sample-navbar" uk-navbar>
+              <div class="uk-navbar-left">
+                <a class="brand" href="#"><span class="brand-mark">protea</span><span class="brand-claim">Inteligencia adaptativa</span></a>
+              </div>
+              <div class="uk-navbar-center uk-visible@m">
+                <ul class="uk-navbar-nav">
+                  <li class="uk-active"><a href="#">Inicio</a></li>
+                  <li>
+                    <a href="#">Soluciones</a>
+                    <div class="uk-navbar-dropdown protea-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">DIAGNOS</a></li>
+                        <li><a href="#">Training</a></li>
+                        <li><a href="#">Lab adaptativo</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a href="#">Insights</a></li>
+                  <li><a href="#">Contacto</a></li>
+                </ul>
+              </div>
+              <div class="uk-navbar-right">
+                <button class="uk-button protea-button-dark" type="button" uk-toggle="target: #sample-offcanvas">Menu</button>
+              </div>
+            </nav>
+          </div>
+
+          <div class="uk-margin-large-top uk-grid-large" uk-grid>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card dark-card">
+                <ul class="uk-breadcrumb protea-breadcrumb">
+                  <li><a href="#">Why Collapse</a></li>
+                  <li><a href="#">Protea</a></li>
+                  <li><span>UIkit vivo</span></li>
+                </ul>
+                <ul class="uk-subnav uk-subnav-pill protea-subnav" uk-switcher="connect: #switcher-sample">
+                  <li><a href="#">Empresa</a></li>
+                  <li><a href="#">Sector publico</a></li>
+                  <li><a href="#">Comunidad</a></li>
+                </ul>
+                <ul id="switcher-sample" class="uk-switcher uk-margin">
+                  <li>Ruta para reconocer friccion, prioridades y senales tempranas.</li>
+                  <li>Ruta para coordinar capacidad institucional y aprendizaje.</li>
+                  <li>Ruta para sostener memoria, participacion y sentido compartido.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card dark-card">
+                <ul class="uk-tab protea-tab" uk-tab>
+                  <li class="uk-active"><a href="#">Vision</a></li>
+                  <li><a href="#">Casos</a></li>
+                  <li><a href="#">Resultados</a></li>
+                </ul>
+                <ul class="uk-pagination protea-pagination uk-flex-center">
+                  <li><a href="#"><span uk-pagination-previous></span></a></li>
+                  <li><a href="#">1</a></li>
+                  <li class="uk-active"><span>2</span></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#"><span uk-pagination-next></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

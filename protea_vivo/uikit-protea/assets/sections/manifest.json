@@ -1,0 +1,72 @@
+{
+  "source": "protea_vivo/uikit-protea/index.html",
+  "extractedAt": "2026-08-28",
+  "sections": [
+    {
+      "index": 0,
+      "id": null,
+      "className": "kit-hero uk-section uk-section-large",
+      "file": "assets/sections/00-kit-hero.html"
+    },
+    {
+      "index": 1,
+      "id": "base",
+      "className": "kit-section",
+      "file": "assets/sections/01-base.html"
+    },
+    {
+      "index": 2,
+      "id": null,
+      "className": "contrast-showcase",
+      "file": "assets/sections/02-contrast-showcase.html"
+    },
+    {
+      "index": 3,
+      "id": "layout",
+      "className": "kit-section light",
+      "file": "assets/sections/03-layout.html"
+    },
+    {
+      "index": 4,
+      "id": "navegacion",
+      "className": "kit-section dark",
+      "file": "assets/sections/04-navegacion.html"
+    },
+    {
+      "index": 5,
+      "id": "acciones",
+      "className": "kit-section",
+      "file": "assets/sections/05-acciones.html"
+    },
+    {
+      "index": 6,
+      "id": "formularios",
+      "className": "kit-section light",
+      "file": "assets/sections/06-formularios.html"
+    },
+    {
+      "index": 7,
+      "id": "data",
+      "className": "kit-section",
+      "file": "assets/sections/07-data.html"
+    },
+    {
+      "index": 8,
+      "id": "media",
+      "className": "kit-section dark",
+      "file": "assets/sections/08-media.html"
+    },
+    {
+      "index": 9,
+      "id": "overlays",
+      "className": "kit-section",
+      "file": "assets/sections/09-overlays.html"
+    },
+    {
+      "index": 10,
+      "id": "feedback",
+      "className": "kit-section light",
+      "file": "assets/sections/10-feedback.html"
+    }
+  ]
+}

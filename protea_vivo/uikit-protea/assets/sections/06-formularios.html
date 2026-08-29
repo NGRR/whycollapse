@@ -1,0 +1,61 @@
+<section class="kit-section light" id="formularios">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>05</span>
+            <h2>Formularios</h2>
+            <p>Input, select, textarea, checkbox, radio, range, legend, fieldset y validacion visual.</p>
+          </div>
+
+          <form class="spec-card protea-form">
+            <fieldset class="uk-fieldset">
+              <legend class="uk-legend">Preparar conversacion adaptativa</legend>
+              <div class="uk-grid-small" uk-grid>
+                <div class="uk-width-1-2@m">
+                  <label class="uk-form-label">Nombre</label>
+                  <input class="uk-input" type="text" placeholder="Nombre y apellido">
+                </div>
+                <div class="uk-width-1-2@m">
+                  <label class="uk-form-label">Organizacion</label>
+                  <input class="uk-input" type="text" placeholder="Nombre de la organizacion">
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Contexto</label>
+                  <select class="uk-select">
+                    <option>Empresa</option>
+                    <option>Administracion publica</option>
+                    <option>Comunidad</option>
+                  </select>
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Intensidad</label>
+                  <input class="uk-range" type="range" value="62" min="0" max="100">
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Fecha</label>
+                  <input class="uk-input" type="date">
+                </div>
+                <div class="uk-width-1-1">
+                  <label class="uk-form-label">Senales observadas</label>
+                  <textarea class="uk-textarea" rows="4" placeholder="Describe brevemente que esta cambiando..."></textarea>
+                </div>
+              </div>
+              <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid>
+                <label><input class="uk-checkbox" type="checkbox" checked> Enviar copia</label>
+                <label><input class="uk-checkbox" type="checkbox"> Incluir referencia</label>
+                <label><input class="uk-radio" type="radio" name="priority" checked> Conversacion inicial</label>
+                <label><input class="uk-radio" type="radio" name="priority"> Debrief profundo</label>
+              </div>
+              <div class="uk-margin" uk-form-custom="target: true">
+                <div class="uk-placeholder protea-upload" uk-upload>
+                  <span uk-icon="cloud-upload"></span>
+                  <span>Adjuntar evidencia visual o briefing</span>
+                  <input type="file" aria-label="Adjuntar evidencia">
+                </div>
+              </div>
+              <div class="uk-margin">
+                <button class="uk-button protea-button-primary" type="button">Guardar orientacion</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>

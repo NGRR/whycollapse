@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protea — UI Preview</title>
+  <meta name="description" content="Inventario visual de componentes Protea para implementación web y Squarespace.">
+
+  <!-- Fuentes de la web actual. Si el preview debe funcionar 100% offline,
+       pueden reemplazarse por las fuentes del sistema sin alterar el layout. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Única hoja de estilos del UI Preview. -->
+  <link rel="stylesheet" href="ui-preview.css">
+</head>
+<body>
+
+  <!-- =======================================================
+       CABECERA DEL PREVIEW
+       No es un componente de producción: sólo permite navegar
+       este inventario de elementos visuales.
+       ======================================================= -->
+  <header class="ui-topbar">
+    <div class="ui-shell ui-topbar__inner">
+      <a class="ui-brand" href="#top">
+        <strong>protea</strong>
+        <small>Inteligencia adaptativa</small>
+      </a>
+      <nav class="ui-index" aria-label="Índice del UI Preview">
+        <a href="#fundamentos">Fundamentos</a>
+        <a href="#acciones">Acciones</a>
+        <a href="#formularios">Formularios</a>
+        <a href="#navegacion">Navegación</a>
+        <a href="#cards">Cards</a>
+        <a href="#adaptativo">Adaptativo</a>
+        <a href="#feedback">Feedback</a>
+      </nav>
+      <span class="ui-meta">UI Preview / V1</span>
+    </div>
+  </header>
+
+  <main id="top" class="ui-shell">
+
+    <!-- =====================================================
+         01. FUNDAMENTOS
+         Tipografía, color y tono gráfico de la web.
+         ===================================================== -->
+    <section class="ui-section" id="fundamentos">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">01</span>
+        <h2>Fundamentos.</h2>
+        <p>Tokens visuales que deben mantenerse consistentes entre Home, páginas interiores y futura aplicación en Squarespace.</p>
+      </div>
+
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Paleta principal</h3>
+          <div class="ui-grid ui-grid--3">
+            <div class="color-swatch"><div class="color-swatch__sample c-blue"></div><div class="color-swatch__meta"><strong>Protea Blue</strong>#0066FF</div></div>
+            <div class="color-swatch"><div class="color-swatch__sample c-orange"></div><div class="color-swatch__meta"><strong>Protea Orange</strong>#FF5A00</div></div>
+            <div class="color-swatch"><div class="color-swatch__sample c-navy"></div><div class="color-swatch__meta"><strong>Protea Navy</strong>#001133</div></div>
+            <div class="color-swatch"><div class="color-swatch__sample c-ink"></div><div class="color-swatch__meta"><strong>Ink</strong>#071226</div></div>
+            <div class="color-swatch"><div class="color-swatch__sample c-cream"></div><div class="color-swatch__meta"><strong>Cream</strong>#F3EFE8</div></div>
+            <div class="color-swatch"><div class="color-swatch__sample c-paper"></div><div class="color-swatch__meta"><strong>Paper</strong>#F8F7F4</div></div>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Tipografía editorial</h3>
+          <div class="ui-demo">
+            <span class="protea-eyebrow">01 · Reconocer</span>
+            <h1 class="type-display">El problema no suele ser <em>el que parece.</em></h1>
+            <div style="height:32px"></div>
+            <h2 class="type-h1">La adaptabilidad es el gen de la longevidad.</h2>
+            <div style="height:24px"></div>
+            <h3 class="type-h2">Inteligencia Adaptativa.</h3>
+            <div style="height:18px"></div>
+            <h4 class="type-h3">Anticipación</h4>
+            <p class="type-body-lg">Las organizaciones rara vez colapsan por falta de esfuerzo, talento o recursos. Colapsan porque dejan de adaptarse a tiempo.</p>
+            <p class="type-body">El cuerpo de texto privilegia frases cortas, lenguaje del cliente y suficiente aire para no competir con las imágenes.</p>
+            <p class="type-caption">Caption / metadato / descripción secundaria.</p>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Cita editorial</h3>
+          <div class="ui-demo">
+            <blockquote class="protea-quote">“Dejar de reducir la complejidad para empezar a habitarla.”</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         02. ACCIONES
+         Botones, enlaces, badges y etiquetas.
+         ===================================================== -->
+    <section class="ui-section" id="acciones">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">02</span>
+        <h2>Acciones.</h2>
+        <p>La llamada primaria conserva el azul; el naranja se reserva para inflexiones, confirmación y momentos de decisión.</p>
+      </div>
+
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Botones</h3>
+          <div class="ui-demo ui-row">
+            <a class="protea-btn protea-btn--primary" href="#">Conversemos</a>
+            <a class="protea-btn protea-btn--accent" href="#">Tomar orientación</a>
+            <a class="protea-btn protea-btn--outline" href="#">Conocer más</a>
+            <a class="protea-btn protea-btn--dark" href="#">Preparar conversación</a>
+            <button class="protea-btn protea-btn--primary" disabled>Desactivado</button>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Enlaces / estados</h3>
+          <div class="ui-demo ui-row">
+            <a class="protea-link" href="#">Leer más sobre el enfoque</a>
+            <span class="protea-badge">Contexto</span>
+            <span class="protea-badge protea-badge--blue">Empresa</span>
+            <span class="protea-badge protea-badge--orange">Ruta sugerida</span>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Etiquetas removibles</h3>
+          <div class="ui-demo ui-row">
+            <span class="protea-tag">Decisiones tardías <button aria-label="Quitar">×</button></span>
+            <span class="protea-tag">Urgencia permanente <button aria-label="Quitar">×</button></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         03. FORMULARIOS
+         Controles de contacto, debrief y segmentación.
+         ===================================================== -->
+    <section class="ui-section" id="formularios">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">03</span>
+        <h2>Formularios.</h2>
+        <p>Controles sobrios, con foco azul y sin ornamentos que compitan con el contenido editorial.</p>
+      </div>
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Inputs</h3>
+          <div class="ui-demo ui-grid ui-grid--2">
+            <label class="protea-field"><span class="protea-label">Nombre</span><input class="protea-input" placeholder="Nombre y apellido"></label>
+            <label class="protea-field"><span class="protea-label">Organización</span><input class="protea-input" placeholder="Nombre de la organización"></label>
+            <label class="protea-field"><span class="protea-label">Motivo</span><select class="protea-select"><option>Entender qué ocurre</option><option>Solicitar evaluación IAO</option><option>Trabajar un desafío</option></select></label>
+            <label class="protea-field"><span class="protea-label">Correo</span><input class="protea-input" type="email" placeholder="nombre@organizacion.cl"></label>
+            <label class="protea-field" style="grid-column:1/-1"><span class="protea-label">Contexto adicional</span><textarea class="protea-textarea" placeholder="Describe brevemente qué está cambiando..."></textarea></label>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Segmentación / selección</h3>
+          <div class="ui-demo ui-row" style="justify-content:space-between">
+            <div class="protea-segmented" role="group" aria-label="Tipo de organización">
+              <button class="is-active">Empresa</button>
+              <button>Administración pública</button>
+            </div>
+            <label class="protea-check"><input type="checkbox" checked> Quiero recibir una copia de mi orientación</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         04. NAVEGACIÓN
+         Menú principal, rail lateral y tabs.
+         ===================================================== -->
+    <section class="ui-section" id="navegacion">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">04</span>
+        <h2>Navegación.</h2>
+        <p>Elementos que estructuran el viaje. El rail utiliza naranja para hover y azul para el capítulo activo.</p>
+      </div>
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Navbar desktop</h3>
+          <div class="ui-demo">
+            <div class="protea-nav">
+              <div class="protea-logo"><strong>protea</strong><small>Inteligencia adaptativa</small></div>
+              <nav class="protea-nav__links">
+                <a class="is-active" href="#">Inicio</a><a href="#">Inteligencia Adaptativa</a><a href="#">Soluciones</a><a href="#">Cómo ayudamos</a><a href="#">Marcelo</a>
+              </nav>
+              <a class="protea-btn protea-btn--outline" href="#">Conversemos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Rail del Home</h3>
+          <div class="ui-demo">
+            <nav class="protea-rail" aria-label="Capítulos">
+              <a href="#"><strong>01</strong><small>Reconocer</small></a>
+              <a class="is-active" href="#"><strong>02</strong><small>Comprender</small></a>
+              <a href="#"><strong>03</strong><small>Desarrollar</small></a>
+              <a href="#"><strong>04</strong><small>Articular</small></a>
+              <a href="#"><strong>05</strong><small>Conectar</small></a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Tabs</h3>
+          <div class="ui-demo">
+            <div class="protea-tabs"><button class="is-active">Visión general</button><button>Casos</button><button>Resultados</button><button>Preguntas</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         05. CARDS
+         Inventario de cards realmente utilizadas o necesarias.
+         ===================================================== -->
+    <section class="ui-section" id="cards">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">05</span>
+        <h2>Cards.</h2>
+        <p>El sistema evita sombras. Las diferencias se construyen con borde, proporción de imagen y jerarquía tipográfica.</p>
+      </div>
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Card básica / card con media</h3>
+          <div class="ui-grid ui-grid--3">
+            <article class="protea-card"><span class="protea-eyebrow">Diagnos</span><h3>Comprender qué ocurre.</h3><p>Identifica patrones, brechas y prioridades antes de decidir una ruta.</p></article>
+            <article class="protea-card protea-card--media"><img src="assets/img/reconocimiento.jpg" alt=""><div class="protea-card__body"><span class="protea-eyebrow">Señal</span><h3>El problema visible no siempre es el real.</h3><p>Imagen como evidencia, no como fondo decorativo.</p></div></article>
+            <article class="protea-card protea-card--media"><img src="assets/img/life-system.jpg" alt=""><div class="protea-card__body"><span class="protea-eyebrow">Sistema vivo</span><h3>Organizarse importa más que la organización.</h3><p>Uso editorial para páginas interiores.</p></div></article>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Capacidades adaptativas</h3>
+          <div class="ui-grid ui-grid--2">
+            <article class="capability-card"><div class="capability-card__body"><span class="capability-card__number">01</span><h3>Anticipación</h3><p>Leer antes que otros hacia dónde se mueve el presente.</p></div><div class="capability-card__image"><img src="assets/img/anticipacion.jpg" alt=""></div></article>
+            <article class="capability-card"><div class="capability-card__body"><span class="capability-card__number">02</span><h3>Agilidad</h3><p>Responder sin confundir velocidad con precipitación.</p></div><div class="capability-card__image"><img src="assets/img/agilidad.jpg" alt=""></div></article>
+            <article class="capability-card"><div class="capability-card__body"><span class="capability-card__number">03</span><h3>Adecuación</h3><p>Ajustar estructura, criterio y respuesta al contexto real.</p></div><div class="capability-card__image"><img src="assets/img/adecuacion.jpg" alt=""></div></article>
+            <article class="capability-card"><div class="capability-card__body"><span class="capability-card__number">04</span><h3>Aprendizaje</h3><p>Convertir experiencia en memoria y capacidad compartida.</p></div><div class="capability-card__image"><img src="assets/img/aprendizaje.jpg" alt=""></div></article>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Cuatro momentos</h3>
+          <div class="ui-grid ui-grid--4">
+            <article class="journey-card"><img class="journey-card__image" src="assets/img/conciencia.jpg" alt=""><strong>01</strong><h3>Consciencia</h3><p>Comprendemos.</p></article>
+            <article class="journey-card"><img class="journey-card__image" src="assets/img/entrenamiento.jpg" alt=""><strong>02</strong><h3>Entrenamiento</h3><p>Entrenamos.</p></article>
+            <article class="journey-card"><img class="journey-card__image" src="assets/img/arraigo.jpg" alt=""><strong>03</strong><h3>Arraigo</h3><p>Activamos.</p></article>
+            <article class="journey-card"><img class="journey-card__image" src="assets/img/huella.jpg" alt=""><strong>04</strong><h3>Huella</h3><p>Sostenemos.</p></article>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Insight / artículo</h3>
+          <div class="ui-demo">
+            <article class="insight-card"><img src="assets/img/colibri-diagrama.jpg" alt=""><div><span class="protea-eyebrow">El Efecto Colibrí · Nº7</span><h3>El colapso no es un evento. Es un proceso.</h3><p>Formato para Insights, biblioteca, artículos relacionados y contenidos editoriales de Hub.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         06. RECONOCIMIENTO ADAPTATIVO
+         UI específica del Home actual.
+         ===================================================== -->
+    <section class="ui-section" id="adaptativo">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">06</span>
+        <h2>Reconocimiento adaptativo.</h2>
+        <p>Conjunto de componentes para selección de señales, confirmación y orientación. No funciona como test ni entrega puntuación.</p>
+      </div>
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Caja de reconocimiento</h3>
+          <div class="recognition-box">
+            <div class="ui-row" style="justify-content:space-between;margin-bottom:20px">
+              <div><span class="protea-eyebrow">Reconocimiento adaptativo</span><h3 class="type-h3" style="margin-top:8px">¿Qué está ocurriendo en tu organización?</h3></div>
+              <div class="protea-segmented"><button class="is-active">Empresa</button><button>Administración pública</button></div>
+            </div>
+            <div class="signal-grid">
+              <button class="signal-button is-selected"><strong>Las decisiones llegan tarde.</strong><small>Seleccionada</small></button>
+              <button class="signal-button"><strong>Sabemos que algo cambia, pero no logramos nombrarlo.</strong><small>Seleccionar señal</small></button>
+              <button class="signal-button"><strong>Hay iniciativas, pero no modifican la operación.</strong><small>Seleccionar señal</small></button>
+              <button class="signal-button is-selected"><strong>El aprendizaje se pierde entre áreas.</strong><small>Seleccionada</small></button>
+              <button class="signal-button"><strong>La urgencia desplaza la reflexión.</strong><small>Seleccionar señal</small></button>
+              <button class="signal-button"><strong>Dependemos de personas clave para sostener el sistema.</strong><small>Seleccionar señal</small></button>
+            </div>
+            <div class="selection-summary">
+              <div><p class="type-caption" style="margin-top:0">Señales seleccionadas</p><div class="selection-summary__tags"><span class="protea-tag">Decisiones tardías ×</span><span class="protea-tag">Aprendizaje entre áreas ×</span></div></div>
+              <button class="protea-btn protea-btn--accent">Tomar esta orientación</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Orientación construida</h3>
+          <div class="orientation-card">
+            <span class="protea-badge protea-badge--orange">Ruta sugerida</span>
+            <p class="type-caption">Punto de partida recomendado</p>
+            <div class="orientation-card__route">Consciencia · DIAGNOS</div>
+            <p class="type-body-lg">Conviene comenzar comprendiendo qué ocurre y ordenando prioridades antes de intervenir sobre soluciones aisladas.</p>
+            <div class="orientation-card__meta"><span>Contexto: Empresa</span><span>2 señales reconocidas</span><span>Ref. PROTEA-4K7D2A</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         07. FEEDBACK / ESTADOS
+         Mensajes, progreso, acordeón y CTA final.
+         ===================================================== -->
+    <section class="ui-section" id="feedback">
+      <div class="ui-section__intro">
+        <span class="ui-section__number">07</span>
+        <h2>Feedback y cierre.</h2>
+        <p>Elementos que ayudan a informar estados y cerrar el recorrido sin sobrecargar el Home.</p>
+      </div>
+      <div>
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Alertas / progreso</h3>
+          <div class="ui-demo ui-grid">
+            <div class="protea-alert"><strong>Orientación guardada.</strong> Tus selecciones permanecerán durante esta sesión.</div>
+            <div class="protea-alert protea-alert--warning"><strong>Falta contexto.</strong> Selecciona al menos una señal para construir una orientación.</div>
+            <div class="protea-progress"><span></span></div>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">Acordeón</h3>
+          <div class="ui-demo protea-accordion">
+            <details open><summary>¿Esto es un diagnóstico?</summary><p>No. El reconocimiento organiza señales y propone un punto de partida para conversar.</p></details>
+            <details><summary>¿Cómo se utiliza la orientación?</summary><p>La referencia acompaña el debrief para que la conversación mantenga el contexto construido durante el Home.</p></details>
+            <details><summary>¿Qué ocurre con los datos?</summary><p>En la maqueta pueden mantenerse sólo en sesión. La implementación definitiva puede delegarse a Squarespace o al flujo acordado.</p></details>
+          </div>
+        </div>
+
+        <div class="ui-specimen">
+          <h3 class="ui-specimen__title">CTA final</h3>
+          <section class="protea-cta">
+            <span class="protea-eyebrow">Continuar el recorrido</span>
+            <h2>Hablemos de lo que está ocurriendo en tu organización.</h2>
+            <p>No vendemos recetas: construimos con cada organización la ruta adaptativa que necesita para seguir siendo vigente.</p>
+            <a class="protea-btn protea-btn--accent" href="#">Revisar orientación y preparar conversación</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    /* =======================================================
+       JS DEL PREVIEW
+       Sólo sirve para demostrar estados visuales. No representa
+       la lógica de producción ni almacena información.
+       ======================================================= */
+
+    // 1) Señales: alterna el estado seleccionado.
+    document.querySelectorAll('.signal-button').forEach((button) => {
+      button.addEventListener('click', () => button.classList.toggle('is-selected'));
+    });
+
+    // 2) Segmented controls: sólo una opción activa por grupo.
+    document.querySelectorAll('.protea-segmented').forEach((group) => {
+      group.querySelectorAll('button').forEach((button) => {
+        button.addEventListener('click', () => {
+          group.querySelectorAll('button').forEach((item) => item.classList.remove('is-active'));
+          button.classList.add('is-active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

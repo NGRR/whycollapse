@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protea Vive - UIkit extendido</title>
+  <meta name="description" content="Muestra completa de componentes UIkit adaptados al estilo visual de Protea Vive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
+  <link rel="stylesheet" href="protea-uikit.css?v=20260817-3">
+</head>
+<body class="protea-uikit">
+  <canvas id="organic-canvas" aria-hidden="true"></canvas>
+
+  <aside class="kit-rail uk-visible@l" aria-label="Indice de componentes">
+    <a class="brand" href="#top">
+      <span class="brand-mark">protea</span>
+      <span class="brand-claim">UIkit vivo</span>
+    </a>
+    <nav>
+      <a href="#base">01<span>Base</span></a>
+      <a href="#layout">02<span>Layout</span></a>
+      <a href="#navegacion">03<span>Nav</span></a>
+      <a href="#acciones">04<span>Accion</span></a>
+      <a href="#formularios">05<span>Forms</span></a>
+      <a href="#data">06<span>Data</span></a>
+      <a href="#media">07<span>Media</span></a>
+      <a href="#overlays">08<span>Capas</span></a>
+      <a href="#feedback">09<span>Estados</span></a>
+    </nav>
+  </aside>
+
+  <div class="kit-page" id="top">
+    <header class="kit-nav uk-navbar-container uk-navbar-transparent" uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="brand uk-hidden@l" href="#top">
+          <span class="brand-mark">protea</span>
+          <span class="brand-claim">UIkit vivo</span>
+        </a>
+      </div>
+      <div class="uk-navbar-center uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="#base">Fundamentos</a></li>
+          <li><a href="#navegacion">Navegacion</a></li>
+          <li><a href="#formularios">Formularios</a></li>
+          <li><a href="#overlays">Capas</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <button class="uk-button protea-button uk-hidden@m" type="button" uk-toggle="target: #kit-menu">
+          <span uk-icon="menu"></span>
+        </button>
+        <a class="uk-button protea-button" href="../">Volver a Protea</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="kit-hero uk-section uk-section-large">
+        <div class="uk-container uk-container-large">
+          <div class="uk-grid-large uk-flex-middle" uk-grid>
+            <div class="uk-width-3-5@m">
+              <p class="eyebrow">Muestra extendida / UIkit 3.21.16</p>
+              <h1>Un sistema UI que respira con Protea Vive.</h1>
+              <p class="lead">Inventario visual para llevar botones, formularios, navegacion, datos, medios, capas y estados UIkit al lenguaje editorial, biologico y adaptativo de Protea.</p>
+              <div class="uk-margin-medium-top uk-flex uk-flex-wrap uk-flex-middle uk-gap-small">
+                <a class="uk-button protea-button-primary" href="#base">Explorar componentes</a>
+                <button class="uk-button protea-button" type="button" uk-toggle="target: #sample-modal">Abrir modal</button>
+              </div>
+            </div>
+            <div class="uk-width-2-5@m">
+              <div class="living-card">
+                <img src="../assets/img/protea/reconocimiento.jpg" alt="Sistema visual Protea">
+                <div>
+                  <span class="uk-label protea-label-orange">Protea Vive v16</span>
+                  <h2>Canvas organico + UIkit.</h2>
+                  <p>La interfaz queda sobre una capa viva: lineas, petalos y tension visual sin perder lectura ni estructura.</p>
+                  <progress class="uk-progress" value="68" max="100"></progress>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section" id="base">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>01</span>
+            <h2>Fundamentos visuales</h2>
+            <p>Tokens, tipografia, color, iconografia y ritmos base del sistema.</p>
+          </div>
+
+          <div class="uk-grid-large" uk-grid>
+            <div class="uk-width-1-3@m">
+              <div class="spec-card">
+                <h3>Paleta</h3>
+                <div class="swatch-grid">
+                  <div class="swatch blue"><strong>#0066FF</strong><small>Protea blue</small></div>
+                  <div class="swatch orange"><strong>#FF5A00</strong><small>Decision</small></div>
+                  <div class="swatch navy"><strong>#001133</strong><small>Navy</small></div>
+                  <div class="swatch cream"><strong>#F3EFE8</strong><small>Cream</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="uk-width-2-3@m">
+              <div class="spec-card type-sample">
+                <span class="eyebrow">Tipografia editorial</span>
+                <h2>La adaptabilidad es el gen de la longevidad.</h2>
+                <p class="lead">El cuerpo de texto conserva aire, contraste y una cadencia sobria para que la grafica organica no compita con el contenido.</p>
+                <blockquote>Dejar de reducir la complejidad para empezar a habitarla.</blockquote>
+              </div>
+            </div>
+          </div>
+
+          <div class="uk-margin-large-top uk-grid-match uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
+            <div><div class="uk-tile uk-tile-default protea-tile"><span uk-icon="search"></span><h3>Reconocer</h3><p>Lectura de senales.</p></div></div>
+            <div><div class="uk-tile uk-tile-muted protea-tile"><span uk-icon="git-branch"></span><h3>Comprender</h3><p>Patrones y relaciones.</p></div></div>
+            <div><div class="uk-tile uk-tile-primary protea-tile"><span uk-icon="bolt"></span><h3>Activar</h3><p>Capacidad situada.</p></div></div>
+            <div><div class="uk-tile uk-tile-secondary protea-tile"><span uk-icon="future"></span><h3>Sostener</h3><p>Memoria adaptativa.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contrast-showcase">
+        <div class="uk-container uk-container-large">
+          <div class="contrast-panel">
+            <div>
+              <span class="eyebrow">Alto contraste</span>
+              <h2>Paneles blancos sobre azul vivo.</h2>
+              <p>La muestra combina el fondo azul de Protea Vive con superficies blancas para revisar legibilidad, jerarquia y estados de UI en ambos contextos.</p>
+            </div>
+            <div class="contrast-actions">
+              <button class="uk-button protea-button-primary" type="button">Primario</button>
+              <button class="uk-button protea-button" type="button">Secundario</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section light" id="layout">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>02</span>
+            <h2>Layout y contenedores</h2>
+            <p>Grid, width, card, panel, tile, article y bloques responsivos.</p>
+          </div>
+
+          <div class="uk-grid-large uk-grid-match" uk-grid>
+            <div class="uk-width-2-3@m">
+              <article class="uk-card uk-card-default protea-card uk-card-body">
+                <span class="eyebrow">uk-card / uk-article</span>
+                <h3>Card editorial principal</h3>
+                <p>Un bloque amplio para explicar criterio, proceso o aprendizaje. El borde fino y los marcadores de esquina reemplazan sombras pesadas.</p>
+                <div class="uk-margin-top uk-grid-small uk-child-width-1-3@m" uk-grid>
+                  <div><div class="metric"><strong>05</strong><small>capacidades</small></div></div>
+                  <div><div class="metric"><strong>04</strong><small>momentos</small></div></div>
+                  <div><div class="metric"><strong>16</strong><small>version actual</small></div></div>
+                </div>
+              </article>
+            </div>
+            <div class="uk-width-1-3@m">
+              <div class="uk-panel protea-panel">
+                <img src="../assets/img/protea/capacidades.jpg" alt="Capacidades adaptativas">
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom">
+                  <p>Overlay sobrio sobre imagen real de marca.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="uk-margin-large-top uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@l" uk-grid uk-height-match="target: .mini-spec">
+            <div><div class="mini-spec"><strong>uk-container</strong><small>Ancho editorial maximo.</small></div></div>
+            <div><div class="mini-spec"><strong>uk-grid</strong><small>Separacion amplia y estable.</small></div></div>
+            <div><div class="mini-spec"><strong>uk-width</strong><small>Jerarquia por proporcion.</small></div></div>
+            <div><div class="mini-spec"><strong>uk-height-match</strong><small>Cards alineadas.</small></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section dark" id="navegacion">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>03</span>
+            <h2>Navegacion</h2>
+            <p>Navbar, nav, subnav, breadcrumb, pagination, tab, switcher, dropdown y offcanvas.</p>
+          </div>
+
+          <div class="spec-card dark-card">
+            <nav class="uk-navbar-container uk-navbar-transparent sample-navbar" uk-navbar>
+              <div class="uk-navbar-left">
+                <a class="brand" href="#"><span class="brand-mark">protea</span><span class="brand-claim">Inteligencia adaptativa</span></a>
+              </div>
+              <div class="uk-navbar-center uk-visible@m">
+                <ul class="uk-navbar-nav">
+                  <li class="uk-active"><a href="#">Inicio</a></li>
+                  <li>
+                    <a href="#">Soluciones</a>
+                    <div class="uk-navbar-dropdown protea-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">DIAGNOS</a></li>
+                        <li><a href="#">Training</a></li>
+                        <li><a href="#">Lab adaptativo</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a href="#">Insights</a></li>
+                  <li><a href="#">Contacto</a></li>
+                </ul>
+              </div>
+              <div class="uk-navbar-right">
+                <button class="uk-button protea-button-dark" type="button" uk-toggle="target: #sample-offcanvas">Menu</button>
+              </div>
+            </nav>
+          </div>
+
+          <div class="uk-margin-large-top uk-grid-large" uk-grid>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card dark-card">
+                <ul class="uk-breadcrumb protea-breadcrumb">
+                  <li><a href="#">Why Collapse</a></li>
+                  <li><a href="#">Protea</a></li>
+                  <li><span>UIkit vivo</span></li>
+                </ul>
+                <ul class="uk-subnav uk-subnav-pill protea-subnav" uk-switcher="connect: #switcher-sample">
+                  <li><a href="#">Empresa</a></li>
+                  <li><a href="#">Sector publico</a></li>
+                  <li><a href="#">Comunidad</a></li>
+                </ul>
+                <ul id="switcher-sample" class="uk-switcher uk-margin">
+                  <li>Ruta para reconocer friccion, prioridades y senales tempranas.</li>
+                  <li>Ruta para coordinar capacidad institucional y aprendizaje.</li>
+                  <li>Ruta para sostener memoria, participacion y sentido compartido.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card dark-card">
+                <ul class="uk-tab protea-tab" uk-tab>
+                  <li class="uk-active"><a href="#">Vision</a></li>
+                  <li><a href="#">Casos</a></li>
+                  <li><a href="#">Resultados</a></li>
+                </ul>
+                <ul class="uk-pagination protea-pagination uk-flex-center">
+                  <li><a href="#"><span uk-pagination-previous></span></a></li>
+                  <li><a href="#">1</a></li>
+                  <li class="uk-active"><span>2</span></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#"><span uk-pagination-next></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section" id="acciones">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>04</span>
+            <h2>Acciones y comandos</h2>
+            <p>Button, icon, label, badge, close, marker, search y estados interactivos.</p>
+          </div>
+
+          <div class="spec-card">
+            <div class="uk-flex uk-flex-wrap uk-flex-middle uk-gap-small">
+              <a class="uk-button protea-button-primary" href="#">Conversemos</a>
+              <a class="uk-button protea-button-accent" href="#">Tomar orientacion</a>
+              <a class="uk-button protea-button" href="#">Conocer mas</a>
+              <button class="uk-icon-button protea-icon-button" uk-icon="play" uk-tooltip="title: Activar muestra"></button>
+              <button class="uk-icon-button protea-icon-button" uk-icon="refresh" uk-tooltip="title: Recalcular"></button>
+              <span class="uk-label">Base</span>
+              <span class="uk-label protea-label-orange">Ruta sugerida</span>
+              <span class="uk-badge protea-badge">4</span>
+              <button class="uk-close-large" type="button" uk-close aria-label="Cerrar"></button>
+            </div>
+            <div class="uk-margin-top">
+              <form class="uk-search uk-search-default protea-search">
+                <span uk-search-icon></span>
+                <input class="uk-search-input" type="search" placeholder="Buscar senales o componentes">
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section light" id="formularios">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>05</span>
+            <h2>Formularios</h2>
+            <p>Input, select, textarea, checkbox, radio, range, legend, fieldset y validacion visual.</p>
+          </div>
+
+          <form class="spec-card protea-form">
+            <fieldset class="uk-fieldset">
+              <legend class="uk-legend">Preparar conversacion adaptativa</legend>
+              <div class="uk-grid-small" uk-grid>
+                <div class="uk-width-1-2@m">
+                  <label class="uk-form-label">Nombre</label>
+                  <input class="uk-input" type="text" placeholder="Nombre y apellido">
+                </div>
+                <div class="uk-width-1-2@m">
+                  <label class="uk-form-label">Organizacion</label>
+                  <input class="uk-input" type="text" placeholder="Nombre de la organizacion">
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Contexto</label>
+                  <select class="uk-select">
+                    <option>Empresa</option>
+                    <option>Administracion publica</option>
+                    <option>Comunidad</option>
+                  </select>
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Intensidad</label>
+                  <input class="uk-range" type="range" value="62" min="0" max="100">
+                </div>
+                <div class="uk-width-1-3@m">
+                  <label class="uk-form-label">Fecha</label>
+                  <input class="uk-input" type="date">
+                </div>
+                <div class="uk-width-1-1">
+                  <label class="uk-form-label">Senales observadas</label>
+                  <textarea class="uk-textarea" rows="4" placeholder="Describe brevemente que esta cambiando..."></textarea>
+                </div>
+              </div>
+              <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid>
+                <label><input class="uk-checkbox" type="checkbox" checked> Enviar copia</label>
+                <label><input class="uk-checkbox" type="checkbox"> Incluir referencia</label>
+                <label><input class="uk-radio" type="radio" name="priority" checked> Conversacion inicial</label>
+                <label><input class="uk-radio" type="radio" name="priority"> Debrief profundo</label>
+              </div>
+              <div class="uk-margin" uk-form-custom="target: true">
+                <div class="uk-placeholder protea-upload" uk-upload>
+                  <span uk-icon="cloud-upload"></span>
+                  <span>Adjuntar evidencia visual o briefing</span>
+                  <input type="file" aria-label="Adjuntar evidencia">
+                </div>
+              </div>
+              <div class="uk-margin">
+                <button class="uk-button protea-button-primary" type="button">Guardar orientacion</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section class="kit-section" id="data">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>06</span>
+            <h2>Datos y contenido</h2>
+            <p>Table, list, description list, article, comment, countdown y columnas de lectura.</p>
+          </div>
+
+          <div class="uk-grid-large" uk-grid>
+            <div class="uk-width-2-3@m">
+              <div class="spec-card uk-overflow-auto">
+                <table class="uk-table uk-table-divider uk-table-hover protea-table">
+                  <thead>
+                    <tr><th>Senal</th><th>Lectura</th><th>Ruta</th><th>Estado</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Decisiones tardias</td><td>Tiempo de respuesta desalineado</td><td>Consciencia</td><td><span class="uk-label protea-label-orange">Alta</span></td></tr>
+                    <tr><td>Aprendizaje disperso</td><td>Memoria institucional fragmentada</td><td>Huella</td><td><span class="uk-label">Media</span></td></tr>
+                    <tr><td>Urgencia permanente</td><td>Reflexion desplazada por reaccion</td><td>Entrenamiento</td><td><span class="uk-label uk-label-success">Activa</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="uk-width-1-3@m">
+              <article class="uk-comment spec-card">
+                <header class="uk-comment-header">
+                  <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto"><div class="avatar-mark">IA</div></div>
+                    <div class="uk-width-expand">
+                      <h4 class="uk-comment-title uk-margin-remove">Inteligencia adaptativa</h4>
+                      <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                        <li>Lectura editorial</li>
+                      </ul>
+                    </div>
+                  </div>
+                </header>
+                <div class="uk-comment-body">
+                  <dl class="uk-description-list">
+                    <dt>Capacidad</dt><dd>Anticipacion y aprendizaje.</dd>
+                    <dt>Proxima accion</dt><dd>Ordenar evidencia antes de intervenir.</dd>
+                  </dl>
+                  <div class="uk-countdown uk-grid-small uk-child-width-auto uk-margin-top" uk-countdown="date: 2026-12-31T00:00:00+00:00">
+                    <div><div class="uk-countdown-number uk-countdown-days"></div><div class="uk-countdown-label">dias</div></div>
+                    <div class="uk-countdown-separator">:</div>
+                    <div><div class="uk-countdown-number uk-countdown-hours"></div><div class="uk-countdown-label">horas</div></div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section dark" id="media">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>07</span>
+            <h2>Media y movimiento</h2>
+            <p>Slideshow, slider, cover, overlay, lightbox, animation, parallax y imagenes editoriales.</p>
+          </div>
+
+          <div class="uk-position-relative uk-visible-toggle protea-slideshow" tabindex="-1" uk-slideshow="animation: fade; ratio: 16:7">
+            <ul class="uk-slideshow-items">
+              <li>
+                <img src="../assets/img/protea/life-system.jpg" alt="Sistema vivo" uk-cover>
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom-left uk-width-large@m">
+                  <span class="eyebrow">uk-cover / uk-overlay</span>
+                  <h3>Sistema vivo</h3>
+                  <p>Imagen como evidencia del relato, no como decoracion aislada.</p>
+                </div>
+              </li>
+              <li>
+                <img src="../assets/img/protea/triarquia.jpg" alt="Triarquia" uk-cover>
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom-left uk-width-large@m">
+                  <span class="eyebrow">uk-slideshow</span>
+                  <h3>Inteligencia que articula</h3>
+                  <p>Transiciones suaves y legibles para piezas editoriales.</p>
+                </div>
+              </li>
+              <li>
+                <img src="../assets/img/protea/funciones-adaptabilidad.jpg" alt="Adaptabilidad" uk-cover>
+                <div class="uk-overlay uk-overlay-primary uk-position-bottom-left uk-width-large@m">
+                  <span class="eyebrow">uk-animation</span>
+                  <h3>Funcion adaptativa</h3>
+                  <p>Movimiento medido para revelar estructura.</p>
+                </div>
+              </li>
+            </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
+            <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+          </div>
+
+          <div class="uk-margin-large-top uk-slider-container-offset" uk-slider>
+            <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+              <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid">
+                <li><a href="../assets/img/protea/anticipacion.jpg" data-caption="Anticipacion" uk-lightbox><img src="../assets/img/protea/anticipacion.jpg" alt="Anticipacion"><div class="uk-panel caption-panel">Anticipacion</div></a></li>
+                <li><a href="../assets/img/protea/agilidad.jpg" data-caption="Agilidad" uk-lightbox><img src="../assets/img/protea/agilidad.jpg" alt="Agilidad"><div class="uk-panel caption-panel">Agilidad</div></a></li>
+                <li><a href="../assets/img/protea/aprendizaje.jpg" data-caption="Aprendizaje" uk-lightbox><img src="../assets/img/protea/aprendizaje.jpg" alt="Aprendizaje"><div class="uk-panel caption-panel">Aprendizaje</div></a></li>
+                <li><a href="../assets/img/protea/antifragilidad.jpg" data-caption="Antifragilidad" uk-lightbox><img src="../assets/img/protea/antifragilidad.jpg" alt="Antifragilidad"><div class="uk-panel caption-panel">Antifragilidad</div></a></li>
+              </ul>
+              <a class="uk-position-center-left uk-position-small" href uk-slidenav-previous uk-slider-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small" href uk-slidenav-next uk-slider-item="next"></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section" id="overlays">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>08</span>
+            <h2>Capas y superficies</h2>
+            <p>Modal, offcanvas, dropdown, drop, tooltip, notification, sticky y elementos flotantes.</p>
+          </div>
+
+          <div class="uk-grid-large uk-child-width-1-2@m" uk-grid>
+            <div>
+              <div class="spec-card">
+                <h3>Disparadores</h3>
+                <div class="uk-flex uk-flex-wrap uk-gap-small">
+                  <button class="uk-button protea-button-primary" type="button" uk-toggle="target: #sample-modal">Modal</button>
+                  <button class="uk-button protea-button" type="button" uk-toggle="target: #sample-offcanvas">Offcanvas</button>
+                  <button class="uk-button protea-button-accent" type="button" onclick="UIkit.notification({message: 'Orientacion guardada', status: 'primary'})">Notification</button>
+                  <button class="uk-button protea-button" type="button">Dropdown</button>
+                  <div class="uk-dropdown protea-dropdown" uk-dropdown="mode: click">
+                    <ul class="uk-nav uk-dropdown-nav">
+                      <li class="uk-active"><a href="#">Reconocer</a></li>
+                      <li><a href="#">Comprender</a></li>
+                      <li><a href="#">Sostener</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="spec-card">
+                <h3>Tooltip y marcador</h3>
+                <div class="map-surface">
+                  <button class="uk-marker protea-marker" style="left: 32%; top: 42%;" uk-tooltip="title: Senal emergente"></button>
+                  <button class="uk-marker protea-marker" style="left: 68%; top: 56%;" uk-tooltip="title: Ruta adaptativa"></button>
+                  <img src="../assets/img/protea/colibri-diagrama.jpg" alt="Mapa conceptual">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kit-section light" id="feedback">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>09</span>
+            <h2>Feedback y estados</h2>
+            <p>Alert, progress, spinner, placeholder, accordion, sortable, visibility y empty states.</p>
+          </div>
+
+          <div class="uk-grid-large" uk-grid>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card">
+                <div class="uk-alert-primary" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  <p><strong>Orientacion guardada.</strong> Las senales quedan listas para el debrief.</p>
+                </div>
+                <div class="uk-alert-warning" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  <p><strong>Falta contexto.</strong> Selecciona al menos una senal.</p>
+                </div>
+                <progress class="uk-progress" value="42" max="100"></progress>
+                <div class="uk-flex uk-flex-middle uk-gap-small"><span uk-spinner="ratio: .7"></span><span>Procesando lectura adaptativa</span></div>
+              </div>
+            </div>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card">
+                <ul uk-accordion>
+                  <li class="uk-open"><a class="uk-accordion-title" href="#">Esto es un diagnostico?</a><div class="uk-accordion-content"><p>No. Ordena senales y propone un punto de partida conversable.</p></div></li>
+                  <li><a class="uk-accordion-title" href="#">Como se sostiene?</a><div class="uk-accordion-content"><p>Con memoria, seguimiento y capacidad de aprendizaje entre areas.</p></div></li>
+                  <li><a class="uk-accordion-title" href="#">Que se entrega?</a><div class="uk-accordion-content"><p>Una orientacion y una referencia para preparar el debrief.</p></div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="uk-margin-large-top spec-card">
+            <ul class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m sortable-signals" uk-sortable="handle: .uk-sortable-handle" uk-grid>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Anticipacion</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Agilidad</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Aprendizaje</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Antifragilidad</div></li>
+            </ul>
+          </div>
+
+          <div class="uk-margin-large-top uk-placeholder protea-empty-state">
+            <span uk-icon="icon: info; ratio: 1.2"></span>
+            <strong>Empty state / placeholder</strong>
+            <span>No hay orientaciones guardadas para esta sesion.</span>
+          </div>
+
+          <div class="uk-margin-large-top spec-card coverage-card">
+            <h3>Cobertura UIkit adaptada</h3>
+            <div class="coverage-grid">
+              <span>Accordion</span><span>Alert</span><span>Animation</span><span>Article</span><span>Badge</span><span>Breadcrumb</span>
+              <span>Button</span><span>Card</span><span>Close</span><span>Comment</span><span>Container</span><span>Countdown</span>
+              <span>Cover</span><span>Description list</span><span>Dotnav</span><span>Drop</span><span>Dropdown</span><span>Flex</span>
+              <span>Form</span><span>Grid</span><span>Height match</span><span>Icon</span><span>Label</span><span>Lightbox</span>
+              <span>Marker</span><span>Modal</span><span>Nav</span><span>Navbar</span><span>Notification</span><span>Offcanvas</span>
+              <span>Overlay</span><span>Pagination</span><span>Placeholder</span><span>Progress</span><span>Search</span><span>Section</span>
+              <span>Slidenav</span><span>Slider</span><span>Slideshow</span><span>Sortable</span><span>Spinner</span><span>Subnav</span>
+              <span>Switcher</span><span>Tab</span><span>Table</span><span>Tile</span><span>Toggle</span><span>Tooltip</span>
+              <span>Upload</span><span>Visibility</span><span>Width</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="kit-footer">
+      <div class="uk-container uk-container-large uk-text-center">
+        <span class="eyebrow">Cierre</span>
+        <h2>UIkit queda listo para prototipar con lenguaje Protea.</h2>
+        <a class="uk-button protea-button-primary" href="../../index.html">Volver al indice Why Collapse</a>
+      </div>
+    </footer>
+  </div>
+
+  <div id="sample-modal" class="uk-modal-container" uk-modal>
+    <div class="uk-modal-dialog protea-modal uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-grid-large uk-flex-middle" uk-grid>
+        <div class="uk-width-1-2@m">
+          <img src="../assets/img/protea/life-system.jpg" alt="Protea sistema vivo">
+        </div>
+        <div class="uk-width-1-2@m">
+          <span class="eyebrow">uk-modal</span>
+          <h2>Una capa de decision.</h2>
+          <p>El modal funciona como pausa editorial: suficiente contraste, acciones claras y una imagen que mantiene continuidad con el sistema vivo.</p>
+          <button class="uk-button protea-button-accent uk-modal-close" type="button">Confirmar lectura</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sample-offcanvas" uk-offcanvas="overlay: true; flip: true">
+    <div class="uk-offcanvas-bar protea-offcanvas">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <span class="eyebrow">uk-offcanvas</span>
+      <h3>Menu adaptativo</h3>
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#base">Fundamentos</a></li>
+        <li><a href="#layout">Layout</a></li>
+        <li><a href="#navegacion">Navegacion</a></li>
+        <li><a href="#formularios">Formularios</a></li>
+        <li><a href="#feedback">Estados</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="kit-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar protea-offcanvas">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <a class="brand" href="#top"><span class="brand-mark">protea</span><span class="brand-claim">UIkit vivo</span></a>
+      <ul class="uk-nav uk-nav-default uk-margin-top">
+        <li><a href="#base">Fundamentos</a></li>
+        <li><a href="#layout">Layout</a></li>
+        <li><a href="#navegacion">Navegacion</a></li>
+        <li><a href="#acciones">Acciones</a></li>
+        <li><a href="#formularios">Formularios</a></li>
+        <li><a href="#data">Datos</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#overlays">Capas</a></li>
+        <li><a href="#feedback">Estados</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    window.ORGANIC_CONFIG = {
+      seed: 2772206847,
+      centerXDesktop: 0.18,
+      centerXMobile: 0.50,
+      centerYDesktop: 0.51,
+      centerYMobile: 0.44,
+      heightDesktop: 0.92,
+      heightMobile: 0.74,
+      strandCountDesktop: 43,
+      strandCountMobile: 28,
+      strandStepsDesktop: 75,
+      strandStepsMobile: 64,
+      initialRootStage: 0.02,
+      finalTextureStart: 0.42,
+      finalTextureFull: 1,
+      finalTextureScale: 1.08,
+      finalTextureYOffset: -0.035,
+      finalBaseAlpha: 0,
+      finalFrontAlpha: 0.72,
+      finalBackLowerAlpha: 0.28,
+      finalBackMiddleAlpha: 0.30,
+      finalBackUpperAlpha: 0.34,
+      rootAlpha: 0,
+      orbitBackAlpha: 0.44,
+      strandBackAlpha: 0.50,
+      petalBackAlpha: 0.82,
+      podAlpha: 0.24,
+      clusterAlpha: 0.70,
+      growthLayers: [
+        { path: "../../prototipos/protea_vive_v16/protea_vive_v16/assets/stage-03-bud.webp", start: 0.16, peak: 0.30, end: 0.475, opacity: 0.10, scale: 1, yOffset: 0, drift: 1.5, kind: "bud" },
+        { path: "../../prototipos/protea_vive_v16/protea_vive_v16/assets/stage-05-petals.webp", start: 0.31, peak: 0.48, end: 0.66, opacity: 0.11, scale: 1, yOffset: 0, drift: 1.5, kind: "petals" },
+        { path: "../../prototipos/protea_vive_v16/protea_vive_v16/assets/stage-07-bloom.webp", start: 0.49, peak: 0.66, end: 0.85, opacity: 0.12, scale: 1, yOffset: 0, drift: 1.5, kind: "bloom" },
+        { path: "../../prototipos/protea_vive_v16/protea_vive_v16/assets/stage-09-mature.webp", start: 0.60, peak: 0.82, end: 0.985, opacity: 0.28, scale: 1.095, yOffset: 0, drift: 2, kind: "mature" }
+      ],
+      finalTexturePath: "../../prototipos/protea_vive_v16/protea_vive_v16/assets/final-frame.webp"
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+  <script src="../../prototipos/protea_vive_v16/protea_vive_v16/app.js"></script>
+  <script>
+    document.querySelectorAll('a[href="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<section class="kit-section light" id="feedback">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>09</span>
+            <h2>Feedback y estados</h2>
+            <p>Alert, progress, spinner, placeholder, accordion, sortable, visibility y empty states.</p>
+          </div>
+
+          <div class="uk-grid-large" uk-grid>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card">
+                <div class="uk-alert-primary" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  <p><strong>Orientacion guardada.</strong> Las senales quedan listas para el debrief.</p>
+                </div>
+                <div class="uk-alert-warning" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  <p><strong>Falta contexto.</strong> Selecciona al menos una senal.</p>
+                </div>
+                <progress class="uk-progress" value="42" max="100"></progress>
+                <div class="uk-flex uk-flex-middle uk-gap-small"><span uk-spinner="ratio: .7"></span><span>Procesando lectura adaptativa</span></div>
+              </div>
+            </div>
+            <div class="uk-width-1-2@m">
+              <div class="spec-card">
+                <ul uk-accordion>
+                  <li class="uk-open"><a class="uk-accordion-title" href="#">Esto es un diagnostico?</a><div class="uk-accordion-content"><p>No. Ordena senales y propone un punto de partida conversable.</p></div></li>
+                  <li><a class="uk-accordion-title" href="#">Como se sostiene?</a><div class="uk-accordion-content"><p>Con memoria, seguimiento y capacidad de aprendizaje entre areas.</p></div></li>
+                  <li><a class="uk-accordion-title" href="#">Que se entrega?</a><div class="uk-accordion-content"><p>Una orientacion y una referencia para preparar el debrief.</p></div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="uk-margin-large-top spec-card">
+            <ul class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m sortable-signals" uk-sortable="handle: .uk-sortable-handle" uk-grid>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Anticipacion</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Agilidad</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Aprendizaje</div></li>
+              <li><div><span class="uk-sortable-handle" uk-icon="table"></span> Antifragilidad</div></li>
+            </ul>
+          </div>
+
+          <div class="uk-margin-large-top uk-placeholder protea-empty-state">
+            <span uk-icon="icon: info; ratio: 1.2"></span>
+            <strong>Empty state / placeholder</strong>
+            <span>No hay orientaciones guardadas para esta sesion.</span>
+          </div>
+
+          <div class="uk-margin-large-top spec-card coverage-card">
+            <h3>Cobertura UIkit adaptada</h3>
+            <div class="coverage-grid">
+              <span>Accordion</span><span>Alert</span><span>Animation</span><span>Article</span><span>Badge</span><span>Breadcrumb</span>
+              <span>Button</span><span>Card</span><span>Close</span><span>Comment</span><span>Container</span><span>Countdown</span>
+              <span>Cover</span><span>Description list</span><span>Dotnav</span><span>Drop</span><span>Dropdown</span><span>Flex</span>
+              <span>Form</span><span>Grid</span><span>Height match</span><span>Icon</span><span>Label</span><span>Lightbox</span>
+              <span>Marker</span><span>Modal</span><span>Nav</span><span>Navbar</span><span>Notification</span><span>Offcanvas</span>
+              <span>Overlay</span><span>Pagination</span><span>Placeholder</span><span>Progress</span><span>Search</span><span>Section</span>
+              <span>Slidenav</span><span>Slider</span><span>Slideshow</span><span>Sortable</span><span>Spinner</span><span>Subnav</span>
+              <span>Switcher</span><span>Tab</span><span>Table</span><span>Tile</span><span>Toggle</span><span>Tooltip</span>
+              <span>Upload</span><span>Visibility</span><span>Width</span>
+            </div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,40 @@
+<section class="kit-section" id="overlays">
+        <div class="uk-container uk-container-large">
+          <div class="section-heading">
+            <span>08</span>
+            <h2>Capas y superficies</h2>
+            <p>Modal, offcanvas, dropdown, drop, tooltip, notification, sticky y elementos flotantes.</p>
+          </div>
+
+          <div class="uk-grid-large uk-child-width-1-2@m" uk-grid>
+            <div>
+              <div class="spec-card">
+                <h3>Disparadores</h3>
+                <div class="uk-flex uk-flex-wrap uk-gap-small">
+                  <button class="uk-button protea-button-primary" type="button" uk-toggle="target: #sample-modal">Modal</button>
+                  <button class="uk-button protea-button" type="button" uk-toggle="target: #sample-offcanvas">Offcanvas</button>
+                  <button class="uk-button protea-button-accent" type="button" onclick="UIkit.notification({message: 'Orientacion guardada', status: 'primary'})">Notification</button>
+                  <button class="uk-button protea-button" type="button">Dropdown</button>
+                  <div class="uk-dropdown protea-dropdown" uk-dropdown="mode: click">
+                    <ul class="uk-nav uk-dropdown-nav">
+                      <li class="uk-active"><a href="#">Reconocer</a></li>
+                      <li><a href="#">Comprender</a></li>
+                      <li><a href="#">Sostener</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="spec-card">
+                <h3>Tooltip y marcador</h3>
+                <div class="map-surface">
+                  <button class="uk-marker protea-marker" style="left: 32%; top: 42%;" uk-tooltip="title: Senal emergente"></button>
+                  <button class="uk-marker protea-marker" style="left: 68%; top: 56%;" uk-tooltip="title: Ruta adaptativa"></button>
+                  <img src="../assets/img/protea/colibri-diagrama.jpg" alt="Mapa conceptual">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
