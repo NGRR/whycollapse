@@ -1,0 +1,7 @@
+{
+  "name": "protea-review",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/preview.mjs"
+  }
+}

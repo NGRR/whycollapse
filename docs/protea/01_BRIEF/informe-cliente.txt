@@ -1,0 +1,549 @@
+
+REGLA PRINCIPAL
+La web debe comprenderse en menos de un minuto, pero no debe parecer simple ni genérica. Tiene que expresar una mirada sofisticada sobre los problemas organizacionales y conducir con claridad hacia una conversación comercial.
+
+01 · Reconstruir la home siguiendo el orden definitivo de este informe; no continuar corrigiendo la versión actual pantalla por pantalla.
+02 · Copiar los textos marcados como “COPY PARA MAQUETAR” y respetar su jerarquía.
+03 · Mantener la identidad visual viva, inmersiva y elegantE eliminando ruido, nomenclaturas duplicadas y recursos que recuerden a inteligencia artificial.
+04 · Separar con absoluta claridad la oferta organizacional de Protea de la oferta intelectual y comercial de Marcelo Lasagna.
+Resultado esperado
+En 10 segundos se entiende quién es Protea.
+En menos de un minuto se comprende qué problemas aborda y cómo trabaja.
+El IAO se percibe como un instrumento real, riguroso y accionable.
+DIAGNOS, Training, Lab y Hub se entienden como partes de un recorrido, no como un catálogo.
+Adaptive Thinking se reconoce como la oferta específica de Marcelo.
+Cada llamada a la acción tiene un destino claro.
+
+01
+Decisión estratégica y arquitectura de marca
+Esta es la lógica que debe ordenar toda la web, los textos y la navegación.
+
+PROTEA
+Agentes Habilitadores de inteligencia Adaptativa
+BECOMING ADAPTIVE
+Protea es un equipo de agentes de inteligencia adaptativa.
+Su promesa general es Becoming Adaptive: ayudar a organizaciones, equipos y líderes a desarrollar la capacidad de evolucionar antes de que el entorno les obligue.
+DIAGNOS · IAO
+TRAINING
+LAB
+HUB
+BOTÓN · Conversemos sobre vuestro desafío
+MARCELO LASAGNA
+Adaptive Thinking
+Adaptive Thinking reúne las conferencias e intervenciones de Marcelo.
+Su promesa es abrir nuevas formas de pensar, interpretar y conversar cuando las respuestas conocidas dejan de funcionar.
+Conferencias
+Seminarios
+Conversaciones estratégicas
+BOTÓN · Invitar a Marcelo
+
+LA DIFERENCIA QUE DEBE PERCIBIR EL VISITANTE
+Protea desarrolla capacidad adaptativa en la organización. Marcelo abre pensamiento y conversación. Ambas propuestas pertenecen al mismo universo, pero no son el mismo producto ni utilizan el mismo formulario.
+
+Nomenclatura definitiva
+TÉRMINO
+FUNCIÓN
+USO EN LA WEB
+PROTEA
+Marca principal
+Siempre visible como marca matriz.
+AGENTES DE INTELIGENCIA ADAPTATIVA
+Qué somos
+Al inicio
+Becoming Adaptive
+Promesa de Protea
+Paraguas de todo lo que hace Protea. No es un servicio de Marcelo.
+DIAGNOS · IAO · Training · Lab · Hub
+Cómo trabaja Protea
+Aparecen dentro del recorrido Becoming Adaptive. Siempre resaltar el IAO.
+Adaptive Thinking
+Oferta de Marcelo
+Paraguas de conferencias, seminarios y conversaciones estratégicas.
+Plan Adaptativo
+Traducción del diagnóstico en acción
+Resultado de la lectura; no crear otra marca ni otra pestaña.
+
+02
+Arquitectura definitiva de la web
+Una navegación mínima y un relato único, sin obligar al visitante a aprender demasiados conceptos.
+
+Navegación superior
+MENÚ
+PROTEA · QUÉ HACEMOS · ADAPTIVE THINKING · QUIÉNES SOMOS · CONVERSEMOS
+PROTEA enlaza al inicio. QUÉ HACEMOS baja a Becoming Adaptive. ADAPTIVE THINKING abre la landing de Marcelo. QUIÉNES SOMOS baja al equipo. CONVERSEMOS es el único botón destacado.
+
+INDICACIÓN PARA NICO
+Cabecera fija, ligera y sin desplegables.
+Mantener como máximo cinco marcadores laterales muy discretos para reforzar la sensación de libro y progreso. No utilizar numeración 1/11 ni textos laterales. Ocultarlos en móvil.
+No incluir en el menú: Sistema Protea, PAS, DIAGNOS, Training, Lab, Hub, IAO, Ideas, el libro ni páginas conceptuales independientes.
+IAO se descubre dentro de Qué hacemos y tiene su propia landing mediante botón.
+
+Orden de la home
+01
+QUIÉNES SOMOS
+PROTEA
+02
+QUÉ VEMOS
+EL PROBLEMA
+03
+QUÉ HACEMOS
+BECOMING ADAPTIVE
+04
+OTRA PUERTA
+ADAPTIVE THINKING
+05
+CONFIANZA
+EQUIPO + CONTACTO
+
+Relato completo: Protea es agente de inteligencia adaptativa → los problemas no son lo que parecen → ayudamos a comprender, entrenar, arraigar y sostener capacidad → Marcelo abre pensamiento mediante Adaptive Thinking → conversemos sobre el desafío concreto.
+Eliminar de la versión actual
+Navegación extensa, desplegables y pantallas numeradas como un recorrido de once o doce conceptos.
+El test de riesgo adaptativo, el QR para captar datos y cualquier presentación del IAO como un test superficial.
+“Sistema Protea”, “PAS” o modelos internos que compitan con la promesa Becoming Adaptive.
+Ojos digitales, robots, cerebros, códigos, métricas ficticias y estética de inteligencia artificial.
+Secciones repetidas de Marcelo, “Marcelo y el libro”, “Encuentro Adaptativo” y Becoming Adaptive aplicado a Marcelo.
+Carruseles automáticos, iconos genéricos, fotografías de stock y botones “Más información”.
+
+03
+Home · Bloque 1 · Protea
+Definir la categoría, la promesa y el tono desde la primera pantalla.
+
+COPY PARA MAQUETAR
+SOMOS AGENTES HABILITADORES DE INTELIGENCIA ADAPTATIVA
+Ayudamos a organizaciones, equipos y líderes a cultivar las capacidades necesarias para sostener su vigencia, evitar la obsolescencia y prosperar en contextos complejos.
+Adaptarse no es reaccionar. Es desarrollar la capacidad de cambiar antes de que el entorno obligue.
+BOTÓN · Descubre cómo trabajamos
+
+INDICACIÓN PARA NICO
+El botón baja al bloque Becoming Adaptive; no abre todavía el formulario.
+Una única composición viva: la Súper Protea evolucionando, mostrando conexiones, capas y patrones que emergen. (QUE SE PUEDEN CONECTAR EN EL AVANCE DEL ÍNDICE LATERAL…LA FLOR, EL TALLO, SUS HOJAS…ETC.)
+“Adaptive Intelligence Agents” debe ser texto HTML, no parte de una imagen.
+Conservar azul profundo, blanco y coral. Dejar mucho aire y una sola animación sutil.
+No añadir un segundo botón, cifras decorativas ni una explicación del colapso en la apertura.
+
+04
+Home · Bloque 2 · Nuestra mirada
+Provocar reconocimiento: el cliente debe sentir que Protea comprende lo que realmente está ocurriendo.
+
+COPY PARA MAQUETAR
+Los problemas no son lo que parecen.
+No falta talento. Falta capacidad para hacerlo emerger.
+No falta estrategia. Falta capacidad para ajustarla cuando el entorno cambia.
+No falta innovación. Falta un sistema que la arraigue.
+No falta organización. Faltan formas de trabajar que empoderen a las personas.
+Una dificultad visible rara vez está aislada. Suele expresar dinámicas de percepción, decisión, coordinación y aprendizaje que el sistema no está pudiendo resolver.
+Protea ayuda a leer esas dinámicas y a transformarlas en capacidad de respuesta.
+
+NICO la idea sería:
+Sección eminentemente tipográfica. Las cuatro frases aparecen progresivamente al hacer scroll.
+Destacar visualmente talento, estrategia, innovación y organización.
+Sin tarjetas, iconos, fotografía, test ni botón.
+El movimiento debe ser pausado y preciso; no convertir el scroll en un espectáculo.
+
+05
+Home · Bloque 3 · Becoming Adaptive
+El centro comercial de la web: conectar los problemas de los clientes con la forma concreta de trabajar de Protea.
+
+COPY PARA MAQUETAR
+De comprender lo que ocurre a desarrollar la capacidad para evolucionar.
+No trabajamos desde respuestas prefabricadas. Leemos el desafío en su contexto y diseñamos el recorrido que la organización necesita.
+Becoming Adaptive conecta diagnóstico, entrenamiento, experimentación y arraigo para convertir la comprensión en nuevas capacidades y formas de actuar.
+
+01
+COMPRENDER
+DIAGNOS · IAO
+02
+ENTRENAR
+TRAINING
+03
+ARRAIGAR
+LAB
+04
+SOSTENER
+HUB
+
+CRITERIO DE DISEÑO
+No mostrar cuatro tarjetas comerciales equivalentes. Debe sentirse como un recorrido continuo: el visitante comprende primero el movimiento y descubre después los nombres de las soluciones.
+
+NICO
+El IAO tendrá mayor presencia visual porque es la puerta de entrada más tangible, pero no debe borrar DIAGNOS ni el resto de la oferta.
+La secuencia puede ser vertical en escritorio y debe apilarse en móvil.
+Quizá usar fotografías reales o visualizaciones auténticas. No usar ilustraciones distintas para cada servicio que fragmenten el relato.
+Al final del recorrido incluir una sola llamada a la acción general.
+
+Te comparto fotos que pueden server, aunque también sería bello mostrar gráficamente ese proceso en la medida que se Avanza, quizá puede ser un buen momento para la super protea y que en la medida que avanzas primero se observa y se toma consciencia, luego entrenas pasas la consciencia a acciones, después surgen las raíces y se vuelven parte de ti y después, el bosque te sostiene…
+
+Van fotos que te pueden servir después de mis voladas:
+
+BANCO DE IMÁGENES.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+06
+Home · DIAGNOS e IAO
+Hacer visible la capacidad adaptativa y orientar dónde actuar primero.
+
+01 · COMPRENDER
+Cuando hay muchas señales, pero no una lectura compartida.
+DIAGNOS hace visible el estado de la adaptabilidad. Analizamos cómo la organización anticipa, responde, aprende y evoluciona, e identificamos las fricciones que están limitando su capacidad de acción.
+IAO · Índice de Adaptabilidad Organizacional
+El IAO es el instrumento organizacional insignia de DIAGNOS. Ofrece una lectura clara y accionable de la capacidad adaptativa y permite responder tres preguntas:
+¿Dónde estamos? · ¿Qué está limitando nuestra respuesta? · ¿Dónde conviene actuar primero?
+El IAO no termina en un informe. La lectura se traduce en un Plan Adaptativo: prioridades, decisiones e iniciativas sobre las que conviene actuar.
+BOTÓN · Conoce el IAO
+
+QUÉ RECIBE LA ORGANIZACIÓN
+Una lectura que orienta
+Una lectura compartida.
+Un mapa de capacidades y fricciones.
+Prioridades para un Plan Adaptativo.
+RELACIÓN DE MARCAS
+DIAGNOS no compite con el IAO
+DIAGNOS nombra la capacidad diagnóstica de Protea. El IAO es su instrumento organizacional principal. En la home deben explicarse juntos y en ese orden.
+
+
+Utilizar el logotipo oficial del IAO..
+NICO
+El bloque IAO debe ser el más concreto y tangible de Qué hacemos.
+Usar una captura real o anonimizada de un informe, mapa o visualización del IAO (te lo compartí en una foto arriba, si quieres poner otros colores o ajustarlo para que quede más bonito, dale!). No inventar resultados ni métricas.
+El botón abre /iao.
+
+07
+Home · Training, Lab y Hub
+Mostrar cada solución desde el problema del cliente y no desde una descripción interna del producto.
+
+02 · ENTRENAR · TRAINING
+Cuando se sabe qué debería cambiar, pero todavía no existe la capacidad para hacerlo.
+Training desarrolla capacidades adaptativas en personas, equipos y líderes para actuar con mayor criterio en la incertidumbre. Se entrena mediante práctica deliberada, lenguaje compartido y retos vinculados al contexto real.
+Qué deja: criterio, práctica y mayor capacidad para decidir y actuar.
+03 · ARRAIGAR · LAB
+Cuando el desafío no se resuelve con más análisis.
+Lab es un espacio de transformación aplicada. Los equipos trabajan sobre un desafío real, experimentan, prueban respuestas y convierten el aprendizaje en cambios capaces de incorporarse a la forma de operar.
+Qué deja: evidencia, decisiones defendibles y soluciones que pueden arraigarse.
+
+04 · SOSTENER · HUB: ECOSISTEMAS ADAPTATIVOS EMERGENTES
+Cuando el cambio exige coordinación más allá de un equipo o una organización.
+Hub conecta actores, conocimiento y experiencias para sostener aprendizaje, cooperación y transformación en el tiempo. Crea ritmo, comunidad y memoria para evitar que el sistema vuelva atrás.
+Qué deja: capacidad de coordinación y una arquitectura viva de colaboración.
+CIERRE DEL RECORRIDO
+El recorrido se diseña según el desafío.
+No todas las organizaciones necesitan las cuatro etapas ni las recorren de forma lineal. Protea comienza comprendiendo qué está ocurriendo y define desde ahí dónde intervenir.
+BOTÓN · Conversemos sobre su desafío
+
+NICO
+No crear un catálogo de cursos, talleres o programas en la home.
+Training, Lab y Hub deben tener menor peso gráfico que DIAGNOS/IAO, pero suficiente claridad para que el cliente comprenda que Protea actúa después de medir.
+Para Lab usar fotografía real de trabajo aplicado. Para Hub usar una imagen que muestre relación, red o ecosistema; no una fotografía genérica de evento.
+
+
+
+
+LAB · Fotografía real del brochure: trabajo aplicado y cocreación.
+HUB · Referencia visual del brochure: coordinación de actores y ecosistema.
+
+
+08
+Home · Bloque Adaptive Thinking
+Abrir una vía comercial diferenciada para Marcelo sin confundirla con los servicios de Protea.
+
+ADAPTIVE THINKING · MARCELO LASAGNA
+Pensar distinto cuando las respuestas conocidas dejan de funcionar.
+Marcelo Lasagna lleva la inteligencia adaptativa al escenario y a la conversación. Sus intervenciones ayudan a líderes y organizaciones a interpretar lo que cambia, cuestionar inercias y abrir nuevas posibilidades de acción.
+Conferencias · Seminarios · Conversaciones estratégicas
+Fundador de Protea · Autor de ¿Por qué colapsan las organizaciones?
+BOTÓN · Invitar a Marcelo
+
+
+Imagen principal recomendada para la home o la apertura de Adaptive Thinking. Ajuste realizado: encuadre, contraste y nitidez; sin retoque personal.
+NICO
+Este módulo va después de explicar Becoming Adaptive y antes de Quiénes somos.
+Debe sentirse editorial: fotografía o vídeo, una tesis, credenciales y un único CTA. No tratarlo como una quinta tarjeta de servicios ni mezclarlo con DIAGNOS, IAO, Training, Lab o Hub.
+El botón abre /adaptive-thinking#contacto o la landing en su primera pantalla, según la decisión final de conversión.
+El libro aparece como acreditación, en tamaño pequeño. No usarlo como imagen principal.
+
+09
+Home · Quiénes somos y contacto
+Cerrar con credibilidad, humanidad y dos vías de contacto claramente separadas.
+
+QUIÉNES SOMOS
+Un equipo diverso para problemas complejos.
+Combinamos estrategia, psicología, ingeniería, filosofía, derecho y experiencia organizacional. La mezcla de miradas no es solo una característica del equipo: es parte de nuestra forma de comprender y trabajar.
+Experimentamos, aprendemos y construimos con nuestros clientes. No intervenimos desde respuestas prefabricadas.
+
+NICO
+Mostrar un mosaico coherente de fotografías reales y recientes. Haz algo loco, esto de poner las personas con un fondo blanco…. Fome.
+Biografía ampliada solo al pulsar o en página secundaria.
+Marcelo aparece como fundador dentro del equipo, pero su oferta comercial permanece en Adaptive Thinking.
+
+
+CONTACTO PROTEA
+¿Qué está limitando hoy la capacidad adaptativa de tu organización?
+Cuéntanos qué está cambiando, qué no consigue moverse o qué desafío necesitas comprender mejor.
+Empezaremos escuchando. Después veremos qué recorrido tiene sentido.
+BOTÓN · Conversemos
+
+NICO
+Aquí se puede usar eso de los botones que hiciste pero creo que habría que hacerlo más claro. A mi me costó entenderlo y debería salir fácil, ser intuitive. Formulario Protea: Nombre · Organización · Correo electrónico · ¿Qué está ocurriendo?
+El botón debe decir “Conversemos” (podría ponerse algo entretenido para eso)
+
+
+10
+Página secundaria · IAO (Pendiente completer información)
+Una landing breve, rigurosa y tangible. No debe parecer un test comercial.
+
+HERO /IAO
+IAO. Hacer visible la capacidad adaptativa.
+El Índice de Adaptabilidad Organizacional ofrece una lectura rigurosa y accionable de las capacidades y fricciones que condicionan la respuesta de una organización.
+Permite responder tres preguntas: dónde estamos, qué está limitando nuestra respuesta y dónde conviene actuar primero.
+BOTÓN · Solicitar una conversación sobre el IAO
+
+Estructura mínima de la página
+01 · Qué es el IAO.
+02 · Qué preguntas permite responder.
+03 · Qué recibe la organización: lectura compartida, mapa y prioridades.
+04 · Cómo se conecta con DIAGNOS y el Plan Adaptativo.
+05 · Qué ocurre después: Training, Lab o Hub según el desafío.
+06 · Preguntas frecuentes validadas.
+07 · Formulario específico para conversar sobre el IAO.
+COPY DE CIERRE
+El IAO no busca reducir una organización a una puntuación. Hace visible una capacidad colectiva y abre una conversación estratégica sobre dónde actuar.
+
+NICO
+Publicar solo capturas o visualizaciones reales y autorizadas.
+El formulario debe llegar al canal comercial de Protea, no al de Marcelo.
+
+
+11
+Página secundaria · Adaptive Thinking
+Landing comercial exclusiva de Marcelo: pensamiento, formatos, evidencia y contratación.
+
+HERO /ADAPTIVE-THINKING
+Ideas para comprender lo que cambia antes de quedarse atrás.
+ADAPTIVE THINKING
+Marcelo Lasagna traduce la complejidad en ideas, preguntas y criterios que ayudan a líderes y organizaciones a reconocer señales, cuestionar inercias y abrir nuevas posibilidades de acción.
+Autor · Investigador · Fundador de Protea
+BOTÓN · Consultar disponibilidad
+
+Botón secundario: Ver formatos.
+INDICACIÓN PARA NICO
+Primera pantalla: un H1, un texto breve, credenciales, dos botones y fotografía o vídeo de Marcelo en acción.
+Consultar disponibilidad baja al formulario. Ver formatos baja a las tres experiencias.
+No empezar con la biografía ni con el libro.
+Adaptive Thinking puede tener un tratamiento tipográfico propio, pero no crear un logotipo independiente ajeno a Protea.
+
+PROPUESTA DE VALOR
+No solo inspiración. Una forma distinta de mirar.
+Marcelo convierte ideas complejas en un lenguaje accesible y exigente que permite nombrar lo que se percibe, revisar supuestos y abrir mejores conversaciones.
+La audiencia se lleva una mirada nueva, un lenguaje compartido y preguntas capaces de orientar la acción.
+
+
+12
+Adaptive Thinking · Tres formatos
+No vender horas de Marcelo. Vender tres experiencias claramente diferenciadas.
+
+CONFERENCIAS
+Una idea que cambia la conversación.
+Intervenciones para congresos, convenciones, encuentros corporativos y jornadas institucionales. Marcelo presenta una tesis clara y provocadora, conectada con el contexto de la audiencia.
+Ideal para audiencias amplias.
+45–75 minutos.
+Conferencia y conversación final.
+BOTÓN · Consultar una conferencia
+SEMINARIOS
+Comprender una idea y trabajar sus implicaciones.
+Espacios de profundización para equipos directivos y profesionales. Combinan exposición, conversación y trabajo aplicado para explorar cómo una idea afecta a la realidad del grupo.
+Ideal para equipos y grupos especializados.
+2–4 horas.
+Exposición, diálogo y aplicación.
+BOTÓN · Diseñar un seminario
+
+CONVERSACIONES ESTRATÉGICAS
+Una pregunta real. Una conversación que abre posibilidades.
+Una sesión con Marcelo Lasagna alrededor de una tensión, una decisión o un desafío concreto de la organización. No parte de una ponencia estándar, sino de aquello que el grupo necesita comprender mejor.
+Antes de la sesión se identifica la cuestión. Marcelo aporta marcos, preguntas y provocaciones para ampliar la comprensión y explorar movimientos que antes no estaban disponibles.
+90–180 minutos · equipos directivos, consejos y grupos reducidos.
+El objetivo no es salir con una respuesta prefabricada, sino formular mejor el problema y ampliar las posibilidades de acción.
+BOTÓN · Plantear una cuestión a Marcelo
+
+NICO
+No utilizar “Becoming Adaptive” para ningún formato de Marcelo.
+No utilizar “Encuentro Adaptativo” como segunda marca. El paraguas es Adaptive Thinking y el tercer formato se llama Conversaciones estratégicas.
+Los tres botones deben seleccionar automáticamente el formato en el formulario y llevar al usuario hasta él.
+En móvil, apilar los formatos; no usar carrusel horizontal.
+
+
+13
+Adaptive Thinking · Conferencia insignia y temas
+Posicionar a Marcelo por una tesis propia, no como conferenciante generalista.
+
+CONFERENCIA INSIGNIA
+¿Por qué colapsan las organizaciones?
+Las organizaciones rara vez colapsan de repente. Mucho antes empiezan a perder capacidad para percibir lo que cambia, aprender con suficiente velocidad y coordinar una respuesta.
+Basada en el libro de Marcelo Lasagna, esta conferencia muestra por qué el éxito puede convertirse en rigidez y qué diferencia a las organizaciones que conservan su vigencia.
+BOTÓN · Consultar esta conferencia
+
+Otros temas · máximo tres
+TEMA 1
+La eficiencia ya no es suficiente
+Por qué una organización extraordinariamente eficiente puede volverse vulnerable cuando el entorno deja de parecerse al mundo para el que fue diseñada.
+TEMA 2
+Del ajedrez al Go
+Cómo dirigir cuando el tablero, las reglas y los movimientos posibles cambian durante la partida.
+
+TEMA 3
+Inteligencia adaptativa
+Cómo desarrollar la capacidad colectiva de percibir, comprender, decidir, aprender y evolucionar en contextos complejos.
+Cada intervención puede adaptarse al contexto, el sector y el propósito del encuentro.
+
+INDICACIÓN PARA NICO
+La portada del libro debe aparecer aquí, en tamaño pequeño, como acreditación del pensamiento. La imagen no está incluida en los archivos aportados y debe incorporarse desde el activo oficial.
+No añadir una lista genérica de liderazgo, innovación, cultura, estrategia o transformación.
+Validar con Marcelo títulos, disponibilidad, duración, idiomas y grado de personalización antes de publicar.
+
+
+14
+Adaptive Thinking · Perfil, evidencia y contratación
+Generar confianza y permitir iniciar una contratación cualificada sin fricción.
+
+PERFIL BREVE
+Marcelo Lasagna
+Marcelo Lasagna es fundador de Protea y autor de ¿Por qué colapsan las organizaciones?. Su trabajo conecta ciencias de la complejidad, estrategia, innovación y aprendizaje organizacional para comprender cómo las organizaciones pueden conservar su vigencia en entornos que cambian.
+
+INDICACIÓN PARA NICO
+Añadir únicamente información curricular real y relevante para la contratación: publicaciones, experiencia académica, organizaciones, conferencias, medios y países.
+No convertir la sección en un currículum completo.
+Incluir testimonios, logos y datos de eventos solo cuando sean reales, recientes y autorizados.
+Ocultar la prueba social si todavía no existen materiales suficientes.
+
+Proceso de contratación
+01
+CONTEXTO
+QUÉ ORGANIZÁIS
+02
+ENCAJE
+FORMATO + FECHA
+03
+PROPUESTA
+CONTENIDO + CONDICIONES
+04
+PREPARACIÓN
+ALINEACIÓN PREVIA
+
+FORMULARIO ESPECÍFICO
+Consultar disponibilidad de Marcelo
+Cuéntanos brevemente qué estás organizando. Revisaremos el contexto para confirmar el formato y la disponibilidad.
+Campos: Formato · Qué estás organizando · Qué quieres provocar · Fecha aproximada · Ciudad / online · Número de asistentes · Nombre · Organización · Correo electrónico · Teléfono opcional · Información adicional · Privacidad.
+BOTÓN · Consultar disponibilidad de Marcelo
+
+INDICACIÓN PARA NICO
+Opciones de formato: Conferencia · Seminario · Conversación estratégica · No lo sé; necesito orientación. Cada CTA debe preseleccionar el formato correspondiente.
+No utilizar “Enviar”, “Contactar”, “Más información” ni “Solicitar información”.
+No publicar precios, carrito ni pago online.
+
+15
+Sistema visual y tono
+La web debe encarnar a Protea: sofisticada, viva, precisa y serena.
+
+PROTEA · BECOMING ADAPTIVE
+Sistema vivo
+La bella Protea
+Visuales abstractos, conexiones, patrones, capas, movimiento orgánico y fotografías reales de aprendizaje o trabajo aplicado.
+Azul profundo y blanco como base.
+Coral para señalar.
+Magenta y azul eléctrico dentro de las imágenes.
+IAO tangible y luminoso.
+MARCELO · ADAPTIVE THINKING
+Invitación editorial
+Fotografía y vídeo reales, voz propia, tesis clara, mucho espacio y presencia humana. Debe sentirse como una invitación intelectual, no como publicidad de un speaker.
+Marcelo en acción.
+Libro como autoridad secundaria.
+Prueba visual real.
+Un CTA inequívoco.
+
+Reglas generales
+Una idea por bloque y un solo botón dominante.
+Párrafos de un máximo aproximado de cuatro líneas en escritorio.
+Alternar fondos oscuros y claros para construir ritmo; evitar grandes superficies coral.
+Usar inglés solo en Adaptive Intelligence Agents, Becoming Adaptive y Adaptive Thinking. Explicar todo lo demás en español.
+No ocultar información importante dentro de imágenes o interacciones que exijan pasar el cursor.
+No usar fotografía de stock, iconos genéricos, interfaces falsas ni estética de ciencia ficción.
+La sofisticación debe surgir de la composición, el espacio, la jerarquía y la precisión del lenguaje; no del exceso de animación.
+
+
+16
+Banco de imágenes · Marcelo
+
+
+
+FOTO 1 · Principal. Marcelo en escenario, cercano y con energía. Usar en la home o el hero de Adaptive Thinking. Permite un recorte horizontal.
+FOTO 2 · Conversación estratégica. Usar para el tercer formato: muestra escucha, explicación y trabajo con un grupo.
+
+
+
+FOTO 3 · Panel y conversación pública. Usar como evidencia o dentro de la franja de apariciones.
+FOTO 4 · Intervención institucional. Usar como evidencia secundaria o en conferencias/seminarios.
+
+
+17
+Banco de imágenes · Perfil y criterios de uso
+La fotografía debe mostrar pensamiento, conversación y presencia real; nunca una imagen corporativa genérica.
+
+
+FOTO 5 · Retrato editorial. Utilizar en el perfil, dossier o imagen social. No usar como única imagen de apertura si existe una fotografía de Marcelo en acción.
+
+
+
+
+
+
+
+
+
+
+SELECCIÓN RECOMENDADA
+Home: Foto 1. Hero de Adaptive Thinking: Foto 1 o vídeo. Conversación estratégica: Foto 2. Evidencia: Fotos 3 y 4. Perfil y dossier: Foto 5.
+
+
+18
+Vídeos, apariciones y enlaces
+Mantener estos enlaces activos para que Nicolás pueda incorporarlos y validarlos antes de publicar.
+
+LinkedIn · publicación / intervención reciente
+https://www.linkedin.com/posts/be-skiller_de-todos-los-animales-que-habitan-la-tierra-activity-7496533102341799936-TC45?utm_medium=ios_app&rcm=ACoAABOhLJsBGObjdQ--0lr-EYBlac8kuT1bSt4&utm_source=social_share_send&utm_campaign=whatsapp
+Utilizar como evidencia reciente o para seleccionar un fragmento, siempre que la publicación siga accesible y se cuente con autorización.
+
+YouTube · intervención / podcast
+https://youtu.be/vHCBVgbVDd4?is=E_COmFRM2lEgKWpW
+Puede enlazarse desde un botón de reproducción. Priorizar un extracto de 60–90 segundos si existe una versión editada de calidad.
+
+Instagram · reel relacionado con la conferencia insignia
+https://www.instagram.com/reel/DcTQoyYCMX-/?igsi=MXE1b3JqcjFubnEzeg%3D%3D
+Ubicar junto a “¿Por qué colapsan las organizaciones?” o en la franja de evidencia, no como contenido principal de la página.
+
+NICO
+No reproducir vídeo automáticamente con sonido.
+Todo vídeo debe tener subtítulos, portada cuidada y botón de reproducción visible.
+Comprobar antes de publicar que los enlaces siguen activos y que su inserción permite reproducción en la web.
+
+
+
+PROMESA FINAL DE LA WEB
+Protea ayuda a las organizaciones a que no colapsen.
+Hace visible lo que limita su evolución, desarrolla capacidad y la pone en movimiento.
+
+Adaptive Thinking, con Marcelo Lasagna, abre la mirada y las conversaciones que pueden iniciar ese movimiento.
