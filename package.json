@@ -2,6 +2,7 @@
   "name": "protea-review",
   "private": true,
   "scripts": {
-    "dev": "node tools/preview.mjs"
+    "dev": "node tools/preview.mjs",
+    "build": "node tools/build-static.mjs"
   }
 }

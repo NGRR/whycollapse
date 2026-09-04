@@ -20,3 +20,7 @@
 Sin cambios byte a byte: `assets/css/protea.css`, `assets/css/protea-live.css`, `assets/js/protea.js` y `components/hero/**`. Assets existentes intactos. Mismos breakpoints 640/960px. Ninguna modificación en `protea/`, `protea_vivov2/`, `webProtea/`, `0001/`, `0002/`, `0003/` o `prototipos/`.
 
 El resto del índice central se conserva byte-equivalente al reemplazar sólo el fragmento `a.featured`. Los archivos nuevos de metadatos de Sites sirven a la copia privada de revisión; el código también se guarda en GitHub por solicitud explícita.
+
+## Ajuste de empaquetado
+
+El empaquetador de la copia privada exige `dist/` como raíz estática. `tools/build-static.mjs` copia los archivos de `protea_vivo/` sin modificarlos; `dist/` se excluye de Git. Este ajuste no modifica la web ni el botón central.
