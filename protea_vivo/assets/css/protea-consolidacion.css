@@ -45,6 +45,24 @@
 .team-person details p{margin-top:14px}
 .team-source{font-size:14px;margin-top:30px}
 .contact-anchor{margin-top:90px;padding-top:50px;border-top:1px solid var(--protea-line);scroll-margin-top:110px}
+.contact-progress{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:42px 0 54px;padding:0}
+.contact-progress li{border-top:1px solid var(--protea-line);padding-top:12px;color:rgba(7,18,38,.54);font:500 13px/1.35 var(--font-head);transition:border-color .2s ease,color .2s ease}
+.contact-progress li span{display:block;margin-bottom:6px;color:var(--protea-orange);font-size:15px}
+.contact-progress li.is-active{border-top-color:var(--protea-blue);color:var(--protea-blue)}
+.contact-progress li.is-complete{border-top-color:var(--protea-orange);color:var(--protea-ink)}
+.contact-progress-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.contact-step{min-width:0;border:0;margin:0;padding:0}
+.contact-step legend{display:block;width:100%;padding:0;font:500 clamp(27px,3vw,40px)/1.15 var(--font-head);color:var(--protea-ink)}
+.contact-step-intro{max-width:620px;margin-top:16px;color:rgba(7,18,38,.72)}
+.contact-step .contact-fields{margin-top:36px}
+.contact-step-actions{display:none;flex-wrap:wrap;gap:16px;align-items:center;margin:4px 0 30px}
+.protea-contact-form.is-enhanced .contact-step-actions{display:flex}
+.protea-contact-form.is-enhanced .contact-fallback-submit{display:none}
+.contact-review{display:none;margin:36px 0 30px;border-top:1px solid var(--protea-line)}
+.protea-contact-form.is-enhanced .contact-review{display:block}
+.contact-review>div{display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,2fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--protea-line)}
+.contact-review dt{font:500 14px/1.5 var(--font-head);color:var(--protea-blue)}
+.contact-review dd{min-width:0;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
 .contact-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:34px 0}
 .contact-field-full{grid-column:1 / -1}
 .contact-field label{display:block;font-size:15px;margin-bottom:10px}
@@ -98,6 +116,8 @@
   .mirada-statements{margin:30px 0}
   .mirada-statements p{font-size:26px;padding:24px 0}
   .contact-anchor{margin-top:60px}
+  .contact-progress{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;margin:34px 0 42px}
+  .contact-review>div{grid-template-columns:minmax(0,1fr);gap:6px}
   .consolidation-content .iao-report{padding:8px}
   .contract-process{gap:22px}
 }

@@ -1,4 +1,4 @@
-# Diff conceptual · PROTEA_v02_REVIEW
+# Diff conceptual · PROTEA_v03_REVIEW
 
 | Archivos | Componentes | Antes → Después | Efectos / límites |
 | --- | --- | --- | --- |
@@ -12,6 +12,10 @@
 | Otras páginas existentes en `pages/` | Navegación superior y anclas afectadas | Menú antiguo → navegación consolidada | Cuerpo de esas páginas no reinterpretado |
 | `assets/img/client/` | Imágenes reales | Sin evidencia suficiente → Word y perfiles oficiales | Sin generación de imágenes ni alteración de los píxeles |
 | `index.html` raíz | `a.featured` | `protea_vivov2/` → `protea_vivo/` | Fuera del botón, índice idéntico |
+| `protea_vivo/index.html` | `#contacto-final [data-contact-form="protea"]` | Cuatro campos simultáneos → situación, organización, contacto y revisión progresiva | Misma información; sin test, clasificación ni recomendación |
+| `assets/css/protea-consolidacion.css` | `.contact-progress`, `.contact-step`, `.contact-review` | Formulario plano → ritmo por etapas usando tokens existentes | Sin variables, componentes ni breakpoints nuevos |
+| `assets/js/protea-sections.js` | `[data-progressive-contact]` | Envío directo inerte → avance, retroceso, validación y resumen literal | No persiste datos ni simula envío; Marcelo queda separado |
+| `index.html` raíz | `a.featured` | `PROTEA_v02_REVIEW` → `PROTEA_v03_REVIEW` | Conserva destino `./protea_vivo/` |
 | `AGENTS.md`, `docs/protea/` | Gobierno del proyecto | Reglas conversacionales → manifiesto y órdenes persistentes | Versión REVIEW, pendiente de aprobación visual |
 | `package.json`, `tools/preview.mjs` | Revisión visual local | Sin servidor compatible → servidor estático usando Node integrado | Cero dependencias añadidas a la web |
 

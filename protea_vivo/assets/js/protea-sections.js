@@ -1,4 +1,4 @@
-/* CHANGE-001: navigation, progressive copy and direct contact. No orientation engine. */
+/* CHANGE-001/003: navigation, progressive copy and guided direct contact. No orientation engine. */
 (() => {
   const links = [...document.querySelectorAll('.section-rail .rail-item, .mobile-story-nav a')];
   const sections = [...new Set(links.map(link => link.getAttribute('href')).filter(href => href && href.startsWith('#')))]
@@ -58,6 +58,62 @@
       marceloForm.append(field);
     }
   }));
+
+  const proteaForm = document.querySelector('[data-contact-form="protea"][data-progressive-contact]');
+  if (proteaForm) {
+    const steps = [...proteaForm.querySelectorAll('[data-contact-step]')];
+    const indicators = [...proteaForm.querySelectorAll('[data-contact-step-indicator]')];
+    const progressStatus = proteaForm.querySelector('[data-contact-progress-status]');
+    let currentStep = 0;
+
+    const syncReview = () => {
+      proteaForm.querySelectorAll('[data-contact-review]').forEach(output => {
+        const field = proteaForm.elements[output.dataset.contactReview];
+        output.textContent = field && field.value.trim() ? field.value.trim() : '—';
+      });
+    };
+
+    const showStep = (index, moveFocus = true) => {
+      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach((step, stepIndex) => { step.hidden = stepIndex !== currentStep; });
+      indicators.forEach((indicator, indicatorIndex) => {
+        const active = indicatorIndex === currentStep;
+        indicator.classList.toggle('is-active', active);
+        indicator.classList.toggle('is-complete', indicatorIndex < currentStep);
+        if (active) indicator.setAttribute('aria-current', 'step');
+        else indicator.removeAttribute('aria-current');
+      });
+      if (currentStep === steps.length - 1) syncReview();
+      if (progressStatus) progressStatus.textContent = `Paso ${currentStep + 1} de ${steps.length}: ${indicators[currentStep].textContent.trim()}`;
+      if (moveFocus) {
+        const focusTarget = steps[currentStep].querySelector('input, textarea, button');
+        if (focusTarget) requestAnimationFrame(() => focusTarget.focus());
+      }
+    };
+
+    const validateStep = step => {
+      const invalid = [...step.querySelectorAll('input, textarea, select')].find(field => !field.checkValidity());
+      if (!invalid) return true;
+      invalid.reportValidity();
+      return false;
+    };
+
+    proteaForm.addEventListener('click', event => {
+      const next = event.target.closest('[data-contact-next]');
+      const back = event.target.closest('[data-contact-back]');
+      if (next && validateStep(steps[currentStep])) showStep(currentStep + 1);
+      if (back) showStep(currentStep - 1);
+    });
+
+    proteaForm.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' || event.target.matches('textarea, button') || currentStep === steps.length - 1) return;
+      event.preventDefault();
+      if (validateStep(steps[currentStep])) showStep(currentStep + 1);
+    });
+
+    proteaForm.classList.add('is-enhanced');
+    showStep(0, false);
+  }
 
   // The baseline has no delivery endpoint. Never simulate a successful submission,
   // expose a made-up email address, or persist personal information in local storage.
