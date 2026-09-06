@@ -1,4 +1,4 @@
-# PROTEA_v07_REVIEW
+# PROTEA_v08_REVIEW
 
 Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `PROTEA_v03_APPROVED`, fijada en `00_BASELINE/PROTEA_v03_APPROVED.md`.
 
@@ -20,6 +20,7 @@ Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `P
 - Corrección `CHANGE-006`: la escena vuelve a calcularse a ancho de viewport de la retícula y se recorta al primer tercio; ya no se comprime el sistema de coordenadas dentro de esa columna.
 - Corrección `CHANGE-007`: el equipo conserva el grid de tres columnas en escritorio y funciona como carrusel táctil nativo en móvil, sin duplicar perfiles ni añadir dependencias.
 - Corrección `CHANGE-008`: se retiró la regla que ocultaba Protea viva bajo 960 px y se activó su composición móvil de viewport completo, sin recorte lateral.
+- Corrección `CHANGE-009`: el centro móvil de Protea viva se desplaza al 75 % del viewport para despejar la zona izquierda de lectura.
 - Retiro del test activo y debrief. Compatibilidad de URLs antiguas hacia contacto directo o nueva landing.
 - Botón azul del índice central como único acceso a esta construcción; se retiró el enlace histórico que duplicaba el mismo destino.
 - Manifiesto, reglas AGENTS y CHANGE-001/002 guardados con el código.
@@ -49,6 +50,6 @@ La comprobación visual anterior corresponde a CHANGE-001. `CHANGE-006` fue vali
 | P03 | Confirmar actualidad de los seis perfiles y autorización de uso comercial de materiales | Equipo, IAO, Marcelo | Validación editorial final |
 | P04 | Validar títulos, duraciones, disponibilidad, idiomas y personalización con Marcelo | Adaptive Thinking | Cierre de la oferta comercial; cifras actuales proceden del informe |
 | P05 | Información complementaria y preguntas frecuentes definitivas del IAO | Landing IAO | Sustituir o ampliar exclusivamente la información validada; no se inventan detalles |
-| P06 | Aprobación visual explícita de `PROTEA_v07_REVIEW` | Construcción completa | Nueva baseline APPROVED; no inferirla del permiso para hacer commit |
+| P06 | Aprobación visual explícita de `PROTEA_v08_REVIEW` | Construcción completa | Nueva baseline APPROVED; no inferirla del permiso para hacer commit |
 
 Los formularios están maquetados y validan campos obligatorios, pero NO envían. La interfaz lo declara y nunca muestra una confirmación falsa. No se guardan datos personales en almacenamiento local. No se publicaron precios ni métricas ficticias.

@@ -3,7 +3,7 @@ window.PROTEA_VIVA_CONFIG = {
   seed: 2772206847,
   maxDpr: 1.85,
   centerXDesktop: 0.235,
-  centerXMobile: 0.5,
+  centerXMobile: 0.75,
   centerYDesktop: 0.5,
   centerYMobile: 0.44,
   heightDesktop: 0.96,
