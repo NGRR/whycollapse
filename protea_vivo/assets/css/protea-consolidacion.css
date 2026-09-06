@@ -12,23 +12,15 @@
   top:0;
   bottom:0;
   left:var(--protea-viva-left,132px);
-  width:var(--protea-viva-width,calc((100vw - 132px) / 3));
+  width:var(--protea-viva-width,calc(100vw - 132px));
   overflow:hidden;
   pointer-events:none;
-  opacity:0;
-  visibility:hidden;
+  clip-path:inset(0 66.666666% 0 0);
   background:
     radial-gradient(circle at 50% 46%,rgba(255,255,255,.055),transparent 31%),
     var(--protea-body-blue);
-  transition:opacity .45s ease,visibility 0s linear .45s;
 }
-.protea-review.is-protea-viva-active .protea-viva-background{
-  opacity:1;
-  visibility:visible;
-  transition-delay:0s;
-}
-#protea-viva-canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .5s ease}
-.protea-viva-is-ready #protea-viva-canvas{opacity:1}
+#protea-viva-canvas{display:block;width:100%;height:100%}
 .protea-review .consolidation-section{
   background-color:transparent!important;
   background-image:none!important;
@@ -191,6 +183,5 @@
   .contract-process{gap:22px}
 }
 @media(prefers-reduced-motion:reduce){
-  .protea-viva-background,#protea-viva-canvas{transition:none}
   .mirada-statements [data-reveal]{transition:none;transform:none;opacity:1}
 }

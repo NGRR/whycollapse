@@ -1,4 +1,4 @@
-# Diff conceptual · PROTEA_v04_REVIEW
+# Diff conceptual · PROTEA_v05_REVIEW
 
 | Archivos | Componentes | Antes → Después | Efectos / límites |
 | --- | --- | --- | --- |
@@ -21,6 +21,10 @@
 | `assets/js/protea-viva-config.js`, `protea-viva-background.js` | Secuencia `Protea Vive v16` | Prototipo autónomo → progreso 0–100 % acotado al cuerpo | Sin editor, sin dependencia nueva y pausado fuera del recorrido visible |
 | `assets/img/protea-viva/` | Capas de crecimiento | Activos sólo en prototipo → cuatro texturas válidas en Home | `stage-09-mature.webp` se excluye porque está vacío |
 | `index.html` raíz | `a.featured` | `PROTEA_v03_REVIEW` → `PROTEA_v04_REVIEW` | Conserva destino `./protea_vivo/` |
+| `assets/css/protea-consolidacion.css` | `.protea-viva-background` | Canvas reducido al tercio → escena completa recortada con `clip-path` | Ocupa el viewport fijo; sólo queda visible el primer tercio |
+| `assets/js/protea-viva-background.js` | `resize()` | Ancho de canvas = 1/3 → ancho de la retícula completa | Restaura las coordenadas originales del componente |
+| `assets/js/protea-viva-config.js` | Configuración desktop | Figura centrada en el tercio → centro X 0,235 y altura 0,96 | Equivalente al ejemplo `prototipos/protea_vive/` |
+| `index.html` raíz | `a.featured` | `PROTEA_v04_REVIEW` → `PROTEA_v05_REVIEW` | Conserva destino `./protea_vivo/` |
 | `AGENTS.md`, `docs/protea/` | Gobierno del proyecto | Reglas conversacionales → manifiesto y órdenes persistentes | Versión REVIEW, pendiente de aprobación visual |
 | `package.json`, `tools/preview.mjs` | Revisión visual local | Sin servidor compatible → servidor estático usando Node integrado | Cero dependencias añadidas a la web |
 

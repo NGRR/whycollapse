@@ -279,7 +279,7 @@
   function resize() {
     const gridRect = storyGrid.getBoundingClientRect();
     stage.style.setProperty("--protea-viva-left", `${Math.round(gridRect.left)}px`);
-    stage.style.setProperty("--protea-viva-width", `${Math.round(gridRect.width / 3)}px`);
+    stage.style.setProperty("--protea-viva-width", `${Math.round(gridRect.width)}px`);
     const rect = canvas.getBoundingClientRect();
     state.width = Math.max(1, Math.round(rect.width));
     state.height = Math.max(1, Math.round(rect.height));

@@ -1,4 +1,4 @@
-# PROTEA_v04_REVIEW
+# PROTEA_v05_REVIEW
 
 Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `PROTEA_v03_APPROVED`, fijada en `00_BASELINE/PROTEA_v03_APPROVED.md`.
 
@@ -17,6 +17,7 @@ Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `P
 - Componente `Protea Vive v16` integrado como fondo progresivo del primer tercio reservado, sin invadir los dos tercios de contenido.
 - Progreso del organismo vinculado al recorrido del cuerpo; cuatro texturas válidas reutilizadas y activo vacío excluido.
 - En móvil se conserva el apilado aprobado: no se reserva el tercio ni se superpone el canvas al contenido.
+- Corrección `CHANGE-006`: la escena vuelve a calcularse a ancho de viewport de la retícula y se recorta al primer tercio; ya no se comprime el sistema de coordenadas dentro de esa columna.
 - Retiro del test activo y debrief. Compatibilidad de URLs antiguas hacia contacto directo o nueva landing.
 - Botón azul del índice central apuntando a esta construcción; resto del índice idéntico.
 - Manifiesto, reglas AGENTS y CHANGE-001/002 guardados con el código.
@@ -25,6 +26,7 @@ Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `P
 
 - Hero manual íntegro: fragmento HTML con la misma huella SHA-256; `protea.js`, `protea-live.css` y `components/hero/**` conservan el estado remoto `fa24f7c6` indicado por Nicolás y no fueron modificados por `CHANGE-005`.
 - Cuatro activos de Protea viva comprobados, todos válidos y no vacíos; peso conjunto 1.582.538 bytes.
+- Parámetros espaciales y de composición cotejados con `prototipos/protea_vive/`: centro X 0,235, altura 0,96, DPR 1,85 y opacidades finales equivalentes.
 - 103 referencias locales de las tres páginas principales comprobadas, sin destinos ni anclas rotos.
 - Un H1 por página y sin IDs duplicados.
 - Sintaxis JavaScript y `git diff --check` correctos.
@@ -35,7 +37,7 @@ Fecha: 2026-09-06. Construcción: `protea_vivo/`. Baseline anterior aprobada: `P
 
 La comprobación visual se realizó con navegador Chrome, mediante un servidor local de revisión sin dependencias de producto. No constituye una auditoría exhaustiva de todas las combinaciones de dispositivo, tamaño de texto o navegador. La animación existente conserva su comportamiento y limitaciones originales.
 
-La comprobación visual anterior corresponde a CHANGE-001. `CHANGE-005` fue validado estructuralmente y queda pendiente de revisión visual de dirección de arte. El commit y la publicación de revisión no constituyen aprobación.
+La comprobación visual anterior corresponde a CHANGE-001. `CHANGE-006` fue validado estructuralmente y queda pendiente de revisión visual de dirección de arte. El commit y la publicación de revisión no constituyen aprobación.
 
 ## Solicitudes pendientes para cerrar la publicación comercial
 
@@ -45,6 +47,7 @@ La comprobación visual anterior corresponde a CHANGE-001. `CHANGE-005` fue vali
 | P03 | Confirmar actualidad de los seis perfiles y autorización de uso comercial de materiales | Equipo, IAO, Marcelo | Validación editorial final |
 | P04 | Validar títulos, duraciones, disponibilidad, idiomas y personalización con Marcelo | Adaptive Thinking | Cierre de la oferta comercial; cifras actuales proceden del informe |
 | P05 | Información complementaria y preguntas frecuentes definitivas del IAO | Landing IAO | Sustituir o ampliar exclusivamente la información validada; no se inventan detalles |
-| P06 | Aprobación visual explícita de `PROTEA_v04_REVIEW` | Construcción completa | Nueva baseline APPROVED; no inferirla del permiso para hacer commit |
+| P06 | Aprobación visual explícita de `PROTEA_v05_REVIEW` | Construcción completa | Nueva baseline APPROVED; no inferirla del permiso para hacer commit |
+| P07 | Definir y aplicar visualización responsive del equipo: grid en escritorio y slideshow táctil en móvil | `#equipo .team-mosaic` | Mejorar lectura móvil sin duplicar perfiles; reutilizar UIkit y conservar el grid desktop |
 
 Los formularios están maquetados y validan campos obligatorios, pero NO envían. La interfaz lo declara y nunca muestra una confirmación falsa. No se guardan datos personales en almacenamiento local. No se publicaron precios ni métricas ficticias.
