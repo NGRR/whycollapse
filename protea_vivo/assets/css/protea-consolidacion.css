@@ -3,6 +3,74 @@
 .consolidation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:0}
 .consolidation-content{grid-column:2 / 4;min-width:0;padding-left:28px}
 .consolidation-section{background:rgba(255,255,255,.94);scroll-margin-top:100px}
+
+/* CHANGE-005. El rail queda fuera; el canvas ocupa sólo el primer tercio del cuerpo. */
+.protea-review{--protea-body-blue:#0759f4;background:var(--protea-body-blue)}
+.protea-viva-background{
+  position:fixed;
+  z-index:0;
+  top:0;
+  bottom:0;
+  left:var(--protea-viva-left,132px);
+  width:var(--protea-viva-width,calc((100vw - 132px) / 3));
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(255,255,255,.055),transparent 31%),
+    var(--protea-body-blue);
+  transition:opacity .45s ease,visibility 0s linear .45s;
+}
+.protea-review.is-protea-viva-active .protea-viva-background{
+  opacity:1;
+  visibility:visible;
+  transition-delay:0s;
+}
+#protea-viva-canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .5s ease}
+.protea-viva-is-ready #protea-viva-canvas{opacity:1}
+.protea-review .consolidation-section{
+  background-color:transparent!important;
+  background-image:none!important;
+  color:#fff;
+  border-bottom-color:rgba(255,255,255,.16);
+}
+.protea-review .consolidation-footer{
+  position:relative;
+  z-index:1;
+  background:transparent;
+  border-top-color:rgba(255,255,255,.18);
+  color:#fff;
+}
+.protea-review .consolidation-content :is(h2,h3,h4),
+.protea-review .contact-anchor :is(h2,h3),
+.protea-review .contact-step legend{color:#fff}
+.protea-review .consolidation-content :is(p,li,label,dd),
+.protea-review .contact-anchor :is(p,label,dd){color:rgba(255,255,255,.82)}
+.protea-review .consolidation-content .section-kicker,
+.protea-review .contact-anchor .section-kicker,
+.protea-review .consolidation-content .eyebrow{color:var(--protea-orange)}
+.protea-review .consolidation-content :is(.step-tension,.iao-questions,.thinking-formats),
+.protea-review .contact-review dt,
+.protea-review .team-person summary{color:#fff}
+.protea-review .mirada-statements strong,
+.protea-review .mirada-statements p:nth-child(even) strong{color:var(--protea-orange)}
+.protea-review :is(.adaptive-journey,.adaptive-step+.adaptive-step,.iao-evidence,.journey-close,.contact-anchor,.contact-review,.contact-review>div){border-color:rgba(255,255,255,.22)}
+.protea-review .adaptive-step:before{box-shadow:0 0 0 7px rgba(255,90,0,.16)}
+.protea-review .iao-report{background:#fff;border-color:rgba(255,255,255,.42)}
+.protea-review .iao-report figcaption{color:rgba(7,18,38,.68)}
+.protea-review .team-source a,
+.protea-review .contact-privacy a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
+.protea-review .contact-progress li{border-top-color:rgba(255,255,255,.26);color:rgba(255,255,255,.58)}
+.protea-review .contact-progress li.is-active{border-top-color:#fff;color:#fff}
+.protea-review .contact-progress li.is-complete{border-top-color:var(--protea-orange);color:#fff}
+.protea-review .contact-field :is(input,textarea,select){border-bottom-color:rgba(255,255,255,.52);color:#fff}
+.protea-review .contact-field :is(input,textarea,select):focus{outline-color:var(--protea-orange)}
+.protea-review .contact-privacy input{accent-color:var(--protea-orange)}
+.protea-review .contact-delivery-note{color:rgba(255,255,255,.62)}
+.protea-review .consolidation-section .protea-button-primary{background:var(--protea-orange);border-color:var(--protea-orange);color:#fff}
+.protea-review .consolidation-section .protea-button{border-color:rgba(255,255,255,.72);color:#fff}
+.protea-review .consolidation-footer :is(.brand-mark,.site-footer-links a){color:#fff}
 .consolidation-content>h2,.contact-anchor>h2{font-size:clamp(42px,5vw,72px);line-height:1.02;margin-top:0;overflow-wrap:break-word}
 .consolidation-content h3{font-size:clamp(26px,3vw,38px);line-height:1.12}
 .consolidation-content h4{font-size:22px;line-height:1.2}
@@ -97,6 +165,7 @@
 .protea-review .hero-title span{overflow-wrap:normal}
 .protea-review .hero-copy-panel .protea-button-primary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding-top:12px!important;padding-bottom:12px!important}
 @media(max-width:959px){
+  .protea-viva-background{display:none}
   .consolidation-section>.uk-container{padding-left:24px;padding-right:24px}
   .protea-review .hero-title{width:min(100%,440px);font-size:clamp(34px,6.5vw,48px)}
   .consolidation-grid{grid-template-columns:minmax(0,1fr)}
@@ -122,5 +191,6 @@
   .contract-process{gap:22px}
 }
 @media(prefers-reduced-motion:reduce){
+  .protea-viva-background,#protea-viva-canvas{transition:none}
   .mirada-statements [data-reveal]{transition:none;transform:none;opacity:1}
 }

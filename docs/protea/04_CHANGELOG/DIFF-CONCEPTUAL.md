@@ -1,4 +1,4 @@
-# Diff conceptual · PROTEA_v03_REVIEW
+# Diff conceptual · PROTEA_v04_REVIEW
 
 | Archivos | Componentes | Antes → Después | Efectos / límites |
 | --- | --- | --- | --- |
@@ -16,12 +16,17 @@
 | `assets/css/protea-consolidacion.css` | `.contact-progress`, `.contact-step`, `.contact-review` | Formulario plano → ritmo por etapas usando tokens existentes | Sin variables, componentes ni breakpoints nuevos |
 | `assets/js/protea-sections.js` | `[data-progressive-contact]` | Envío directo inerte → avance, retroceso, validación y resumen literal | No persiste datos ni simula envío; Marcelo queda separado |
 | `index.html` raíz | `a.featured` | `PROTEA_v02_REVIEW` → `PROTEA_v03_REVIEW` | Conserva destino `./protea_vivo/` |
+| `protea_vivo/index.html` | `#protea-viva-canvas` | Primer tercio reservado vacío → plano animado de fondo | Se inserta después del hero; contenido y retícula no se mueven |
+| `assets/css/protea-consolidacion.css` | `.protea-viva-background`, `.consolidation-section` | Cuerpo claro → azul Protea con contraste blanco/naranja | Canvas limitado al primer tercio; oculto bajo 960px |
+| `assets/js/protea-viva-config.js`, `protea-viva-background.js` | Secuencia `Protea Vive v16` | Prototipo autónomo → progreso 0–100 % acotado al cuerpo | Sin editor, sin dependencia nueva y pausado fuera del recorrido visible |
+| `assets/img/protea-viva/` | Capas de crecimiento | Activos sólo en prototipo → cuatro texturas válidas en Home | `stage-09-mature.webp` se excluye porque está vacío |
+| `index.html` raíz | `a.featured` | `PROTEA_v03_REVIEW` → `PROTEA_v04_REVIEW` | Conserva destino `./protea_vivo/` |
 | `AGENTS.md`, `docs/protea/` | Gobierno del proyecto | Reglas conversacionales → manifiesto y órdenes persistentes | Versión REVIEW, pendiente de aprobación visual |
 | `package.json`, `tools/preview.mjs` | Revisión visual local | Sin servidor compatible → servidor estático usando Node integrado | Cero dependencias añadidas a la web |
 
 ## Protegido y verificado
 
-Sin cambios byte a byte: `assets/css/protea.css`, `assets/css/protea-live.css`, `assets/js/protea.js` y `components/hero/**`. Assets existentes intactos. Mismos breakpoints 640/960px. Ninguna modificación en `protea/`, `protea_vivov2/`, `webProtea/`, `0001/`, `0002/`, `0003/` o `prototipos/`.
+Sin cambios por `CHANGE-005`: `assets/css/protea.css`, `assets/css/protea-live.css`, `assets/js/protea.js` y `components/hero/**`. El hero se conserva exactamente en el estado manual de GitHub `fa24f7c6`; su fragmento HTML mantiene la misma huella SHA-256. Assets preexistentes intactos. Mismos breakpoints 640/960px. Ninguna modificación en `protea/`, `protea_vivov2/`, `webProtea/`, `0001/`, `0002/`, `0003/` o `prototipos/`.
 
 El resto del índice central se conserva byte-equivalente al reemplazar sólo el fragmento `a.featured`. Los archivos nuevos de metadatos de Sites sirven a la copia privada de revisión; el código también se guarda en GitHub por solicitud explícita.
 
