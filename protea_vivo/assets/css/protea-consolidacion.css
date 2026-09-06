@@ -96,6 +96,7 @@
 .thinking-photo img{aspect-ratio:16 / 9;object-fit:cover}
 .thinking-formats{font-family:var(--font-head);color:var(--protea-blue);line-height:1.7}
 .team-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 20px;margin-top:40px;align-items:start}
+.team-mobile-hint{display:none}
 .team-person{min-width:0}
 .team-person>img{display:block;width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:50% 25%}
 .team-person:nth-child(3n + 2){padding-top:32px}
@@ -168,9 +169,14 @@
   .consolidation-page .page-nav .mobile-menu-button span{background:var(--protea-blue)}
 }
 @media(max-width:639px){
-  .team-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+  .team-mobile-hint{display:block;margin:30px 0 14px;color:rgba(255,255,255,.68);font:500 12px/1.4 var(--font-head);letter-spacing:.08em;text-transform:uppercase}
+  .team-mosaic{display:flex;gap:16px;margin-top:0;margin-right:-24px;padding:0 24px 18px 0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:0 24px;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.5) rgba(255,255,255,.12)}
+  .team-mosaic::-webkit-scrollbar{height:2px}
+  .team-mosaic::-webkit-scrollbar-track{background:rgba(255,255,255,.12)}
+  .team-mosaic::-webkit-scrollbar-thumb{background:rgba(255,255,255,.5)}
+  .team-person{flex:0 0 calc(100% - 42px);scroll-snap-align:start;scroll-snap-stop:always}
   .team-person:nth-child(3n + 2){padding-top:0}
-  .team-person:nth-child(even){padding-top:24px}
+  .team-person:nth-child(even){padding-top:0}
   .team-person h3{font-size:19px}
   .contact-fields{grid-template-columns:minmax(0,1fr)}
   .adaptive-step{padding-left:22px}
