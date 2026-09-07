@@ -34,3 +34,7 @@ Reequilibrar el cuerpo de la Home para separar con mayor claridad el organismo v
 - No aparece desbordamiento horizontal global.
 - El hero queda fuera del diff.
 
+## Validación visual
+
+- La primera revisión confirmó el viewport de 956 px para una ventana de 936 px y el recorte exacto del 75 % derecho.
+- Se retiró `mix-blend-mode: luminosity` de los retratos después de comprobar que oscurecía en exceso algunas fuentes; el tratamiento definitivo conserva rostros mediante saturación, contraste y luminosidad controlados.
