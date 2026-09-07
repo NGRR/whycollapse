@@ -1,4 +1,4 @@
-# Diff conceptual · PROTEA_v05_REVIEW
+# Diff conceptual · PROTEA_v09_REVIEW
 
 | Archivos | Componentes | Antes → Después | Efectos / límites |
 | --- | --- | --- | --- |
@@ -27,6 +27,12 @@
 | `index.html` raíz | `a.featured` | `PROTEA_v04_REVIEW` → `PROTEA_v05_REVIEW` | Conserva destino `./protea_vivo/` |
 | `AGENTS.md`, `docs/protea/` | Gobierno del proyecto | Reglas conversacionales → manifiesto y órdenes persistentes | Versión REVIEW, pendiente de aprobación visual |
 | `package.json`, `tools/preview.mjs` | Revisión visual local | Sin servidor compatible → servidor estático usando Node integrado | Cero dependencias añadidas a la web |
+| `assets/css/protea-consolidacion.css` | `.consolidation-grid`, `.consolidation-content` | Retícula 1/3–2/3 → retícula 1/4–3/4 | Rail exterior y breakpoint móvil intactos |
+| mismo CSS | `.protea-viva-background` | Recorte al primer tercio → primer cuarto; altura exacta → 10 px extra arriba y abajo | En móvil conserva viewport completo sin recorte |
+| `assets/js/protea-viva-config.js` | `centerXDesktop` | 0,235 → 0,13 | Organismo desplazado al cuarto izquierdo; parámetros móviles intactos |
+| `assets/css/protea-consolidacion.css` | `.journey-photo`, `.thinking-photo`, `.iao-report` | Imágenes planas → integración azul, trama, acento naranja y cortes técnicos | Sólo CSS; píxeles fuente y contenido intactos |
+| mismo CSS | `.team-person`, `.team-mosaic` | Retratos blancos sin módulo → tarjetas tecnológicas e interacción visual | Grid desktop preservado; carrusel móvil ajustado para mostrar tarjetas completas |
+| `index.html` raíz | `a.featured` | `PROTEA_v08_REVIEW` → `PROTEA_v09_REVIEW` | Conserva destino `./protea_vivo/` |
 
 ## Protegido y verificado
 
