@@ -1,0 +1,63 @@
+/* Materia Viva v01. Adaptaciones aisladas de spec-card, dark-card,
+   contrast-panel y living-card de uikit-protea. Hero y fuentes intactos. */
+.materia-viva .consolidation-section{padding-top:clamp(72px,8vw,128px);padding-bottom:clamp(72px,8vw,128px)}
+.materia-viva .consolidation-content{min-width:0}
+.materia-viva .consolidation-content>h2{max-width:1000px;letter-spacing:-.045em}
+.materia-viva .consolidation-content>.section-kicker{display:flex;align-items:center;gap:20px;font-size:14px;letter-spacing:.12em}
+.materia-viva .consolidation-content>.section-kicker:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.3)}
+.materia-viva .mv-art{position:relative;isolation:isolate;margin:40px 0;overflow:hidden;background:#0759f4;border:1px solid rgba(255,255,255,.24)}
+.materia-viva .mv-art img{width:100%;height:auto;display:block}
+.materia-viva .mv-art:after{content:"";position:absolute;inset:12px;pointer-events:none;border-top:1px solid rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.3)}
+.materia-viva .mv-recognition{margin:48px 0 0;border:0;mask-image:linear-gradient(#000 78%,transparent)}
+.materia-viva .mirada-statements{margin:0 0 40px}
+.materia-viva .mirada-statements p{padding:32px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.materia-viva .mirada-statements strong{font-weight:600}
+.materia-viva .adaptive-journey{border:0;display:grid;gap:40px;counter-reset:mv-stage}
+.materia-viva .mv-spec-card{counter-increment:mv-stage;position:relative;padding:clamp(24px,4vw,48px);border:1px solid rgba(255,255,255,.24);background:linear-gradient(135deg,rgba(0,17,51,.86),rgba(0,17,51,.4));box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.materia-viva .mv-spec-card:before{content:"";position:absolute;top:8px;left:8px;width:18px;height:18px;background:none;border-radius:0;border-top:1px solid #ff5a00;border-left:1px solid #ff5a00;box-shadow:none}
+.materia-viva .mv-spec-card:after{content:"";position:absolute;right:8px;bottom:8px;width:18px;height:18px;border-right:1px solid rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.6);pointer-events:none}
+.materia-viva .mv-spec-card>.section-kicker{font-size:14px;letter-spacing:.14em}
+.materia-viva .mv-spec-card>h3{font-size:clamp(32px,4vw,56px);max-width:90%}
+.materia-viva .mv-spec-card .mv-art{margin:0 0 32px}
+.materia-viva .mv-spec-card>p{max-width:740px}
+.materia-viva .iao-evidence{padding:32px 0 0}
+.materia-viva .iao-report{padding:16px;background:#fff;clip-path:none;box-shadow:0 24px 64px rgba(0,17,51,.25)}
+.materia-viva .iao-report img{filter:none}
+.materia-viva .iao-report figcaption{color:#35425b;font-size:14px}
+.materia-viva .journey-close{padding:clamp(24px,4vw,48px);border:1px solid rgba(255,255,255,.7);background:#fff;box-shadow:0 24px 70px rgba(0,17,51,.18)}
+.materia-viva .consolidation-content .journey-close h3{color:#071226}
+.materia-viva .consolidation-content .journey-close p{color:#35425b}
+.materia-viva .journey-close .protea-button-primary{background:#0759f4;border-color:#0759f4;color:#fff}
+.materia-viva .thinking-section .consolidation-content{border-top:1px solid rgba(255,255,255,.3)}
+.materia-viva .thinking-photo{clip-path:none;border:1px solid rgba(255,255,255,.25);margin-bottom:48px}
+.materia-viva .thinking-formats{padding:24px 0;border-block:1px solid rgba(255,255,255,.25)}
+.materia-viva .team-mosaic{gap:28px 20px;align-items:start}
+.materia-viva .team-person{clip-path:none;border-color:rgba(255,255,255,.28);background:rgba(0,17,51,.88);padding:0 0 24px;transition:border-color .2s}
+.materia-viva .team-person:nth-child(3n + 2){margin-top:0}
+.materia-viva .team-person:hover{transform:none;border-color:#ff5a00}
+.materia-viva .team-person>img{filter:none;opacity:1;aspect-ratio:4/5;object-fit:contain;background:#001133}
+.materia-viva .team-person h3,.materia-viva .team-person>p,.materia-viva .team-person details{margin-left:20px;margin-right:20px}
+.materia-viva .team-person:after{display:none}
+.materia-viva .team-person p{font-size:16px}
+.materia-viva .contact-anchor{padding:clamp(24px,4vw,48px);background:rgba(0,17,51,.92);border:1px solid rgba(255,255,255,.3);border-top:3px solid #ff5a00}
+.materia-viva .contact-progress{gap:12px}
+.materia-viva .contact-anchor input:focus,.materia-viva .contact-anchor textarea:focus{outline-color:#ff5a00}
+@media(max-width:959px){
+ .materia-viva .consolidation-section{padding-block:64px}
+ .materia-viva .mv-spec-card{padding:24px}
+ .materia-viva .consolidation-content>h2{font-size:clamp(34px,6vw,52px)}
+ .materia-viva .mv-art{margin-block:28px}
+ .materia-viva .contact-anchor{padding:24px}
+}
+@media(max-width:639px){
+ .materia-viva .team-mosaic{box-sizing:border-box;width:100%;margin:0;padding:0 0 16px;gap:16px;scroll-padding:0}
+ .materia-viva .team-mosaic:after{display:none}
+ .materia-viva .team-person{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+ .materia-viva .team-person>img{max-height:420px}
+ .materia-viva .mirada-statements p{font-size:26px}
+ .materia-viva .mv-spec-card,.materia-viva .contact-anchor,.materia-viva .journey-close{padding:22px 18px}
+ .materia-viva .contact-step-actions{gap:12px}
+ .materia-viva .contact-step-actions .uk-button{width:100%}
+ .materia-viva .mv-system img{object-fit:contain}
+}
+@media(prefers-reduced-motion:reduce){.materia-viva .team-person,.materia-viva .team-person>img{transition:none}}
