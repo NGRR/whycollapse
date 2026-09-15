@@ -55,7 +55,7 @@
         preloadHost.remove();
         html.classList.remove('v3-preloading');
         document.body.classList.remove('v3-preloading');
-      }, 460);
+      }, 360);
     };
 
     if (!document.querySelector('script[data-v3-r9]')) {
@@ -66,8 +66,8 @@
       document.body.append(script);
     }
 
-    /* Salida de seguridad independiente del controlador R9. */
-    window.setTimeout(forceRelease, 4200);
+    /* Salida dura: aun si el controlador R9 falla, la página no queda bloqueada. */
+    window.setTimeout(forceRelease, 2800);
   }
 
   /* Complete the left rail with the sixth narrative state. */
