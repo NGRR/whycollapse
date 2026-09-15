@@ -285,8 +285,9 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           const progress = proteaForm.querySelector('.contact-progress');
-          const anchor = progress || step || proteaForm;
-          const offset = window.innerWidth <= 520 ? 64 : 72;
+          /* Use the new step's normal-flow position; the progress bar is sticky and cannot be used as a scroll anchor. */
+          const anchor = step || progress || proteaForm;
+          const offset = window.innerWidth <= 520 ? 142 : 152;
           const targetTop = Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - offset);
 
           window.scrollTo({
