@@ -30,19 +30,19 @@
   opacity:.55;
 }
 
-/* Dos fases de 840 ms: el CSS de desplazamiento coincide con R10 JS. */
+/* Dos fases de 2 s: el CSS de desplazamiento coincide con R10 JS. */
 .protea-v3 .v3-preloader__lens{
   transition:
-    left .84s cubic-bezier(.22,.8,.2,1)!important,
-    top .84s cubic-bezier(.22,.8,.2,1)!important,
-    width .84s cubic-bezier(.22,.8,.2,1)!important,
-    height .84s cubic-bezier(.22,.8,.2,1)!important,
-    transform .84s cubic-bezier(.22,.8,.2,1)!important,
-    opacity .32s ease!important;
+    left 2s cubic-bezier(.22,.8,.2,1)!important,
+    top 2s cubic-bezier(.22,.8,.2,1)!important,
+    width 2s cubic-bezier(.22,.8,.2,1)!important,
+    height 2s cubic-bezier(.22,.8,.2,1)!important,
+    transform 2s cubic-bezier(.22,.8,.2,1)!important,
+    opacity .36s ease!important;
 }
 
 .protea-v3 .v3-preloader.is-returning .v3-preloader__lens{
-  transition-duration:.84s,.84s,.84s,.84s,.84s,.32s!important;
+  transition-duration:2s,2s,2s,2s,2s,.36s!important;
 }
 
 /* Wordmark simple: usa el mismo tratamiento tipográfico de la marca en la web. */
