@@ -132,7 +132,7 @@
     translateY(calc(var(--v3-preload-r) * -1.035))
     rotate(var(--v3-load-glyph-angle));
   transform-origin:50% 50%;
-  animation:v3R10Segment .11s ease-out var(--v3-load-delay) both;
+  animation:v3R10Segment .10s ease-out var(--v3-load-delay) both;
 }
 
 .protea-v3 .v3-preloader__loadbar span:nth-child(4n+1),
