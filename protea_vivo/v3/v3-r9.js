@@ -46,7 +46,8 @@
     const loadbar = document.createElement('span');
     loadbar.className = 'v3-preloader__loadbar';
     const segmentCount = 28;
-    const stepDelay = LOAD_DURATION / segmentCount;
+    const segmentAnimation = reduceMotion ? 0 : 100;
+    const stepDelay = reduceMotion ? 0 : (LOAD_DURATION - segmentAnimation) / (segmentCount - 1);
 
     for (let i = 0; i < segmentCount; i += 1) {
       const segment = document.createElement('span');
@@ -133,8 +134,8 @@
     window.addEventListener('resize', syncWithHeroLens, { passive: true });
 
     /*
-     * Fase 1 · 840 ms: el loader se completa alrededor del perímetro mientras
-     * los recursos críticos se calientan en paralelo. Nunca supera esos 840 ms.
+     * Fase 1 · 840 ms: el loader completa el perímetro mientras los recursos
+     * críticos se calientan en paralelo. El último glifo termina a los 840 ms.
      */
     await Promise.all([
       wait(LOAD_DURATION),
