@@ -2,15 +2,19 @@
   'use strict';
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = () => matchMedia('(max-width: 959px)').matches;
 
-  /* R4 styles: loaded here to avoid altering the protected Hero/bootstrap chain. */
-  if (!document.querySelector('link[data-v3-r4]')) {
-    const r4Styles = document.createElement('link');
-    r4Styles.rel = 'stylesheet';
-    r4Styles.href = 'v3/v3-r4.css?v=20260915-4';
-    r4Styles.dataset.v3R4 = 'true';
-    document.head.append(r4Styles);
-  }
+  /* R4 + R5 styles load after the protected Hero/bootstrap chain. */
+  const ensureStyle = (href, dataKey) => {
+    if (document.querySelector(`link[${dataKey}]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute(dataKey, 'true');
+    document.head.append(link);
+  };
+  ensureStyle('v3/v3-r4.css?v=20260915-4', 'data-v3-r4');
+  ensureStyle('v3/v3-r5.css?v=20260915-5', 'data-v3-r5');
 
   /* Complete the left rail with the sixth narrative state. */
   const rail = document.querySelector('.section-rail');
@@ -35,23 +39,43 @@
     const section = document.getElementById(sectionId);
     const marker = section?.querySelector('.v3-quarter-marker');
     if (!marker) return;
+
     marker.dataset.sectionMarker = sectionId;
     marker.innerHTML = `<span>${config.number}</span><mark>${config.title}</mark><i></i><small>${config.code}</small>`;
+
+    /* A dedicated full-height track makes sticky persist for the whole section. */
+    if (!marker.parentElement?.classList.contains('v3-marker-track')) {
+      const track = document.createElement('div');
+      track.className = 'v3-marker-track';
+      marker.parentNode.insertBefore(track, marker);
+      track.append(marker);
+    }
   });
 
-  /* Section 03: ordered alphabetically, in uppercase, without changing the underlying stage IDs. */
-  [
+  /* Section 03: ordered alphabetically and exposed as a live sub-state. */
+  const stageConfig = [
     { id: 'comprender', letter: 'A', label: 'IAO', title: 'DIAGNOS · IAO' },
     { id: 'entrenar', letter: 'B', label: 'TRAINING', title: 'TRAINING' },
     { id: 'arraigar', letter: 'C', label: 'LAB', title: 'LAB' },
     { id: 'sostener', letter: 'D', label: 'HUB', title: 'HUB' }
-  ].forEach(({ id, letter, label, title }) => {
+  ];
+
+  stageConfig.forEach(({ id, letter, label, title }) => {
     const stage = document.getElementById(id);
     const stageIndex = stage?.querySelector('.v3-stage-index');
     const heading = stage?.querySelector('.v3-stage-copy h3');
     if (stageIndex) stageIndex.innerHTML = `<span>${letter}</span><small>${label}</small>`;
     if (heading) heading.textContent = title;
   });
+
+  const section03Marker = document.querySelector('[data-section-marker="becoming-adaptive"]');
+  let stageReadout = section03Marker?.querySelector('.v3-marker-substage');
+  if (section03Marker && !stageReadout) {
+    stageReadout = document.createElement('div');
+    stageReadout.className = 'v3-marker-substage';
+    stageReadout.innerHTML = '<span>A</span><b>IAO</b>';
+    section03Marker.append(stageReadout);
+  }
 
   const navLinks = [...document.querySelectorAll('.section-rail .rail-item, .mobile-story-nav a, .site-nav a, .mobile-menu-list a')];
   const sectionLinks = navLinks.filter((link) => {
@@ -68,6 +92,8 @@
     })
     .filter(Boolean);
   const sectionMarkers = [...document.querySelectorAll('[data-section-marker]')];
+  const mobileStoryNav = document.querySelector('.mobile-story-nav');
+  const contactSection = document.getElementById('contacto-final');
 
   const setActive = (id) => {
     const normalizedId = (id || '').replace(/^#/, '');
@@ -85,9 +111,64 @@
     });
   };
 
+  const updateStageState = () => {
+    const stages = stageConfig
+      .map((config) => ({ ...config, element: document.getElementById(config.id) }))
+      .filter((item) => item.element);
+    if (!stages.length) return;
+
+    const probe = window.innerHeight * 0.45;
+    let active = stages[0];
+
+    for (const stage of stages) {
+      const rect = stage.element.getBoundingClientRect();
+      if (rect.top <= probe) active = stage;
+      if (rect.top <= probe && rect.bottom > probe) {
+        active = stage;
+        break;
+      }
+    }
+
+    stages.forEach((stage) => stage.element.classList.toggle('is-stage-active', stage.id === active.id));
+
+    if (stageReadout) {
+      const letter = stageReadout.querySelector('span');
+      const label = stageReadout.querySelector('b');
+      if (letter) letter.textContent = active.letter;
+      if (label) label.textContent = active.label;
+    }
+  };
+
+  /* Fade the mobile story rail before it interferes with the contact form. */
+  const updateMobileRailClearance = () => {
+    if (!mobileStoryNav) return;
+
+    if (!isMobile() || !contactSection) {
+      mobileStoryNav.style.removeProperty('opacity');
+      mobileStoryNav.style.removeProperty('transform');
+      mobileStoryNav.style.removeProperty('pointer-events');
+      mobileStoryNav.classList.remove('is-contact-clearing');
+      mobileStoryNav.removeAttribute('aria-hidden');
+      return;
+    }
+
+    const top = contactSection.getBoundingClientRect().top;
+    const start = window.innerHeight * 1.05;
+    const end = window.innerHeight * 0.70;
+    const progress = Math.max(0, Math.min(1, (start - top) / Math.max(1, start - end)));
+
+    mobileStoryNav.style.opacity = String(1 - progress);
+    mobileStoryNav.style.transform = `translateY(${Math.round(progress * 84)}px)`;
+    mobileStoryNav.style.pointerEvents = progress > 0.62 ? 'none' : '';
+    mobileStoryNav.classList.toggle('is-contact-clearing', progress > 0);
+
+    if (progress >= 0.96) mobileStoryNav.setAttribute('aria-hidden', 'true');
+    else mobileStoryNav.removeAttribute('aria-hidden');
+  };
+
   /*
-   * One scroll probe drives both systems. This avoids the rail and quarter marker
-   * selecting different sections when a tall section occupies most of the viewport.
+   * One scroll probe drives rail, section marker and A–D product state. This avoids
+   * different observers disagreeing while a long section occupies the viewport.
    */
   let railFrame = 0;
   const updateNarrativeState = () => {
@@ -112,6 +193,8 @@
     }
 
     setActive(activeSection.id);
+    updateStageState();
+    updateMobileRailClearance();
   };
 
   const scheduleNarrativeState = () => {
@@ -193,8 +276,38 @@
       });
     };
 
+    const positionMobileStep = (step, focusTarget) => {
+      if (!isMobile()) {
+        if (focusTarget) requestAnimationFrame(() => focusTarget.focus());
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const progress = proteaForm.querySelector('.contact-progress');
+          const anchor = progress || step || proteaForm;
+          const offset = window.innerWidth <= 520 ? 64 : 72;
+          const targetTop = Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - offset);
+
+          window.scrollTo({
+            top: targetTop,
+            behavior: reduceMotion ? 'auto' : 'smooth'
+          });
+
+          if (focusTarget) {
+            const focusDelay = reduceMotion ? 0 : 260;
+            window.setTimeout(() => {
+              try { focusTarget.focus({ preventScroll: true }); }
+              catch (_) { focusTarget.focus(); }
+            }, focusDelay);
+          }
+        });
+      });
+    };
+
     const showStep = (index, moveFocus = true) => {
       currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      proteaForm.dataset.currentStep = String(currentStep);
       steps.forEach((step, stepIndex) => { step.hidden = stepIndex !== currentStep; });
       indicators.forEach((indicator, indicatorIndex) => {
         const active = indicatorIndex === currentStep;
@@ -205,9 +318,10 @@
       });
       if (currentStep === steps.length - 1) syncReview();
       if (progressStatus && indicators[currentStep]) progressStatus.textContent = `Paso ${currentStep + 1} de ${steps.length}: ${indicators[currentStep].textContent.trim()}`;
+
       if (moveFocus) {
         const focusTarget = steps[currentStep]?.querySelector('input, textarea, button');
-        if (focusTarget) requestAnimationFrame(() => focusTarget.focus());
+        positionMobileStep(steps[currentStep], focusTarget);
       }
     };
 
