@@ -60,14 +60,14 @@
 
     if (!document.querySelector('script[data-v3-r9]')) {
       const script = document.createElement('script');
-      script.src = 'v3/v3-r9.js?v=20260916-10';
+      script.src = 'v3/v3-r9.js?v=20260916-10c';
       script.setAttribute('data-v3-r9', 'true');
       script.onerror = forceRelease;
       document.body.append(script);
     }
 
-    /* Salida dura: aun si el controlador R10 falla, la página no queda bloqueada. */
-    window.setTimeout(forceRelease, 2800);
+    /* Salida dura: margen suficiente para las dos fases de 2 s más el fade. */
+    window.setTimeout(forceRelease, 5600);
   }
 
   /* Complete the left rail with the sixth narrative state. */
