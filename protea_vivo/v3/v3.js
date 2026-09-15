@@ -3,34 +3,124 @@
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Rail narrativo V3: conserva la estructura original aunque los href incluyan v3/# por el <base>. */
+  /* R4 styles: loaded here to avoid altering the protected Hero/bootstrap chain. */
+  if (!document.querySelector('link[data-v3-r4]')) {
+    const r4Styles = document.createElement('link');
+    r4Styles.rel = 'stylesheet';
+    r4Styles.href = 'v3/v3-r4.css?v=20260915-4';
+    r4Styles.dataset.v3R4 = 'true';
+    document.head.append(r4Styles);
+  }
+
+  /* Complete the left rail with the sixth narrative state. */
+  const rail = document.querySelector('.section-rail');
+  if (rail && !rail.querySelector('a[href*="#contacto-final"]')) {
+    const contactRailItem = document.createElement('a');
+    contactRailItem.className = 'rail-item';
+    contactRailItem.href = 'v3/#contacto-final';
+    contactRailItem.innerHTML = '<span>06</span><small>Conversemos</small>';
+    rail.append(contactRailItem);
+  }
+
+  /* Persistent markers in the first quarter. Their state mirrors the rail. */
+  const markerConfig = {
+    colapso: { number: '02', title: 'Nuestra mirada', code: 'READ / SIGNALS' },
+    'becoming-adaptive': { number: '03', title: 'Qué hacemos', code: 'BUILD / CAPACITY' },
+    'adaptive-thinking': { number: '04', title: 'Pensamiento', code: 'THINK / REFRAME' },
+    equipo: { number: '05', title: 'Equipo', code: 'NOUS / NETWORK' },
+    'contacto-final': { number: '06', title: 'Conversemos', code: 'ACT / TOGETHER' }
+  };
+
+  Object.entries(markerConfig).forEach(([sectionId, config]) => {
+    const section = document.getElementById(sectionId);
+    const marker = section?.querySelector('.v3-quarter-marker');
+    if (!marker) return;
+    marker.dataset.sectionMarker = sectionId;
+    marker.innerHTML = `<span>${config.number}</span><mark>${config.title}</mark><i></i><small>${config.code}</small>`;
+  });
+
+  /* Section 03: ordered alphabetically, in uppercase, without changing the underlying stage IDs. */
+  [
+    { id: 'comprender', letter: 'A', label: 'IAO', title: 'DIAGNOS · IAO' },
+    { id: 'entrenar', letter: 'B', label: 'TRAINING', title: 'TRAINING' },
+    { id: 'arraigar', letter: 'C', label: 'LAB', title: 'LAB' },
+    { id: 'sostener', letter: 'D', label: 'HUB', title: 'HUB' }
+  ].forEach(({ id, letter, label, title }) => {
+    const stage = document.getElementById(id);
+    const stageIndex = stage?.querySelector('.v3-stage-index');
+    const heading = stage?.querySelector('.v3-stage-copy h3');
+    if (stageIndex) stageIndex.innerHTML = `<span>${letter}</span><small>${label}</small>`;
+    if (heading) heading.textContent = title;
+  });
+
   const navLinks = [...document.querySelectorAll('.section-rail .rail-item, .mobile-story-nav a, .site-nav a, .mobile-menu-list a')];
   const sectionLinks = navLinks.filter((link) => {
     const href = link.getAttribute('href') || '';
-    return href.includes('#');
+    const hashPart = href.includes('#') ? href.split('#')[1] : '';
+    return hashPart && document.getElementById(hashPart);
   });
-  const sectionIds = [...new Set(sectionLinks.map((link) => `#${(link.getAttribute('href') || '').split('#')[1]}`).filter((id) => id.length > 1))];
-  const sections = sectionIds.map((id) => document.querySelector(id)).filter(Boolean);
+
+  const railLinks = [...document.querySelectorAll('.section-rail .rail-item')];
+  const railSections = railLinks
+    .map((link) => {
+      const hashPart = (link.getAttribute('href') || '').split('#')[1];
+      return hashPart ? document.getElementById(hashPart) : null;
+    })
+    .filter(Boolean);
+  const sectionMarkers = [...document.querySelectorAll('[data-section-marker]')];
 
   const setActive = (id) => {
-    document.querySelectorAll('.section-rail .rail-item').forEach((link) => {
-      const hash = `#${(link.getAttribute('href') || '').split('#')[1]}`;
-      const active = hash === id;
+    const normalizedId = (id || '').replace(/^#/, '');
+
+    railLinks.forEach((link) => {
+      const linkId = (link.getAttribute('href') || '').split('#')[1] || '';
+      const active = linkId === normalizedId;
       link.classList.toggle('is-active', active);
       if (active) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');
     });
+
+    sectionMarkers.forEach((marker) => {
+      marker.classList.toggle('is-active', marker.dataset.sectionMarker === normalizedId);
+    });
   };
 
-  if ('IntersectionObserver' in window && sections.length) {
-    const activeObserver = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActive(`#${visible.target.id}`);
-    }, { rootMargin: '-24% 0px -54% 0px', threshold: [0, .08, .2, .45] });
-    sections.forEach((section) => activeObserver.observe(section));
-  }
+  /*
+   * One scroll probe drives both systems. This avoids the rail and quarter marker
+   * selecting different sections when a tall section occupies most of the viewport.
+   */
+  let railFrame = 0;
+  const updateNarrativeState = () => {
+    railFrame = 0;
+    if (!railSections.length) return;
+
+    const probe = window.innerHeight * 0.42;
+    let activeSection = railSections[0];
+
+    for (const section of railSections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= probe) activeSection = section;
+      if (rect.top <= probe && rect.bottom > probe) {
+        activeSection = section;
+        break;
+      }
+    }
+
+    const doc = document.documentElement;
+    if (window.scrollY + window.innerHeight >= doc.scrollHeight - 3) {
+      activeSection = railSections[railSections.length - 1];
+    }
+
+    setActive(activeSection.id);
+  };
+
+  const scheduleNarrativeState = () => {
+    if (railFrame) return;
+    railFrame = requestAnimationFrame(updateNarrativeState);
+  };
+
+  window.addEventListener('scroll', scheduleNarrativeState, { passive: true });
+  window.addEventListener('resize', scheduleNarrativeState, { passive: true });
 
   sectionLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -39,6 +129,7 @@
       const target = document.getElementById(hashPart);
       if (!target) return;
       event.preventDefault();
+      setActive(hashPart);
       target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       history.replaceState(null, '', `${location.pathname}#${hashPart}`);
       if (window.UIkit && link.closest('#mobile-menu')) UIkit.offcanvas('#mobile-menu')?.hide();
@@ -155,5 +246,6 @@
     showStep(0, false);
   }
 
-  if (location.hash) requestAnimationFrame(() => setActive(location.hash));
+  if (location.hash && document.querySelector(location.hash)) setActive(location.hash);
+  updateNarrativeState();
 })();
