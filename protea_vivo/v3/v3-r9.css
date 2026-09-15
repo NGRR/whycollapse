@@ -7,21 +7,65 @@ html.v3-preloading body{
   overflow:hidden;
 }
 
+/*
+ * Bootstrap inmediato: este nodo ya existe en el Hero V3. El CSS lo cubre antes
+ * de que v3.js termine de parsear la página, evitando el flash de recursos.
+ */
+.protea-v3 .canvas-injection-note:not(.v3-preloader){
+  position:fixed!important;
+  inset:0!important;
+  z-index:100000!important;
+  display:block!important;
+  pointer-events:auto!important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(13,83,230,.18),transparent 42%),
+    linear-gradient(145deg,#001133 0%,#02256f 48%,#001133 100%)!important;
+}
+
+.protea-v3 .canvas-injection-note:not(.v3-preloader)::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(46vw,500px);
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(226,246,255,.42);
+  border-radius:50%;
+  box-shadow:0 0 0 34px rgba(91,168,255,.025),0 0 46px rgba(91,168,255,.08);
+  animation:v3PreloadSpin 6s linear infinite;
+}
+
+.protea-v3 .canvas-injection-note:not(.v3-preloader)::after{
+  content:"protea";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+  font:700 clamp(34px,5vw,62px)/1 Montserrat,sans-serif;
+  letter-spacing:-.05em;
+  text-transform:lowercase;
+  text-shadow:0 0 28px rgba(76,160,255,.18);
+}
+
 .protea-v3 .v3-preloader{
   --v3-preload-x:50vw;
   --v3-preload-y:50vh;
   --v3-preload-r:min(23vw,280px);
   --v3-preload-angle:0deg;
-  position:fixed;
-  inset:0;
-  z-index:100000;
+  position:fixed!important;
+  inset:0!important;
+  z-index:100000!important;
+  display:block!important;
   overflow:hidden;
   background:
     radial-gradient(circle at 50% 50%,rgba(13,83,230,.19) 0,rgba(0,35,105,.08) 28%,transparent 55%),
-    linear-gradient(145deg,#001133 0%,#02256f 48%,#001133 100%);
+    linear-gradient(145deg,#001133 0%,#02256f 48%,#001133 100%)!important;
   color:#fff;
   opacity:1;
   visibility:visible;
+  pointer-events:auto!important;
   transition:opacity .42s ease,visibility .42s ease;
 }
 
@@ -41,7 +85,7 @@ html.v3-preloading body{
 .protea-v3 .v3-preloader.is-leaving{
   opacity:0;
   visibility:hidden;
-  pointer-events:none;
+  pointer-events:none!important;
 }
 
 .protea-v3 .v3-preloader__brand{
@@ -85,12 +129,16 @@ html.v3-preloading body{
   transform-origin:50% 50%;
   will-change:left,top,width,height,transform,opacity;
   transition:
-    left 1.02s cubic-bezier(.22,.8,.2,1),
-    top 1.02s cubic-bezier(.22,.8,.2,1),
-    width 1.02s cubic-bezier(.22,.8,.2,1),
-    height 1.02s cubic-bezier(.22,.8,.2,1),
-    transform 1.02s cubic-bezier(.22,.8,.2,1),
+    left .82s cubic-bezier(.22,.8,.2,1),
+    top .82s cubic-bezier(.22,.8,.2,1),
+    width .82s cubic-bezier(.22,.8,.2,1),
+    height .82s cubic-bezier(.22,.8,.2,1),
+    transform .82s cubic-bezier(.22,.8,.2,1),
     opacity .36s ease;
+}
+
+.protea-v3 .v3-preloader.is-returning .v3-preloader__lens{
+  transition-duration:.38s,.38s,.38s,.38s,.38s,.24s;
 }
 
 .protea-v3 .v3-preloader.is-aligning .v3-preloader__lens{
@@ -165,7 +213,7 @@ html.v3-preloading body{
   animation:v3PreloadSpin 5.2s linear infinite;
 }
 
-/* Líneas en dirección y ángulo del radio, como las guías científicas del hero. */
+/* Líneas en dirección y ángulo del radio, replicando las guías del overlay científico. */
 .protea-v3 .v3-preloader__guide{
   --guide-angle:0deg;
   --guide-start:56%;
@@ -245,12 +293,13 @@ html.v3-preloading body{
 @keyframes v3PreloadDrift{to{transform:rotate(360deg)}}
 
 @media(max-width:959px){
+  .protea-v3 .canvas-injection-note:not(.v3-preloader)::before{width:min(72vw,390px)}
   .protea-v3 .v3-preloader__brand .brand-mark{font-size:42px}
-  .protea-v3 .v3-preloader__lens{width:min(72vw,390px);height:min(72vw,390px)}
   .protea-v3 .v3-preloader__slashes span:nth-child(2){right:-12%}
 }
 
 @media(prefers-reduced-motion:reduce){
+  .protea-v3 .canvas-injection-note:not(.v3-preloader)::before,
   .protea-v3 .v3-preloader__ring,
   .protea-v3 .v3-preloader__ticks,
   .protea-v3 .v3-preloader__scan,
