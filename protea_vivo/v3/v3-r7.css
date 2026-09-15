@@ -1,4 +1,4 @@
-/* V3 R7 · canvas/compositing performance pass */
+/* V3 R7 · canvas/compositing performance + mobile UX pass */
 
 @media (min-width:960px){
   /*
@@ -24,15 +24,113 @@
   }
 
   .protea-v3 #protea-viva-canvas{
-    contain:strict;
+    contain:paint;
   }
 }
 
+/* CTA de entrada al primer textarea del contacto. */
+.protea-v3 .contact-field:has(#v3-situacion){
+  position:relative;
+}
+
+.protea-v3 .contact-field:has(#v3-situacion)::after{
+  content:"↘  PRESIONA AQUÍ";
+  position:absolute;
+  right:14px;
+  top:56px;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  padding:8px 10px;
+  border:1px solid rgba(255,90,0,.72);
+  background:rgba(0,17,51,.78);
+  color:#fff;
+  font:600 9px/1 var(--font-head,Montserrat,sans-serif);
+  letter-spacing:.10em;
+  pointer-events:none;
+  box-shadow:0 10px 24px rgba(0,17,51,.16),0 0 0 4px rgba(255,90,0,.07);
+  transition:opacity .18s ease,transform .18s ease;
+}
+
+.protea-v3 .contact-field:has(#v3-situacion:focus)::after,
+.protea-v3 .contact-field:has(#v3-situacion:not(:placeholder-shown))::after{
+  opacity:0;
+  transform:translateY(-4px);
+}
+
 @media (max-width:959px){
-  /* Mobile already uses exactly 100vw; keep only the large-panel blur disabled
-   * inside the animated body to reduce GPU readback on long pages. */
+  /* Mobile already uses exactly 100vw; keep the large-panel blur disabled inside
+   * the animated body to reduce GPU readback on long pages. */
   .protea-v3 .v3-content{
     -webkit-backdrop-filter:none!important;
     backdrop-filter:none!important;
   }
+
+  /*
+   * Equipo: one dominant card at a time. Grid-auto-columns is used instead of
+   * flex-basis so the five desktop columns cannot leak into the mobile layout.
+   */
+  .protea-v3 .v3-team-visual{
+    display:grid!important;
+    grid-template-columns:none!important;
+    grid-auto-flow:column!important;
+    grid-auto-columns:min(82vw,350px)!important;
+    gap:16px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    margin-inline:-24px!important;
+    padding:28px 24px 36px!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-padding-inline:24px;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .protea-v3 .v3-team-visual::-webkit-scrollbar{display:none}
+
+  .protea-v3 .v3-team-card,
+  .protea-v3 .v3-team-card:nth-child(n),
+  .protea-v3 .v3-team-card:nth-child(n).is-visible{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    flex:none!important;
+    transform:none!important;
+    opacity:1!important;
+    scroll-snap-align:center!important;
+    scroll-snap-stop:always;
+  }
+
+  .protea-v3 .v3-portrait{
+    width:100%;
+    aspect-ratio:.76;
+  }
+
+  .protea-v3 .v3-team-name{
+    font-size:15px!important;
+  }
+
+  .protea-v3 .v3-carousel-controls{
+    position:relative;
+    z-index:2;
+    margin-top:4px;
+  }
+
+  .protea-v3 .contact-field:has(#v3-situacion)::after{
+    right:10px;
+    top:54px;
+    padding:8px 9px;
+    font-size:8px;
+  }
+}
+
+@media (max-width:520px){
+  .protea-v3 .v3-team-visual{
+    grid-auto-columns:min(86vw,330px)!important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .protea-v3 .contact-field:has(#v3-situacion)::after{transition:none}
 }
