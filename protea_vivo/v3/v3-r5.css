@@ -1,0 +1,195 @@
+/* V3 R5 · persistent marker tracks, stage state and mobile contact ergonomics */
+
+@media (min-width:960px){
+  /*
+   * The marker now lives inside a full-height grid track. This gives position:sticky
+   * a containing block as tall as the complete narrative section rather than the
+   * intrinsic height of the label itself.
+   */
+  .protea-v3 .v3-marker-track{
+    grid-column:1;
+    grid-row:1;
+    position:relative;
+    align-self:stretch;
+    min-height:100%;
+    z-index:4;
+    pointer-events:none;
+  }
+
+  .protea-v3 .v3-marker-track .v3-quarter-marker{
+    grid-column:auto!important;
+    position:sticky!important;
+    top:calc(50vh - 92px)!important;
+    align-self:auto!important;
+    height:max-content;
+    margin:0;
+  }
+
+  /* Section 03: each product label remains visible while its own product is crossed. */
+  .protea-v3 #becoming-adaptive .v3-stage{
+    align-items:stretch;
+  }
+
+  .protea-v3 #becoming-adaptive .v3-stage-index{
+    position:sticky;
+    top:30vh;
+    align-self:start;
+    height:max-content;
+    padding:10px 0 0;
+    opacity:.58;
+    transform:translateY(4px);
+    transition:opacity .2s ease,transform .2s ease;
+  }
+
+  .protea-v3 #becoming-adaptive .v3-stage.is-stage-active .v3-stage-index{
+    opacity:1;
+    transform:none;
+  }
+
+  .protea-v3 #becoming-adaptive .v3-stage.is-stage-active .v3-stage-index span{
+    text-shadow:0 0 24px rgba(255,90,0,.28);
+  }
+}
+
+/* Live A/B/C/D state nested in the persistent 03 marker. */
+.protea-v3 .v3-marker-substage{
+  display:none;
+  grid-template-columns:30px minmax(0,1fr);
+  align-items:center;
+  gap:8px;
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.22);
+  color:#fff;
+}
+
+.protea-v3 .v3-quarter-marker.is-active .v3-marker-substage{
+  display:grid;
+}
+
+.protea-v3 .v3-marker-substage span{
+  margin:0!important;
+  color:var(--v3-orange)!important;
+  font:500 22px/1 var(--font-head,Montserrat,sans-serif)!important;
+  letter-spacing:-.03em!important;
+}
+
+.protea-v3 .v3-marker-substage b{
+  color:#fff;
+  font:600 9px/1.25 var(--font-head,Montserrat,sans-serif);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+/* Mobile navigation clears the form area progressively before Conversemos. */
+@media (max-width:959px){
+  .protea-v3 .mobile-story-nav{
+    transition:opacity .22s ease,transform .28s cubic-bezier(.2,.7,.2,1),filter .22s ease!important;
+    will-change:opacity,transform;
+  }
+
+  .protea-v3 .mobile-story-nav.is-contact-clearing{
+    filter:blur(.2px);
+  }
+
+  /* The contact workflow becomes a compact, self-contained mobile panel. */
+  .protea-v3 .v3-guided-contact{
+    margin-top:38px;
+    padding-top:24px;
+  }
+
+  .protea-v3 .contact-progress{
+    position:sticky;
+    top:68px;
+    z-index:12;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:5px;
+    margin:0 -12px 28px;
+    padding:10px 12px 11px;
+    background:linear-gradient(180deg,rgba(0,17,51,.96),rgba(0,28,88,.91));
+    border-top:1px solid rgba(255,255,255,.16);
+    border-bottom:1px solid rgba(255,255,255,.16);
+    box-shadow:0 12px 28px rgba(0,17,51,.18);
+    backdrop-filter:blur(12px);
+  }
+
+  .protea-v3 .contact-progress li{
+    min-width:0;
+    padding-top:8px;
+    font-size:8px;
+    line-height:1.15;
+    letter-spacing:.025em;
+    overflow-wrap:anywhere;
+  }
+
+  .protea-v3 .contact-progress li span{
+    margin-bottom:4px;
+    font-size:11px;
+  }
+
+  .protea-v3 .contact-step{
+    scroll-margin-top:148px;
+  }
+
+  .protea-v3 .contact-step legend{
+    font-size:clamp(28px,9vw,38px);
+  }
+
+  .protea-v3 .contact-fields{
+    gap:18px;
+    margin:26px 0;
+  }
+
+  .protea-v3 .contact-field input,
+  .protea-v3 .contact-field textarea,
+  .protea-v3 .contact-field select{
+    min-height:46px;
+    font-size:16px;
+  }
+
+  .protea-v3 .contact-field textarea{
+    min-height:132px;
+  }
+
+  .protea-v3 .contact-step-actions{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-top:28px;
+  }
+
+  .protea-v3 .contact-step-actions .uk-button{
+    width:100%;
+    min-height:48px;
+    padding-inline:12px;
+    white-space:normal;
+    line-height:1.25;
+  }
+
+  .protea-v3 .contact-step-actions .uk-button:only-child{
+    grid-column:1 / -1;
+  }
+
+  .protea-v3 .v3-signal-options label{
+    min-height:58px;
+  }
+}
+
+@media (max-width:520px){
+  .protea-v3 .contact-progress{
+    top:62px;
+  }
+
+  .protea-v3 .contact-progress li{
+    font-size:7.5px;
+  }
+
+  .protea-v3 .contact-step-actions{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .protea-v3 #becoming-adaptive .v3-stage-index,
+  .protea-v3 .mobile-story-nav{transition:none!important}
+}
