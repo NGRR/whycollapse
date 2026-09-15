@@ -1,4 +1,4 @@
-/* V3 R10 · loader perimetral + logo digital
+/* V3 R10 · loader perimetral + wordmark Protea
  * Sólo afecta a /protea_vivo/v3/. R9 conserva la transición y R10 depura
  * la primera fase: sin guías largas, sin datos auxiliares y sin texto extra.
  */
@@ -30,7 +30,7 @@
   opacity:.55;
 }
 
-/* Dos fases de 840 ms: el CSS de desplazamiento debe coincidir con R10 JS. */
+/* Dos fases de 840 ms: el CSS de desplazamiento coincide con R10 JS. */
 .protea-v3 .v3-preloader__lens{
   transition:
     left .84s cubic-bezier(.22,.8,.2,1)!important,
@@ -45,7 +45,7 @@
   transition-duration:.84s,.84s,.84s,.84s,.84s,.32s!important;
 }
 
-/* Sólo wordmark Protea. La O se reconstruye como un anillo digital cortado. */
+/* Wordmark simple: usa el mismo tratamiento tipográfico de la marca en la web. */
 .protea-v3 .v3-preloader__brand{
   gap:0!important;
   transition:opacity .30s ease,transform .42s cubic-bezier(.22,.8,.2,1)!important;
@@ -60,49 +60,45 @@
   align-items:center;
   justify-content:center;
   gap:0;
-  font:700 clamp(38px,5vw,64px)/.9 Montserrat,sans-serif!important;
-  letter-spacing:-.055em!important;
+  font-family:var(--font-head,Montserrat,sans-serif)!important;
+  font-size:clamp(38px,5vw,64px)!important;
+  font-weight:400!important;
+  line-height:.9!important;
+  letter-spacing:-.08em!important;
   text-transform:lowercase;
   color:#fff!important;
-  text-shadow:0 0 24px rgba(83,171,255,.18),0 0 2px rgba(255,255,255,.26);
+  text-shadow:0 0 24px rgba(83,171,255,.18),0 0 2px rgba(255,255,255,.20);
 }
 
+/* R10 JS conserva tres piezas por rollback; aquí la pieza central vuelve a ser una o normal. */
 .protea-v3 .v3-r10-o{
-  position:relative;
-  display:inline-block;
-  width:.69em;
-  height:.69em;
-  margin:0 .015em 0 .02em;
+  position:static;
+  display:inline!important;
+  width:auto!important;
+  height:auto!important;
+  margin:0!important;
   flex:0 0 auto;
-  color:#fff;
-  border-radius:50%;
-  background:conic-gradient(
-    from -18deg,
-    transparent 0 13deg,
-    currentColor 13deg 161deg,
-    transparent 161deg 177deg,
-    currentColor 177deg 343deg,
-    transparent 343deg 360deg
-  );
-  -webkit-mask:radial-gradient(circle,transparent 0 55%,#000 57% 74%,transparent 76%);
-  mask:radial-gradient(circle,transparent 0 55%,#000 57% 74%,transparent 76%);
-  filter:drop-shadow(0 0 5px rgba(115,194,255,.28));
-  transform:translateY(.035em);
+  color:inherit;
+  border-radius:0;
+  background:none!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+  filter:none!important;
+  transform:none!important;
 }
 
-/* Pequeño corte/scan naranja: hace que la O se lea como interfaz y no como tipografía rota. */
+.protea-v3 .v3-r10-o::before{
+  content:"o";
+  position:static;
+  display:inline;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+}
+
 .protea-v3 .v3-r10-o::after{
-  content:"";
-  position:absolute;
-  left:15%;
-  top:49%;
-  width:70%;
-  height:1px;
-  background:rgba(255,91,22,.92);
-  box-shadow:0 0 7px rgba(255,91,22,.48);
-  transform:rotate(-17deg);
-  -webkit-mask:none;
-  mask:none;
+  display:none!important;
+  content:none!important;
 }
 
 /* Barra de carga: | y /, cada glifo orientado respecto del radio y pegado al perímetro. */
