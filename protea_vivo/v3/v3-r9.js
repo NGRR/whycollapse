@@ -13,11 +13,11 @@
   let seen = false;
   try { seen = sessionStorage.getItem('proteaV3PreloaderSeen') === '1'; } catch (_) {}
 
-  const INITIAL_HOLD = seen ? 180 : 560;
-  const MAX_CRITICAL_WAIT = seen ? 850 : 2200;
-  const ALIGN_DURATION = reduceMotion ? 80 : (seen ? 390 : 840);
-  const ALIGN_SETTLE = reduceMotion ? 20 : 90;
-  const FADE_DURATION = reduceMotion ? 180 : 430;
+  const INITIAL_HOLD = seen ? 160 : 520;
+  const MAX_CRITICAL_WAIT = seen ? 420 : 1150;
+  const ALIGN_DURATION = reduceMotion ? 80 : (seen ? 340 : 840);
+  const ALIGN_SETTLE = reduceMotion ? 20 : (seen ? 40 : 80);
+  const FADE_DURATION = reduceMotion ? 160 : (seen ? 240 : 360);
 
   if (seen) preload.classList.add('is-returning');
 
