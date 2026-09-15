@@ -1,0 +1,181 @@
+/* V3 R10 · loader perimetral + logo digital
+ * Sólo afecta a /protea_vivo/v3/. R9 conserva la transición y R10 depura
+ * la primera fase: sin guías largas, sin datos auxiliares y sin texto extra.
+ */
+
+.protea-v3 .v3-preloader__guide,
+.protea-v3 .v3-preloader__ticks,
+.protea-v3 .v3-preloader__slashes,
+.protea-v3 .v3-preloader__datum{
+  display:none!important;
+}
+
+/* La lente queda reducida a sus anillos/arcos y a la barra de carga periférica. */
+.protea-v3 .v3-preloader__ring--outer{
+  border-color:rgba(226,246,255,.34)!important;
+  box-shadow:0 0 24px rgba(105,178,255,.07),inset 0 0 22px rgba(73,158,255,.035)!important;
+}
+
+.protea-v3 .v3-preloader__ring--mid{
+  border-color:rgba(178,224,255,.22)!important;
+}
+
+.protea-v3 .v3-preloader__ring--inner{
+  border-color:rgba(218,240,255,.16)!important;
+  border-top-color:rgba(255,91,22,.74)!important;
+  border-right-color:rgba(255,91,22,.18)!important;
+}
+
+.protea-v3 .v3-preloader__scan{
+  opacity:.55;
+}
+
+/* Dos fases de 840 ms: el CSS de desplazamiento debe coincidir con R10 JS. */
+.protea-v3 .v3-preloader__lens{
+  transition:
+    left .84s cubic-bezier(.22,.8,.2,1)!important,
+    top .84s cubic-bezier(.22,.8,.2,1)!important,
+    width .84s cubic-bezier(.22,.8,.2,1)!important,
+    height .84s cubic-bezier(.22,.8,.2,1)!important,
+    transform .84s cubic-bezier(.22,.8,.2,1)!important,
+    opacity .32s ease!important;
+}
+
+.protea-v3 .v3-preloader.is-returning .v3-preloader__lens{
+  transition-duration:.84s,.84s,.84s,.84s,.84s,.32s!important;
+}
+
+/* Sólo wordmark Protea. La O se reconstruye como un anillo digital cortado. */
+.protea-v3 .v3-preloader__brand{
+  gap:0!important;
+  transition:opacity .30s ease,transform .42s cubic-bezier(.22,.8,.2,1)!important;
+}
+
+.protea-v3 .v3-preloader__brand .brand-claim{
+  display:none!important;
+}
+
+.protea-v3 .v3-preloader__brand .brand-mark.v3-r10-logo{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  font:700 clamp(38px,5vw,64px)/.9 Montserrat,sans-serif!important;
+  letter-spacing:-.055em!important;
+  text-transform:lowercase;
+  color:#fff!important;
+  text-shadow:0 0 24px rgba(83,171,255,.18),0 0 2px rgba(255,255,255,.26);
+}
+
+.protea-v3 .v3-r10-o{
+  position:relative;
+  display:inline-block;
+  width:.69em;
+  height:.69em;
+  margin:0 .015em 0 .02em;
+  flex:0 0 auto;
+  color:#fff;
+  border-radius:50%;
+  background:conic-gradient(
+    from -18deg,
+    transparent 0 13deg,
+    currentColor 13deg 161deg,
+    transparent 161deg 177deg,
+    currentColor 177deg 343deg,
+    transparent 343deg 360deg
+  );
+  -webkit-mask:radial-gradient(circle,transparent 0 55%,#000 57% 74%,transparent 76%);
+  mask:radial-gradient(circle,transparent 0 55%,#000 57% 74%,transparent 76%);
+  filter:drop-shadow(0 0 5px rgba(115,194,255,.28));
+  transform:translateY(.035em);
+}
+
+/* Pequeño corte/scan naranja: hace que la O se lea como interfaz y no como tipografía rota. */
+.protea-v3 .v3-r10-o::after{
+  content:"";
+  position:absolute;
+  left:15%;
+  top:49%;
+  width:70%;
+  height:1px;
+  background:rgba(255,91,22,.92);
+  box-shadow:0 0 7px rgba(255,91,22,.48);
+  transform:rotate(-17deg);
+  -webkit-mask:none;
+  mask:none;
+}
+
+/* Barra de carga: | y /, cada glifo orientado respecto del radio y pegado al perímetro. */
+.protea-v3 .v3-preloader__loadbar{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.protea-v3 .v3-preloader__loadbar span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:block;
+  width:1.2em;
+  height:1em;
+  margin:-.5em 0 0 -.6em;
+  color:rgba(223,243,255,.94);
+  font:700 clamp(10px,1vw,13px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  text-align:center;
+  text-shadow:0 0 8px rgba(104,184,255,.28);
+  opacity:.10;
+  transform:
+    rotate(var(--v3-load-angle))
+    translateY(calc(var(--v3-preload-r) * -1.035))
+    rotate(var(--v3-load-glyph-angle));
+  transform-origin:50% 50%;
+  animation:v3R10Segment .11s ease-out var(--v3-load-delay) both;
+}
+
+.protea-v3 .v3-preloader__loadbar span:nth-child(4n+1),
+.protea-v3 .v3-preloader__loadbar span:nth-child(4n+4){
+  color:rgba(255,134,78,.94);
+  text-shadow:0 0 9px rgba(255,91,22,.34);
+}
+
+.protea-v3 .v3-preloader.is-load-complete .v3-preloader__loadbar span{
+  opacity:.78;
+  transition:opacity .18s ease;
+}
+
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar span{
+  opacity:.42;
+}
+
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__brand{
+  opacity:0!important;
+  transform:translate(-50%,-50%) scale(.96)!important;
+}
+
+@keyframes v3R10Segment{
+  0%{opacity:.08;filter:brightness(.8)}
+  52%{opacity:1;filter:brightness(1.35)}
+  100%{opacity:.78;filter:brightness(1)}
+}
+
+@media(max-width:959px){
+  .protea-v3 .v3-preloader__brand .brand-mark.v3-r10-logo{
+    font-size:44px!important;
+  }
+  .protea-v3 .v3-preloader__loadbar span{
+    font-size:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .protea-v3 .v3-preloader__loadbar span{
+    animation:none!important;
+    opacity:.72!important;
+  }
+  .protea-v3 .v3-preloader__lens{
+    transition:opacity .18s ease!important;
+  }
+}
