@@ -9,25 +9,62 @@
     return;
   }
 
+  /* R10 se monta sobre el controlador R9 para conservar rollback simple. */
+  if (!document.querySelector('link[data-v3-r10]')) {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'v3/v3-r10.css?v=20260916-10';
+    style.setAttribute('data-v3-r10', 'true');
+    document.head.append(style);
+  }
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let seen = false;
-  try { seen = sessionStorage.getItem('proteaV3PreloaderSeen') === '1'; } catch (_) {}
-
-  const INITIAL_HOLD = seen ? 160 : 520;
-  const MAX_CRITICAL_WAIT = seen ? 420 : 1150;
-  const ALIGN_DURATION = reduceMotion ? 80 : (seen ? 340 : 840);
-  const ALIGN_SETTLE = reduceMotion ? 20 : (seen ? 40 : 80);
-  const FADE_DURATION = reduceMotion ? 160 : (seen ? 240 : 360);
-
-  if (seen) preload.classList.add('is-returning');
+  const LOAD_DURATION = reduceMotion ? 180 : 840;
+  const ALIGN_DURATION = reduceMotion ? 120 : 840;
+  const ALIGN_SETTLE = reduceMotion ? 20 : 40;
+  const FADE_DURATION = reduceMotion ? 160 : 320;
+  const MAX_CRITICAL_WAIT = LOAD_DURATION;
 
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const wait = ms => new Promise(resolve => window.setTimeout(resolve, ms));
 
+  /* Wordmark único: Protea con una O construida como anillo digital cortado. */
+  const brand = preload.querySelector('.v3-preloader__brand');
+  const brandMark = brand?.querySelector('.brand-mark');
+  if (brandMark) {
+    brandMark.classList.add('v3-r10-logo');
+    brandMark.innerHTML = '<span>pr</span><span class="v3-r10-o" aria-hidden="true"></span><span>tea</span>';
+  }
+  brand?.querySelector('.brand-claim')?.remove();
+
+  /*
+   * Los | y / son la barra de carga. Se distribuyen sobre el perímetro y cada
+   * glifo conserva el ángulo local del radio, sin guías que se proyecten fuera.
+   */
+  const lens = preload.querySelector('.v3-preloader__lens');
+  if (lens && !lens.querySelector('.v3-preloader__loadbar')) {
+    const loadbar = document.createElement('span');
+    loadbar.className = 'v3-preloader__loadbar';
+    const segmentCount = 28;
+    const stepDelay = LOAD_DURATION / segmentCount;
+
+    for (let i = 0; i < segmentCount; i += 1) {
+      const segment = document.createElement('span');
+      const angle = (i / segmentCount) * 360;
+      const glyph = i % 3 === 0 || i % 7 === 0 ? '/' : '|';
+      segment.textContent = glyph;
+      segment.style.setProperty('--v3-load-angle', `${angle.toFixed(2)}deg`);
+      segment.style.setProperty('--v3-load-delay', `${Math.round(i * stepDelay)}ms`);
+      segment.style.setProperty('--v3-load-glyph-angle', glyph === '/' ? '-18deg' : '0deg');
+      loadbar.append(segment);
+    }
+
+    lens.append(loadbar);
+  }
+
   /*
    * Replica la geometría inicial de la lente definida en assets/js/protea.js,
-   * pero sólo dentro de V3. De este modo la transición termina exactamente
-   * donde comienza la lente real del Hero sin modificar la consolidada.
+   * pero sólo dentro de V3. La consolidada y el motor compartido quedan intactos.
    */
   function syncWithHeroLens() {
     const rect = hero.getBoundingClientRect();
@@ -79,7 +116,7 @@
     if (document.fonts?.ready) jobs.push(document.fonts.ready.catch(() => {}));
     await Promise.allSettled(jobs);
 
-    /* El hero compartido recibe dos frames para resolver tamaño y primera pintura. */
+    /* Dos frames para tamaño y primera pintura del Hero ya cacheado. */
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   }
 
@@ -92,16 +129,20 @@
   }
 
   async function runSequence() {
-    /* Fase 1: sólo azul profundo + lente centrada. */
     syncWithHeroLens();
     window.addEventListener('resize', syncWithHeroLens, { passive: true });
 
+    /*
+     * Fase 1 · 840 ms: el loader se completa alrededor del perímetro mientras
+     * los recursos críticos se calientan en paralelo. Nunca supera esos 840 ms.
+     */
     await Promise.all([
-      wait(INITIAL_HOLD),
+      wait(LOAD_DURATION),
       Promise.race([criticalAssetsReady(), wait(MAX_CRITICAL_WAIT)])
     ]);
+    preload.classList.add('is-load-complete');
 
-    /* Fase 2: la misma lente se desplaza al centro/radio exactos del Hero. */
+    /* Fase 2 · 840 ms: la lente viaja al radio/posición exactos del Hero. */
     syncWithHeroLens();
     await new Promise(resolve => requestAnimationFrame(() => {
       preload.classList.add('is-aligning');
@@ -109,7 +150,7 @@
     }));
     await wait(ALIGN_DURATION + ALIGN_SETTLE);
 
-    /* Fase 3: sólo después de llegar a destino se revela la página. */
+    /* La página aparece sólo después de completar el segundo movimiento. */
     preload.classList.add('is-leaving');
     await wait(FADE_DURATION);
     cleanup();
