@@ -14,6 +14,7 @@
   <link href="assets/css/protea-live.css?v=20260719-17" rel="stylesheet"/>
   <link href="assets/css/protea-consolidacion.css?v=20260907-2" rel="stylesheet"/>
   <link href="v3/v3.css?v=20260915-3" rel="stylesheet"/>
+  <link href="v3/v3-r7.css?v=20260915-7" rel="stylesheet"/>
 </head>
 <body class="protea-review protea-v3">
   <div class="protea-shell">
@@ -24,6 +25,7 @@
       <a class="rail-item" href="v3/#becoming-adaptive"><span>03</span><small>Qué hacemos</small></a>
       <a class="rail-item" href="v3/#adaptive-thinking"><span>04</span><small>Pensamiento</small></a>
       <a class="rail-item" href="v3/#equipo"><span>05</span><small>Equipo</small></a>
+      <a class="rail-item" href="v3/#contacto-final"><span>06</span><small>Conversemos</small></a>
     </aside>
 
     <main class="protea-main">
@@ -276,7 +278,7 @@
                     <div class="contact-fields">
                       <div class="contact-field contact-field-full">
                         <label for="v3-situacion">¿Qué está ocurriendo?</label>
-                        <textarea name="situacion" id="v3-situacion" required rows="5" aria-describedby="v3-situacion-ayuda"></textarea>
+                        <textarea name="situacion" id="v3-situacion" required rows="5" placeholder=" " aria-describedby="v3-situacion-ayuda"></textarea>
                       </div>
                     </div>
                     <div class="v3-signal-fieldset">
@@ -366,11 +368,11 @@
   <script src="assets/js/protea.js?v=20260719-2"></script>
   <script>
     window.PROTEA_VIVA_CONFIG = {
-      version:16, seed:2772206847, maxDpr:1.75,
+      version:17, seed:2772206847, maxDpr:1.5,
       centerXDesktop:.32, centerXMobile:.72, centerYDesktop:.50, centerYMobile:.46,
       heightDesktop:.96, heightMobile:.84, scrollSmoothing:.065, pointerSmoothing:.045,
       strandIdleTurnsPerMinute:.11, strandScrollTurns:.46, orbitalTurnsPerMinute:.42,
-      strandCountDesktop:43, strandCountMobile:36, strandStepsDesktop:75, strandStepsMobile:76,
+      strandCountDesktop:38, strandCountMobile:32, strandStepsDesktop:64, strandStepsMobile:64,
       initialRootStage:.02,
       growthLayers:[
         {path:"assets/img/protea-viva/stage-03-bud.webp",start:.16,peak:.30,end:.475,opacity:.10,scale:1,yOffset:0,drift:1.5,kind:"bud"},
@@ -378,16 +380,16 @@
         {path:"assets/img/protea-viva/stage-07-bloom.webp",start:.49,peak:.66,end:.85,opacity:.12,scale:1,yOffset:0,drift:1.5,kind:"bloom"}
       ],
       finalTexturePath:"assets/img/protea-viva/final-frame.webp", finalTextureStart:.535, finalTextureFull:1,
-      finalTextureScale:1.095, finalTextureYOffset:-.035, finalTextureBreathing:.02,
-      finalBaseAlpha:0, finalFrontAlpha:.82, finalBackLowerAlpha:.35, finalBackMiddleAlpha:.37,
-      finalBackUpperAlpha:.42, accentStrandAlpha:.47, accentOrbitalAlpha:1.04,
-      showGrowthLayers:true, showRoots:true, showStrands:true, showPetals:true, showPod:true,
+      finalTextureScale:1.095, finalTextureYOffset:-.035, finalTextureBreathing:.015,
+      finalBaseAlpha:.11, finalFrontAlpha:.70, finalBackLowerAlpha:.30, finalBackMiddleAlpha:0,
+      finalBackUpperAlpha:0, accentStrandAlpha:.47, accentOrbitalAlpha:1.04,
+      showGrowthLayers:true, showRoots:false, showStrands:true, showPetals:true, showPod:true,
       showClusters:true, showOrbits:true, showFinalTexture:true,
       rootAlpha:0, orbitBackAlpha:.53, strandBackAlpha:.62, petalBackAlpha:1.03,
       podAlpha:.37, clusterAlpha:.93, strandFrontBaseAlpha:.42, petalFrontBaseAlpha:.19, orbitFrontBaseAlpha:.18
     };
   </script>
-  <script src="assets/js/protea-viva-background.js?v=20260906-2"></script>
-  <script src="v3/v3.js?v=20260915-3"></script>
+  <script src="assets/js/protea-viva-background.js?v=20260915-7"></script>
+  <script src="v3/v3.js?v=20260915-7"></script>
 </body>
 </html>
