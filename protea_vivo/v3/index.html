@@ -1,151 +1,358 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Protea V3: propuesta de dirección de arte para una consultora de inteligencia adaptativa.">
-  <title>Protea V3 · Becoming Adaptive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css">
-  <link rel="stylesheet" href="./v3.css?v=20260915-1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Protea V3 · Dirección de arte expandida</title>
+  <meta name="description" content="Protea V3: expansión de dirección de arte sobre la arquitectura consolidada, preservando Hero, rail narrativo y canvas vivo."/>
+  <base href="../"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" rel="stylesheet"/>
+  <link href="assets/css/protea.css" rel="stylesheet"/>
+  <link href="assets/css/protea-live.css?v=20260719-17" rel="stylesheet"/>
+  <link href="assets/css/protea-consolidacion.css?v=20260907-2" rel="stylesheet"/>
+  <link href="v3/v3.css?v=20260915-2" rel="stylesheet"/>
 </head>
-<body class="protea-v3">
-  <header class="v3-nav">
-    <a class="v3-brand" href="#inicio" aria-label="Protea inicio">
-      <strong>protea</strong><span>BECOMING ADAPTIVE</span>
-    </a>
-    <nav aria-label="Navegación principal">
-      <a href="#mirada">Nuestra mirada</a>
-      <a href="#metodo">Becoming Adaptive</a>
-      <a href="#adaptive-thinking">Adaptive Thinking</a>
-      <a href="#equipo">Equipo</a>
-    </nav>
-    <a class="v3-nav-cta" href="../pages/contacto.html">Conversemos</a>
-  </header>
+<body class="protea-review protea-v3">
+  <div class="protea-shell">
+    <aside aria-label="Indicador narrativo" class="section-rail uk-visible@m">
+      <div aria-hidden="true" class="rail-stem"><i></i></div>
+      <a class="rail-item is-active" href="v3/#observatorio"><span>01</span><small>Protea</small></a>
+      <a class="rail-item" href="v3/#colapso"><span>02</span><small>Nuestra mirada</small></a>
+      <a class="rail-item" href="v3/#becoming-adaptive"><span>03</span><small>Qué hacemos</small></a>
+      <a class="rail-item" href="v3/#adaptive-thinking"><span>04</span><small>Pensamiento</small></a>
+      <a class="rail-item" href="v3/#equipo"><span>05</span><small>Equipo</small></a>
+    </aside>
 
-  <main>
-    <section class="v3-hero" id="inicio">
-      <div class="hero-grid uk-container uk-container-expand">
-        <div class="hero-copy">
-          <p class="kicker">INTELIGENCIA ADAPTATIVA · PROTEA V3</p>
-          <h1>Somos agentes habilitadores de <em>inteligencia adaptativa.</em></h1>
-          <p class="hero-lead">Ayudamos a las organizaciones a reconocer señales, comprender lo que cambia y desarrollar capacidad para transformarse antes de que el entorno las obligue.</p>
-          <div class="hero-actions">
-            <a class="button button-orange" href="#metodo">Cómo lo hacemos</a>
-            <a class="button button-line" href="#mirada">Nuestra mirada</a>
+    <main class="protea-main">
+      <header class="site-nav uk-position-top uk-position-z-index">
+        <div class="uk-container uk-container-expand">
+          <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-left">
+              <a aria-label="Protea inicio" class="brand" href="v3/#observatorio">
+                <span class="brand-mark">protea</span>
+                <span class="brand-claim">BECOMING ADAPTIVE</span>
+              </a>
+            </div>
+            <div class="uk-navbar-center uk-visible@m">
+              <ul class="uk-navbar-nav">
+                <li><a href="v3/#observatorio">PROTEA</a></li>
+                <li><a href="v3/#becoming-adaptive">QUÉ HACEMOS</a></li>
+                <li><a href="v3/#adaptive-thinking">ADAPTIVE THINKING</a></li>
+                <li><a href="v3/#equipo">QUIÉNES SOMOS</a></li>
+              </ul>
+            </div>
+            <div class="uk-navbar-right">
+              <button aria-label="Abrir menu" class="mobile-menu-button uk-hidden@m" type="button" uk-toggle="target: #mobile-menu"><span></span><span></span></button>
+              <a class="uk-button uk-button-default protea-button" href="v3/#contacto-final">Conversemos →</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <nav aria-label="Ruta narrativa" class="mobile-story-nav uk-hidden@m">
+        <a href="v3/#observatorio"><small>Protea</small></a>
+        <a href="v3/#becoming-adaptive"><small>Qué hacemos</small></a>
+        <a href="v3/#adaptive-thinking"><small>Thinking</small></a>
+        <a href="v3/#equipo"><small>Equipo</small></a>
+        <a href="v3/#contacto-final"><small>Conversemos</small></a>
+      </nav>
+
+      <div aria-hidden="true" class="living-stem"><span></span></div>
+
+      <!-- HERO protegido: misma estructura, canvas y proporción de la consolidada. -->
+      <section class="story-section hero-section uk-section uk-flex uk-flex-middle" id="observatorio">
+        <canvas aria-hidden="true" class="hero-canvas" id="protea-canvas"></canvas>
+        <div aria-hidden="true" class="canvas-injection-note"></div>
+        <div class="uk-container uk-container-large uk-position-relative">
+          <div class="uk-grid-large uk-flex-middle" uk-grid>
+            <div class="uk-width-2-5@m hero-copy-panel">
+              <p class="eyebrow">Adaptive Intelligence Agents</p>
+              <h1 class="hero-title"><span>Somos agentes</span><span>habilitadores de</span><em>inteligencia<br/>adaptativa</em></h1>
+              <p class="hero-copy">Ayudamos a organizaciones, equipos y líderes a cultivar las capacidades necesarias para sostener su vigencia, evitar la obsolescencia y prosperar en contextos complejos.</p>
+              <div class="uk-margin-medium-top"><a class="uk-button uk-button-primary protea-button-primary" href="v3/#becoming-adaptive">Descubre cómo trabajamos</a></div>
+            </div>
+            <div aria-hidden="true" class="uk-width-3-5@m hero-canvas-space"></div>
           </div>
         </div>
-        <div class="hero-organism" aria-hidden="true">
-          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-          <img src="../assets/img/protea-viva/final-frame.webp" alt="">
-          <div class="hero-index">V3 / 2026</div>
-        </div>
-      </div>
-      <div class="hero-manifesto">Adaptarse no es reaccionar. Es desarrollar la capacidad de cambiar antes de que el entorno obligue.</div>
-    </section>
+        <div class="hero-transition-quote hero-transition-quote_right">Adaptarse no es reaccionar. Es desarrollar la capacidad de cambiar antes de que el entorno obligue.</div>
+      </section>
 
-    <div class="protea-viva-background" aria-hidden="true"><canvas id="protea-viva-canvas"></canvas></div>
+      <!-- Canvas vivo: comienza después del Hero y queda detrás de la retícula 1/4 + 3/4. -->
+      <div class="protea-viva-background" aria-hidden="true"><canvas id="protea-viva-canvas"></canvas></div>
 
-    <section class="v3-section v3-mirada" id="mirada">
-      <div class="uk-container uk-container-large section-grid">
-        <div class="section-label"><span>01</span><p>NUESTRA MIRADA</p></div>
-        <div class="section-main">
-          <h2>Los problemas no son lo que parecen.</h2>
-          <div class="mirada-list">
-            <article><span>01</span><h3>No falta talento.</h3><p>Falta capacidad de hacerlo emerger y convertirlo en aprendizaje colectivo.</p></article>
-            <article><span>02</span><h3>No falta información.</h3><p>Falta capacidad de reconocer qué señales importan antes de que se transformen en urgencia.</p></article>
-            <article><span>03</span><h3>No falta esfuerzo.</h3><p>Falta capacidad de coordinar respuestas con criterio en entornos de alta complejidad.</p></article>
-            <article><span>04</span><h3>El colapso no es un evento.</h3><p>Es un proceso que comienza mientras la organización todavía parece estable.</p></article>
+      <section class="story-section uk-section uk-section-large consolidation-section v3-body-section" id="colapso">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="v3-quarter-marker" aria-hidden="true"><span>02</span><i></i><small>READ / SIGNALS</small></div>
+            <div class="consolidation-content v3-content">
+              <header class="v3-section-head">
+                <p class="section-kicker">02 · Nuestra mirada</p>
+                <h2>Los problemas no son lo que parecen.</h2>
+                <p class="lead-copy">Una dificultad visible rara vez está aislada. Suele expresar dinámicas de percepción, decisión, coordinación y aprendizaje que el sistema no está pudiendo resolver.</p>
+              </header>
+
+              <div class="v3-statement-grid">
+                <article data-reveal><span>01</span><p>No falta <strong>talento.</strong><br/>Falta capacidad para hacerlo emerger.</p></article>
+                <article data-reveal><span>02</span><p>No falta <strong>estrategia.</strong><br/>Falta capacidad para ajustarla cuando el entorno cambia.</p></article>
+                <article data-reveal><span>03</span><p>No falta <strong>innovación.</strong><br/>Falta un sistema que la arraigue.</p></article>
+                <article data-reveal><span>04</span><p>No falta <strong>organización.</strong><br/>Faltan formas de trabajar que empoderen a las personas.</p></article>
+              </div>
+              <p class="v3-close-copy">Protea ayuda a leer esas dinámicas y a transformarlas en capacidad de respuesta.</p>
+            </div>
           </div>
-          <p class="large-statement">La adaptabilidad es el gen de la longevidad organizacional.</p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="v3-section v3-method" id="metodo">
-      <div class="uk-container uk-container-large">
-        <div class="method-head">
-          <div class="section-label"><span>02</span><p>BECOMING ADAPTIVE</p></div>
-          <div><h2>Comprender. Entrenar. Arraigar. Sostener.</h2><p>Un sistema de trabajo que combina lectura estratégica, práctica, experimentación y continuidad. La gráfica deja de ilustrar el proceso desde afuera y pasa a formar parte de su arquitectura.</p></div>
+      <section class="story-section uk-section uk-section-large consolidation-section v3-body-section" id="becoming-adaptive">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="v3-quarter-marker" aria-hidden="true"><span>03</span><i></i><small>BUILD / CAPACITY</small></div>
+            <div class="consolidation-content v3-content">
+              <header class="v3-section-head v3-section-head-wide">
+                <p class="section-kicker">03 · Becoming Adaptive</p>
+                <h2>De comprender lo que ocurre a desarrollar la capacidad para evolucionar.</h2>
+                <p class="lead-copy">No trabajamos desde respuestas prefabricadas. Leemos el desafío en su contexto y diseñamos el recorrido que la organización necesita.</p>
+                <p>Becoming Adaptive conecta diagnóstico, entrenamiento, experimentación y arraigo para convertir la comprensión en nuevas capacidades y formas de actuar.</p>
+              </header>
+
+              <div class="v3-journey">
+                <article class="v3-stage iao-stage" id="comprender">
+                  <div class="v3-stage-index"><span>01</span><small>COMPRENDER</small></div>
+                  <div class="v3-stage-copy">
+                    <h3>DIAGNOS · IAO</h3>
+                    <p class="step-tension">Cuando hay muchas señales, pero no una lectura compartida.</p>
+                    <p>DIAGNOS hace visible el estado de la adaptabilidad. Analizamos cómo la organización anticipa, responde, aprende y evoluciona, e identificamos las fricciones que están limitando su capacidad de acción.</p>
+                    <p>El IAO es el instrumento organizacional insignia de DIAGNOS. Ofrece una lectura clara y accionable de la capacidad adaptativa.</p>
+                    <p class="v3-stage-outcome"><strong>Qué recibe la organización:</strong> una lectura compartida, un mapa de capacidades y fricciones y prioridades para un Plan Adaptativo.</p>
+                  </div>
+                  <figure class="v3-stage-art v3-art-iao">
+                    <img src="assets/img/client/iao-mapa.png" alt="Mapa real de estilos individuales incluido en los materiales del IAO" loading="lazy"/>
+                    <figcaption>IAO · lectura de patrones y fricciones</figcaption>
+                  </figure>
+                </article>
+
+                <article class="v3-stage" id="entrenar">
+                  <div class="v3-stage-index"><span>02</span><small>ENTRENAR</small></div>
+                  <div class="v3-stage-copy">
+                    <h3>Training</h3>
+                    <p class="step-tension">Cuando se sabe qué debería cambiar, pero todavía no existe la capacidad para hacerlo.</p>
+                    <p>Training desarrolla capacidades adaptativas en personas, equipos y líderes para actuar con mayor criterio en la incertidumbre. Se entrena mediante práctica deliberada, lenguaje compartido y retos vinculados al contexto real.</p>
+                    <p class="v3-stage-outcome"><strong>Qué deja:</strong> criterio, práctica y mayor capacidad para decidir y actuar.</p>
+                  </div>
+                  <figure class="v3-stage-art v3-drive-art">
+                    <img src="https://drive.google.com/thumbnail?id=1knbNEZiGLpRHyou2H0HzXJ1UQox3OdYL&sz=w1800" alt="Sistema neuronal Protea" loading="lazy"/>
+                    <figcaption>Sistema neuronal · capacidad / conexión</figcaption>
+                  </figure>
+                </article>
+
+                <article class="v3-stage" id="arraigar">
+                  <div class="v3-stage-index"><span>03</span><small>ARRAIGAR</small></div>
+                  <div class="v3-stage-copy">
+                    <h3>Lab</h3>
+                    <p class="step-tension">Cuando el desafío no se resuelve con más análisis.</p>
+                    <p>Lab es un espacio de transformación aplicada. Los equipos trabajan sobre un desafío real, experimentan, prueban respuestas y convierten el aprendizaje en cambios capaces de incorporarse a la forma de operar.</p>
+                    <p class="v3-stage-outcome"><strong>Qué deja:</strong> evidencia, decisiones defendibles y soluciones que pueden arraigarse.</p>
+                  </div>
+                  <figure class="v3-stage-art v3-drive-art v3-art-root">
+                    <img src="https://drive.google.com/thumbnail?id=1b2b2hSAcEdAf6tbv8ytp-qsFI5ZwArxE&sz=w1800" alt="Flor y raíz Protea" loading="lazy"/>
+                    <figcaption>Flor / raíz · crecimiento / arraigo</figcaption>
+                  </figure>
+                </article>
+
+                <article class="v3-stage" id="sostener">
+                  <div class="v3-stage-index"><span>04</span><small>SOSTENER</small></div>
+                  <div class="v3-stage-copy">
+                    <h3>Hub</h3>
+                    <p class="step-tension">Cuando el cambio exige coordinación más allá de un equipo o una organización.</p>
+                    <p>Hub conecta actores, conocimiento y experiencias para sostener aprendizaje, cooperación y transformación en el tiempo. Crea ritmo, comunidad y memoria para evitar que el sistema vuelva atrás.</p>
+                    <p class="v3-stage-outcome"><strong>Qué deja:</strong> capacidad de coordinación y una arquitectura viva de colaboración.</p>
+                  </div>
+                  <figure class="v3-stage-art v3-drive-art v3-art-network">
+                    <img src="https://drive.google.com/thumbnail?id=1WDXSr83Tawm714Ei4OhpQXTqyPfHC82v&sz=w1800" alt="Red cognitiva Protea" loading="lazy"/>
+                    <figcaption>Red cognitiva · circulación / sistema</figcaption>
+                  </figure>
+                </article>
+              </div>
+
+              <div class="v3-journey-close">
+                <h3>El recorrido se diseña según el desafío.</h3>
+                <p>No todas las organizaciones necesitan las cuatro etapas ni las recorren de forma lineal. Protea comienza comprendiendo qué está ocurriendo y define desde ahí dónde intervenir.</p>
+                <a class="uk-button uk-button-primary protea-button-primary" href="v3/#contacto-final">Conversemos sobre su desafío</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <article class="method-stage stage-diagnose">
-          <div class="stage-number">01</div>
-          <div class="stage-copy"><p class="kicker">COMPRENDER · DIAGNOS-IAO</p><h3>Hacer visible cómo la organización está leyendo su entorno.</h3><p>Reconocemos patrones, tensiones y estilos adaptativos para construir un lenguaje común sobre aquello que hoy limita o habilita la transformación.</p><p class="stage-outcome">Resultado: una lectura compartida para decidir dónde intervenir.</p></div>
-          <figure class="stage-art baseline-art"><img src="../assets/img/client/iao-mapa.png" alt="Visualización IAO" loading="lazy"></figure>
-        </article>
-
-        <article class="method-stage stage-train">
-          <div class="stage-number">02</div>
-          <div class="stage-copy"><p class="kicker">ENTRENAR · TRAINING</p><h3>Convertir comprensión en capacidad practicable.</h3><p>Entrenamos nuevas formas de percibir, decidir y coordinar. La adaptabilidad deja de ser una declaración cultural y se convierte en repertorio.</p><p class="stage-outcome">Resultado: capacidades que pueden ponerse en juego frente a escenarios reales.</p></div>
-          <figure class="stage-art drive-art">
-            <img src="https://drive.google.com/thumbnail?id=1knbNEZiGLpRHyou2H0HzXJ1UQox3OdYL&sz=w1800" alt="Sistema neuronal Protea" loading="lazy" onerror="this.onerror=null;this.src='../assets/img/protea/entrenamiento.jpg'">
-            <figcaption>SISTEMA NEURONAL · CAPACIDAD / CONEXIÓN</figcaption>
-          </figure>
-        </article>
-
-        <article class="method-stage stage-root">
-          <div class="stage-number">03</div>
-          <div class="stage-copy"><p class="kicker">ARRAIGAR · LAB</p><h3>Probar, ajustar y volver propio el cambio.</h3><p>Los laboratorios convierten desafíos concretos en espacios de experimentación. La organización aprende haciendo y produce evidencia sobre sí misma.</p><p class="stage-outcome">Resultado: prácticas nuevas que encuentran condiciones para arraigar.</p></div>
-          <figure class="stage-art drive-art">
-            <img src="https://drive.google.com/thumbnail?id=1b2b2hSAcEdAf6tbv8ytp-qsFI5ZwArxE&sz=w1800" alt="Flor y raíz Protea" loading="lazy" onerror="this.onerror=null;this.src='../assets/img/protea/arraigo.jpg'">
-            <figcaption>FLOR / RAÍZ · CRECIMIENTO / ARRAIGO</figcaption>
-          </figure>
-        </article>
-
-        <article class="method-stage stage-sustain">
-          <div class="stage-number">04</div>
-          <div class="stage-copy"><p class="kicker">SOSTENER · HUB</p><h3>Transformar experiencias aisladas en inteligencia colectiva.</h3><p>Articulamos redes, conversaciones y mecanismos de continuidad para que el aprendizaje circule y la adaptación no dependa de una única iniciativa.</p><p class="stage-outcome">Resultado: un ecosistema capaz de aprender y renovarse en el tiempo.</p></div>
-          <figure class="stage-art drive-art">
-            <img src="https://drive.google.com/thumbnail?id=1WDXSr83Tawm714Ei4OhpQXTqyPfHC82v&sz=w1800" alt="Red cognitiva Protea" loading="lazy" onerror="this.onerror=null;this.src='../assets/img/protea/life-system.jpg'">
-            <figcaption>RED COGNITIVA · CIRCULACIÓN / SISTEMA</figcaption>
-          </figure>
-        </article>
-      </div>
-    </section>
-
-    <section class="v3-section adaptive-thinking" id="adaptive-thinking">
-      <div class="uk-container uk-container-large adaptive-grid">
-        <figure class="adaptive-photo"><img src="../assets/img/client/marcelo-escenario.jpg" alt="Marcelo Lasagna" loading="lazy"><span>ADAPTIVE THINKING</span></figure>
-        <div class="adaptive-copy"><p class="kicker">03 · PENSAMIENTO ADAPTATIVO</p><h2>Una organización no cambia porque tenga más respuestas. Cambia cuando aprende a formular mejores preguntas.</h2><p>Adaptive Thinking reúne pensamiento estratégico, filosofía, ciencias sociales y comprensión de sistemas vivos para interpretar entornos complejos sin simplificarlos.</p><blockquote>La inteligencia adaptativa comienza donde termina la comodidad de nuestras certezas.</blockquote><a class="button button-line light" href="../pages/inteligencia-adaptativa.html">Profundizar</a></div>
-      </div>
-    </section>
-
-    <section class="v3-section team-section" id="equipo">
-      <div class="uk-container uk-container-large">
-        <div class="team-head"><div class="section-label"><span>04</span><p>EQUIPO</p></div><div><h2>Una red de perspectivas para trabajar con complejidad.</h2><p>La composición horizontal del sistema visual se desarma aquí en unidades independientes: retrato, campo cromático y gráfica flotante se comportan como capas separadas y responsivas.</p></div></div>
-
-        <div class="team-cards" data-team-carousel>
-          <article class="team-card"><div class="portrait-frame"><img src="https://drive.google.com/thumbnail?id=1jTwzd4pM6fMrtyTbUK1TQJJD2JRBvX70&sz=w1200" alt="Retrato equipo Protea" loading="lazy"><span class="chromatic-square"></span><span class="diagram-lines"></span></div></article>
-          <article class="team-card"><div class="portrait-frame"><img src="https://drive.google.com/thumbnail?id=1xC2abeBj47Caa0N89rb4vqR7mMymD_-f&sz=w1200" alt="Retrato equipo Protea" loading="lazy"><span class="chromatic-square shift"></span><span class="diagram-lines"></span></div></article>
-          <article class="team-card"><div class="portrait-frame"><img src="https://drive.google.com/thumbnail?id=1NIxv1J3HD8jyOyw21L9VLH1CLa5riM3f&sz=w1200" alt="Retrato equipo Protea" loading="lazy"><span class="chromatic-square low"></span><span class="diagram-lines"></span></div></article>
-          <article class="team-card"><div class="portrait-frame"><img src="https://drive.google.com/thumbnail?id=1UFqkj40VflTPL9AWFBznsXpXDn8yo52D&sz=w1200" alt="Retrato equipo Protea" loading="lazy"><span class="chromatic-square shift"></span><span class="diagram-lines"></span></div></article>
-          <article class="team-card"><div class="portrait-frame"><img src="https://drive.google.com/thumbnail?id=1rb5HWVqp258624NWeq7ZZzMXHI3PvjmU&sz=w1200" alt="Retrato equipo Protea" loading="lazy"><span class="chromatic-square"></span><span class="diagram-lines"></span></div></article>
+      <section class="story-section uk-section uk-section-large consolidation-section v3-body-section" id="adaptive-thinking">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="v3-quarter-marker" aria-hidden="true"><span>04</span><i></i><small>THINK / REFRAME</small></div>
+            <div class="consolidation-content v3-content">
+              <div class="v3-thinking-grid">
+                <figure class="v3-thinking-photo">
+                  <img src="assets/img/client/marcelo-escenario.jpg" alt="Marcelo Lasagna durante una intervención pública" loading="lazy"/>
+                  <span aria-hidden="true">ADAPTIVE THINKING</span>
+                </figure>
+                <div class="v3-thinking-copy">
+                  <p class="section-kicker">04 · Otra puerta</p>
+                  <p class="eyebrow">Adaptive Thinking · Marcelo Lasagna</p>
+                  <h2>Pensar distinto cuando las respuestas conocidas dejan de funcionar.</h2>
+                  <p class="lead-copy">Marcelo Lasagna lleva la inteligencia adaptativa al escenario y a la conversación. Sus intervenciones ayudan a líderes y organizaciones a interpretar lo que cambia, cuestionar inercias y abrir nuevas posibilidades de acción.</p>
+                  <p class="thinking-formats">Conferencias · Seminarios · Conversaciones estratégicas</p>
+                  <p>Fundador de Protea · Autor de <cite>¿Por qué colapsan las organizaciones?</cite></p>
+                  <a class="uk-button uk-button-primary protea-button-primary" href="adaptive-thinking/#contacto">Invitar a Marcelo</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="carousel-controls"><button type="button" data-team-prev aria-label="Anterior">←</button><span>DESLIZAR EQUIPO</span><button type="button" data-team-next aria-label="Siguiente">→</button></div>
+      </section>
 
-        <div class="team-roster" aria-label="Perfiles del equipo">
-          <article><strong>Marcelo Lasagna</strong><span>Fundador</span></article>
-          <article><strong>Constanza Collarte</strong><span>Consultora asociada</span></article>
-          <article><strong>Jimena Espinoza</strong><span>Consultora asociada</span></article>
-          <article><strong>Madis Ilstav</strong><span>Consultor asociado</span></article>
-          <article><strong>Adriana Arciniega</strong><span>Consultora asociada</span></article>
-          <article><strong>Estefanía Merino</strong><span>Consultora asociada</span></article>
+      <section class="story-section uk-section uk-section-large consolidation-section v3-body-section" id="equipo">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="v3-quarter-marker" aria-hidden="true"><span>05</span><i></i><small>NOUS / NETWORK</small></div>
+            <div class="consolidation-content v3-content">
+              <header class="v3-section-head">
+                <p class="section-kicker">05 · Quiénes somos</p>
+                <h2>Un equipo diverso para problemas complejos.</h2>
+                <p class="lead-copy">Combinamos estrategia, psicología, ingeniería, filosofía, derecho y experiencia organizacional. La mezcla de miradas no es solo una característica del equipo: es parte de nuestra forma de comprender y trabajar.</p>
+                <p>Experimentamos, aprendemos y construimos con nuestros clientes. No intervenimos desde respuestas prefabricadas.</p>
+              </header>
+
+              <div class="v3-team-visual" data-team-carousel aria-label="Sistema visual del equipo Protea">
+                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1jTwzd4pM6fMrtyTbUK1TQJJD2JRBvX70&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div></article>
+                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1xC2abeBj47Caa0N89rb4vqR7mMymD_-f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div></article>
+                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1NIxv1J3HD8jyOyw21L9VLH1CLa5riM3f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-low"></span><span class="v3-diagram"></span></div></article>
+                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1UFqkj40VflTPL9AWFBznsXpXDn8yo52D&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div></article>
+                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1rb5HWVqp258624NWeq7ZZzMXHI3PvjmU&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div></article>
+              </div>
+              <div class="v3-carousel-controls" aria-label="Controles del equipo"><button type="button" data-team-prev aria-label="Anterior">←</button><span>DESLIZAR EQUIPO</span><button type="button" data-team-next aria-label="Siguiente">→</button></div>
+
+              <div class="v3-team-roster" aria-label="Perfiles del equipo">
+                <article><strong>Marcelo Lasagna</strong><span>Fundador · Ciencia política y complejidad.</span></article>
+                <article><strong>Constanza Collarte</strong><span>Consultora asociada · Derecho y transformación.</span></article>
+                <article><strong>Jimena Espinoza</strong><span>Consultora asociada · Salud y sistemas complejos.</span></article>
+                <article><strong>Madis Ilstav</strong><span>Consultor asociado · Ingeniería y filosofía de las ciencias.</span></article>
+                <article><strong>Adriana Arciniega</strong><span>Consultora asociada · Derecho y gestión pública.</span></article>
+                <article><strong>Estefanía Merino</strong><span>Consultora asociada.</span></article>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="v3-section final-section consolidation-footer" id="contacto">
-      <div class="uk-container uk-container-large final-grid"><p class="kicker">PROTEA · BECOMING ADAPTIVE</p><h2>La vigencia no se conserva. Se construye.</h2><p>Trabajamos con organizaciones que necesitan comprender un entorno que ya cambió y desarrollar capacidad para cambiar con él.</p><a class="button button-orange" href="../pages/contacto.html">Conversemos</a></div>
-    </section>
-  </main>
+      <section class="story-section uk-section uk-section-large consolidation-section v3-body-section v3-contact" id="contacto-final">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="v3-quarter-marker" aria-hidden="true"><span>06</span><i></i><small>ACT / TOGETHER</small></div>
+            <div class="consolidation-content v3-content">
+              <div class="v3-contact-card">
+                <p class="section-kicker">Conversemos</p>
+                <h2>La vigencia no se conserva. Se construye.</h2>
+                <p class="lead-copy">Trabajamos con organizaciones que necesitan comprender un entorno que ya cambió y desarrollar capacidad para cambiar con él.</p>
+                <a class="uk-button uk-button-primary protea-button-primary" href="pages/contacto.html">Conversemos →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <footer class="page-footer consolidation-footer v3-footer">
+        <div class="uk-container uk-container-large">
+          <div class="consolidation-grid">
+            <div class="consolidation-content v3-footer-content">
+              <a class="brand" href="v3/#observatorio"><span class="brand-mark">protea</span><span class="brand-claim">BECOMING ADAPTIVE</span></a>
+              <nav class="site-footer-links" aria-label="Pie de página">
+                <a href="v3/#observatorio">PROTEA</a><a href="v3/#becoming-adaptive">QUÉ HACEMOS</a><a href="v3/#adaptive-thinking">ADAPTIVE THINKING</a><a href="v3/#equipo">QUIÉNES SOMOS</a><a href="v3/#contacto-final">CONVERSEMOS</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="mobile-offcanvas" id="mobile-menu" uk-offcanvas="overlay: true; flip: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <a aria-label="Protea inicio" class="brand" href="v3/#observatorio"><span class="brand-mark">protea</span><span class="brand-claim">BECOMING ADAPTIVE</span></a>
+      <ul class="mobile-menu-list">
+        <li><a href="v3/#observatorio">PROTEA</a></li>
+        <li><a href="v3/#becoming-adaptive">QUÉ HACEMOS</a></li>
+        <li><a href="v3/#adaptive-thinking">ADAPTIVE THINKING</a></li>
+        <li><a href="v3/#equipo">QUIÉNES SOMOS</a></li>
+        <li><a href="v3/#contacto-final">CONVERSEMOS</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+  <script src="assets/js/protea.js?v=20260719-2"></script>
   <script>
-  window.PROTEA_VIVA_CONFIG={version:16,seed:2772206847,maxDpr:1.75,centerXDesktop:.13,centerXMobile:.76,centerYDesktop:.5,centerYMobile:.45,heightDesktop:.96,heightMobile:.84,scrollSmoothing:.065,pointerSmoothing:.045,strandIdleTurnsPerMinute:.11,strandScrollTurns:.46,orbitalTurnsPerMinute:.42,strandCountDesktop:43,strandCountMobile:36,strandStepsDesktop:75,strandStepsMobile:76,initialRootStage:.02,growthLayers:[{path:"../assets/img/protea-viva/stage-03-bud.webp",start:.16,peak:.3,end:.475,opacity:.1,scale:1,yOffset:0,drift:1.5,kind:"bud"},{path:"../assets/img/protea-viva/stage-05-petals.webp",start:.31,peak:.48,end:.66,opacity:.11,scale:1,yOffset:0,drift:1.5,kind:"petals"},{path:"../assets/img/protea-viva/stage-07-bloom.webp",start:.49,peak:.66,end:.85,opacity:.12,scale:1,yOffset:0,drift:1.5,kind:"bloom"}],finalTexturePath:"../assets/img/protea-viva/final-frame.webp",finalTextureStart:.535,finalTextureFull:1,finalTextureScale:1.095,finalTextureYOffset:-.035,finalTextureBreathing:.02,finalBaseAlpha:0,finalFrontAlpha:.82,finalBackLowerAlpha:.35,finalBackMiddleAlpha:.37,finalBackUpperAlpha:.42,accentStrandAlpha:.47,accentOrbitalAlpha:1.04,showGrowthLayers:true,showRoots:true,showStrands:true,showPetals:true,showPod:true,showClusters:true,showOrbits:true,showFinalTexture:true,rootAlpha:0,orbitBackAlpha:.53,strandBackAlpha:.62,petalBackAlpha:1.03,podAlpha:.37,clusterAlpha:.93,strandFrontBaseAlpha:.42,petalFrontBaseAlpha:.19,orbitFrontBaseAlpha:.18};
+    window.PROTEA_VIVA_CONFIG = {
+      version: 16,
+      seed: 2772206847,
+      maxDpr: 1.75,
+      centerXDesktop: 0.32,
+      centerXMobile: 0.72,
+      centerYDesktop: 0.50,
+      centerYMobile: 0.46,
+      heightDesktop: 0.96,
+      heightMobile: 0.84,
+      scrollSmoothing: 0.065,
+      pointerSmoothing: 0.045,
+      strandIdleTurnsPerMinute: 0.11,
+      strandScrollTurns: 0.46,
+      orbitalTurnsPerMinute: 0.42,
+      strandCountDesktop: 43,
+      strandCountMobile: 36,
+      strandStepsDesktop: 75,
+      strandStepsMobile: 76,
+      initialRootStage: 0.02,
+      growthLayers: [
+        { path: "assets/img/protea-viva/stage-03-bud.webp", start: 0.16, peak: 0.30, end: 0.475, opacity: 0.10, scale: 1, yOffset: 0, drift: 1.5, kind: "bud" },
+        { path: "assets/img/protea-viva/stage-05-petals.webp", start: 0.31, peak: 0.48, end: 0.66, opacity: 0.11, scale: 1, yOffset: 0, drift: 1.5, kind: "petals" },
+        { path: "assets/img/protea-viva/stage-07-bloom.webp", start: 0.49, peak: 0.66, end: 0.85, opacity: 0.12, scale: 1, yOffset: 0, drift: 1.5, kind: "bloom" }
+      ],
+      finalTexturePath: "assets/img/protea-viva/final-frame.webp",
+      finalTextureStart: 0.535,
+      finalTextureFull: 1,
+      finalTextureScale: 1.095,
+      finalTextureYOffset: -0.035,
+      finalTextureBreathing: 0.02,
+      finalBaseAlpha: 0,
+      finalFrontAlpha: 0.82,
+      finalBackLowerAlpha: 0.35,
+      finalBackMiddleAlpha: 0.37,
+      finalBackUpperAlpha: 0.42,
+      accentStrandAlpha: 0.47,
+      accentOrbitalAlpha: 1.04,
+      showGrowthLayers: true,
+      showRoots: true,
+      showStrands: true,
+      showPetals: true,
+      showPod: true,
+      showClusters: true,
+      showOrbits: true,
+      showFinalTexture: true,
+      rootAlpha: 0,
+      orbitBackAlpha: 0.53,
+      strandBackAlpha: 0.62,
+      petalBackAlpha: 1.03,
+      podAlpha: 0.37,
+      clusterAlpha: 0.93,
+      strandFrontBaseAlpha: 0.42,
+      petalFrontBaseAlpha: 0.19,
+      orbitFrontBaseAlpha: 0.18
+    };
   </script>
-  <script src="../assets/js/protea-viva-background.js"></script>
-  <script src="./v3.js?v=20260915-1"></script>
+  <script src="assets/js/protea-viva-background.js?v=20260906-2"></script>
+  <script src="v3/v3.js?v=20260915-2"></script>
 </body>
 </html>
