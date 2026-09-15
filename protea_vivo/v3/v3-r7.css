@@ -1,0 +1,38 @@
+/* V3 R7 · canvas/compositing performance pass */
+
+@media (min-width:960px){
+  /*
+   * The animated canvas already provides texture and depth. Blurring 75% of the
+   * viewport over a continuously changing fixed canvas forces expensive
+   * recomposition during scroll, so desktop content uses the same translucent
+   * gradients without backdrop-filter.
+   */
+  .protea-v3 .v3-content{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  /*
+   * The canvas starts 125px outside the viewport. 100vw + 125px is enough to
+   * cover the visible viewport exactly; the previous +250px rendered an extra
+   * 125px off-screen on the right on every frame.
+   */
+  .protea-v3 .protea-viva-background{
+    width:calc(100vw + 125px)!important;
+    contain:layout paint style;
+    isolation:isolate;
+  }
+
+  .protea-v3 #protea-viva-canvas{
+    contain:strict;
+  }
+}
+
+@media (max-width:959px){
+  /* Mobile already uses exactly 100vw; keep only the large-panel blur disabled
+   * inside the animated body to reduce GPU readback on long pages. */
+  .protea-v3 .v3-content{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+}
