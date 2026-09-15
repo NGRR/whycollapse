@@ -5,16 +5,19 @@
   const hero = document.getElementById('observatorio');
   if (!preload || !hero) {
     document.documentElement.classList.remove('v3-preloading');
+    document.body?.classList.remove('v3-preloading');
     return;
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const seen = sessionStorage.getItem('proteaV3PreloaderSeen') === '1';
-  const t0 = performance.now();
-  const minimumVisible = seen ? 320 : 980;
-  const maximumWait = seen ? 900 : 2200;
-  const alignDelay = seen ? 90 : 220;
-  const fadeMs = reduceMotion ? 180 : 430;
+  let seen = false;
+  try { seen = sessionStorage.getItem('proteaV3PreloaderSeen') === '1'; } catch (_) {}
+
+  const INITIAL_HOLD = seen ? 180 : 560;
+  const MAX_CRITICAL_WAIT = seen ? 850 : 2200;
+  const ALIGN_DURATION = reduceMotion ? 80 : (seen ? 390 : 840);
+  const ALIGN_SETTLE = reduceMotion ? 20 : 90;
+  const FADE_DURATION = reduceMotion ? 180 : 430;
 
   if (seen) preload.classList.add('is-returning');
 
@@ -22,9 +25,9 @@
   const wait = ms => new Promise(resolve => window.setTimeout(resolve, ms));
 
   /*
-   * Esta geometría replica exactamente la posición/radio iniciales utilizados
-   * por assets/js/protea.js. Se mantiene aquí, en R9, para no modificar el
-   * motor compartido de la consolidada.
+   * Replica la geometría inicial de la lente definida en assets/js/protea.js,
+   * pero sólo dentro de V3. De este modo la transición termina exactamente
+   * donde comienza la lente real del Hero sin modificar la consolidada.
    */
   function syncWithHeroLens() {
     const rect = hero.getBoundingClientRect();
@@ -41,17 +44,22 @@
     preload.style.setProperty('--v3-preload-x', `${x}px`);
     preload.style.setProperty('--v3-preload-y', `${y}px`);
     preload.style.setProperty('--v3-preload-r', `${r}px`);
-    preload.style.setProperty('--v3-preload-angle', mobile ? '0deg' : '0deg');
+    preload.style.setProperty('--v3-preload-angle', '0deg');
   }
 
   function warmHeroAsset(path) {
     return new Promise(resolve => {
       const image = new Image();
-      const done = () => resolve();
+      let finished = false;
+      const done = () => {
+        if (finished) return;
+        finished = true;
+        resolve();
+      };
       image.onload = done;
       image.onerror = done;
       image.src = path;
-      if (image.complete) resolve();
+      if (image.complete) done();
     });
   }
 
@@ -68,48 +76,47 @@
     ];
 
     const jobs = heroAssets.map(warmHeroAsset);
-    if (document.fonts && document.fonts.ready) jobs.push(document.fonts.ready.catch(() => {}));
+    if (document.fonts?.ready) jobs.push(document.fonts.ready.catch(() => {}));
     await Promise.allSettled(jobs);
 
-    /* Dos frames permiten al canvas compartido pintar con los recursos ya cacheados. */
+    /* El hero compartido recibe dos frames para resolver tamaño y primera pintura. */
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   }
 
-  function startAlignment() {
-    syncWithHeroLens();
-    requestAnimationFrame(() => preload.classList.add('is-aligning'));
-  }
-
   function cleanup() {
+    window.removeEventListener('resize', syncWithHeroLens);
     preload.remove();
     document.documentElement.classList.remove('v3-preloading');
     document.body.classList.remove('v3-preloading');
     try { sessionStorage.setItem('proteaV3PreloaderSeen', '1'); } catch (_) {}
   }
 
-  syncWithHeroLens();
-  window.addEventListener('resize', syncWithHeroLens, { passive: true });
-  window.setTimeout(startAlignment, alignDelay);
+  async function runSequence() {
+    /* Fase 1: sólo azul profundo + lente centrada. */
+    syncWithHeroLens();
+    window.addEventListener('resize', syncWithHeroLens, { passive: true });
 
-  Promise.race([
-    criticalAssetsReady(),
-    wait(maximumWait)
-  ]).then(async () => {
-    const elapsed = performance.now() - t0;
-    if (elapsed < minimumVisible) await wait(minimumVisible - elapsed);
+    await Promise.all([
+      wait(INITIAL_HOLD),
+      Promise.race([criticalAssetsReady(), wait(MAX_CRITICAL_WAIT)])
+    ]);
 
-    /* Garantiza que el trayecto centro → lente haya tenido tiempo de leerse. */
-    if (!reduceMotion && !seen) {
-      const alignmentFloor = 900;
-      const elapsedAfterReady = performance.now() - t0;
-      if (elapsedAfterReady < alignmentFloor) await wait(alignmentFloor - elapsedAfterReady);
-    }
+    /* Fase 2: la misma lente se desplaza al centro/radio exactos del Hero. */
+    syncWithHeroLens();
+    await new Promise(resolve => requestAnimationFrame(() => {
+      preload.classList.add('is-aligning');
+      resolve();
+    }));
+    await wait(ALIGN_DURATION + ALIGN_SETTLE);
 
+    /* Fase 3: sólo después de llegar a destino se revela la página. */
     preload.classList.add('is-leaving');
-    await wait(fadeMs);
+    await wait(FADE_DURATION);
     cleanup();
-  }).catch(() => {
+  }
+
+  runSequence().catch(() => {
     preload.classList.add('is-leaving');
-    window.setTimeout(cleanup, fadeMs);
+    window.setTimeout(cleanup, FADE_DURATION);
   });
 })();
