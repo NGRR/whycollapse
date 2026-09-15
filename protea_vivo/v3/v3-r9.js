@@ -13,22 +13,22 @@
   if (!document.querySelector('link[data-v3-r10]')) {
     const style = document.createElement('link');
     style.rel = 'stylesheet';
-    style.href = 'v3/v3-r10.css?v=20260916-10';
+    style.href = 'v3/v3-r10.css?v=20260916-10c';
     style.setAttribute('data-v3-r10', 'true');
     document.head.append(style);
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const LOAD_DURATION = reduceMotion ? 180 : 840;
-  const ALIGN_DURATION = reduceMotion ? 120 : 840;
-  const ALIGN_SETTLE = reduceMotion ? 20 : 40;
-  const FADE_DURATION = reduceMotion ? 160 : 320;
+  const LOAD_DURATION = reduceMotion ? 180 : 2000;
+  const ALIGN_DURATION = reduceMotion ? 120 : 2000;
+  const ALIGN_SETTLE = reduceMotion ? 20 : 60;
+  const FADE_DURATION = reduceMotion ? 160 : 360;
   const MAX_CRITICAL_WAIT = LOAD_DURATION;
 
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const wait = ms => new Promise(resolve => window.setTimeout(resolve, ms));
 
-  /* Wordmark único: Protea con una O construida como anillo digital cortado. */
+  /* Wordmark único: Protea, con el mismo tratamiento tipográfico de la web. */
   const brand = preload.querySelector('.v3-preloader__brand');
   const brandMark = brand?.querySelector('.brand-mark');
   if (brandMark) {
@@ -134,8 +134,8 @@
     window.addEventListener('resize', syncWithHeroLens, { passive: true });
 
     /*
-     * Fase 1 · 840 ms: el loader completa el perímetro mientras los recursos
-     * críticos se calientan en paralelo. El último glifo termina a los 840 ms.
+     * Fase 1 · 2 s: el loader completa el perímetro mientras los recursos
+     * críticos se calientan en paralelo. El último glifo termina a los 2 s.
      */
     await Promise.all([
       wait(LOAD_DURATION),
@@ -143,7 +143,7 @@
     ]);
     preload.classList.add('is-load-complete');
 
-    /* Fase 2 · 840 ms: la lente viaja al radio/posición exactos del Hero. */
+    /* Fase 2 · 2 s: la lente viaja al radio/posición exactos del Hero. */
     syncWithHeroLens();
     await new Promise(resolve => requestAnimationFrame(() => {
       preload.classList.add('is-aligning');
