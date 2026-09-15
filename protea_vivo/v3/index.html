@@ -13,7 +13,7 @@
   <link href="assets/css/protea.css" rel="stylesheet"/>
   <link href="assets/css/protea-live.css?v=20260719-17" rel="stylesheet"/>
   <link href="assets/css/protea-consolidacion.css?v=20260907-2" rel="stylesheet"/>
-  <link href="v3/v3.css?v=20260915-2" rel="stylesheet"/>
+  <link href="v3/v3.css?v=20260915-3" rel="stylesheet"/>
 </head>
 <body class="protea-review protea-v3">
   <div class="protea-shell">
@@ -62,7 +62,7 @@
 
       <div aria-hidden="true" class="living-stem"><span></span></div>
 
-      <!-- HERO protegido: misma estructura, canvas y proporción de la consolidada. -->
+      <!-- HERO protegido: misma estructura y motor canvas de la consolidada. -->
       <section class="story-section hero-section uk-section uk-flex uk-flex-middle" id="observatorio">
         <canvas aria-hidden="true" class="hero-canvas" id="protea-canvas"></canvas>
         <div aria-hidden="true" class="canvas-injection-note"></div>
@@ -80,7 +80,7 @@
         <div class="hero-transition-quote hero-transition-quote_right">Adaptarse no es reaccionar. Es desarrollar la capacidad de cambiar antes de que el entorno obligue.</div>
       </section>
 
-      <!-- Canvas vivo: comienza después del Hero y queda detrás de la retícula 1/4 + 3/4. -->
+      <!-- Protea Viva ocupa el viewport completo del cuerpo; la retícula 1/4 + 3/4 vive por encima. -->
       <div class="protea-viva-background" aria-hidden="true"><canvas id="protea-viva-canvas"></canvas></div>
 
       <section class="story-section uk-section uk-section-large consolidation-section v3-body-section" id="colapso">
@@ -93,7 +93,6 @@
                 <h2>Los problemas no son lo que parecen.</h2>
                 <p class="lead-copy">Una dificultad visible rara vez está aislada. Suele expresar dinámicas de percepción, decisión, coordinación y aprendizaje que el sistema no está pudiendo resolver.</p>
               </header>
-
               <div class="v3-statement-grid">
                 <article data-reveal><span>01</span><p>No falta <strong>talento.</strong><br/>Falta capacidad para hacerlo emerger.</p></article>
                 <article data-reveal><span>02</span><p>No falta <strong>estrategia.</strong><br/>Falta capacidad para ajustarla cuando el entorno cambia.</p></article>
@@ -220,27 +219,32 @@
               <header class="v3-section-head">
                 <p class="section-kicker">05 · Quiénes somos</p>
                 <h2>Un equipo diverso para problemas complejos.</h2>
-                <p class="lead-copy">Combinamos estrategia, psicología, ingeniería, filosofía, derecho y experiencia organizacional. La mezcla de miradas no es solo una característica del equipo: es parte de nuestra forma de comprender y trabajar.</p>
-                <p>Experimentamos, aprendemos y construimos con nuestros clientes. No intervenimos desde respuestas prefabricadas.</p>
+                <p class="lead-copy">Combinamos perspectivas distintas para leer sistemas complejos y trabajar sobre problemas que no admiten respuestas lineales.</p>
               </header>
 
-              <div class="v3-team-visual" data-team-carousel aria-label="Sistema visual del equipo Protea">
-                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1jTwzd4pM6fMrtyTbUK1TQJJD2JRBvX70&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div></article>
-                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1xC2abeBj47Caa0N89rb4vqR7mMymD_-f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div></article>
-                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1NIxv1J3HD8jyOyw21L9VLH1CLa5riM3f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-low"></span><span class="v3-diagram"></span></div></article>
-                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1UFqkj40VflTPL9AWFBznsXpXDn8yo52D&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div></article>
-                <article class="v3-team-card"><div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1rb5HWVqp258624NWeq7ZZzMXHI3PvjmU&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div></article>
+              <div class="v3-team-visual" data-team-carousel aria-label="Equipo Protea">
+                <article class="v3-team-card">
+                  <div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1jTwzd4pM6fMrtyTbUK1TQJJD2JRBvX70&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div>
+                  <h3 class="v3-team-name">Constanza Collarte</h3>
+                </article>
+                <article class="v3-team-card">
+                  <div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1xC2abeBj47Caa0N89rb4vqR7mMymD_-f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div>
+                  <h3 class="v3-team-name">Madis Ilstav</h3>
+                </article>
+                <article class="v3-team-card">
+                  <div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1NIxv1J3HD8jyOyw21L9VLH1CLa5riM3f&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-low"></span><span class="v3-diagram"></span></div>
+                  <h3 class="v3-team-name">Aina Lasagna</h3>
+                </article>
+                <article class="v3-team-card">
+                  <div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1UFqkj40VflTPL9AWFBznsXpXDn8yo52D&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma v3-chroma-left"></span><span class="v3-diagram"></span></div>
+                  <h3 class="v3-team-name">Marilyn Masbernat</h3>
+                </article>
+                <article class="v3-team-card">
+                  <div class="v3-portrait"><img src="https://drive.google.com/thumbnail?id=1rb5HWVqp258624NWeq7ZZzMXHI3PvjmU&sz=w1200" alt="" loading="lazy"/><span class="v3-chroma"></span><span class="v3-diagram"></span></div>
+                  <h3 class="v3-team-name">Marcelo Lasagna</h3>
+                </article>
               </div>
               <div class="v3-carousel-controls" aria-label="Controles del equipo"><button type="button" data-team-prev aria-label="Anterior">←</button><span>DESLIZAR EQUIPO</span><button type="button" data-team-next aria-label="Siguiente">→</button></div>
-
-              <div class="v3-team-roster" aria-label="Perfiles del equipo">
-                <article><strong>Marcelo Lasagna</strong><span>Fundador · Ciencia política y complejidad.</span></article>
-                <article><strong>Constanza Collarte</strong><span>Consultora asociada · Derecho y transformación.</span></article>
-                <article><strong>Jimena Espinoza</strong><span>Consultora asociada · Salud y sistemas complejos.</span></article>
-                <article><strong>Madis Ilstav</strong><span>Consultor asociado · Ingeniería y filosofía de las ciencias.</span></article>
-                <article><strong>Adriana Arciniega</strong><span>Consultora asociada · Derecho y gestión pública.</span></article>
-                <article><strong>Estefanía Merino</strong><span>Consultora asociada.</span></article>
-              </div>
             </div>
           </div>
         </div>
@@ -251,11 +255,79 @@
           <div class="consolidation-grid">
             <div class="v3-quarter-marker" aria-hidden="true"><span>06</span><i></i><small>ACT / TOGETHER</small></div>
             <div class="consolidation-content v3-content">
-              <div class="v3-contact-card">
-                <p class="section-kicker">Conversemos</p>
-                <h2>La vigencia no se conserva. Se construye.</h2>
-                <p class="lead-copy">Trabajamos con organizaciones que necesitan comprender un entorno que ya cambió y desarrollar capacidad para cambiar con él.</p>
-                <a class="uk-button uk-button-primary protea-button-primary" href="pages/contacto.html">Conversemos →</a>
+              <div class="v3-contact-card contact-anchor">
+                <p class="section-kicker">Contacto Protea</p>
+                <h2>¿Qué está limitando hoy la capacidad adaptativa de tu organización?</h2>
+                <p class="lead-copy">Cuéntanos qué está cambiando, qué no consigue moverse o qué desafío necesitas comprender mejor.</p>
+                <p>Empezaremos escuchando. Después veremos qué recorrido tiene sentido.</p>
+
+                <form class="protea-contact-form v3-guided-contact" data-contact-form="protea" data-progressive-contact data-topic="protea" aria-label="Conversemos">
+                  <ol class="contact-progress" aria-label="Progreso del contacto">
+                    <li data-contact-step-indicator="0"><span>01</span> Situación</li>
+                    <li data-contact-step-indicator="1"><span>02</span> Organización</li>
+                    <li data-contact-step-indicator="2"><span>03</span> Contacto</li>
+                    <li data-contact-step-indicator="3"><span>04</span> Revisión</li>
+                  </ol>
+                  <p class="contact-progress-status" data-contact-progress-status aria-live="polite"></p>
+
+                  <fieldset class="contact-step" data-contact-step="0">
+                    <legend>Cuéntanos qué está ocurriendo</legend>
+                    <p class="contact-step-intro" id="v3-situacion-ayuda">Describe el cambio, la fricción o el desafío que hoy necesita una lectura más clara.</p>
+                    <div class="contact-fields">
+                      <div class="contact-field contact-field-full">
+                        <label for="v3-situacion">¿Qué está ocurriendo?</label>
+                        <textarea name="situacion" id="v3-situacion" required rows="5" aria-describedby="v3-situacion-ayuda"></textarea>
+                      </div>
+                    </div>
+                    <div class="v3-signal-fieldset">
+                      <p class="v3-signal-label">¿Qué señales reconoces hoy? <small>Puedes marcar más de una.</small></p>
+                      <div class="v3-signal-options">
+                        <label><input type="checkbox" name="senales" value="Detectamos tarde los cambios"/><span>Detectamos tarde los cambios</span></label>
+                        <label><input type="checkbox" name="senales" value="Aprendemos, pero nos cuesta convertirlo en decisiones"/><span>Aprendemos, pero cuesta convertirlo en decisiones</span></label>
+                        <label><input type="checkbox" name="senales" value="La coordinación entre áreas se vuelve difícil"/><span>La coordinación entre áreas se vuelve difícil</span></label>
+                        <label><input type="checkbox" name="senales" value="Las nuevas prácticas no consiguen sostenerse"/><span>Las nuevas prácticas no consiguen sostenerse</span></label>
+                        <label><input type="checkbox" name="senales" value="Necesitamos reconfigurar estrategia, estructura o cultura"/><span>Necesitamos reconfigurar estrategia, estructura o cultura</span></label>
+                      </div>
+                    </div>
+                    <div class="contact-step-actions"><button class="uk-button uk-button-primary protea-button-primary" type="button" data-contact-next>Continuar</button></div>
+                  </fieldset>
+
+                  <fieldset class="contact-step" data-contact-step="1">
+                    <legend>Sobre tu organización</legend>
+                    <p class="contact-step-intro">Identifica la organización desde la que quieres abrir esta conversación.</p>
+                    <div class="contact-fields"><div class="contact-field contact-field-full"><label for="v3-organizacion">Organización</label><input type="text" name="organizacion" id="v3-organizacion" required autocomplete="organization"/></div></div>
+                    <div class="contact-step-actions"><button class="uk-button uk-button-default protea-button" type="button" data-contact-back>Anterior</button><button class="uk-button uk-button-primary protea-button-primary" type="button" data-contact-next>Continuar</button></div>
+                  </fieldset>
+
+                  <fieldset class="contact-step" data-contact-step="2">
+                    <legend>Cómo podemos responderte</legend>
+                    <p class="contact-step-intro">Completa los datos necesarios para responder a tu solicitud.</p>
+                    <div class="contact-fields">
+                      <div class="contact-field"><label for="v3-nombre">Nombre</label><input type="text" name="nombre" id="v3-nombre" required autocomplete="name"/></div>
+                      <div class="contact-field"><label for="v3-correo">Correo electrónico</label><input type="email" name="correo" id="v3-correo" required autocomplete="email"/></div>
+                      <div class="contact-field-full"><label class="contact-privacy"><input type="checkbox" name="privacidad" required/> He leído la <a href="https://www.protea.blue/politica-de-privacidad" target="_blank" rel="noopener">política de privacidad</a>.</label></div>
+                    </div>
+                    <div class="contact-step-actions"><button class="uk-button uk-button-default protea-button" type="button" data-contact-back>Anterior</button><button class="uk-button uk-button-primary protea-button-primary" type="button" data-contact-next>Revisar</button></div>
+                  </fieldset>
+
+                  <fieldset class="contact-step contact-review-step" data-contact-step="3">
+                    <legend>Revisa tu solicitud</legend>
+                    <p class="contact-step-intro">Esta revisión reproduce tus respuestas sin evaluarlas, clasificarlas ni recomendar un recorrido.</p>
+                    <dl class="contact-review" aria-live="polite">
+                      <div><dt>Qué está ocurriendo</dt><dd data-contact-review="situacion">—</dd></div>
+                      <div><dt>Señales que reconoces</dt><dd data-contact-review="senales">—</dd></div>
+                      <div><dt>Organización</dt><dd data-contact-review="organizacion">—</dd></div>
+                      <div><dt>Nombre</dt><dd data-contact-review="nombre">—</dd></div>
+                      <div><dt>Correo electrónico</dt><dd data-contact-review="correo">—</dd></div>
+                    </dl>
+                    <div class="contact-step-actions"><button class="uk-button uk-button-default protea-button" type="button" data-contact-back>Anterior</button><button class="uk-button uk-button-primary protea-button-primary" type="submit">Enviar conversación</button></div>
+                  </fieldset>
+
+                  <button class="uk-button uk-button-primary protea-button-primary contact-fallback-submit" type="submit">Conversemos</button>
+                  <p class="contact-delivery-note">El formulario está preparado para conectar con correo o una base de contactos. Esa integración todavía no está implementada.</p>
+                  <p class="contact-status" role="status" aria-live="polite"></p>
+                  <noscript><p>Este formulario de muestra no envía datos.</p></noscript>
+                </form>
               </div>
             </div>
           </div>
@@ -267,9 +339,7 @@
           <div class="consolidation-grid">
             <div class="consolidation-content v3-footer-content">
               <a class="brand" href="v3/#observatorio"><span class="brand-mark">protea</span><span class="brand-claim">BECOMING ADAPTIVE</span></a>
-              <nav class="site-footer-links" aria-label="Pie de página">
-                <a href="v3/#observatorio">PROTEA</a><a href="v3/#becoming-adaptive">QUÉ HACEMOS</a><a href="v3/#adaptive-thinking">ADAPTIVE THINKING</a><a href="v3/#equipo">QUIÉNES SOMOS</a><a href="v3/#contacto-final">CONVERSEMOS</a>
-              </nav>
+              <nav class="site-footer-links" aria-label="Pie de página"><a href="v3/#observatorio">PROTEA</a><a href="v3/#becoming-adaptive">QUÉ HACEMOS</a><a href="v3/#adaptive-thinking">ADAPTIVE THINKING</a><a href="v3/#equipo">QUIÉNES SOMOS</a><a href="v3/#contacto-final">CONVERSEMOS</a></nav>
             </div>
           </div>
         </div>
@@ -296,63 +366,28 @@
   <script src="assets/js/protea.js?v=20260719-2"></script>
   <script>
     window.PROTEA_VIVA_CONFIG = {
-      version: 16,
-      seed: 2772206847,
-      maxDpr: 1.75,
-      centerXDesktop: 0.32,
-      centerXMobile: 0.72,
-      centerYDesktop: 0.50,
-      centerYMobile: 0.46,
-      heightDesktop: 0.96,
-      heightMobile: 0.84,
-      scrollSmoothing: 0.065,
-      pointerSmoothing: 0.045,
-      strandIdleTurnsPerMinute: 0.11,
-      strandScrollTurns: 0.46,
-      orbitalTurnsPerMinute: 0.42,
-      strandCountDesktop: 43,
-      strandCountMobile: 36,
-      strandStepsDesktop: 75,
-      strandStepsMobile: 76,
-      initialRootStage: 0.02,
-      growthLayers: [
-        { path: "assets/img/protea-viva/stage-03-bud.webp", start: 0.16, peak: 0.30, end: 0.475, opacity: 0.10, scale: 1, yOffset: 0, drift: 1.5, kind: "bud" },
-        { path: "assets/img/protea-viva/stage-05-petals.webp", start: 0.31, peak: 0.48, end: 0.66, opacity: 0.11, scale: 1, yOffset: 0, drift: 1.5, kind: "petals" },
-        { path: "assets/img/protea-viva/stage-07-bloom.webp", start: 0.49, peak: 0.66, end: 0.85, opacity: 0.12, scale: 1, yOffset: 0, drift: 1.5, kind: "bloom" }
+      version:16, seed:2772206847, maxDpr:1.75,
+      centerXDesktop:.32, centerXMobile:.72, centerYDesktop:.50, centerYMobile:.46,
+      heightDesktop:.96, heightMobile:.84, scrollSmoothing:.065, pointerSmoothing:.045,
+      strandIdleTurnsPerMinute:.11, strandScrollTurns:.46, orbitalTurnsPerMinute:.42,
+      strandCountDesktop:43, strandCountMobile:36, strandStepsDesktop:75, strandStepsMobile:76,
+      initialRootStage:.02,
+      growthLayers:[
+        {path:"assets/img/protea-viva/stage-03-bud.webp",start:.16,peak:.30,end:.475,opacity:.10,scale:1,yOffset:0,drift:1.5,kind:"bud"},
+        {path:"assets/img/protea-viva/stage-05-petals.webp",start:.31,peak:.48,end:.66,opacity:.11,scale:1,yOffset:0,drift:1.5,kind:"petals"},
+        {path:"assets/img/protea-viva/stage-07-bloom.webp",start:.49,peak:.66,end:.85,opacity:.12,scale:1,yOffset:0,drift:1.5,kind:"bloom"}
       ],
-      finalTexturePath: "assets/img/protea-viva/final-frame.webp",
-      finalTextureStart: 0.535,
-      finalTextureFull: 1,
-      finalTextureScale: 1.095,
-      finalTextureYOffset: -0.035,
-      finalTextureBreathing: 0.02,
-      finalBaseAlpha: 0,
-      finalFrontAlpha: 0.82,
-      finalBackLowerAlpha: 0.35,
-      finalBackMiddleAlpha: 0.37,
-      finalBackUpperAlpha: 0.42,
-      accentStrandAlpha: 0.47,
-      accentOrbitalAlpha: 1.04,
-      showGrowthLayers: true,
-      showRoots: true,
-      showStrands: true,
-      showPetals: true,
-      showPod: true,
-      showClusters: true,
-      showOrbits: true,
-      showFinalTexture: true,
-      rootAlpha: 0,
-      orbitBackAlpha: 0.53,
-      strandBackAlpha: 0.62,
-      petalBackAlpha: 1.03,
-      podAlpha: 0.37,
-      clusterAlpha: 0.93,
-      strandFrontBaseAlpha: 0.42,
-      petalFrontBaseAlpha: 0.19,
-      orbitFrontBaseAlpha: 0.18
+      finalTexturePath:"assets/img/protea-viva/final-frame.webp", finalTextureStart:.535, finalTextureFull:1,
+      finalTextureScale:1.095, finalTextureYOffset:-.035, finalTextureBreathing:.02,
+      finalBaseAlpha:0, finalFrontAlpha:.82, finalBackLowerAlpha:.35, finalBackMiddleAlpha:.37,
+      finalBackUpperAlpha:.42, accentStrandAlpha:.47, accentOrbitalAlpha:1.04,
+      showGrowthLayers:true, showRoots:true, showStrands:true, showPetals:true, showPod:true,
+      showClusters:true, showOrbits:true, showFinalTexture:true,
+      rootAlpha:0, orbitBackAlpha:.53, strandBackAlpha:.62, petalBackAlpha:1.03,
+      podAlpha:.37, clusterAlpha:.93, strandFrontBaseAlpha:.42, petalFrontBaseAlpha:.19, orbitFrontBaseAlpha:.18
     };
   </script>
   <script src="assets/js/protea-viva-background.js?v=20260906-2"></script>
-  <script src="v3/v3.js?v=20260915-2"></script>
+  <script src="v3/v3.js?v=20260915-3"></script>
 </body>
 </html>
