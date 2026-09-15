@@ -17,7 +17,7 @@
   ensureStyle('v3/v3-r5.css?v=20260915-5', 'data-v3-r5');
 
   /*
-   * R9 · Preloader exclusivo de la propuesta V3.
+   * R10 · Preloader exclusivo de la propuesta V3.
    * Reutiliza el nodo vacío del Hero para cubrir la primera pintura y luego
    * lo convierte en la lente de transición. No toca el motor compartido.
    */
@@ -60,13 +60,13 @@
 
     if (!document.querySelector('script[data-v3-r9]')) {
       const script = document.createElement('script');
-      script.src = 'v3/v3-r9.js?v=20260916-9';
+      script.src = 'v3/v3-r9.js?v=20260916-10';
       script.setAttribute('data-v3-r9', 'true');
       script.onerror = forceRelease;
       document.body.append(script);
     }
 
-    /* Salida dura: aun si el controlador R9 falla, la página no queda bloqueada. */
+    /* Salida dura: aun si el controlador R10 falla, la página no queda bloqueada. */
     window.setTimeout(forceRelease, 2800);
   }
 
