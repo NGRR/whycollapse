@@ -16,6 +16,60 @@
   ensureStyle('v3/v3-r4.css?v=20260915-4', 'data-v3-r4');
   ensureStyle('v3/v3-r5.css?v=20260915-5', 'data-v3-r5');
 
+  /*
+   * R9 · Preloader exclusivo de la propuesta V3.
+   * Reutiliza el nodo vacío del Hero para cubrir la primera pintura y luego
+   * lo convierte en la lente de transición. No toca el motor compartido.
+   */
+  const preloadHost = document.querySelector('.canvas-injection-note');
+  if (preloadHost && !preloadHost.classList.contains('v3-preloader')) {
+    const html = document.documentElement;
+    html.classList.add('v3-preloading');
+    document.body.classList.add('v3-preloading');
+
+    preloadHost.id = 'v3-preloader';
+    preloadHost.classList.add('v3-preloader');
+    preloadHost.innerHTML = `
+      <div class="v3-preloader__brand" aria-hidden="true">
+        <span class="brand-mark">protea</span>
+        <span class="brand-claim">BECOMING ADAPTIVE</span>
+      </div>
+      <div class="v3-preloader__lens" aria-hidden="true">
+        <i class="v3-preloader__ring v3-preloader__ring--outer"></i>
+        <i class="v3-preloader__ring v3-preloader__ring--mid"></i>
+        <i class="v3-preloader__ring v3-preloader__ring--inner"></i>
+        <i class="v3-preloader__ticks"></i>
+        <i class="v3-preloader__scan"></i>
+        <i class="v3-preloader__guide v3-preloader__guide--a"></i>
+        <i class="v3-preloader__guide v3-preloader__guide--b"></i>
+        <i class="v3-preloader__guide v3-preloader__guide--c"></i>
+        <i class="v3-preloader__guide v3-preloader__guide--d"></i>
+        <span class="v3-preloader__slashes"><span>//////</span><span>////</span><span>///</span></span>
+        <i class="v3-preloader__datum"></i>
+      </div>`;
+
+    const forceRelease = () => {
+      if (!preloadHost.isConnected) return;
+      preloadHost.classList.add('is-leaving');
+      window.setTimeout(() => {
+        preloadHost.remove();
+        html.classList.remove('v3-preloading');
+        document.body.classList.remove('v3-preloading');
+      }, 460);
+    };
+
+    if (!document.querySelector('script[data-v3-r9]')) {
+      const script = document.createElement('script');
+      script.src = 'v3/v3-r9.js?v=20260916-9';
+      script.setAttribute('data-v3-r9', 'true');
+      script.onerror = forceRelease;
+      document.body.append(script);
+    }
+
+    /* Salida de seguridad independiente del controlador R9. */
+    window.setTimeout(forceRelease, 4200);
+  }
+
   /* Complete the left rail with the sixth narrative state. */
   const rail = document.querySelector('.section-rail');
   if (rail && !rail.querySelector('a[href*="#contacto-final"]')) {
