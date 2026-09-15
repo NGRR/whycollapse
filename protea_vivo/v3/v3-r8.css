@@ -37,14 +37,23 @@
   place-items:center;
   width:62px;
   height:62px;
+  margin:0!important;
   border-radius:50%;
   background:var(--v3-orange,#ff5a00);
   color:#fff;
-  font-size:34px;
   line-height:1;
   box-shadow:0 0 0 7px rgba(255,90,0,.12),0 10px 28px rgba(255,90,0,.24);
   transform-origin:50% 80%;
   animation:v3PressCue 1.7s ease-in-out infinite;
+}
+
+.protea-v3 .v3-textarea-cta-icon svg{
+  width:34px!important;
+  height:34px!important;
+}
+
+.protea-v3 .v3-textarea-cta-icon svg *{
+  stroke:currentColor!important;
 }
 
 .protea-v3 .v3-textarea-cta-copy{
@@ -86,7 +95,11 @@
   .protea-v3 .v3-textarea-cta-icon{
     width:58px;
     height:58px;
-    font-size:32px;
+  }
+
+  .protea-v3 .v3-textarea-cta-icon svg{
+    width:31px!important;
+    height:31px!important;
   }
 }
 
