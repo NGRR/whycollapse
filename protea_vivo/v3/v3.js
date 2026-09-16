@@ -39,20 +39,24 @@
     preload.style.setProperty('--v3-preload-fade-ms', `${timing.fade}ms`);
     preload.style.setProperty('--v3-load-segment-ms', `${timing.segment}ms`);
     preload.innerHTML = `
-      <div class="v3-preloader__brand" aria-hidden="true">
-        <span class="brand-mark">protea</span>
-      </div>
       <div class="v3-preloader__lens" aria-hidden="true">
+        <div class="v3-preloader__brand">
+          <span class="brand-mark">protea</span>
+        </div>
         <i class="v3-preloader__ring v3-preloader__ring--outer"></i>
         <i class="v3-preloader__ring v3-preloader__ring--mid"></i>
         <i class="v3-preloader__ring v3-preloader__ring--inner"></i>
         <i class="v3-preloader__scan"></i>
       </div>`;
 
+    const lens = preload.querySelector('.v3-preloader__lens');
     const brandMark = preload.querySelector('.v3-preloader__brand .brand-mark');
+    if (lens) {
+      lens.style.left = '50%';
+      lens.style.top = '50%';
+    }
     if (brandMark) brandMark.style.transform = 'none';
 
-    const lens = preload.querySelector('.v3-preloader__lens');
     if (lens) {
       const loadbar = document.createElement('span');
       loadbar.className = 'v3-preloader__loadbar';
@@ -76,6 +80,7 @@
 
     function syncWithHeroLens() {
       const rect = hero.getBoundingClientRect();
+      const preloadRect = preload.getBoundingClientRect();
       const width = Math.max(1, rect.width);
       const height = Math.max(1, rect.height);
       const mobile = isMobile();
@@ -84,8 +89,10 @@
         : clamp(Math.min(width * 0.34, height * 0.255), 118, 310);
       const x = rect.left + (mobile ? width * 0.5 : width * 0.76 - 50);
       const y = rect.top + (mobile ? height * 0.72 : height * 0.52);
-      const dx = x - window.innerWidth * 0.5;
-      const dy = y - window.innerHeight * 0.5;
+      const originX = preloadRect.left + preloadRect.width * 0.5;
+      const originY = preloadRect.top + preloadRect.height * 0.5;
+      const dx = x - originX;
+      const dy = y - originY;
 
       preload.style.setProperty('--v3-preload-x', `${x}px`);
       preload.style.setProperty('--v3-preload-y', `${y}px`);
@@ -259,6 +266,27 @@
   const sectionMarkers = [...document.querySelectorAll('[data-section-marker]')];
   const mobileStoryNav = document.querySelector('.mobile-story-nav');
   const contactSection = document.getElementById('contacto-final');
+  const heroSection = document.getElementById('observatorio');
+  const siteNav = document.querySelector('.site-nav');
+  const heroContainer = heroSection?.querySelector('.uk-container');
+  const heroGrid = heroSection?.querySelector('.uk-grid-large');
+  const heroCopyPanel = heroSection?.querySelector('.hero-copy-panel');
+  const heroTitle = heroSection?.querySelector('.hero-title');
+  const heroCopy = heroSection?.querySelector('.hero-copy');
+  const heroCanvasSpace = heroSection?.querySelector('.hero-canvas-space');
+  const heroQuote = heroSection?.querySelector('.hero-transition-quote');
+  const siteBrandMark = siteNav?.querySelector('.brand-mark');
+  const siteBrandClaim = siteNav?.querySelector('.brand-claim');
+  const mobileMenuButton = siteNav?.querySelector('.mobile-menu-button');
+
+  const setImportant = (node, property, value) => {
+    if (node) node.style.setProperty(property, value, 'important');
+  };
+
+  const clearInline = (node, properties) => {
+    if (!node) return;
+    properties.forEach((property) => node.style.removeProperty(property));
+  };
 
   const setActive = (id) => {
     const normalizedId = (id || '').replace(/^#/, '');
@@ -363,8 +391,154 @@
     railFrame = requestAnimationFrame(updateNarrativeState);
   };
 
+  /*
+   * Reconstrucción móvil: iOS cambia el visual viewport varias veces al rotar.
+   * Medimos el viewport real, recalculamos alturas y reconfiguramos Hero/rail.
+   * Al asentarse la orientación emitimos un resize final para los dos canvas.
+   */
+  let mobileViewportFrame = 0;
+  let orientationSettleTimer = 0;
+
+  const rebuildMobileViewport = () => {
+    mobileViewportFrame = 0;
+    const viewport = window.visualViewport;
+    const viewportWidth = Math.round(viewport?.width || window.innerWidth);
+    const viewportHeight = Math.round(viewport?.height || window.innerHeight);
+    const mobile = viewportWidth <= 959;
+
+    if (!mobile) {
+      document.body.removeAttribute('data-v3-orientation');
+      document.documentElement.style.removeProperty('--mobile-nav-h');
+      document.documentElement.style.removeProperty('--mobile-story-h');
+      document.documentElement.style.removeProperty('--mobile-critical-h');
+      [heroSection, heroContainer, heroGrid, heroCopyPanel, heroTitle, heroCopy, heroCanvasSpace, heroQuote, siteNav, siteBrandMark, siteBrandClaim, mobileMenuButton, mobileStoryNav].forEach((node) => {
+        if (!node) return;
+        node.removeAttribute('style');
+      });
+      mobileStoryNav?.querySelectorAll('a').forEach((link) => link.style.removeProperty('min-height'));
+      scheduleNarrativeState();
+      return;
+    }
+
+    const landscape = viewportWidth > viewportHeight;
+    document.body.dataset.v3Orientation = landscape ? 'landscape' : 'portrait';
+
+    if (landscape) {
+      setImportant(mobileStoryNav, 'left', 'max(12px, env(safe-area-inset-left))');
+      setImportant(mobileStoryNav, 'right', 'max(12px, env(safe-area-inset-right))');
+      setImportant(mobileStoryNav, 'width', 'auto');
+      setImportant(mobileStoryNav, 'min-height', '46px');
+      setImportant(mobileStoryNav, 'bottom', 'max(8px, env(safe-area-inset-bottom))');
+      setImportant(mobileStoryNav, 'border-radius', '18px');
+      mobileStoryNav?.querySelectorAll('a').forEach((link) => setImportant(link, 'min-height', '46px'));
+
+      setImportant(siteNav, 'min-height', '50px');
+      setImportant(siteNav, 'padding-top', '5px');
+      setImportant(siteNav, 'padding-bottom', '5px');
+      setImportant(siteNav, 'padding-left', 'max(16px, env(safe-area-inset-left))');
+      setImportant(siteNav, 'padding-right', 'max(16px, env(safe-area-inset-right))');
+      setImportant(siteBrandMark, 'font-size', '25px');
+      setImportant(siteBrandClaim, 'font-size', '7px');
+      setImportant(mobileMenuButton, 'width', '36px');
+      setImportant(mobileMenuButton, 'height', '36px');
+    } else {
+      clearInline(mobileStoryNav, ['left', 'right', 'width', 'min-height', 'bottom', 'border-radius']);
+      mobileStoryNav?.querySelectorAll('a').forEach((link) => link.style.removeProperty('min-height'));
+      clearInline(siteNav, ['min-height', 'padding-top', 'padding-bottom', 'padding-left', 'padding-right']);
+      clearInline(siteBrandMark, ['font-size']);
+      clearInline(siteBrandClaim, ['font-size']);
+      clearInline(mobileMenuButton, ['width', 'height']);
+    }
+
+    requestAnimationFrame(() => {
+      const navHeight = Math.round(siteNav?.getBoundingClientRect().height || (landscape ? 50 : 62));
+      const storyHeight = Math.round(mobileStoryNav?.getBoundingClientRect().height || (landscape ? 46 : 58));
+      const minimum = landscape ? 280 : 520;
+      const criticalHeight = Math.max(minimum, viewportHeight - navHeight - storyHeight);
+
+      document.documentElement.style.setProperty('--mobile-nav-h', `${navHeight}px`);
+      document.documentElement.style.setProperty('--mobile-story-h', `${storyHeight}px`);
+      document.documentElement.style.setProperty('--mobile-critical-h', `${criticalHeight}px`);
+
+      setImportant(heroSection, 'min-height', `${criticalHeight}px`);
+      setImportant(heroContainer, 'min-height', `${criticalHeight}px`);
+      setImportant(heroGrid, 'min-height', `${criticalHeight}px`);
+
+      if (landscape) {
+        setImportant(heroGrid, 'display', 'grid');
+        setImportant(heroGrid, 'grid-template-columns', 'minmax(0,.92fr) minmax(260px,1.08fr)');
+        setImportant(heroGrid, 'grid-template-rows', 'minmax(0,1fr)');
+        setImportant(heroGrid, 'align-items', 'center');
+        setImportant(heroGrid, 'align-content', 'center');
+        setImportant(heroCopyPanel, 'width', '100%');
+        setImportant(heroCopyPanel, 'max-width', 'none');
+        setImportant(heroCopyPanel, 'margin-top', '0');
+        setImportant(heroCopyPanel, 'padding', '18px 22px');
+        setImportant(heroCopyPanel, 'text-align', 'left');
+        setImportant(heroTitle, 'font-size', 'clamp(32px,5.1vw,50px)');
+        setImportant(heroTitle, 'line-height', '.96');
+        setImportant(heroCopy, 'max-width', '430px');
+        setImportant(heroCopy, 'font-size', 'clamp(13px,1.65vw,16px)');
+        setImportant(heroCopy, 'line-height', '1.5');
+        setImportant(heroCanvasSpace, 'min-height', `${criticalHeight}px`);
+        setImportant(heroCanvasSpace, 'height', `${criticalHeight}px`);
+        setImportant(heroQuote, 'display', 'none');
+        heroCopyPanel?.querySelectorAll(':scope > *').forEach((node) => {
+          setImportant(node, 'margin-left', '0');
+          setImportant(node, 'margin-right', '0');
+        });
+      } else {
+        const portraitShift = Math.round(clamp(viewportHeight * 0.07, 42, 72));
+        setImportant(heroGrid, 'display', 'grid');
+        setImportant(heroGrid, 'grid-template-columns', '1fr');
+        setImportant(heroGrid, 'grid-template-rows', 'auto minmax(190px,1fr)');
+        setImportant(heroGrid, 'align-items', 'start');
+        setImportant(heroGrid, 'align-content', 'start');
+        setImportant(heroCopyPanel, 'width', '100%');
+        setImportant(heroCopyPanel, 'max-width', '100%');
+        setImportant(heroCopyPanel, 'margin-top', `${-portraitShift}px`);
+        setImportant(heroCopyPanel, 'padding-top', '8px');
+        setImportant(heroCopyPanel, 'padding-bottom', '6px');
+        setImportant(heroCopyPanel, 'padding-left', '28px');
+        setImportant(heroCopyPanel, 'padding-right', '28px');
+        setImportant(heroCopyPanel, 'text-align', 'center');
+        clearInline(heroTitle, ['font-size', 'line-height']);
+        clearInline(heroCopy, ['max-width', 'font-size', 'line-height']);
+        clearInline(heroCanvasSpace, ['height']);
+        setImportant(heroCanvasSpace, 'min-height', 'min(40dvh,300px)');
+        clearInline(heroQuote, ['display']);
+        heroCopyPanel?.querySelectorAll(':scope > *').forEach((node) => {
+          setImportant(node, 'margin-left', 'auto');
+          setImportant(node, 'margin-right', 'auto');
+        });
+      }
+
+      scheduleNarrativeState();
+    });
+  };
+
+  const queueMobileViewportRebuild = () => {
+    if (mobileViewportFrame) cancelAnimationFrame(mobileViewportFrame);
+    mobileViewportFrame = requestAnimationFrame(rebuildMobileViewport);
+  };
+
+  const settleOrientation = () => {
+    queueMobileViewportRebuild();
+    window.clearTimeout(orientationSettleTimer);
+    window.setTimeout(queueMobileViewportRebuild, 120);
+    orientationSettleTimer = window.setTimeout(() => {
+      queueMobileViewportRebuild();
+      /* Los motores compartidos ya escuchan resize; este pulso ocurre con el viewport estable. */
+      window.dispatchEvent(new Event('resize'));
+    }, 360);
+  };
+
   window.addEventListener('scroll', scheduleNarrativeState, { passive: true });
+  window.addEventListener('resize', queueMobileViewportRebuild, { passive: true });
   window.addEventListener('resize', scheduleNarrativeState, { passive: true });
+  window.addEventListener('orientationchange', settleOrientation, { passive: true });
+  window.visualViewport?.addEventListener('resize', queueMobileViewportRebuild, { passive: true });
+  queueMobileViewportRebuild();
 
   sectionLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
