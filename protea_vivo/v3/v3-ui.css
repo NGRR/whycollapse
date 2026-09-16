@@ -735,3 +735,150 @@ html.v3-preloading body{overflow:hidden}
   .protea-v3 .v3-preloader__lens{transition:opacity .18s ease!important}
   .protea-v3 .v3-preloader__brand{transition:opacity .18s ease!important}
 }
+
+/* --------------------------------------------------------------------------
+   6. PRELOADER R14 · DESCLIP + TRANSICIÓN DECONSTRUCCIÓN / RECONSTRUCCIÓN
+   El contenedor de la lente ya no crea un paint containment cuadrado; las
+   marcas y anillos pueden extenderse libremente fuera de su caja circular.
+   -------------------------------------------------------------------------- */
+.protea-v3 .v3-preloader__lens{
+  contain:layout style!important;
+  overflow:visible!important;
+}
+.protea-v3 .v3-preloader__loadbar,
+.protea-v3 .v3-preloader__ring,
+.protea-v3 .v3-preloader__scan,
+.protea-v3 .v3-preloader__orbit,
+.protea-v3 .v3-preloader__measurements,
+.protea-v3 .v3-preloader__telemetry,
+.protea-v3 .v3-preloader__particles{overflow:visible!important}
+
+/* Dos anillos de reconstrucción aparecen sólo en el tramo final del viaje. */
+.protea-v3 .v3-preloader__lens::before,
+.protea-v3 .v3-preloader__lens::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:0;
+  transform-origin:50% 50%;
+}
+.protea-v3 .v3-preloader__lens::before{
+  inset:8%;
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 0 16px rgba(255,255,255,.05);
+}
+.protea-v3 .v3-preloader__lens::after{
+  inset:25%;
+  border:1px dashed rgba(255,255,255,.44);
+}
+
+/* Durante el docking los anillos exteriores se separan y los interiores
+   colapsan; el conjunto conserva sólo transform/opacity para mantener GPU. */
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(1),
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(3),
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(5){
+  animation:v3DockExpandA var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(2),
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(4){
+  animation:v3DockExpandB var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(6),
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated:nth-of-type(7){
+  animation:v3DockContract var(--v3-preload-align-ms) cubic-bezier(.2,.75,.18,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__scan{
+  animation:v3DockScan var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__orbit{
+  animation:v3DockOrbit var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar{
+  animation:v3DockCompass var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar span{
+  opacity:.38!important;
+  transition:opacity .16s linear!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__measurements{
+  animation:v3DockReadout var(--v3-preload-align-ms) ease-out both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__telemetry{
+  animation:v3DockReadout var(--v3-preload-align-ms) ease-out both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__particles{
+  animation:v3DockParticles var(--v3-preload-align-ms) ease-out both!important;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__lens::before{
+  animation:v3DockRebuildOuter var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both;
+}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__lens::after{
+  animation:v3DockRebuildInner var(--v3-preload-align-ms) cubic-bezier(.18,.72,.16,1) both;
+}
+
+@keyframes v3DockExpandA{
+  0%{transform:scale(1) rotate(0deg);opacity:.44}
+  36%{transform:scale(1.035) rotate(6deg);opacity:.38}
+  100%{transform:scale(1.34) rotate(24deg);opacity:0}
+}
+@keyframes v3DockExpandB{
+  0%{transform:scale(1) rotate(0deg);opacity:.32}
+  44%{transform:scale(.98) rotate(-8deg);opacity:.28}
+  100%{transform:scale(1.20) rotate(-34deg);opacity:0}
+}
+@keyframes v3DockContract{
+  0%{transform:scale(1) rotate(0deg);opacity:.24}
+  52%{transform:scale(.92) rotate(10deg);opacity:.22}
+  100%{transform:scale(.70) rotate(30deg);opacity:0}
+}
+@keyframes v3DockScan{
+  0%{transform:scale(1) rotate(0deg);opacity:.42}
+  52%{transform:scale(1.06) rotate(70deg);opacity:.24}
+  100%{transform:scale(1.26) rotate(155deg);opacity:0}
+}
+@keyframes v3DockOrbit{
+  0%{transform:scale(1) rotate(0deg);opacity:1}
+  48%{transform:scale(1.04) rotate(-42deg);opacity:.62}
+  100%{transform:scale(1.16) rotate(-118deg);opacity:0}
+}
+@keyframes v3DockCompass{
+  0%{transform:scale(1);opacity:1}
+  38%{transform:scale(1.035);opacity:.82}
+  72%{transform:scale(1.10);opacity:.48}
+  100%{transform:scale(.94);opacity:.10}
+}
+@keyframes v3DockReadout{
+  0%{transform:scale(1);opacity:.34}
+  54%{transform:scale(.98);opacity:.24}
+  100%{transform:scale(.90);opacity:0}
+}
+@keyframes v3DockParticles{
+  0%{transform:scale(1);opacity:.34}
+  48%{transform:scale(1.07);opacity:.28}
+  100%{transform:scale(1.22);opacity:0}
+}
+@keyframes v3DockRebuildOuter{
+  0%,52%{transform:scale(.54) rotate(-14deg);opacity:0}
+  70%{transform:scale(.76) rotate(-5deg);opacity:.26}
+  86%{transform:scale(1.06) rotate(2deg);opacity:.76}
+  100%{transform:scale(1) rotate(0deg);opacity:.38}
+}
+@keyframes v3DockRebuildInner{
+  0%,62%{transform:scale(.62) rotate(18deg);opacity:0}
+  80%{transform:scale(1.08) rotate(4deg);opacity:.60}
+  100%{transform:scale(1) rotate(0deg);opacity:.30}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__ring--generated,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__scan,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__orbit,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__measurements,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__telemetry,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__particles,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__lens::before,
+  .protea-v3 .v3-preloader.is-aligning .v3-preloader__lens::after{animation:none!important}
+}
