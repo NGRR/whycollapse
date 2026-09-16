@@ -357,6 +357,7 @@
 /* --------------------------------------------------------------------------
    4. PRELOADER
    Tiempos: una sola fuente en PRELOADER_TIMING de v3.js.
+   El desplazamiento usa sólo transform para evitar layout/repaint por fotograma.
    -------------------------------------------------------------------------- */
 html.v3-preloading,
 html.v3-preloading body{overflow:hidden}
@@ -380,9 +381,9 @@ html.v3-preloading body{overflow:hidden}
   width:min(46vw,500px);
   aspect-ratio:1;
   transform:translate(-50%,-50%);
-  border:1px solid rgba(226,246,255,.42);
+  border:1px solid rgba(255,255,255,.42);
   border-radius:50%;
-  box-shadow:0 0 0 34px rgba(91,168,255,.025),0 0 46px rgba(91,168,255,.08);
+  box-shadow:0 0 0 34px rgba(255,255,255,.02),0 0 42px rgba(255,255,255,.06);
   animation:v3PreloadSpin 6s linear infinite;
 }
 
@@ -391,20 +392,23 @@ html.v3-preloading body{overflow:hidden}
   position:absolute;
   left:50%;
   top:50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%,-50.5%);
   color:#fff;
-  font:400 clamp(38px,5vw,64px)/.9 var(--font-head,Montserrat,sans-serif);
+  font:400 clamp(38px,5vw,64px)/1 var(--font-head,Montserrat,sans-serif);
   letter-spacing:-.08em;
   text-transform:lowercase;
-  text-shadow:0 0 24px rgba(83,171,255,.18),0 0 2px rgba(255,255,255,.20);
+  text-shadow:0 0 18px rgba(255,255,255,.10);
 }
 
 .protea-v3 .v3-preloader{
   --v3-preload-x:50vw;
   --v3-preload-y:50vh;
+  --v3-preload-dx:0px;
+  --v3-preload-dy:0px;
   --v3-preload-r:min(23vw,280px);
+  --v3-load-radius:calc(var(--v3-preload-r) * -1.04);
   --v3-preload-angle:0deg;
-  --v3-preload-align-ms:2000ms;
+  --v3-preload-align-ms:850ms;
   --v3-preload-fade-ms:360ms;
   position:fixed!important;
   inset:0!important;
@@ -427,8 +431,8 @@ html.v3-preloading body{overflow:hidden}
   inset:0;
   opacity:.32;
   background-image:
-    linear-gradient(rgba(190,224,255,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(190,224,255,.035) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
   background-size:42px 42px;
   mask-image:radial-gradient(circle at 50% 50%,#000 0 30%,transparent 74%);
   pointer-events:none;
@@ -446,10 +450,10 @@ html.v3-preloading body{overflow:hidden}
   top:50%;
   z-index:5;
   display:grid;
-  justify-items:center;
+  place-items:center;
   gap:0;
-  transform:translate(-50%,-50%);
-  transition:opacity .30s ease,transform .42s cubic-bezier(.22,.8,.2,1);
+  transform:translate3d(-50%,-50%,0);
+  transition:opacity .24s ease,transform .32s cubic-bezier(.22,.8,.2,1);
   pointer-events:none;
 }
 
@@ -460,16 +464,17 @@ html.v3-preloading body{overflow:hidden}
   font-family:var(--font-head,Montserrat,sans-serif)!important;
   font-size:clamp(38px,5vw,64px)!important;
   font-weight:400!important;
-  line-height:.9!important;
+  line-height:1!important;
   letter-spacing:-.08em!important;
   text-transform:lowercase;
   color:#fff!important;
-  text-shadow:0 0 24px rgba(83,171,255,.18),0 0 2px rgba(255,255,255,.20);
+  text-shadow:0 0 18px rgba(255,255,255,.10);
+  transform:translateY(-.035em);
 }
 
 .protea-v3 .v3-preloader.is-aligning .v3-preloader__brand{
   opacity:0;
-  transform:translate(-50%,-50%) scale(.96);
+  transform:translate3d(-50%,-50%,0) scale(.98);
 }
 
 .protea-v3 .v3-preloader__lens{
@@ -478,24 +483,21 @@ html.v3-preloading body{overflow:hidden}
   top:50vh;
   width:calc(var(--v3-preload-r) * 2);
   height:calc(var(--v3-preload-r) * 2);
-  transform:translate(-50%,-50%) rotate(0deg);
+  transform:translate3d(-50%,-50%,0) translate3d(0,0,0) rotate(0deg);
   transform-origin:50% 50%;
-  will-change:left,top,width,height,transform,opacity;
+  will-change:transform,opacity;
+  backface-visibility:hidden;
+  contain:layout paint style;
   transition:
-    left var(--v3-preload-align-ms) cubic-bezier(.22,.8,.2,1),
-    top var(--v3-preload-align-ms) cubic-bezier(.22,.8,.2,1),
-    width var(--v3-preload-align-ms) cubic-bezier(.22,.8,.2,1),
-    height var(--v3-preload-align-ms) cubic-bezier(.22,.8,.2,1),
     transform var(--v3-preload-align-ms) cubic-bezier(.22,.8,.2,1),
     opacity var(--v3-preload-fade-ms) ease;
 }
 
 .protea-v3 .v3-preloader.is-aligning .v3-preloader__lens{
-  left:var(--v3-preload-x);
-  top:var(--v3-preload-y);
-  width:calc(var(--v3-preload-r) * 2);
-  height:calc(var(--v3-preload-r) * 2);
-  transform:translate(-50%,-50%) rotate(var(--v3-preload-angle));
+  transform:
+    translate3d(-50%,-50%,0)
+    translate3d(var(--v3-preload-dx),var(--v3-preload-dy),0)
+    rotate(var(--v3-preload-angle));
 }
 
 .protea-v3 .v3-preloader__ring,
@@ -504,38 +506,40 @@ html.v3-preloading body{overflow:hidden}
   inset:0;
   border-radius:50%;
   pointer-events:none;
+  will-change:transform;
+  backface-visibility:hidden;
 }
 
 .protea-v3 .v3-preloader__ring--outer{
-  border:1px solid rgba(226,246,255,.34);
-  box-shadow:0 0 24px rgba(105,178,255,.07),inset 0 0 22px rgba(73,158,255,.035);
+  border:1px solid rgba(255,255,255,.46);
+  box-shadow:0 0 20px rgba(255,255,255,.05),inset 0 0 18px rgba(255,255,255,.025);
   animation:v3PreloadSpin 8s linear infinite;
 }
 .protea-v3 .v3-preloader__ring--mid{
   inset:9%;
-  border:1px dashed rgba(178,224,255,.22);
+  border:1px dashed rgba(255,255,255,.25);
   animation:v3PreloadSpinReverse 5.8s linear infinite;
 }
 .protea-v3 .v3-preloader__ring--inner{
   inset:21%;
-  border:1px solid rgba(218,240,255,.16);
-  border-top-color:rgba(255,91,22,.74);
-  border-right-color:rgba(255,91,22,.18);
+  border:1px solid rgba(255,255,255,.16);
+  border-top-color:rgba(255,255,255,.72);
+  border-right-color:rgba(255,255,255,.28);
   animation:v3PreloadSpin 3.9s linear infinite;
 }
 
 .protea-v3 .v3-preloader__scan{
   inset:-5%;
-  opacity:.55;
+  opacity:.50;
   background:conic-gradient(
     from -42deg,
     transparent 0 7%,
-    rgba(194,230,255,0) 7%,
-    rgba(194,230,255,.52) 9%,
-    rgba(194,230,255,.10) 31%,
+    rgba(255,255,255,0) 7%,
+    rgba(255,255,255,.50) 9%,
+    rgba(255,255,255,.09) 31%,
     transparent 34% 57%,
-    rgba(255,91,22,.68) 58%,
-    rgba(255,91,22,.10) 72%,
+    rgba(255,255,255,.42) 58%,
+    rgba(255,255,255,.07) 72%,
     transparent 75% 100%
   );
   -webkit-mask:radial-gradient(circle,transparent 0 89%,#000 89.4% 90.7%,transparent 91.2%);
@@ -556,40 +560,33 @@ html.v3-preloading body{overflow:hidden}
   left:50%;
   top:50%;
   display:block;
-  width:1.2em;
+  width:.8em;
   height:1em;
-  margin:-.5em 0 0 -.6em;
-  color:rgba(223,243,255,.94);
-  font:700 clamp(10px,1vw,13px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  margin:-.5em 0 0 -.4em;
+  color:#fff;
+  font:700 clamp(8px,.72vw,10px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   text-align:center;
-  text-shadow:0 0 8px rgba(104,184,255,.28);
-  opacity:.10;
+  opacity:.08;
   transform:
     rotate(var(--v3-load-angle))
-    translateY(calc(var(--v3-preload-r) * -1.035))
+    translateY(var(--v3-load-radius))
     rotate(var(--v3-load-glyph-angle));
   transform-origin:50% 50%;
   animation:v3LoadSegment var(--v3-load-segment-ms,100ms) ease-out var(--v3-load-delay) both;
 }
 
-.protea-v3 .v3-preloader__loadbar span:nth-child(4n+1),
-.protea-v3 .v3-preloader__loadbar span:nth-child(4n+4){
-  color:rgba(255,134,78,.94);
-  text-shadow:0 0 9px rgba(255,91,22,.34);
-}
-
 .protea-v3 .v3-preloader.is-load-complete .v3-preloader__loadbar span{
-  opacity:.78;
-  transition:opacity .18s ease;
+  opacity:.82;
+  transition:opacity .14s ease;
 }
-.protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar span{opacity:.42}
+.protea-v3 .v3-preloader.is-aligning .v3-preloader__loadbar span{opacity:.48}
 
 @keyframes v3PreloadSpin{to{transform:rotate(360deg)}}
 @keyframes v3PreloadSpinReverse{to{transform:rotate(-360deg)}}
 @keyframes v3LoadSegment{
-  0%{opacity:.08;filter:brightness(.8)}
-  52%{opacity:1;filter:brightness(1.35)}
-  100%{opacity:.78;filter:brightness(1)}
+  0%{opacity:.06}
+  52%{opacity:1}
+  100%{opacity:.82}
 }
 
 /* --------------------------------------------------------------------------
@@ -604,6 +601,12 @@ html.v3-preloading body{overflow:hidden}
   .protea-v3 .v3-content{
     -webkit-backdrop-filter:none!important;
     backdrop-filter:none!important;
+  }
+
+  /* Acerca el inicio del Hero a la navegación móvil sin alterar el Hero compartido. */
+  .protea-v3 .hero-copy-panel{
+    padding-top:8px!important;
+    padding-bottom:6px!important;
   }
 
   .protea-v3 .mobile-story-nav{
@@ -703,7 +706,7 @@ html.v3-preloading body{overflow:hidden}
 
   .protea-v3 .canvas-injection-note:not(.v3-preloader)::before{width:min(72vw,390px)}
   .protea-v3 .v3-preloader__brand .brand-mark{font-size:44px!important}
-  .protea-v3 .v3-preloader__loadbar span{font-size:10px}
+  .protea-v3 .v3-preloader__loadbar span{font-size:8px}
 }
 
 @media (max-width:520px){
