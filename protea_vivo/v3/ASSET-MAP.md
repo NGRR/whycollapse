@@ -4,14 +4,14 @@ Fecha de revisión: 2026-09-16
 
 Fuente principal: carpeta Drive `1DEEt-dOb4iQLV43DFHLAic-08BTADegu`.
 
-## Arquitectura de mantenimiento R12
+## Arquitectura de mantenimiento R13
 
 La V3 quedó consolidada para reducir deuda de revisión. Dentro de `protea_vivo/v3/` sólo existen cinco archivos:
 
 - `index.html`: estructura y contenido de la propuesta.
 - `v3.css`: layout, composición editorial y estilos base de V3.
 - `v3-ui.css`: rail, marcadores, optimizaciones de composición, responsive, CTA y preloader.
-- `v3.js`: comportamiento, navegación, carrusel, contacto y controlador del preloader.
+- `v3.js`: comportamiento, navegación, carrusel, contacto, controlador del preloader y reconstrucción del viewport móvil.
 - `ASSET-MAP.md`: contrato estructural, activos y guía de auditoría.
 
 Las antiguas capas incrementales `v3-r4.css` a `v3-r10.css` y `v3-r9.js` fueron absorbidas y eliminadas. No deben volver a introducirse archivos de revisión numerados para ajustes normales: las nuevas correcciones deben hacerse en el archivo semántico que corresponda.
@@ -38,10 +38,22 @@ const PRELOADER_TIMING = Object.freeze({
 - Gráfica monocroma: anillos, scan y marcas de carga en blanco.
 - Barra perimetral compuesta por 96 caracteres `|` y `/`, distribuidos de forma continua alrededor de la lente.
 - Las marcas se ubican a aproximadamente 3 px fuera de la circunferencia exterior.
-- El wordmark `protea` se centra geométricamente en el punto central de la lente.
+- El wordmark `protea` ahora vive dentro de `.v3-preloader__lens`, por lo que comparte exactamente el centro geométrico de la circunferencia y no depende del centro del overlay.
 - El viaje al Hero dura 850 ms y usa exclusivamente `transform: translate3d(...)` para evitar recalcular `left`, `top`, `width` y `height` en cada fotograma.
 - Durante el desplazamiento se pausan las rotaciones internas de los anillos y del scan para reducir trabajo de composición y estabilizar los fotogramas.
-- En móvil se redujo el espacio superior del bloque de copy del Hero para acercarlo a la navegación sin modificar el Hero compartido.
+
+### Reconstrucción responsive en móviles
+
+La solución R13 no depende sólo de media queries. `v3.js` mide `window.visualViewport` y reconstruye las variables y layout móviles cuando cambia el viewport:
+
+- recalcula `--mobile-nav-h`, `--mobile-story-h` y `--mobile-critical-h` usando el viewport visible real;
+- en portrait desplaza el bloque de copy del Hero hacia arriba proporcionalmente al alto disponible, reduciendo aproximadamente a la mitad el vacío inicial observado en iPhone;
+- en landscape transforma el Hero a una retícula horizontal de dos columnas, reduce tipografía y navegación superior, y amplía el rail inferior al ancho útil disponible;
+- el rail móvil deja de conservar el máximo de 370 px en landscape y pasa a ocupar el ancho entre los safe areas laterales;
+- escucha `resize`, `orientationchange` y `visualViewport.resize`;
+- tras una rotación espera a que Safari estabilice el viewport y emite un `resize` final para que los motores compartidos de `#protea-canvas` y `#protea-viva-canvas` recalculen sus dimensiones con el tamaño definitivo.
+
+Esta reconstrucción evita que el sitio conserve medidas de portrait al pasar a landscape —o viceversa— sin recargar la página. No se modifica el motor compartido del Hero ni Protea Viva.
 
 ## Contrato estructural de V3
 
