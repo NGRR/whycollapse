@@ -4,71 +4,172 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = () => matchMedia('(max-width: 959px)').matches;
 
-  /* R4 + R5 styles load after the protected Hero/bootstrap chain. */
-  const ensureStyle = (href, dataKey) => {
-    if (document.querySelector(`link[${dataKey}]`)) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.setAttribute(dataKey, 'true');
-    document.head.append(link);
-  };
-  ensureStyle('v3/v3-r4.css?v=20260915-4', 'data-v3-r4');
-  ensureStyle('v3/v3-r5.css?v=20260915-5', 'data-v3-r5');
-
   /*
-   * R10 · Preloader exclusivo de la propuesta V3.
-   * Reutiliza el nodo vacío del Hero para cubrir la primera pintura y luego
-   * lo convierte en la lente de transición. No toca el motor compartido.
+   * ÚNICA FUENTE DE TIEMPOS DEL PRELOADER.
+   * Para retocar la animación, edita sólo este objeto.
    */
-  const preloadHost = document.querySelector('.canvas-injection-note');
-  if (preloadHost && !preloadHost.classList.contains('v3-preloader')) {
+  const PRELOADER_TIMING = Object.freeze({
+    load: 2000,
+    align: 2000,
+    settle: 60,
+    fade: 360,
+    segment: 100,
+    failSafePadding: 1200
+  });
+
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+  function initPreloader() {
+    const preload = document.querySelector('.canvas-injection-note');
+    const hero = document.getElementById('observatorio');
+    if (!preload || !hero || preload.classList.contains('v3-preloader')) return;
+
+    const timing = reduceMotion
+      ? { ...PRELOADER_TIMING, load: 180, align: 120, settle: 20, fade: 160, segment: 0 }
+      : PRELOADER_TIMING;
+
     const html = document.documentElement;
     html.classList.add('v3-preloading');
     document.body.classList.add('v3-preloading');
 
-    preloadHost.id = 'v3-preloader';
-    preloadHost.classList.add('v3-preloader');
-    preloadHost.innerHTML = `
+    preload.id = 'v3-preloader';
+    preload.classList.add('v3-preloader');
+    preload.style.setProperty('--v3-preload-align-ms', `${timing.align}ms`);
+    preload.style.setProperty('--v3-preload-fade-ms', `${timing.fade}ms`);
+    preload.style.setProperty('--v3-load-segment-ms', `${timing.segment}ms`);
+    preload.innerHTML = `
       <div class="v3-preloader__brand" aria-hidden="true">
         <span class="brand-mark">protea</span>
-        <span class="brand-claim">BECOMING ADAPTIVE</span>
       </div>
       <div class="v3-preloader__lens" aria-hidden="true">
         <i class="v3-preloader__ring v3-preloader__ring--outer"></i>
         <i class="v3-preloader__ring v3-preloader__ring--mid"></i>
         <i class="v3-preloader__ring v3-preloader__ring--inner"></i>
-        <i class="v3-preloader__ticks"></i>
         <i class="v3-preloader__scan"></i>
-        <i class="v3-preloader__guide v3-preloader__guide--a"></i>
-        <i class="v3-preloader__guide v3-preloader__guide--b"></i>
-        <i class="v3-preloader__guide v3-preloader__guide--c"></i>
-        <i class="v3-preloader__guide v3-preloader__guide--d"></i>
-        <span class="v3-preloader__slashes"><span>//////</span><span>////</span><span>///</span></span>
-        <i class="v3-preloader__datum"></i>
       </div>`;
 
-    const forceRelease = () => {
-      if (!preloadHost.isConnected) return;
-      preloadHost.classList.add('is-leaving');
-      window.setTimeout(() => {
-        preloadHost.remove();
-        html.classList.remove('v3-preloading');
-        document.body.classList.remove('v3-preloading');
-      }, 360);
-    };
+    const lens = preload.querySelector('.v3-preloader__lens');
+    if (lens) {
+      const loadbar = document.createElement('span');
+      loadbar.className = 'v3-preloader__loadbar';
+      const segmentCount = 28;
+      const stepDelay = timing.segment
+        ? Math.max(0, timing.load - timing.segment) / (segmentCount - 1)
+        : 0;
 
-    if (!document.querySelector('script[data-v3-r9]')) {
-      const script = document.createElement('script');
-      script.src = 'v3/v3-r9.js?v=20260916-10c';
-      script.setAttribute('data-v3-r9', 'true');
-      script.onerror = forceRelease;
-      document.body.append(script);
+      for (let index = 0; index < segmentCount; index += 1) {
+        const segment = document.createElement('span');
+        const angle = (index / segmentCount) * 360;
+        const glyph = index % 3 === 0 || index % 7 === 0 ? '/' : '|';
+        segment.textContent = glyph;
+        segment.style.setProperty('--v3-load-angle', `${angle.toFixed(2)}deg`);
+        segment.style.setProperty('--v3-load-delay', `${Math.round(index * stepDelay)}ms`);
+        segment.style.setProperty('--v3-load-glyph-angle', glyph === '/' ? '-18deg' : '0deg');
+        loadbar.append(segment);
+      }
+      lens.append(loadbar);
     }
 
-    /* Salida dura: margen suficiente para las dos fases de 2 s más el fade. */
-    window.setTimeout(forceRelease, 5600);
+    function syncWithHeroLens() {
+      const rect = hero.getBoundingClientRect();
+      const width = Math.max(1, rect.width);
+      const height = Math.max(1, rect.height);
+      const mobile = isMobile();
+      const radius = mobile
+        ? clamp(Math.min(width * 0.38, height * 0.19), 96, 156)
+        : clamp(Math.min(width * 0.34, height * 0.255), 118, 310);
+      const x = rect.left + (mobile ? width * 0.5 : width * 0.76 - 50);
+      const y = rect.top + (mobile ? height * 0.72 : height * 0.52);
+
+      preload.style.setProperty('--v3-preload-x', `${x}px`);
+      preload.style.setProperty('--v3-preload-y', `${y}px`);
+      preload.style.setProperty('--v3-preload-r', `${radius}px`);
+      preload.style.setProperty('--v3-preload-angle', '0deg');
+    }
+
+    function warmHeroAsset(path) {
+      return new Promise((resolve) => {
+        const image = new Image();
+        let finished = false;
+        const done = () => {
+          if (finished) return;
+          finished = true;
+          resolve();
+        };
+        image.onload = done;
+        image.onerror = done;
+        image.src = path;
+        if (image.complete) done();
+      });
+    }
+
+    async function criticalAssetsReady() {
+      const heroAssets = [
+        'components/hero/assets/bg_far.png',
+        'components/hero/assets/bg_mid.png',
+        'components/hero/assets/base_sharp.png',
+        'components/hero/assets/network_far.png',
+        'components/hero/assets/network_mid.png',
+        'components/hero/assets/network_near.png',
+        'components/hero/assets/glow_far.png',
+        'components/hero/assets/glow_mid.png'
+      ];
+      const jobs = heroAssets.map(warmHeroAsset);
+      if (document.fonts?.ready) jobs.push(document.fonts.ready.catch(() => {}));
+      await Promise.allSettled(jobs);
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+
+    let released = false;
+    let hardTimer = 0;
+
+    function cleanup() {
+      if (released) return;
+      released = true;
+      window.clearTimeout(hardTimer);
+      window.removeEventListener('resize', syncWithHeroLens);
+      preload.remove();
+      html.classList.remove('v3-preloading');
+      document.body.classList.remove('v3-preloading');
+      try { sessionStorage.setItem('proteaV3PreloaderSeen', '1'); } catch (_) {}
+    }
+
+    function forceRelease() {
+      if (released || !preload.isConnected) return;
+      preload.classList.add('is-leaving');
+      window.setTimeout(cleanup, timing.fade);
+    }
+
+    const failSafe = timing.load + timing.align + timing.settle + timing.fade + timing.failSafePadding;
+    hardTimer = window.setTimeout(forceRelease, failSafe);
+
+    async function runSequence() {
+      syncWithHeroLens();
+      window.addEventListener('resize', syncWithHeroLens, { passive: true });
+
+      await Promise.all([
+        wait(timing.load),
+        Promise.race([criticalAssetsReady(), wait(timing.load)])
+      ]);
+      preload.classList.add('is-load-complete');
+
+      syncWithHeroLens();
+      await new Promise((resolve) => requestAnimationFrame(() => {
+        preload.classList.add('is-aligning');
+        resolve();
+      }));
+      await wait(timing.align + timing.settle);
+
+      preload.classList.add('is-leaving');
+      await wait(timing.fade);
+      cleanup();
+    }
+
+    runSequence().catch(forceRelease);
   }
+
+  initPreloader();
 
   /* Complete the left rail with the sixth narrative state. */
   const rail = document.querySelector('.section-rail');
@@ -97,7 +198,6 @@
     marker.dataset.sectionMarker = sectionId;
     marker.innerHTML = `<span>${config.number}</span><mark>${config.title}</mark><i></i><small>${config.code}</small>`;
 
-    /* A dedicated full-height track makes sticky persist for the whole section. */
     if (!marker.parentElement?.classList.contains('v3-marker-track')) {
       const track = document.createElement('div');
       track.className = 'v3-marker-track';
@@ -220,10 +320,6 @@
     else mobileStoryNav.removeAttribute('aria-hidden');
   };
 
-  /*
-   * One scroll probe drives rail, section marker and A–D product state. This avoids
-   * different observers disagreeing while a long section occupies the viewport.
-   */
   let railFrame = 0;
   const updateNarrativeState = () => {
     railFrame = 0;
@@ -339,7 +435,6 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           const progress = proteaForm.querySelector('.contact-progress');
-          /* Use the new step's normal-flow position; the progress bar is sticky and cannot be used as a scroll anchor. */
           const anchor = step || progress || proteaForm;
           const offset = window.innerWidth <= 520 ? 142 : 152;
           const targetTop = Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - offset);
@@ -372,7 +467,9 @@
         else indicator.removeAttribute('aria-current');
       });
       if (currentStep === steps.length - 1) syncReview();
-      if (progressStatus && indicators[currentStep]) progressStatus.textContent = `Paso ${currentStep + 1} de ${steps.length}: ${indicators[currentStep].textContent.trim()}`;
+      if (progressStatus && indicators[currentStep]) {
+        progressStatus.textContent = `Paso ${currentStep + 1} de ${steps.length}: ${indicators[currentStep].textContent.trim()}`;
+      }
 
       if (moveFocus) {
         const focusTarget = steps[currentStep]?.querySelector('input, textarea, button');
