@@ -58,16 +58,10 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
   position:relative;
 }
 .protea-v3 .v3-content{
-  padding:clamp(74px,8vw,128px) clamp(28px,4vw,72px);
-  border-left:1px solid rgba(255,255,255,.18);
-  background:linear-gradient(90deg,rgba(0,31,111,.14),rgba(0,31,111,.56) 20%,rgba(0,17,51,.78) 100%);
-  box-shadow:26px 0 80px rgba(0,17,51,.08) inset;
+  padding:clamp(74px,2vw,128px) clamp(28px,4vw,72px);
+  background:linear-gradient(90deg,rgba(0,31,111,.14),rgb(0 31 111 / 30%) 50%,rgb(0 17 51 / 32%) 100%);
   backdrop-filter:blur(1.5px);
 }
-.protea-v3 #becoming-adaptive .v3-content{background:linear-gradient(90deg,rgba(7,89,244,.10),rgba(0,47,142,.50) 20%,rgba(0,17,51,.78) 100%)}
-.protea-v3 #adaptive-thinking .v3-content{background:linear-gradient(90deg,rgba(0,17,51,.08),rgba(0,17,51,.58) 18%,rgba(4,10,25,.84) 100%)}
-.protea-v3 #equipo .v3-content{background:linear-gradient(90deg,rgba(7,89,244,.08),rgba(0,38,124,.54) 18%,rgba(0,17,51,.80) 100%)}
-.protea-v3 #contacto-final .v3-content{background:linear-gradient(90deg,rgba(0,17,51,.10),rgba(0,30,102,.60) 18%,rgba(0,17,51,.84) 100%)}
 
 .protea-v3 .v3-quarter-marker{
   grid-column:1;
@@ -174,6 +168,7 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
 .protea-v3 .v3-carousel-controls{display:none}
 
 /* Contacto guiado: misma lógica progresiva de la consolidada + señales seleccionables. */
+.protea-v3 .contact-anchor{margin-top:50px;padding-top:50px;border-top:1px solid var(--protea-line);scroll-margin-top:110px}
 .protea-v3 .v3-contact-card{max-width:1050px}
 .protea-v3 .v3-guided-contact{margin-top:54px;padding-top:38px;border-top:1px solid rgba(255,255,255,.22)}
 .protea-v3 .contact-progress{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 52px;padding:0}
@@ -237,7 +232,7 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
   .protea-v3 .v3-body-section .consolidation-grid,.protea-v3 .v3-footer .consolidation-grid{display:block}
   .protea-v3 .v3-quarter-marker{display:none}
   .protea-v3 .v3-content,.protea-v3 .v3-footer-content{grid-column:auto}
-  .protea-v3 .v3-content{margin-left:0;padding:82px 24px;background:linear-gradient(180deg,rgba(0,31,111,.44),rgba(0,17,51,.84))!important;border-left:0;backdrop-filter:blur(2px)}
+  .protea-v3 .v3-content{margin-left:0;padding:clamp(74px,2vw,128px) clamp(28px,4vw,72px);background:linear-gradient(90deg,rgba(0,31,111,.14),rgb(0 31 111 / 30%) 50%,rgb(0 17 51 / 32%) 100%)!important;border-left:0;box-shadow:none;backdrop-filter:blur(1.5px)}
   .protea-v3 .v3-thinking-grid{grid-template-columns:1fr}
   .protea-v3 .v3-thinking-photo{min-height:0}
   .protea-v3 .v3-thinking-photo img{height:min(78vh,620px)}
