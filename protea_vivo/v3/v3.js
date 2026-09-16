@@ -1,33 +1,97 @@
 (() => {
   'use strict';
 
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = () => matchMedia('(max-width: 959px)').matches;
-
   /*
-   * ÚNICA FUENTE DE TIEMPOS DEL PRELOADER.
-   * Para retocar la animación, edita sólo este objeto.
+   * CONFIGURACIÓN CENTRAL V3
+   * Ajusta aquí la mayor parte de los parámetros visuales y temporales que se
+   * revisan con frecuencia. El resto del archivo consume estos valores.
    */
-  const PRELOADER_TIMING = Object.freeze({
-    load: 2000,
-    align: 850,
-    settle: 60,
-    fade: 360,
-    segment: 100,
-    failSafePadding: 1200
+  const V3_SETTINGS = Object.freeze({
+    mobileBreakpoint: 959,
+    sectionPanel: {
+      background: 'linear-gradient(90deg,rgba(0,31,111,.14),rgb(0 31 111 / 45%) 50%,rgb(0 17 51 / 45%) 100%)'
+    },
+    preloader: {
+      timing: {
+        load: 2000,
+        align: 850,
+        settle: 60,
+        fade: 360,
+        segment: 90,
+        assetWait: 3000,
+        failSafePadding: 1400
+      },
+      marks: {
+        gap: 3,
+        length: 8,
+        thickness: 1,
+        targetSpacing: 4.2,
+        minCount: 150,
+        maxCount: 420
+      },
+      rings: [
+        { inset: 0, duration: 11.8, direction: 1, opacity: .44, style: 'solid' },
+        { inset: 6, duration: 7.4, direction: -1, opacity: .30, style: 'dashed' },
+        { inset: 12, duration: 16.2, direction: 1, opacity: .22, style: 'solid' },
+        { inset: 19, duration: 5.6, direction: -1, opacity: .36, style: 'dashed' },
+        { inset: 27, duration: 22.4, direction: 1, opacity: .17, style: 'solid' },
+        { inset: 35, duration: 8.8, direction: -1, opacity: .26, style: 'dashed' },
+        { inset: 43, duration: 28.0, direction: 1, opacity: .15, style: 'solid' }
+      ],
+      scans: [
+        { inset: -5, duration: 5.2, direction: 1, opacity: .48 },
+        { inset: 8, duration: 8.7, direction: -1, opacity: .28 },
+        { inset: 20, duration: 13.6, direction: 1, opacity: .20 }
+      ],
+      measurements: {
+        count: 12,
+        radiusRatio: .72,
+        opacity: .54,
+        fontSize: 8
+      },
+      preload: {
+        includeDocumentImages: true,
+        includeProteaViva: true,
+        heroAssets: [
+          'components/hero/assets/bg_far.png',
+          'components/hero/assets/bg_mid.png',
+          'components/hero/assets/base_sharp.png',
+          'components/hero/assets/network_far.png',
+          'components/hero/assets/network_mid.png',
+          'components/hero/assets/network_near.png',
+          'components/hero/assets/glow_far.png',
+          'components/hero/assets/glow_mid.png'
+        ]
+      }
+    },
+    mobile: {
+      portraitShiftFactor: .07,
+      portraitShiftMin: 42,
+      portraitShiftMax: 72,
+      orientationPulseShort: 120,
+      orientationPulseLong: 360
+    }
   });
 
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = () => matchMedia(`(max-width:${V3_SETTINGS.mobileBreakpoint}px)`).matches;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+  /* Tratamiento cromático único para todas las secciones V3. */
+  document.querySelectorAll('.v3-content').forEach((node) => {
+    node.style.setProperty('background', V3_SETTINGS.sectionPanel.background, 'important');
+  });
 
   function initPreloader() {
     const preload = document.querySelector('.canvas-injection-note');
     const hero = document.getElementById('observatorio');
     if (!preload || !hero || preload.classList.contains('v3-preloader')) return;
 
+    const settings = V3_SETTINGS.preloader;
     const timing = reduceMotion
-      ? { ...PRELOADER_TIMING, load: 180, align: 120, settle: 20, fade: 160, segment: 0 }
-      : PRELOADER_TIMING;
+      ? { ...settings.timing, load: 180, align: 120, settle: 20, fade: 160, segment: 0, assetWait: 500 }
+      : settings.timing;
 
     const html = document.documentElement;
     html.classList.add('v3-preloading');
@@ -43,10 +107,6 @@
         <div class="v3-preloader__brand">
           <span class="brand-mark">protea</span>
         </div>
-        <i class="v3-preloader__ring v3-preloader__ring--outer"></i>
-        <i class="v3-preloader__ring v3-preloader__ring--mid"></i>
-        <i class="v3-preloader__ring v3-preloader__ring--inner"></i>
-        <i class="v3-preloader__scan"></i>
       </div>`;
 
     const lens = preload.querySelector('.v3-preloader__lens');
@@ -57,22 +117,91 @@
     }
     if (brandMark) brandMark.style.transform = 'none';
 
-    if (lens) {
-      const loadbar = document.createElement('span');
+    const preloadCache = [];
+    let loadbar = null;
+    let currentRadius = 0;
+
+    function buildCircularGraphics() {
+      if (!lens) return;
+
+      settings.rings.forEach((ringSettings, index) => {
+        const ring = document.createElement('i');
+        ring.className = 'v3-preloader__ring v3-preloader__ring--generated';
+        ring.style.inset = `${ringSettings.inset}%`;
+        ring.style.opacity = String(ringSettings.opacity);
+        ring.style.border = `1px ${ringSettings.style} rgba(255,255,255,.92)`;
+        ring.style.animation = `${ringSettings.direction < 0 ? 'v3PreloadSpinReverse' : 'v3PreloadSpin'} ${ringSettings.duration}s linear infinite`;
+        if (index === 0) {
+          ring.style.boxShadow = '0 0 20px rgba(255,255,255,.05), inset 0 0 18px rgba(255,255,255,.025)';
+        }
+        lens.append(ring);
+      });
+
+      settings.scans.forEach((scanSettings) => {
+        const scan = document.createElement('i');
+        scan.className = 'v3-preloader__scan';
+        scan.style.inset = `${scanSettings.inset}%`;
+        scan.style.opacity = String(scanSettings.opacity);
+        scan.style.animation = `${scanSettings.direction < 0 ? 'v3PreloadSpinReverse' : 'v3PreloadSpin'} ${scanSettings.duration}s linear infinite`;
+        lens.append(scan);
+      });
+
+      const measurements = document.createElement('span');
+      measurements.className = 'v3-preloader__measurements';
+      measurements.style.cssText = 'position:absolute;inset:0;z-index:3;pointer-events:none;';
+
+      for (let index = 0; index < settings.measurements.count; index += 1) {
+        const angle = (index / settings.measurements.count) * 360;
+        const label = document.createElement('span');
+        label.textContent = String(Math.round(angle)).padStart(3, '0');
+        label.style.cssText = [
+          'position:absolute',
+          'left:50%',
+          'top:50%',
+          `font:500 ${settings.measurements.fontSize}px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace`,
+          `color:rgba(255,255,255,${settings.measurements.opacity})`,
+          'letter-spacing:.12em',
+          'white-space:nowrap',
+          `transform:translate(-50%,-50%) rotate(${angle}deg) translateY(calc(var(--v3-measure-radius) * -1)) rotate(${-angle}deg)`
+        ].join(';');
+        measurements.append(label);
+      }
+      lens.append(measurements);
+    }
+
+    function buildLoadbar(radius) {
+      if (!lens) return;
+      loadbar?.remove();
+      loadbar = document.createElement('span');
       loadbar.className = 'v3-preloader__loadbar';
-      const segmentCount = 96;
+
+      const marks = settings.marks;
+      const markRadius = radius + marks.gap + marks.length / 2;
+      const circumference = 2 * Math.PI * markRadius;
+      const segmentCount = clamp(
+        Math.round(circumference / marks.targetSpacing),
+        marks.minCount,
+        marks.maxCount
+      );
       const stepDelay = timing.segment
-        ? Math.max(0, timing.load - timing.segment) / (segmentCount - 1)
+        ? Math.max(0, timing.load - timing.segment) / Math.max(1, segmentCount - 1)
         : 0;
+
+      preload.style.setProperty('--v3-load-radius', `${-markRadius}px`);
 
       for (let index = 0; index < segmentCount; index += 1) {
         const segment = document.createElement('span');
         const angle = (index / segmentCount) * 360;
-        const glyph = index % 3 === 0 || index % 7 === 0 ? '/' : '|';
-        segment.textContent = glyph;
-        segment.style.setProperty('--v3-load-angle', `${angle.toFixed(2)}deg`);
+        segment.textContent = '';
+        segment.style.setProperty('--v3-load-angle', `${angle.toFixed(3)}deg`);
         segment.style.setProperty('--v3-load-delay', `${Math.round(index * stepDelay)}ms`);
-        segment.style.setProperty('--v3-load-glyph-angle', glyph === '/' ? '-18deg' : '0deg');
+        segment.style.setProperty('--v3-load-glyph-angle', '0deg');
+        segment.style.width = `${marks.thickness}px`;
+        segment.style.height = `${marks.length}px`;
+        segment.style.margin = `${-(marks.length / 2)}px 0 0 ${-(marks.thickness / 2)}px`;
+        segment.style.background = '#fff';
+        segment.style.borderRadius = '999px';
+        segment.style.fontSize = '0';
         loadbar.append(segment);
       }
       lens.append(loadbar);
@@ -99,17 +228,52 @@
       preload.style.setProperty('--v3-preload-dx', `${dx}px`);
       preload.style.setProperty('--v3-preload-dy', `${dy}px`);
       preload.style.setProperty('--v3-preload-r', `${radius}px`);
-      preload.style.setProperty('--v3-load-radius', `${-(radius + 3)}px`);
+      preload.style.setProperty('--v3-measure-radius', `${radius * settings.measurements.radiusRatio}px`);
       preload.style.setProperty('--v3-preload-angle', '0deg');
+
+      if (!currentRadius || Math.abs(radius - currentRadius) > 8) {
+        currentRadius = radius;
+        buildLoadbar(radius);
+      }
+      return radius;
     }
 
-    function warmHeroAsset(path) {
+    function collectPreloadAssets() {
+      const assets = [...settings.preload.heroAssets];
+
+      if (settings.preload.includeProteaViva) {
+        const viva = window.PROTEA_VIVA_CONFIG || {};
+        (viva.growthLayers || []).forEach((layer) => {
+          if (layer?.path) assets.push(layer.path);
+        });
+        if (viva.finalTexturePath) assets.push(viva.finalTexturePath);
+      }
+
+      if (settings.preload.includeDocumentImages) {
+        document.querySelectorAll('img[src]').forEach((image) => {
+          image.loading = 'eager';
+          const src = image.currentSrc || image.getAttribute('src') || image.src;
+          if (src) assets.push(src);
+        });
+      }
+
+      return [...new Set(assets.filter(Boolean))];
+    }
+
+    function warmAsset(path) {
       return new Promise((resolve) => {
         const image = new Image();
+        preloadCache.push(image);
+        image.decoding = 'async';
+        if ('fetchPriority' in image) image.fetchPriority = 'high';
+
         let finished = false;
-        const done = () => {
+        const done = async () => {
           if (finished) return;
           finished = true;
+          if (image.decode) {
+            try { await image.decode(); } catch (_) {}
+          }
           resolve();
         };
         image.onload = done;
@@ -120,21 +284,14 @@
     }
 
     async function criticalAssetsReady() {
-      const heroAssets = [
-        'components/hero/assets/bg_far.png',
-        'components/hero/assets/bg_mid.png',
-        'components/hero/assets/base_sharp.png',
-        'components/hero/assets/network_far.png',
-        'components/hero/assets/network_mid.png',
-        'components/hero/assets/network_near.png',
-        'components/hero/assets/glow_far.png',
-        'components/hero/assets/glow_mid.png'
-      ];
-      const jobs = heroAssets.map(warmHeroAsset);
+      const jobs = collectPreloadAssets().map(warmAsset);
       if (document.fonts?.ready) jobs.push(document.fonts.ready.catch(() => {}));
       await Promise.allSettled(jobs);
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
+
+    buildCircularGraphics();
+    syncWithHeroLens();
 
     let released = false;
     let hardTimer = 0;
@@ -156,16 +313,17 @@
       window.setTimeout(cleanup, timing.fade);
     }
 
-    const failSafe = timing.load + timing.align + timing.settle + timing.fade + timing.failSafePadding;
+    const failSafe = Math.max(timing.load, timing.assetWait) + timing.align + timing.settle + timing.fade + timing.failSafePadding;
     hardTimer = window.setTimeout(forceRelease, failSafe);
 
     async function runSequence() {
       syncWithHeroLens();
       window.addEventListener('resize', syncWithHeroLens, { passive: true });
 
+      const preloadPromise = criticalAssetsReady();
       await Promise.all([
         wait(timing.load),
-        Promise.race([criticalAssetsReady(), wait(timing.load)])
+        Promise.race([preloadPromise, wait(timing.assetWait)])
       ]);
       preload.classList.add('is-load-complete');
 
@@ -404,7 +562,7 @@
     const viewport = window.visualViewport;
     const viewportWidth = Math.round(viewport?.width || window.innerWidth);
     const viewportHeight = Math.round(viewport?.height || window.innerHeight);
-    const mobile = viewportWidth <= 959;
+    const mobile = viewportWidth <= V3_SETTINGS.mobileBreakpoint;
 
     if (!mobile) {
       document.body.removeAttribute('data-v3-orientation');
@@ -488,7 +646,12 @@
           setImportant(node, 'margin-right', '0');
         });
       } else {
-        const portraitShift = Math.round(clamp(viewportHeight * 0.07, 42, 72));
+        const mobileSettings = V3_SETTINGS.mobile;
+        const portraitShift = Math.round(clamp(
+          viewportHeight * mobileSettings.portraitShiftFactor,
+          mobileSettings.portraitShiftMin,
+          mobileSettings.portraitShiftMax
+        ));
         setImportant(heroGrid, 'display', 'grid');
         setImportant(heroGrid, 'grid-template-columns', '1fr');
         setImportant(heroGrid, 'grid-template-rows', 'auto minmax(190px,1fr)');
@@ -525,12 +688,12 @@
   const settleOrientation = () => {
     queueMobileViewportRebuild();
     window.clearTimeout(orientationSettleTimer);
-    window.setTimeout(queueMobileViewportRebuild, 120);
+    window.setTimeout(queueMobileViewportRebuild, V3_SETTINGS.mobile.orientationPulseShort);
     orientationSettleTimer = window.setTimeout(() => {
       queueMobileViewportRebuild();
       /* Los motores compartidos ya escuchan resize; este pulso ocurre con el viewport estable. */
       window.dispatchEvent(new Event('resize'));
-    }, 360);
+    }, V3_SETTINGS.mobile.orientationPulseLong);
   };
 
   window.addEventListener('scroll', scheduleNarrativeState, { passive: true });
