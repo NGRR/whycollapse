@@ -4,7 +4,7 @@ Fecha de revisión: 2026-09-16
 
 Fuente principal: carpeta Drive `1DEEt-dOb4iQLV43DFHLAic-08BTADegu`.
 
-## Arquitectura de mantenimiento R11
+## Arquitectura de mantenimiento R12
 
 La V3 quedó consolidada para reducir deuda de revisión. Dentro de `protea_vivo/v3/` sólo existen cinco archivos:
 
@@ -23,7 +23,7 @@ Existe una sola fuente de verdad, al inicio de `v3.js`:
 ```js
 const PRELOADER_TIMING = Object.freeze({
   load: 2000,
-  align: 2000,
+  align: 850,
   settle: 60,
   fade: 360,
   segment: 100,
@@ -32,6 +32,16 @@ const PRELOADER_TIMING = Object.freeze({
 ```
 
 `load` controla la carga perimetral; `align`, el viaje de la lente al Hero; `settle`, el ajuste final; `fade`, la revelación; `segment`, el encendido de cada `|` o `/`. El timeout de seguridad se calcula automáticamente a partir de esos valores. `v3-ui.css` recibe los tiempos mediante variables CSS, por lo que no es necesario sincronizar números en varios archivos.
+
+### Preloader actual
+
+- Gráfica monocroma: anillos, scan y marcas de carga en blanco.
+- Barra perimetral compuesta por 96 caracteres `|` y `/`, distribuidos de forma continua alrededor de la lente.
+- Las marcas se ubican a aproximadamente 3 px fuera de la circunferencia exterior.
+- El wordmark `protea` se centra geométricamente en el punto central de la lente.
+- El viaje al Hero dura 850 ms y usa exclusivamente `transform: translate3d(...)` para evitar recalcular `left`, `top`, `width` y `height` en cada fotograma.
+- Durante el desplazamiento se pausan las rotaciones internas de los anillos y del scan para reducir trabajo de composición y estabilizar los fotogramas.
+- En móvil se redujo el espacio superior del bloque de copy del Hero para acercarlo a la navegación sin modificar el Hero compartido.
 
 ## Contrato estructural de V3
 

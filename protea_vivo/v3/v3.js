@@ -49,11 +49,14 @@
         <i class="v3-preloader__scan"></i>
       </div>`;
 
+    const brandMark = preload.querySelector('.v3-preloader__brand .brand-mark');
+    if (brandMark) brandMark.style.transform = 'none';
+
     const lens = preload.querySelector('.v3-preloader__lens');
     if (lens) {
       const loadbar = document.createElement('span');
       loadbar.className = 'v3-preloader__loadbar';
-      const segmentCount = 72;
+      const segmentCount = 96;
       const stepDelay = timing.segment
         ? Math.max(0, timing.load - timing.segment) / (segmentCount - 1)
         : 0;
@@ -89,7 +92,7 @@
       preload.style.setProperty('--v3-preload-dx', `${dx}px`);
       preload.style.setProperty('--v3-preload-dy', `${dy}px`);
       preload.style.setProperty('--v3-preload-r', `${radius}px`);
-      preload.style.setProperty('--v3-load-radius', `${-(radius + 8)}px`);
+      preload.style.setProperty('--v3-load-radius', `${-(radius + 3)}px`);
       preload.style.setProperty('--v3-preload-angle', '0deg');
     }
 
@@ -161,6 +164,9 @@
 
       syncWithHeroLens();
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => {
+        preload.querySelectorAll('.v3-preloader__ring, .v3-preloader__scan').forEach((node) => {
+          node.style.animationPlayState = 'paused';
+        });
         preload.classList.add('is-aligning');
         resolve();
       })));
