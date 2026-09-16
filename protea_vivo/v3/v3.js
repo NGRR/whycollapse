@@ -26,7 +26,13 @@
         thickness: 1,
         targetSpacing: 3.4,
         minCount: 180,
-        maxCount: 480
+        maxCount: 480,
+        majorDivisions: 24,
+        majorLength: 14,
+        majorThickness: 1.25,
+        cardinalDivisions: 4,
+        cardinalLength: 18,
+        cardinalThickness: 1.5
       },
       rings: [
         { inset: 0, duration: 6.8, direction: 1, opacity: .46, style: 'solid', markers: 2 },
@@ -276,31 +282,55 @@
 
       const marks = settings.marks;
       const circumference = 2 * Math.PI * (radius + marks.gap + marks.length / 2);
-      const segmentCount = clamp(
+      const divisionCount = Math.max(4, marks.majorDivisions || 24);
+      const rawCount = clamp(
         Math.round(circumference / marks.targetSpacing),
         marks.minCount,
         marks.maxCount
       );
+      const minAligned = Math.ceil(marks.minCount / divisionCount) * divisionCount;
+      const maxAligned = Math.floor(marks.maxCount / divisionCount) * divisionCount;
+      const segmentCount = clamp(
+        Math.round(rawCount / divisionCount) * divisionCount,
+        minAligned,
+        maxAligned
+      );
+      const majorStep = Math.max(1, segmentCount / divisionCount);
+      const cardinalStep = Math.max(1, segmentCount / Math.max(1, marks.cardinalDivisions || 4));
       loadbarSegments = [];
 
       for (let index = 0; index < segmentCount; index += 1) {
         const angle = (index / segmentCount) * Math.PI * 2 - Math.PI / 2;
-        const radialExtent = (marks.thickness / 2) * Math.abs(Math.cos(angle)) + (marks.length / 2) * Math.abs(Math.sin(angle));
-        const centerRadius = radius + marks.gap + radialExtent;
+        const isCardinal = index % cardinalStep === 0;
+        const isMajor = isCardinal || index % majorStep === 0;
+        const segmentLength = isCardinal
+          ? marks.cardinalLength
+          : isMajor
+            ? marks.majorLength
+            : marks.length;
+        const segmentThickness = isCardinal
+          ? marks.cardinalThickness
+          : isMajor
+            ? marks.majorThickness
+            : marks.thickness;
+        const centerRadius = radius + marks.gap + segmentLength / 2;
         const x = Math.cos(angle) * centerRadius;
         const y = Math.sin(angle) * centerRadius;
+        const radialRotation = angle * 180 / Math.PI + 90;
         const segment = document.createElement('span');
+        segment.dataset.tick = isCardinal ? 'cardinal' : isMajor ? 'major' : 'minor';
         segment.style.cssText = [
           'position:absolute',
           `left:calc(50% + ${x.toFixed(2)}px)`,
           `top:calc(50% + ${y.toFixed(2)}px)`,
-          `width:${marks.thickness}px`,
-          `height:${marks.length}px`,
+          `width:${segmentThickness}px`,
+          `height:${segmentLength}px`,
           'margin:0',
           'background:#fff',
           'border-radius:0',
-          'opacity:.07',
-          'transform:translate3d(-50%,-50%,0)',
+          `opacity:${isCardinal ? '.13' : isMajor ? '.10' : '.07'}`,
+          `transform:translate3d(-50%,-50%,0) rotate(${radialRotation.toFixed(3)}deg)`,
+          'transform-origin:50% 50%',
           'animation:none',
           'transition:opacity .11s linear',
           'will-change:opacity'
@@ -312,7 +342,10 @@
 
       const progress = clamp((performance.now() - preloadStartedAt) / timing.load, 0, 1);
       const alreadyLit = Math.floor(progress * loadbarSegments.length);
-      for (let index = 0; index < alreadyLit; index += 1) loadbarSegments[index].style.opacity = '.86';
+      for (let index = 0; index < alreadyLit; index += 1) {
+        const segment = loadbarSegments[index];
+        segment.style.opacity = segment.dataset.tick === 'cardinal' ? '.98' : segment.dataset.tick === 'major' ? '.92' : '.86';
+      }
     }
 
     function paintLoadbar(now) {
@@ -320,7 +353,9 @@
       const progress = clamp((now - preloadStartedAt) / timing.load, 0, 1);
       const target = Math.ceil(progress * loadbarSegments.length);
       for (let index = 0; index < target; index += 1) {
-        if (loadbarSegments[index].style.opacity !== '.86') loadbarSegments[index].style.opacity = '.86';
+        const segment = loadbarSegments[index];
+        const litOpacity = segment.dataset.tick === 'cardinal' ? '.98' : segment.dataset.tick === 'major' ? '.92' : '.86';
+        if (segment.style.opacity !== litOpacity) segment.style.opacity = litOpacity;
       }
       if (progress < 1) loadbarFrame = requestAnimationFrame(paintLoadbar);
     }
