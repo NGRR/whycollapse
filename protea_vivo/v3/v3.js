@@ -10,7 +10,7 @@
    */
   const PRELOADER_TIMING = Object.freeze({
     load: 2000,
-    align: 2000,
+    align: 850,
     settle: 60,
     fade: 360,
     segment: 100,
@@ -53,7 +53,7 @@
     if (lens) {
       const loadbar = document.createElement('span');
       loadbar.className = 'v3-preloader__loadbar';
-      const segmentCount = 28;
+      const segmentCount = 72;
       const stepDelay = timing.segment
         ? Math.max(0, timing.load - timing.segment) / (segmentCount - 1)
         : 0;
@@ -81,10 +81,15 @@
         : clamp(Math.min(width * 0.34, height * 0.255), 118, 310);
       const x = rect.left + (mobile ? width * 0.5 : width * 0.76 - 50);
       const y = rect.top + (mobile ? height * 0.72 : height * 0.52);
+      const dx = x - window.innerWidth * 0.5;
+      const dy = y - window.innerHeight * 0.5;
 
       preload.style.setProperty('--v3-preload-x', `${x}px`);
       preload.style.setProperty('--v3-preload-y', `${y}px`);
+      preload.style.setProperty('--v3-preload-dx', `${dx}px`);
+      preload.style.setProperty('--v3-preload-dy', `${dy}px`);
       preload.style.setProperty('--v3-preload-r', `${radius}px`);
+      preload.style.setProperty('--v3-load-radius', `${-(radius + 8)}px`);
       preload.style.setProperty('--v3-preload-angle', '0deg');
     }
 
@@ -155,10 +160,10 @@
       preload.classList.add('is-load-complete');
 
       syncWithHeroLens();
-      await new Promise((resolve) => requestAnimationFrame(() => {
+      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => {
         preload.classList.add('is-aligning');
         resolve();
-      }));
+      })));
       await wait(timing.align + timing.settle);
 
       preload.classList.add('is-leaving');
