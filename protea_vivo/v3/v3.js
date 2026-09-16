@@ -13,11 +13,10 @@
     },
     preloader: {
       timing: {
-        load: 2000,
+        load: 3000,
         align: 850,
         settle: 60,
         fade: 360,
-        segment: 90,
         assetWait: 3000,
         failSafePadding: 1400
       },
@@ -25,29 +24,50 @@
         gap: 3,
         length: 8,
         thickness: 1,
-        targetSpacing: 4.2,
-        minCount: 150,
-        maxCount: 420
+        targetSpacing: 3.4,
+        minCount: 180,
+        maxCount: 480
       },
       rings: [
-        { inset: 0, duration: 11.8, direction: 1, opacity: .44, style: 'solid' },
-        { inset: 6, duration: 7.4, direction: -1, opacity: .30, style: 'dashed' },
-        { inset: 12, duration: 16.2, direction: 1, opacity: .22, style: 'solid' },
-        { inset: 19, duration: 5.6, direction: -1, opacity: .36, style: 'dashed' },
-        { inset: 27, duration: 22.4, direction: 1, opacity: .17, style: 'solid' },
-        { inset: 35, duration: 8.8, direction: -1, opacity: .26, style: 'dashed' },
-        { inset: 43, duration: 28.0, direction: 1, opacity: .15, style: 'solid' }
+        { inset: 0, duration: 6.8, direction: 1, opacity: .46, style: 'solid', markers: 2 },
+        { inset: 6, duration: 4.4, direction: -1, opacity: .34, style: 'dashed', markers: 1 },
+        { inset: 12, duration: 8.6, direction: 1, opacity: .26, style: 'dashed', markers: 2 },
+        { inset: 19, duration: 3.2, direction: -1, opacity: .38, style: 'dashed', markers: 1 },
+        { inset: 27, duration: 11.2, direction: 1, opacity: .20, style: 'solid', markers: 2 },
+        { inset: 35, duration: 5.4, direction: -1, opacity: .28, style: 'dashed', markers: 1 },
+        { inset: 43, duration: 14.0, direction: 1, opacity: .18, style: 'solid', markers: 2 }
       ],
       scans: [
-        { inset: -5, duration: 5.2, direction: 1, opacity: .48 },
-        { inset: 8, duration: 8.7, direction: -1, opacity: .28 },
-        { inset: 20, duration: 13.6, direction: 1, opacity: .20 }
+        { inset: -5, duration: 2.8, direction: 1, opacity: .50 },
+        { inset: 8, duration: 4.6, direction: -1, opacity: .32 },
+        { inset: 20, duration: 7.2, direction: 1, opacity: .24 },
+        { inset: 33, duration: 10.4, direction: -1, opacity: .16 }
       ],
       measurements: {
         count: 12,
         radiusRatio: .72,
-        opacity: .54,
-        fontSize: 8
+        opacity: .58,
+        fontSize: 8,
+        updateMs: 120,
+        driftPerSecond: 7
+      },
+      telemetry: {
+        updateMs: 90,
+        items: [
+          { label: 'BIO', min: .61, max: .96, decimals: 3, x: 31, y: 43, speed: 1.7 },
+          { label: 'SYNC', min: 71, max: 99, decimals: 1, x: 69, y: 44, speed: 1.25 },
+          { label: 'Δ', min: 11, max: 28, decimals: 1, x: 50, y: 76, speed: 2.1 },
+          { label: 'PHI', min: .42, max: .88, decimals: 2, x: 50, y: 24, speed: 1.45 }
+        ]
+      },
+      particles: {
+        count: 22,
+        minRadiusRatio: .14,
+        maxRadiusRatio: .46,
+        minSize: 1,
+        maxSize: 3,
+        minDuration: 1400,
+        maxDuration: 3400
       },
       preload: {
         includeDocumentImages: true,
@@ -90,10 +110,11 @@
 
     const settings = V3_SETTINGS.preloader;
     const timing = reduceMotion
-      ? { ...settings.timing, load: 180, align: 120, settle: 20, fade: 160, segment: 0, assetWait: 500 }
+      ? { ...settings.timing, load: 180, align: 120, settle: 20, fade: 160, assetWait: 500 }
       : settings.timing;
 
     const html = document.documentElement;
+    const preloadStartedAt = performance.now();
     html.classList.add('v3-preloading');
     document.body.classList.add('v3-preloading');
 
@@ -101,7 +122,6 @@
     preload.classList.add('v3-preloader');
     preload.style.setProperty('--v3-preload-align-ms', `${timing.align}ms`);
     preload.style.setProperty('--v3-preload-fade-ms', `${timing.fade}ms`);
-    preload.style.setProperty('--v3-load-segment-ms', `${timing.segment}ms`);
     preload.innerHTML = `
       <div class="v3-preloader__lens" aria-hidden="true">
         <div class="v3-preloader__brand">
@@ -118,15 +138,22 @@
     if (brandMark) brandMark.style.transform = 'none';
 
     const preloadCache = [];
+    const measurementNodes = [];
+    const telemetryNodes = [];
     let loadbar = null;
+    let loadbarSegments = [];
+    let loadbarFrame = 0;
+    let telemetryTimer = 0;
     let currentRadius = 0;
+    let released = false;
+    let hardTimer = 0;
 
     function buildCircularGraphics() {
       if (!lens) return;
 
       settings.rings.forEach((ringSettings, index) => {
         const ring = document.createElement('i');
-        ring.className = 'v3-preloader__ring v3-preloader__ring--generated';
+        ring.className = 'v3-preloader__ring v3-preloader__ring--generated v3-preloader__dynamic';
         ring.style.inset = `${ringSettings.inset}%`;
         ring.style.opacity = String(ringSettings.opacity);
         ring.style.border = `1px ${ringSettings.style} rgba(255,255,255,.92)`;
@@ -135,11 +162,26 @@
           ring.style.boxShadow = '0 0 20px rgba(255,255,255,.05), inset 0 0 18px rgba(255,255,255,.025)';
         }
         lens.append(ring);
+
+        const orbit = document.createElement('span');
+        orbit.className = 'v3-preloader__orbit v3-preloader__dynamic';
+        orbit.style.cssText = `position:absolute;inset:${ringSettings.inset}%;z-index:2;border-radius:50%;pointer-events:none;animation:${ringSettings.direction < 0 ? 'v3PreloadSpinReverse' : 'v3PreloadSpin'} ${Math.max(2.2, ringSettings.duration * .72)}s linear infinite;`;
+        const markerCount = ringSettings.markers || 1;
+        for (let markerIndex = 0; markerIndex < markerCount; markerIndex += 1) {
+          const marker = document.createElement('i');
+          const markerAngle = ((markerIndex / markerCount) * Math.PI * 2) + index * .51;
+          const x = 50 + Math.cos(markerAngle) * 50;
+          const y = 50 + Math.sin(markerAngle) * 50;
+          const size = markerIndex === 0 ? 3 : 2;
+          marker.style.cssText = `position:absolute;left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;width:${size}px;height:${size}px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;box-shadow:0 0 7px rgba(255,255,255,.55);opacity:${markerIndex === 0 ? .9 : .55};`;
+          orbit.append(marker);
+        }
+        lens.append(orbit);
       });
 
       settings.scans.forEach((scanSettings) => {
         const scan = document.createElement('i');
-        scan.className = 'v3-preloader__scan';
+        scan.className = 'v3-preloader__scan v3-preloader__dynamic';
         scan.style.inset = `${scanSettings.inset}%`;
         scan.style.opacity = String(scanSettings.opacity);
         scan.style.animation = `${scanSettings.direction < 0 ? 'v3PreloadSpinReverse' : 'v3PreloadSpin'} ${scanSettings.duration}s linear infinite`;
@@ -147,12 +189,13 @@
       });
 
       const measurements = document.createElement('span');
-      measurements.className = 'v3-preloader__measurements';
+      measurements.className = 'v3-preloader__measurements v3-preloader__dynamic';
       measurements.style.cssText = 'position:absolute;inset:0;z-index:3;pointer-events:none;';
 
       for (let index = 0; index < settings.measurements.count; index += 1) {
         const angle = (index / settings.measurements.count) * 360;
         const label = document.createElement('span');
+        label.dataset.baseAngle = String(Math.round(angle));
         label.textContent = String(Math.round(angle)).padStart(3, '0');
         label.style.cssText = [
           'position:absolute',
@@ -165,8 +208,63 @@
           `transform:translate(-50%,-50%) rotate(${angle}deg) translateY(calc(var(--v3-measure-radius) * -1)) rotate(${-angle}deg)`
         ].join(';');
         measurements.append(label);
+        measurementNodes.push(label);
       }
       lens.append(measurements);
+
+      const telemetry = document.createElement('span');
+      telemetry.className = 'v3-preloader__telemetry v3-preloader__dynamic';
+      telemetry.style.cssText = 'position:absolute;inset:0;z-index:4;pointer-events:none;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;';
+      settings.telemetry.items.forEach((item, index) => {
+        const node = document.createElement('span');
+        node.style.cssText = `position:absolute;left:${item.x}%;top:${item.y}%;transform:translate(-50%,-50%);display:flex;gap:4px;align-items:baseline;color:rgba(255,255,255,.68);font-size:7px;letter-spacing:.11em;white-space:nowrap;`;
+        node.innerHTML = `<b style="font:600 7px/1 inherit;color:rgba(255,255,255,.42);">${item.label}</b><i style="font:500 8px/1 inherit;font-style:normal;color:rgba(255,255,255,.82);">0</i>`;
+        telemetry.append(node);
+        telemetryNodes.push({ valueNode: node.querySelector('i'), item, index });
+      });
+      lens.append(telemetry);
+
+      const particles = document.createElement('span');
+      particles.className = 'v3-preloader__particles v3-preloader__dynamic';
+      particles.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;';
+      const p = settings.particles;
+      for (let index = 0; index < p.count; index += 1) {
+        const point = document.createElement('i');
+        const radialT = ((index * 47) % 101) / 100;
+        const radiusRatio = p.minRadiusRatio + (p.maxRadiusRatio - p.minRadiusRatio) * radialT;
+        const angle = index * 2.3999632297;
+        const x = 50 + Math.cos(angle) * radiusRatio * 100;
+        const y = 50 + Math.sin(angle) * radiusRatio * 100;
+        const size = p.minSize + ((index * 13) % (p.maxSize - p.minSize + 1));
+        point.style.cssText = `position:absolute;left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;width:${size}px;height:${size}px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;opacity:${(.12 + (index % 5) * .07).toFixed(2)};box-shadow:0 0 ${3 + size * 2}px rgba(255,255,255,.32);`;
+        particles.append(point);
+
+        if (!reduceMotion && point.animate) {
+          const duration = p.minDuration + ((index * 173) % Math.max(1, p.maxDuration - p.minDuration));
+          point.animate([
+            { transform: 'translate(-50%,-50%) translate3d(-2px,2px,0) scale(.72)', opacity: .10 },
+            { transform: 'translate(-50%,-50%) translate3d(3px,-3px,0) scale(1.18)', opacity: .62 },
+            { transform: 'translate(-50%,-50%) translate3d(1px,2px,0) scale(.88)', opacity: .24 }
+          ], { duration, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out', delay: -(index * 79) });
+        }
+      }
+      lens.append(particles);
+
+      const updateReadouts = () => {
+        const elapsed = (performance.now() - preloadStartedAt) / 1000;
+        const drift = Math.floor(elapsed * settings.measurements.driftPerSecond);
+        measurementNodes.forEach((node, index) => {
+          const base = Number(node.dataset.baseAngle || 0);
+          node.textContent = String((base + drift + index * 2) % 360).padStart(3, '0');
+        });
+        telemetryNodes.forEach(({ valueNode, item, index }) => {
+          const wave = (Math.sin(elapsed * item.speed + index * 1.37) + 1) / 2;
+          const value = item.min + (item.max - item.min) * wave;
+          valueNode.textContent = value.toFixed(item.decimals);
+        });
+      };
+      updateReadouts();
+      telemetryTimer = window.setInterval(updateReadouts, Math.min(settings.measurements.updateMs, settings.telemetry.updateMs));
     }
 
     function buildLoadbar(radius) {
@@ -174,37 +272,57 @@
       loadbar?.remove();
       loadbar = document.createElement('span');
       loadbar.className = 'v3-preloader__loadbar';
+      loadbar.style.cssText = 'position:absolute;inset:0;z-index:6;border-radius:50%;pointer-events:none;';
 
       const marks = settings.marks;
-      const markRadius = radius + marks.gap + marks.length / 2;
-      const circumference = 2 * Math.PI * markRadius;
+      const circumference = 2 * Math.PI * (radius + marks.gap + marks.length / 2);
       const segmentCount = clamp(
         Math.round(circumference / marks.targetSpacing),
         marks.minCount,
         marks.maxCount
       );
-      const stepDelay = timing.segment
-        ? Math.max(0, timing.load - timing.segment) / Math.max(1, segmentCount - 1)
-        : 0;
-
-      preload.style.setProperty('--v3-load-radius', `${-markRadius}px`);
+      loadbarSegments = [];
 
       for (let index = 0; index < segmentCount; index += 1) {
+        const angle = (index / segmentCount) * Math.PI * 2 - Math.PI / 2;
+        const radialExtent = (marks.thickness / 2) * Math.abs(Math.cos(angle)) + (marks.length / 2) * Math.abs(Math.sin(angle));
+        const centerRadius = radius + marks.gap + radialExtent;
+        const x = Math.cos(angle) * centerRadius;
+        const y = Math.sin(angle) * centerRadius;
         const segment = document.createElement('span');
-        const angle = (index / segmentCount) * 360;
-        segment.textContent = '';
-        segment.style.setProperty('--v3-load-angle', `${angle.toFixed(3)}deg`);
-        segment.style.setProperty('--v3-load-delay', `${Math.round(index * stepDelay)}ms`);
-        segment.style.setProperty('--v3-load-glyph-angle', '0deg');
-        segment.style.width = `${marks.thickness}px`;
-        segment.style.height = `${marks.length}px`;
-        segment.style.margin = `${-(marks.length / 2)}px 0 0 ${-(marks.thickness / 2)}px`;
-        segment.style.background = '#fff';
-        segment.style.borderRadius = '999px';
-        segment.style.fontSize = '0';
+        segment.style.cssText = [
+          'position:absolute',
+          `left:calc(50% + ${x.toFixed(2)}px)`,
+          `top:calc(50% + ${y.toFixed(2)}px)`,
+          `width:${marks.thickness}px`,
+          `height:${marks.length}px`,
+          'margin:0',
+          'background:#fff',
+          'border-radius:0',
+          'opacity:.07',
+          'transform:translate3d(-50%,-50%,0)',
+          'animation:none',
+          'transition:opacity .11s linear',
+          'will-change:opacity'
+        ].join(';');
         loadbar.append(segment);
+        loadbarSegments.push(segment);
       }
       lens.append(loadbar);
+
+      const progress = clamp((performance.now() - preloadStartedAt) / timing.load, 0, 1);
+      const alreadyLit = Math.floor(progress * loadbarSegments.length);
+      for (let index = 0; index < alreadyLit; index += 1) loadbarSegments[index].style.opacity = '.86';
+    }
+
+    function paintLoadbar(now) {
+      if (released || !loadbarSegments.length) return;
+      const progress = clamp((now - preloadStartedAt) / timing.load, 0, 1);
+      const target = Math.ceil(progress * loadbarSegments.length);
+      for (let index = 0; index < target; index += 1) {
+        if (loadbarSegments[index].style.opacity !== '.86') loadbarSegments[index].style.opacity = '.86';
+      }
+      if (progress < 1) loadbarFrame = requestAnimationFrame(paintLoadbar);
     }
 
     function syncWithHeroLens() {
@@ -290,16 +408,28 @@
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
 
+    function pauseLaboratoryMotion() {
+      window.clearInterval(telemetryTimer);
+      cancelAnimationFrame(loadbarFrame);
+      preload.getAnimations({ subtree: true }).forEach((animation) => {
+        try { animation.pause(); } catch (_) {}
+      });
+      preload.querySelectorAll('.v3-preloader__measurements,.v3-preloader__telemetry,.v3-preloader__particles').forEach((node) => {
+        node.style.transition = 'opacity .18s ease';
+        node.style.opacity = '.34';
+      });
+    }
+
     buildCircularGraphics();
     syncWithHeroLens();
-
-    let released = false;
-    let hardTimer = 0;
+    if (!reduceMotion) loadbarFrame = requestAnimationFrame(paintLoadbar);
 
     function cleanup() {
       if (released) return;
       released = true;
       window.clearTimeout(hardTimer);
+      window.clearInterval(telemetryTimer);
+      cancelAnimationFrame(loadbarFrame);
       window.removeEventListener('resize', syncWithHeroLens);
       preload.remove();
       html.classList.remove('v3-preloading');
@@ -329,9 +459,7 @@
 
       syncWithHeroLens();
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => {
-        preload.querySelectorAll('.v3-preloader__ring, .v3-preloader__scan').forEach((node) => {
-          node.style.animationPlayState = 'paused';
-        });
+        pauseLaboratoryMotion();
         preload.classList.add('is-aligning');
         resolve();
       })));
