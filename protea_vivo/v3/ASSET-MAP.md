@@ -1,8 +1,37 @@
 # Protea V3 · Mapeo de activos y contrato estructural
 
-Fecha de revisión: 2026-09-15
+Fecha de revisión: 2026-09-16
 
 Fuente principal: carpeta Drive `1DEEt-dOb4iQLV43DFHLAic-08BTADegu`.
+
+## Arquitectura de mantenimiento R11
+
+La V3 quedó consolidada para reducir deuda de revisión. Dentro de `protea_vivo/v3/` sólo existen cinco archivos:
+
+- `index.html`: estructura y contenido de la propuesta.
+- `v3.css`: layout, composición editorial y estilos base de V3.
+- `v3-ui.css`: rail, marcadores, optimizaciones de composición, responsive, CTA y preloader.
+- `v3.js`: comportamiento, navegación, carrusel, contacto y controlador del preloader.
+- `ASSET-MAP.md`: contrato estructural, activos y guía de auditoría.
+
+Las antiguas capas incrementales `v3-r4.css` a `v3-r10.css` y `v3-r9.js` fueron absorbidas y eliminadas. No deben volver a introducirse archivos de revisión numerados para ajustes normales: las nuevas correcciones deben hacerse en el archivo semántico que corresponda.
+
+### Control de tiempos del preloader
+
+Existe una sola fuente de verdad, al inicio de `v3.js`:
+
+```js
+const PRELOADER_TIMING = Object.freeze({
+  load: 2000,
+  align: 2000,
+  settle: 60,
+  fade: 360,
+  segment: 100,
+  failSafePadding: 1200
+});
+```
+
+`load` controla la carga perimetral; `align`, el viaje de la lente al Hero; `settle`, el ajuste final; `fade`, la revelación; `segment`, el encendido de cada `|` o `/`. El timeout de seguridad se calcula automáticamente a partir de esos valores. `v3-ui.css` recibe los tiempos mediante variables CSS, por lo que no es necesario sincronizar números en varios archivos.
 
 ## Contrato estructural de V3
 
