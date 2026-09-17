@@ -1,57 +1,83 @@
 # Protea V3 · Mapeo de activos y contrato estructural
 
-Fecha de revisión: 2026-09-16
+Fecha de revisión: 2026-09-17
 
 Fuente principal: carpeta Drive `1DEEt-dOb4iQLV43DFHLAic-08BTADegu`.
 
-## Arquitectura de mantenimiento R13
+## Arquitectura de mantenimiento R16
 
-La V3 quedó consolidada para reducir deuda de revisión. Dentro de `protea_vivo/v3/` sólo existen cinco archivos:
+La V3 mantiene una arquitectura reducida y semántica. Dentro de `protea_vivo/v3/` los archivos activos son:
 
 - `index.html`: estructura y contenido de la propuesta.
 - `v3.css`: layout, composición editorial y estilos base de V3.
-- `v3-ui.css`: rail, marcadores, optimizaciones de composición, responsive, CTA y preloader.
-- `v3.js`: comportamiento, navegación, carrusel, contacto, controlador del preloader y reconstrucción del viewport móvil.
+- `v3-ui.css`: rail, marcadores, responsive, CTA y estilos compartidos de interfaz.
+- `v3.js`: navegación, carrusel, contacto y reconstrucción del viewport móvil.
+- `v3-loader.js`: componente autocontenido del loader real: readiness gate, progreso, precarga, telemetría y animación de entrada/salida.
 - `ASSET-MAP.md`: contrato estructural, activos y guía de auditoría.
 
-Las antiguas capas incrementales `v3-r4.css` a `v3-r10.css` y `v3-r9.js` fueron absorbidas y eliminadas. No deben volver a introducirse archivos de revisión numerados para ajustes normales: las nuevas correcciones deben hacerse en el archivo semántico que corresponda.
+Las antiguas capas incrementales `v3-r4.css` a `v3-r10.css` y `v3-r9.js` fueron absorbidas y eliminadas. No deben volver a introducirse archivos de revisión numerados para ajustes normales. `v3-loader.js` es una separación funcional deliberada: evita mezclar el ciclo de carga con navegación, formularios y responsive.
 
-### Control de tiempos del preloader
+### Loader real R16
 
-Existe una sola fuente de verdad, al inicio de `v3.js`:
+El loader dejó de usar una duración fija como sustituto del estado de carga. Su secuencia actual es:
 
-```js
-const PRELOADER_TIMING = Object.freeze({
-  load: 2000,
-  align: 850,
-  settle: 60,
-  fade: 360,
-  segment: 100,
-  failSafePadding: 1200
-});
-```
+1. Se mantiene una presencia mínima de 3 segundos para que la introducción no desaparezca instantáneamente en caché caliente.
+2. En paralelo se crea un manifiesto real de recursos: ocho capas del Hero, texturas de Protea Viva, todas las imágenes visibles del documento, fuentes y el primer frame verificable del canvas del Hero.
+3. Cada recurso sólo incrementa el progreso cuando termina su evento de carga y, en imágenes, se intenta además `HTMLImageElement.decode()`.
+4. Los spokes exteriores representan el porcentaje acumulado de tareas resueltas. Ya no avanzan según `setTimeout`.
+5. El loader no inicia el docking hasta que se cumplen simultáneamente el mínimo visual y el readiness gate.
+6. Existe un fail-safe de 30 segundos exclusivamente para evitar un bloqueo permanente causado por un recurso roto o una conexión suspendida.
+7. `PerformanceObserver` registra `resource` entries en `window.__PROTEA_V3_LOAD_REPORT__` para auditoría de tiempos, `transferSize`/`decodedBodySize` cuando el navegador y el origen lo permiten. No controla por sí solo la liberación del loader.
 
-`load` controla la carga perimetral; `align`, el viaje de la lente al Hero; `settle`, el ajuste final; `fade`, la revelación; `segment`, el encendido de cada `|` o `/`. El timeout de seguridad se calcula automáticamente a partir de esos valores. `v3-ui.css` recibe los tiempos mediante variables CSS, por lo que no es necesario sincronizar números en varios archivos.
+El objeto `window.__PROTEA_V3_LOAD_REPORT__` permite revisar desde DevTools:
 
-### Preloader actual
+- `timedOut`: si se utilizó el fail-safe;
+- `progress`: progreso real final alcanzado;
+- `tasks`: recursos lógicos y momento de resolución;
+- `resources`: telemetría Resource Timing observada por el navegador;
+- `completedAt`: duración total del loader en milisegundos.
 
-- Gráfica monocroma: anillos, scan y marcas de carga en blanco.
-- Barra perimetral compuesta por 96 caracteres `|` y `/`, distribuidos de forma continua alrededor de la lente.
-- Las marcas se ubican a aproximadamente 3 px fuera de la circunferencia exterior.
-- El wordmark `protea` ahora vive dentro de `.v3-preloader__lens`, por lo que comparte exactamente el centro geométrico de la circunferencia y no depende del centro del overlay.
-- El viaje al Hero dura 850 ms y usa exclusivamente `transform: translate3d(...)` para evitar recalcular `left`, `top`, `width` y `height` en cada fotograma.
-- Durante el desplazamiento se pausan las rotaciones internas de los anillos y del scan para reducir trabajo de composición y estabilizar los fotogramas.
+### Imágenes responsive durante la carga
+
+Antes de esperar las imágenes alojadas en Google Drive, `v3-loader.js` ajusta el parámetro `sz` según viewport y tipo de recurso:
+
+- gráficas conceptuales: `w960` en móvil y `w1600` en escritorio;
+- retratos del equipo: `w720` en móvil y `w1200` en escritorio.
+
+Los `<img>` del documento se cambian a `loading="eager"` mientras opera el readiness gate y se espera su carga real. Esto evita que la animación termine para luego dejar imágenes vacías al hacer scroll, sin obligar al móvil a descargar las versiones de 1800 px usadas anteriormente para las gráficas orgánicas.
+
+### Primer frame del Hero
+
+El gate incluye una tarea específica `hero:first-frame`. Se verifica que `#protea-canvas` tenga dimensiones efectivas y que una muestra de píxeles ya contenga información visual. El loader no considera al Hero listo únicamente porque los PNG hayan finalizado su transferencia.
+
+### Salida R16
+
+El viaje al Hero conserva 850 ms, pero la salida se hizo deliberadamente más evidente:
+
+- los anillos exteriores se expanden hasta varias veces su diámetro y aceleran su rotación;
+- los anillos interiores implosionan hacia el núcleo;
+- scans y órbitas se separan con rotaciones amplias;
+- el compás de spokes se expande y desaparece;
+- las partículas orgánicas reciben vectores radiales individuales y salen despedidas;
+- cuatro ondas de choque concéntricas atraviesan el campo;
+- en el último tramo dos anillos se reconstruyen en la posición final del Hero.
+
+La fase de salida utiliza principalmente `transform` y `opacity` para mantenerla en composición GPU y no volver a introducir transiciones de `left`, `top`, `width` o `height` por fotograma.
+
+### Spokes / compás
+
+Las marcas exteriores son geométricas, no caracteres tipográficos. Cada marca apunta radialmente al centro del círculo y comienza 3 px fuera de su borde. Se incluyen marcas mayores cada división del compás y marcas cardinales aún más largas. La densidad se calcula a partir de la circunferencia real, dentro del rango configurado en `v3-loader.js`.
 
 ### Reconstrucción responsive en móviles
 
-La solución R13 no depende sólo de media queries. `v3.js` mide `window.visualViewport` y reconstruye las variables y layout móviles cuando cambia el viewport:
+La solución móvil no depende sólo de media queries. `v3.js` mide `window.visualViewport` y reconstruye variables y layout cuando cambia el viewport:
 
 - recalcula `--mobile-nav-h`, `--mobile-story-h` y `--mobile-critical-h` usando el viewport visible real;
-- en portrait desplaza el bloque de copy del Hero hacia arriba proporcionalmente al alto disponible, reduciendo aproximadamente a la mitad el vacío inicial observado en iPhone;
+- en portrait desplaza el bloque de copy del Hero hacia arriba proporcionalmente al alto disponible;
 - en landscape transforma el Hero a una retícula horizontal de dos columnas, reduce tipografía y navegación superior, y amplía el rail inferior al ancho útil disponible;
-- el rail móvil deja de conservar el máximo de 370 px en landscape y pasa a ocupar el ancho entre los safe areas laterales;
+- el rail móvil ocupa el ancho entre los safe areas laterales;
 - escucha `resize`, `orientationchange` y `visualViewport.resize`;
-- tras una rotación espera a que Safari estabilice el viewport y emite un `resize` final para que los motores compartidos de `#protea-canvas` y `#protea-viva-canvas` recalculen sus dimensiones con el tamaño definitivo.
+- tras una rotación espera a que Safari estabilice el viewport y emite un `resize` final para que `#protea-canvas` y `#protea-viva-canvas` recalculen dimensiones.
 
 Esta reconstrucción evita que el sitio conserve medidas de portrait al pasar a landscape —o viceversa— sin recargar la página. No se modifica el motor compartido del Hero ni Protea Viva.
 
@@ -62,7 +88,7 @@ La V3 no sustituye la arquitectura de la consolidada. Se preservan como elemento
 1. `protea-shell` y el rail narrativo externo `section-rail`.
 2. Hero `#observatorio`, su retícula 2/5 + 3/5 y el canvas `#protea-canvas`.
 3. El cuerpo posterior al Hero organizado como retícula de cuatro columnas: primer cuarto reservado como campo visual; contenido en columnas 2–4.
-4. `#protea-viva-canvas` como plano fijo del cuerpo. Su contenedor ocupa todo el viewport visible, mide `100dvh + 10px`, conserva 5 px de sangrado arriba y abajo, añade 125 px hacia la izquierda y no usa `clip-path`.
+4. `#protea-viva-canvas` como plano fijo del cuerpo. Su contenedor ocupa todo el viewport visible, conserva el desplazamiento de 125 px hacia la izquierda y no usa `clip-path`.
 5. El motor de Protea Viva sigue ligado al progreso entre `#colapso` y `.consolidation-footer`.
 6. El contacto final reutiliza el flujo progresivo de la consolidada y deja explícita la ausencia de integración de envío real.
 
