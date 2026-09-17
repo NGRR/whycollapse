@@ -443,12 +443,22 @@
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
 
-    function pauseLaboratoryMotion() {
+    function prepareDockMotion() {
       window.clearInterval(telemetryTimer);
       cancelAnimationFrame(loadbarFrame);
-      preload.getAnimations({ subtree: true }).forEach((animation) => {
-        try { animation.pause(); } catch (_) {}
+
+      /*
+       * No pausamos las animaciones CSS de anillos, scans u órbitas: R14 las
+       * sustituye por la deconstrucción/reconstrucción cuando entra is-aligning.
+       * Sólo detenemos las microanimaciones WAAPI de los puntos orgánicos para
+       * liberar trabajo del compositor durante el desplazamiento de 850 ms.
+       */
+      preload.querySelectorAll('.v3-preloader__particles i').forEach((point) => {
+        point.getAnimations().forEach((animation) => {
+          try { animation.pause(); } catch (_) {}
+        });
       });
+
       preload.querySelectorAll('.v3-preloader__measurements,.v3-preloader__telemetry,.v3-preloader__particles').forEach((node) => {
         node.style.transition = 'opacity .18s ease';
         node.style.opacity = '.34';
@@ -494,7 +504,7 @@
 
       syncWithHeroLens();
       await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => {
-        pauseLaboratoryMotion();
+        prepareDockMotion();
         preload.classList.add('is-aligning');
         resolve();
       })));
