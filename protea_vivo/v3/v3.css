@@ -59,7 +59,7 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
 }
 .protea-v3 .v3-content{
   padding:clamp(74px,2vw,128px) clamp(28px,4vw,72px);
-  background:linear-gradient(90deg,rgba(0,31,111,.14),rgb(0 31 111 / 30%) 50%,rgb(0 17 51 / 32%) 100%);
+  background:linear-gradient(90deg,rgba(0,31,111,.14),rgb(0 31 111 / 45%) 50%,rgb(0 17 51 / 32%) 100%);
   backdrop-filter:blur(1.5px);
 }
 
