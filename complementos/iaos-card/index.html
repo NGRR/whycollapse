@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#001b56">
+  <title>Protea · IAOS Card</title>
+  <link rel="stylesheet" href="./iaos-card.css">
+</head>
+<body>
+  <main class="demo">
+    <section class="stage">
+      <button class="iaos-card" id="iaosCard" aria-expanded="false" aria-controls="iaosPanel">
+        <span class="iaos-card__eyebrow">Diagnóstico IAOS</span>
+        <strong class="iaos-card__title">Estilo de Adaptabilidad Individual</strong>
+        <span class="iaos-card__copy">Mapa técnico expandible</span>
+        <span class="iaos-card__mini" aria-hidden="true">
+          <span class="mini-ring mini-ring--1"></span>
+          <span class="mini-ring mini-ring--2"></span>
+          <span class="mini-ring mini-ring--3"></span>
+          <span class="mini-node mini-node--1"></span>
+          <span class="mini-node mini-node--2"></span>
+          <span class="mini-node mini-node--3"></span>
+        </span>
+        <span class="iaos-card__cta">Abrir mapa <span aria-hidden="true">↗</span></span>
+      </button>
+
+      <section class="iaos-panel" id="iaosPanel" aria-hidden="true">
+        <button class="iaos-panel__close" id="iaosClose" aria-label="Cerrar">×</button>
+
+        <div class="iaos-panel__shell">
+          <header class="iaos-head">
+            <div>
+              <span class="iaos-head__eyebrow">PROTEA · IAOS</span>
+              <h1>Estilo de Adaptabilidad Individual</h1>
+            </div>
+            <p>Visualización técnica de los ejes de percepción, comprensión y coordinación creativa.</p>
+          </header>
+
+          <div class="iaos-layout">
+            <div class="iaos-visual">
+              <svg id="iaosSvg" viewBox="0 0 1000 1000" role="img" aria-label="Mapa IAOS">
+                <g class="grid">
+                  <circle cx="500" cy="500" r="340" class="ring ring--outer"/>
+                  <circle cx="500" cy="500" r="270" class="ring ring--dash"/>
+                  <circle cx="500" cy="500" r="190" class="ring"/>
+                  <circle cx="500" cy="500" r="112" class="ring ring--dash"/>
+                  <line x1="500" y1="100" x2="500" y2="900" class="axis"/>
+                  <line x1="100" y1="500" x2="900" y2="500" class="axis"/>
+                </g>
+
+                <g class="orbits">
+                  <ellipse cx="500" cy="500" rx="278" ry="158" class="orbit orbit--a"/>
+                  <ellipse cx="500" cy="500" rx="158" ry="278" class="orbit orbit--b"/>
+                  <ellipse cx="500" cy="500" rx="242" ry="236" class="orbit orbit--c"/>
+                </g>
+
+                <g class="neural">
+                  <path d="M500 380 C440 346 398 316 344 282 C315 264 288 250 250 232" class="branch"/>
+                  <path d="M500 380 C560 346 602 316 656 282 C685 264 712 250 750 232" class="branch"/>
+                  <path d="M500 620 C448 657 412 690 360 724 C329 745 295 764 254 790" class="branch"/>
+                  <path d="M500 620 C552 657 588 690 640 724 C671 745 705 764 746 790" class="branch"/>
+                  <path d="M310 515 C270 485 250 450 228 407 C212 377 198 353 174 329" class="branch branch--faint"/>
+                  <path d="M690 515 C730 485 750 450 772 407 C788 377 802 353 826 329" class="branch branch--faint"/>
+                </g>
+
+                <g id="iaosNodes"></g>
+
+                <g class="core">
+                  <circle cx="500" cy="500" r="76" class="core-ring"/>
+                  <circle cx="500" cy="500" r="30" class="core-node"/>
+                  <circle cx="500" cy="500" r="98" class="core-dash"/>
+                </g>
+              </svg>
+            </div>
+
+            <aside class="iaos-info" aria-live="polite">
+              <div class="iaos-info__top">
+                <span class="iaos-info__index" id="infoIndex">00</span>
+                <span class="iaos-info__state">LECTURA ACTIVA</span>
+              </div>
+              <h2 id="infoTitle">Sistema IAOS</h2>
+              <p id="infoBody">Selecciona un nodo para revisar su posición dentro del mapa de adaptabilidad.</p>
+
+              <dl class="iaos-metrics">
+                <div><dt>Eje</dt><dd id="metricAxis">General</dd></div>
+                <div><dt>Modo</dt><dd id="metricMode">Integrado</dd></div>
+                <div><dt>Relación</dt><dd id="metricRelation">Sistema</dd></div>
+              </dl>
+
+              <div class="iaos-legend">
+                <span><i></i>Nodo principal</span>
+                <span><i></i>Relación orbital</span>
+                <span><i></i>Conexión neuronal</span>
+              </div>
+            </aside>
+          </div>
+
+          <footer class="iaos-foot">
+            <span>Mapa de estilos individuales</span>
+            <span>Interfaz experimental · complemento V3</span>
+          </footer>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="./iaos-card.js"></script>
+</body>
+</html>
