@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0066ff">
+  <title>Protea · IAO Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://drive.google.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./iao-card.css?v=1">
+</head>
+<body>
+  <main class="demo">
+    <section class="stage">
+      <button class="iao-card" id="iaoCard" aria-expanded="false" aria-controls="iaoPanel">
+        <span class="corner corner--tl" aria-hidden="true"></span>
+        <span class="corner corner--br" aria-hidden="true"></span>
+
+        <span class="iao-card__kicker">DIAGNOS / IAO</span>
+        <strong class="iao-card__title">¿Está tu organización preparada para seguir siendo relevante?</strong>
+        <span class="iao-card__copy">Diagnóstico estratégico para medir y acelerar la capacidad adaptativa.</span>
+
+        <span class="iao-card__instrument" aria-hidden="true">
+          <span class="instrument__ring instrument__ring--1"></span>
+          <span class="instrument__ring instrument__ring--2"></span>
+          <span class="instrument__ring instrument__ring--3"></span>
+          <span class="instrument__core">IAO</span>
+          <span class="instrument__tick instrument__tick--1"></span>
+          <span class="instrument__tick instrument__tick--2"></span>
+          <span class="instrument__tick instrument__tick--3"></span>
+          <span class="instrument__tick instrument__tick--4"></span>
+        </span>
+
+        <span class="iao-card__cta">Explorar diagnóstico <span aria-hidden="true">↗</span></span>
+      </button>
+
+      <section class="iao-panel" id="iaoPanel" aria-hidden="true">
+        <button class="iao-panel__close" id="iaoClose" aria-label="Cerrar">×</button>
+
+        <div class="iao-shell">
+          <span class="panel-corner panel-corner--tl" aria-hidden="true"></span>
+          <span class="panel-corner panel-corner--br" aria-hidden="true"></span>
+
+          <header class="iao-head">
+            <div>
+              <span class="iao-head__kicker">PROTEA · ÍNDICE DE ADAPTABILIDAD ORGANIZACIONAL</span>
+              <h1>IAO</h1>
+            </div>
+            <p>Convertir la adaptabilidad en información útil para orientar decisiones de transformación.</p>
+          </header>
+
+          <nav class="iao-tabs" aria-label="Secciones IAO">
+            <button class="iao-tab is-active" data-view="overview">IAO</button>
+            <button class="iao-tab" data-view="signals">Señales</button>
+            <button class="iao-tab" data-view="benefits">Qué consigue</button>
+            <button class="iao-tab" data-view="process">Proceso</button>
+            <button class="iao-tab" data-view="effort">Dedicación</button>
+          </nav>
+
+          <div class="iao-main">
+            <section class="iao-view is-active" data-panel="overview">
+              <div class="iao-overview">
+                <div class="iao-visual">
+                  <div class="brand-art" aria-hidden="true">
+                    <img class="brand-art__layer brand-art__layer--structure"
+                         src="https://drive.google.com/thumbnail?id=1-gGkA0CsnVGvkaWRptauySPT_CXESSIe&sz=w1600"
+                         alt="">
+                    <img class="brand-art__layer brand-art__layer--neural"
+                         src="https://drive.google.com/thumbnail?id=1_DoI846riEFqFqyh2Mt3jWzJYjqUtUhN&sz=w1600"
+                         alt="">
+                  </div>
+
+                  <svg class="iao-radar" viewBox="0 0 760 760" role="img" aria-label="Cinco capacidades de adaptabilidad">
+                    <g class="radar-grid">
+                      <polygon points="380,110 638,298 540,602 220,602 122,298" class="radar-ring radar-ring--outer"/>
+                      <polygon points="380,172 579,317 503,551 257,551 181,317" class="radar-ring"/>
+                      <polygon points="380,235 520,336 466,500 294,500 240,336" class="radar-ring"/>
+                      <polygon points="380,298 461,356 430,449 330,449 299,356" class="radar-ring"/>
+                      <line x1="380" y1="380" x2="380" y2="110" class="radar-axis"/>
+                      <line x1="380" y1="380" x2="638" y2="298" class="radar-axis"/>
+                      <line x1="380" y1="380" x2="540" y2="602" class="radar-axis"/>
+                      <line x1="380" y1="380" x2="220" y2="602" class="radar-axis"/>
+                      <line x1="380" y1="380" x2="122" y2="298" class="radar-axis"/>
+                    </g>
+                    <polygon points="380,158 575,320 487,529 278,548 183,319" class="radar-value"/>
+                    <g id="capacityNodes"></g>
+                    <circle cx="380" cy="380" r="52" class="iao-core-ring"/>
+                    <circle cx="380" cy="380" r="28" class="iao-core"/>
+                    <text x="380" y="388" text-anchor="middle" class="iao-core-label">IAO</text>
+                  </svg>
+
+                  <div class="visual-caption">
+                    <span>5 capacidades</span>
+                    <span>datos cualitativos + cuantitativos</span>
+                  </div>
+                </div>
+
+                <aside class="iao-detail" aria-live="polite">
+                  <div class="detail-top">
+                    <span id="detailIndex">01</span>
+                    <span>CAPACIDAD</span>
+                  </div>
+                  <h2 id="detailTitle">Anticipación</h2>
+                  <p id="detailBody">Percibir señales, cambios y oportunidades antes de que resulten evidentes.</p>
+
+                  <div class="detail-rule"></div>
+                  <p class="detail-claim">Inteligencia adaptativa: percibir antes, aprender mejor y transformarse a tiempo.</p>
+
+                  <div class="overview-facts">
+                    <div><strong>5–6</strong><span>semanas</span></div>
+                    <div><strong>20</strong><span>min cuestionario</span></div>
+                    <div><strong>5</strong><span>capacidades</span></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <section class="iao-view" data-panel="signals">
+              <header class="view-head">
+                <span>CUANDO ADAPTARSE EMPIEZA A COSTAR</span>
+                <h2>Las fricciones ya están dejando señales.</h2>
+                <p>El IAO hace visibles las capacidades y fricciones que explican por qué la organización pierde velocidad de respuesta.</p>
+              </header>
+              <div class="signal-grid" id="signalGrid"></div>
+            </section>
+
+            <section class="iao-view" data-panel="benefits">
+              <header class="view-head">
+                <span>QUÉ CONSIGUE TU ORGANIZACIÓN</span>
+                <h2>Una lectura compartida para decidir mejor.</h2>
+              </header>
+              <div class="benefit-list" id="benefitList"></div>
+            </section>
+
+            <section class="iao-view" data-panel="process">
+              <div class="process-layout">
+                <div>
+                  <header class="view-head">
+                    <span>DEL DIAGNÓSTICO A LA ACCIÓN</span>
+                    <h2>Un proceso breve y participativo.</h2>
+                    <p>Un proceso ágil ejecutado en 5–6 semanas que termina en decisiones concretas, no en un informe que se archiva.</p>
+                  </header>
+                  <ol class="process-list" id="processList"></ol>
+                </div>
+                <aside class="deliverables">
+                  <span>QUÉ RECIBE LA ORGANIZACIÓN</span>
+                  <ul>
+                    <li>IAO global y por capacidades</li>
+                    <li>Radar y cruces por áreas o roles</li>
+                    <li>Brechas priorizadas por urgencia e impacto</li>
+                    <li>Hoja de ruta y tablero de seguimiento</li>
+                  </ul>
+                </aside>
+              </div>
+            </section>
+
+            <section class="iao-view" data-panel="effort">
+              <header class="view-head">
+                <span>QUÉ SUPONE PARA LA EMPRESA</span>
+                <h2>Mínimo impacto en la agenda de los equipos.</h2>
+              </header>
+              <div class="effort-grid">
+                <article>
+                  <span class="effort-icon">20'</span>
+                  <h3>Mínima dedicación de los equipos</h3>
+                  <p>Solo 20 minutos para completar el cuestionario online.</p>
+                </article>
+                <article>
+                  <span class="effort-icon">45'</span>
+                  <h3>Participación clave de la dirección</h3>
+                  <p>Entrevistas individuales de 45 minutos y 2 talleres de trabajo colaborativo de 3 horas cada uno.</p>
+                </article>
+                <article>
+                  <span class="effort-icon">1h</span>
+                  <h3>Liderazgo interno</h3>
+                  <p>Un equipo contraparte de coordinación con una dedicación aproximada de 1 hora por semana.</p>
+                </article>
+              </div>
+
+              <div class="iao-cta-panel">
+                <div>
+                  <span>¿QUIERES CONOCER EL NIVEL DE ADAPTABILIDAD DE TU ORGANIZACIÓN?</span>
+                  <h2>Solicita una sesión de diagnóstico de 30 minutos sin compromiso.</h2>
+                </div>
+                <a href="mailto:hola@protea.blue">hola@protea.blue</a>
+              </div>
+            </section>
+          </div>
+
+          <footer class="iao-foot">
+            <span>La adaptabilidad es el gen de la longevidad de las organizaciones</span>
+            <span>Barcelona · Valencia · Santiago de Chile</span>
+          </footer>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="./iao-card.js?v=1"></script>
+</body>
+</html>
