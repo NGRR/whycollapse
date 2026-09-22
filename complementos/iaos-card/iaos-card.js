@@ -13,6 +13,7 @@
 
   var ns="http://www.w3.org/2000/svg";
   var layer=document.getElementById("iaosNodes");
+  var ticks=document.getElementById("iaosTicks");
   var panel=document.getElementById("iaosPanel");
   var card=document.getElementById("iaosCard");
   var close=document.getElementById("iaosClose");
@@ -27,6 +28,21 @@
     var node=document.createElementNS(ns,tag);
     Object.keys(attrs||{}).forEach(function(k){node.setAttribute(k,attrs[k]);});
     return node;
+  }
+
+  function buildTicks(){
+    var cx=500,cy=500,r1=350;
+    for(var i=0;i<72;i+=1){
+      var major=i%6===0;
+      var angle=(i/72)*Math.PI*2-Math.PI/2;
+      var inner=r1+(major?8:12);
+      var outer=r1+(major?27:21);
+      var x1=cx+Math.cos(angle)*inner;
+      var y1=cy+Math.sin(angle)*inner;
+      var x2=cx+Math.cos(angle)*outer;
+      var y2=cy+Math.sin(angle)*outer;
+      ticks.appendChild(el("line",{x1:x1.toFixed(2),y1:y1.toFixed(2),x2:x2.toFixed(2),y2:y2.toFixed(2),"class":major?"tick tick--major":"tick"}));
+    }
   }
 
   function selectNode(item,i,group){
@@ -67,6 +83,7 @@
     card.focus();
   }
 
+  buildTicks();
   card.addEventListener("click",openPanel);
   close.addEventListener("click",closePanel);
   panel.addEventListener("click",function(e){if(e.target===panel){closePanel();}});
