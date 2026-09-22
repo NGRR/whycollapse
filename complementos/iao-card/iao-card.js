@@ -104,23 +104,41 @@
     tab.addEventListener("click",function(){activateView(tab.getAttribute("data-view"));});
   });
 
-  function openPanel(){
+  function syncOpenState(){
+    var open=window.location.hash==="#iaoPanel";
+    panel.classList.toggle("is-open",open);
+    panel.setAttribute("aria-hidden",open?"false":"true");
+    card.setAttribute("aria-expanded",open?"true":"false");
+    document.body.classList.toggle("iao-lock",open);
+    if(open){activateView("overview");}
+  }
+
+  card.addEventListener("click",function(){
     panel.classList.add("is-open");
     panel.setAttribute("aria-hidden","false");
     card.setAttribute("aria-expanded","true");
     document.body.classList.add("iao-lock");
-    activateView("overview");
-  }
-  function closePanel(){
+  });
+  close.addEventListener("click",function(){
     panel.classList.remove("is-open");
     panel.setAttribute("aria-hidden","true");
     card.setAttribute("aria-expanded","false");
     document.body.classList.remove("iao-lock");
-    card.focus();
-  }
-
-  card.addEventListener("click",openPanel);
-  close.addEventListener("click",closePanel);
-  panel.addEventListener("click",function(e){if(e.target===panel){closePanel();}});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&panel.classList.contains("is-open")){closePanel();}});
+  });
+  panel.addEventListener("click",function(e){
+    if(e.target===panel){
+      window.location.hash="";
+      syncOpenState();
+      card.focus();
+    }
+  });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&window.location.hash==="#iaoPanel"){
+      window.location.hash="";
+      syncOpenState();
+      card.focus();
+    }
+  });
+  window.addEventListener("hashchange",syncOpenState);
+  syncOpenState();
 })();

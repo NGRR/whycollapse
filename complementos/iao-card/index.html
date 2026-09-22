@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://drive.google.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=1">
+  <link rel="stylesheet" href="./iao-card.css?v=3">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <button class="iao-card" id="iaoCard" aria-expanded="false" aria-controls="iaoPanel">
+      <a class="iao-card" id="iaoCard" href="#iaoPanel" aria-expanded="false" aria-controls="iaoPanel">
         <span class="corner corner--tl" aria-hidden="true"></span>
         <span class="corner corner--br" aria-hidden="true"></span>
 
@@ -34,10 +34,10 @@
         </span>
 
         <span class="iao-card__cta">Explorar diagnóstico <span aria-hidden="true">↗</span></span>
-      </button>
+      </a>
 
       <section class="iao-panel" id="iaoPanel" aria-hidden="true">
-        <button class="iao-panel__close" id="iaoClose" aria-label="Cerrar">×</button>
+        <a class="iao-panel__close" id="iaoClose" href="#" aria-label="Cerrar">×</a>
 
         <div class="iao-shell">
           <span class="panel-corner panel-corner--tl" aria-hidden="true"></span>
@@ -52,11 +52,11 @@
           </header>
 
           <nav class="iao-tabs" aria-label="Secciones IAO">
-            <button class="iao-tab is-active" data-view="overview">IAO</button>
-            <button class="iao-tab" data-view="signals">Señales</button>
-            <button class="iao-tab" data-view="benefits">Qué consigue</button>
-            <button class="iao-tab" data-view="process">Proceso</button>
-            <button class="iao-tab" data-view="effort">Dedicación</button>
+            <button type="button" class="iao-tab is-active" data-view="overview">IAO</button>
+            <button type="button" class="iao-tab" data-view="signals">Señales</button>
+            <button type="button" class="iao-tab" data-view="benefits">Qué consigue</button>
+            <button type="button" class="iao-tab" data-view="process">Proceso</button>
+            <button type="button" class="iao-tab" data-view="effort">Dedicación</button>
           </nav>
 
           <div class="iao-main">
@@ -197,6 +197,6 @@
       </section>
     </section>
   </main>
-  <script src="./iao-card.js?v=1"></script>
+  <script src="./iao-card.js?v=3"></script>
 </body>
 </html>
