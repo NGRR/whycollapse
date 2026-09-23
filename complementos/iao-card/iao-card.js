@@ -1,6 +1,7 @@
 (function(){
   var modal=document.getElementById("iaoModal");
   var card=document.getElementById("iaoCard");
+  var cardLink=document.getElementById("iaoCardLink");
   var closeButtons=Array.prototype.slice.call(document.querySelectorAll("[data-close]"));
   var slides=Array.prototype.slice.call(document.querySelectorAll(".iao-slide"));
   var navButtons=Array.prototype.slice.call(document.querySelectorAll(".iao-deck-nav button"));
@@ -70,11 +71,11 @@
     if(current===1){animateResults();}
   }
 
-  card.addEventListener("click",function(e){
+  cardLink.addEventListener("click",function(e){
     e.preventDefault();
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden","false");
-    card.setAttribute("aria-expanded","true");
+    cardLink.setAttribute("aria-expanded","true");
     document.body.classList.add("iao-lock");
     setSlide(0);
     window.setTimeout(function(){document.querySelector(".iao-modal__close").focus({preventScroll:true});},40);
@@ -83,9 +84,9 @@
   function closeModal(){
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden","true");
-    card.setAttribute("aria-expanded","false");
+    cardLink.setAttribute("aria-expanded","false");
     document.body.classList.remove("iao-lock");
-    card.focus({preventScroll:true});
+    cardLink.focus({preventScroll:true});
   }
   closeButtons.forEach(function(btn){btn.addEventListener("click",closeModal);});
   document.addEventListener("keydown",function(e){

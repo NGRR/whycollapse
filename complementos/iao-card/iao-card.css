@@ -35,20 +35,26 @@ a{color:inherit}
   position:relative;z-index:1;display:flex;flex-direction:column;
   width:min(420px,92vw);min-height:620px;padding:22px;
   border:1px solid var(--line-2);background:#fff;color:var(--ink);
-  overflow:hidden;cursor:pointer;text-align:left;text-decoration:none;touch-action:manipulation;
-  -webkit-tap-highlight-color:rgba(0,102,255,.08);
+  overflow:hidden;text-align:left;
   box-shadow:0 18px 55px rgba(0,61,159,.09);
   transition:transform .4s var(--ease),box-shadow .3s ease,border-color .3s ease
 }
-.iao-card>*{pointer-events:none}
-.iao-card *{pointer-events:none}
+.iao-card__hit{
+  position:absolute;
+  inset:0;
+  z-index:100;
+  display:block;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:rgba(0,102,255,.08);
+  text-decoration:none
+}
+.iao-card__hit:focus-visible{outline:3px solid rgba(0,102,255,.28);outline-offset:-5px}
+.iao-card>*:not(.iao-card__hit),
+.iao-card>*:not(.iao-card__hit) *{pointer-events:none}
 .iao-card:hover{transform:translateY(-5px);box-shadow:0 28px 70px rgba(0,61,159,.13);border-color:#8fb9e8}
-.iao-card:focus-visible{outline:3px solid rgba(0,102,255,.28);outline-offset:5px}
 .iao-card::before{
   content:"";position:absolute;inset:18px;border:1px solid rgba(0,102,255,.1);pointer-events:none
-}
-.iao-card::after{
-  content:"";position:absolute;inset:0;z-index:20;display:block;cursor:pointer
 }
 .iao-card__corner{position:absolute;width:16px;height:16px}
 .iao-card__corner--tl{left:7px;top:7px;border-left:1px solid var(--blue);border-top:1px solid var(--blue)}

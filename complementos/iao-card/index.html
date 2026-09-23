@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=13">
+  <link rel="stylesheet" href="./iao-card.css?v=14">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <a class="iao-card" id="iaoCard" href="#iaoModal" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false">
+      <div class="iao-card" id="iaoCard">
+        <a class="iao-card__hit" id="iaoCardLink" href="#iaoModal" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false" aria-label="Abrir Índice de Adaptabilidad Organizacional"></a>
         <span class="iao-card__corner iao-card__corner--tl" aria-hidden="true"></span>
         <span class="iao-card__corner iao-card__corner--br" aria-hidden="true"></span>
 
@@ -35,7 +36,7 @@
           <strong>Índice de Adaptabilidad Organizacional</strong>
           <span>IAO</span>
         </div>
-      </a>
+      </div>
 
       <section class="iao-modal" id="iaoModal" role="dialog" aria-modal="true" aria-labelledby="iaoModalTitle" aria-hidden="true">
         <button class="iao-modal__backdrop" type="button" data-close aria-label="Cerrar"></button>
@@ -313,6 +314,6 @@
     </section>
   </main>
 
-  <script src="./iao-card.js?v=13"></script>
+  <script src="./iao-card.js?v=14"></script>
 </body>
 </html>
