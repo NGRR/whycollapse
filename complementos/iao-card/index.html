@@ -8,38 +8,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=16">
+  <link rel="stylesheet" href="./iao-card.css?v=17">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <div class="iao-card" id="iaoCard">
-        <span class="iao-card__corner iao-card__corner--tl" aria-hidden="true"></span>
-        <span class="iao-card__corner iao-card__corner--br" aria-hidden="true"></span>
-
-        <div class="iao-card__instrument" aria-hidden="true">
-          <span class="instrument-orbit instrument-orbit--1"></span>
-          <span class="instrument-orbit instrument-orbit--2"></span>
-          <span class="instrument-orbit instrument-orbit--3"></span>
-          <span class="instrument-axis instrument-axis--x"></span>
-          <span class="instrument-axis instrument-axis--y"></span>
-          <span class="instrument-node n1"></span>
-          <span class="instrument-node n2"></span>
-          <span class="instrument-node n3"></span>
-          <span class="instrument-node n4"></span>
-          <span class="instrument-node n5"></span>
-          <span class="iao-disc"><img src="./assets/iao-logo-white.svg" alt=""></span>
+      <div class="uk-card uk-card-default uk-width-1-2@m iao-card" id="iaoCard">
+        <div class="uk-card-header iao-card__header">
+          <div class="uk-grid-small uk-flex-middle iao-card__header-grid">
+            <div class="uk-width-auto">
+              <span class="iao-card__avatar" aria-hidden="true">
+                <img width="54" height="54" src="./assets/iao-logo-white.svg" alt="">
+              </span>
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Índice de Adaptabilidad Organizacional</h3>
+              <p class="uk-text-meta uk-margin-remove-top">IAO · Diagnóstico estratégico</p>
+            </div>
+          </div>
         </div>
 
-        <div class="iao-card__name">
-          <strong>Índice de Adaptabilidad Organizacional</strong>
-          <span>IAO</span>
+        <div class="uk-card-body iao-card__body">
+          <div class="iao-card__instrument" aria-hidden="true">
+            <span class="instrument-orbit instrument-orbit--1"></span>
+            <span class="instrument-orbit instrument-orbit--2"></span>
+            <span class="instrument-orbit instrument-orbit--3"></span>
+            <span class="instrument-axis instrument-axis--x"></span>
+            <span class="instrument-axis instrument-axis--y"></span>
+            <span class="instrument-node n1"></span>
+            <span class="instrument-node n2"></span>
+            <span class="instrument-node n3"></span>
+            <span class="instrument-node n4"></span>
+            <span class="instrument-node n5"></span>
+            <span class="iao-card__core">
+              <span class="iao-logo-mask iao-logo-mask--white"></span>
+            </span>
+          </div>
         </div>
 
-        <a class="iao-card__cta" id="iaoCardLink" href="#iaoModal" role="button" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false">
-          <span>Abrir diagnóstico</span>
-          <span aria-hidden="true">↗</span>
-        </a>
+        <div class="uk-card-footer iao-card__footer">
+          <a class="uk-button uk-button-text iao-card__cta" id="iaoCardLink" href="#iaoModal" role="button" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false">
+            <span>Abrir diagnóstico</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
 
       <section class="iao-modal" id="iaoModal" role="dialog" aria-modal="true" aria-labelledby="iaoModalTitle" aria-hidden="true">
@@ -318,6 +330,6 @@
     </section>
   </main>
 
-  <script src="./iao-card.js?v=16"></script>
+  <script src="./iao-card.js?v=17"></script>
 </body>
 </html>

@@ -30,60 +30,195 @@ a{color:inherit}
 }
 .stage{width:min(1180px,100%);position:relative}
 
-/* CARD VERTICAL · SUPERFICIE COMPLETA CLICKEABLE */
+/* CARD · ESTRUCTURA HEADER / BODY / FOOTER */
 .iao-card{
-  position:relative;z-index:1;display:flex;flex-direction:column;
-  width:min(420px,92vw);min-height:620px;padding:22px;
-  border:1px solid var(--line-2);background:#fff;color:var(--ink);
-  overflow:hidden;text-align:left;
-  box-shadow:0 18px 55px rgba(0,61,159,.09);
-  transition:transform .4s var(--ease),box-shadow .3s ease,border-color .3s ease
+  position:relative;
+  width:min(430px,92vw);
+  min-height:0;
+  border:1px solid var(--line-2);
+  background:#fff;
+  color:var(--ink);
+  box-shadow:0 18px 55px rgba(0,61,159,.08);
+  overflow:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease,transform .3s var(--ease)
 }
-.iao-card:hover{transform:translateY(-5px);box-shadow:0 28px 70px rgba(0,61,159,.13);border-color:#8fb9e8}
+.iao-card:hover{
+  border-color:#98bde6;
+  box-shadow:0 24px 64px rgba(0,61,159,.11);
+  transform:translateY(-3px)
+}
 .iao-card::before{
-  content:"";position:absolute;inset:18px;border:1px solid rgba(0,102,255,.1);pointer-events:none
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(0,102,255,.07);
+  pointer-events:none
 }
-.iao-card__corner{position:absolute;width:16px;height:16px;pointer-events:none}
-.iao-card__corner--tl{left:7px;top:7px;border-left:1px solid var(--blue);border-top:1px solid var(--blue)}
-.iao-card__corner--br{right:7px;bottom:7px;border-right:1px solid var(--blue);border-bottom:1px solid var(--blue)}
-.iao-card__instrument{position:relative;flex:1;min-height:440px;display:grid;place-items:center;pointer-events:none}
-.iao-card__instrument::before,.iao-card__instrument::after{content:"";position:absolute;background:rgba(0,102,255,.09)}
-.iao-card__instrument::before{left:3%;right:3%;height:1px}.iao-card__instrument::after{top:3%;bottom:3%;width:1px}
-.instrument-orbit{position:absolute;border:1px solid rgba(0,102,255,.2);border-radius:50%;animation:spin 30s linear infinite}
-.instrument-orbit--1{width:86%;aspect-ratio:1;border-color:rgba(255,90,0,.76)}
-.instrument-orbit--2{width:66%;aspect-ratio:1;border-style:dashed;animation-direction:reverse;animation-duration:42s}
-.instrument-orbit--3{width:45%;aspect-ratio:1;animation-duration:21s}
-.instrument-axis{position:absolute;background:rgba(0,102,255,.09)}
-.instrument-axis--x{width:94%;height:1px}.instrument-axis--y{height:94%;width:1px}
-.instrument-node{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--orange)}
-.n1{top:8%;left:49%}.n2{top:30%;right:5%}.n3{bottom:8%;right:23%}.n4{bottom:8%;left:23%}.n5{top:30%;left:5%}
-.iao-disc{
-  position:relative;z-index:4;width:170px;aspect-ratio:1;border-radius:50%;
-  display:grid;place-items:center;background:var(--orange);
-  box-shadow:0 0 0 9px #fff,0 0 0 10px #c7daf0
+.iao-card__header{
+  position:relative;
+  z-index:2;
+  padding:20px 22px 18px;
+  border-bottom:1px solid var(--line);
+  background:#fff
 }
-.iao-disc img{width:76%}
-.iao-card__name{
-  position:relative;z-index:4;pointer-events:none;display:flex;align-items:end;justify-content:space-between;gap:18px;
-  padding:18px 4px 3px;border-top:1px solid var(--line)
+.iao-card__header-grid{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:center
 }
-.iao-card__name strong{max-width:290px;color:var(--navy);font:500 1.42rem/1.05 var(--head);letter-spacing:-.035em}
-.iao-card__name span{color:var(--orange);font:700 .62rem/1 var(--head);letter-spacing:.12em}
+.iao-card__avatar{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--orange);
+  box-shadow:0 0 0 6px #fff,0 0 0 7px #d5e4f4
+}
+.iao-card__avatar img{
+  display:block;
+  width:42px;
+  height:auto
+}
+.iao-card .uk-card-title{
+  margin:0;
+  color:var(--navy);
+  font:500 1.15rem/1.12 var(--head);
+  letter-spacing:-.025em
+}
+.iao-card .uk-text-meta{
+  margin:6px 0 0;
+  color:#7590ad;
+  font:600 .54rem/1.2 var(--head);
+  letter-spacing:.1em;
+  text-transform:uppercase
+}
+.iao-card__body{
+  position:relative;
+  min-height:430px;
+  padding:18px 22px;
+  background:
+    linear-gradient(rgba(0,102,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,102,255,.035) 1px,transparent 1px),
+    #fbfdff;
+  background-size:28px 28px
+}
+.iao-card__instrument{
+  position:relative;
+  width:100%;
+  height:390px;
+  display:grid;
+  place-items:center;
+  pointer-events:none
+}
+.iao-card__instrument::before,
+.iao-card__instrument::after{
+  content:"";
+  position:absolute;
+  background:rgba(0,102,255,.09)
+}
+.iao-card__instrument::before{left:4%;right:4%;height:1px}
+.iao-card__instrument::after{top:4%;bottom:4%;width:1px}
+.instrument-orbit{
+  position:absolute;
+  border:1px solid rgba(0,102,255,.19);
+  border-radius:50%;
+  animation:spin 30s linear infinite
+}
+.instrument-orbit--1{
+  width:84%;
+  aspect-ratio:1;
+  border-color:rgba(255,90,0,.76)
+}
+.instrument-orbit--2{
+  width:64%;
+  aspect-ratio:1;
+  border-style:dashed;
+  animation-direction:reverse;
+  animation-duration:42s
+}
+.instrument-orbit--3{
+  width:43%;
+  aspect-ratio:1;
+  animation-duration:21s
+}
+.instrument-axis{position:absolute;background:rgba(0,102,255,.08)}
+.instrument-axis--x{width:92%;height:1px}
+.instrument-axis--y{height:92%;width:1px}
+.instrument-node{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--orange)
+}
+.n1{top:8%;left:49%}
+.n2{top:30%;right:6%}
+.n3{bottom:8%;right:24%}
+.n4{bottom:8%;left:24%}
+.n5{top:30%;left:6%}
+.iao-card__core{
+  position:relative;
+  z-index:3;
+  width:148px;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--orange);
+  box-shadow:0 0 0 8px #fff,0 0 0 9px #c7daf0
+}
+.iao-card__core .iao-logo-mask{
+  width:106px;
+  height:44px
+}
+.iao-card__footer{
+  position:relative;
+  z-index:3;
+  padding:14px 22px 18px;
+  border-top:1px solid var(--line);
+  background:#fff
+}
 .iao-card__cta{
-  position:relative;z-index:999;
-  pointer-events:auto!important;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  margin-top:16px;padding:13px 15px;
-  border:1px solid var(--blue);background:var(--blue);color:#fff;
-  text-decoration:none;cursor:pointer;touch-action:manipulation;
-  -webkit-tap-highlight-color:rgba(0,102,255,.12);
-  font:700 .62rem/1 var(--head);letter-spacing:.1em;text-transform:uppercase;
-  transition:background .22s ease,color .22s ease,transform .22s var(--ease)
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  width:100%;
+  min-height:46px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--blue);
+  text-decoration:none;
+  cursor:pointer;
+  pointer-events:auto;
+  font:700 .62rem/1 var(--head);
+  letter-spacing:.11em;
+  text-transform:uppercase
 }
-.iao-card__cta:hover{background:#fff;color:var(--blue);transform:translateY(-1px)}
-.iao-card__cta:focus-visible{outline:3px solid rgba(0,102,255,.24);outline-offset:3px}
-.iao-card__cta span:last-child{color:var(--orange);font-size:.9rem}
-.iao-card__cta:hover span:last-child{color:var(--orange)}
+.iao-card__cta::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:12px;
+  height:1px;
+  background:var(--blue);
+  transform:scaleX(.18);
+  transform-origin:left;
+  transition:transform .28s var(--ease)
+}
+.iao-card__cta:hover::before,
+.iao-card__cta:focus-visible::before{transform:scaleX(1)}
+.iao-card__cta span:last-child{
+  color:var(--orange);
+  font-size:.95rem;
+  transition:transform .2s var(--ease)
+}
+.iao-card__cta:hover span:last-child{transform:translate(2px,-2px)}
+.iao-card__cta:focus-visible{outline:2px solid rgba(0,102,255,.25);outline-offset:4px}
 
 /* MODAL / LAB DECK */
 .iao-modal{position:fixed;inset:0;z-index:100;padding:22px;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
@@ -263,8 +398,11 @@ body.iao-lock{overflow:hidden}
 }
 @media(max-width:680px){
   .demo{padding:16px}
-  .iao-card{width:min(390px,92vw);min-height:560px}
-  .iao-card__instrument{min-height:390px}
+  .iao-card{width:min(390px,92vw)}
+  .iao-card__body{min-height:390px;padding:14px 18px}
+  .iao-card__instrument{height:350px}
+  .iao-card__header{padding:18px}
+  .iao-card__footer{padding:12px 18px 16px}
   .iao-modal__header{padding:12px 52px 11px 14px}
   .iao-modal__identity strong{display:none}.iao-logo-mask{width:70px}
   .iao-modal__counter{font-size:.52rem}
