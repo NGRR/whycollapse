@@ -18,14 +18,113 @@ a{color:inherit}
 .demo{min-height:100vh;display:grid;place-items:center;padding:32px;background:var(--blue)}
 .stage{width:min(1180px,100%);position:relative}
 
-/* SOLO LOGO */
+/* CARD PROMOCIONAL */
 .iao-card{
-  display:grid;place-items:center;width:min(430px,76vw);text-decoration:none;
-  background:transparent;border:0;padding:0;cursor:pointer;
-  transition:transform .45s var(--ease),opacity .25s ease
+  display:flex;
+  flex-direction:column;
+  width:min(620px,92vw);
+  min-height:380px;
+  padding:30px 32px 26px;
+  text-decoration:none;
+  background:rgba(0,17,51,.20);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  cursor:pointer;
+  overflow:hidden;
+  transition:transform .45s var(--ease),background .3s ease,border-color .3s ease
 }
-.iao-card:hover{transform:scale(1.035)}
-.iao-card__logo{display:block;width:100%;height:auto}
+.iao-card:hover{
+  transform:translateY(-5px);
+  background:rgba(0,17,51,.28);
+  border-color:rgba(255,255,255,.34)
+}
+.iao-card__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding-bottom:22px;
+  border-bottom:1px solid rgba(255,255,255,.12)
+}
+.iao-card__logo{
+  display:block;
+  width:118px;
+  height:auto;
+  flex:0 0 auto
+}
+.iao-card__name{
+  max-width:230px;
+  color:rgba(255,255,255,.52);
+  font-size:.61rem;
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:.11em;
+  text-align:right;
+  text-transform:uppercase
+}
+.iao-card__body{
+  padding:28px 0 24px
+}
+.iao-card__kicker{
+  display:block;
+  color:var(--orange);
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.15em
+}
+.iao-card__body h2{
+  max-width:540px;
+  margin:11px 0 13px;
+  font:500 clamp(2.2rem,4.8vw,4.15rem)/.92 var(--font-display);
+  letter-spacing:-.03em
+}
+.iao-card__body p{
+  max-width:510px;
+  margin:0;
+  color:rgba(255,255,255,.72);
+  font-size:.82rem;
+  line-height:1.58
+}
+.iao-card__meta{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin-top:auto;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.10)
+}
+.iao-card__meta span{
+  padding:13px 14px;
+  background:rgba(0,17,51,.24);
+  color:rgba(255,255,255,.52);
+  font-size:.58rem;
+  letter-spacing:.06em;
+  text-transform:uppercase
+}
+.iao-card__meta b{
+  display:block;
+  margin-bottom:4px;
+  color:#fff;
+  font:500 1.05rem/1 var(--font-display);
+  letter-spacing:0;
+  text-transform:none
+}
+.iao-card__footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:18px;
+  color:#fff;
+  font-size:.67rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase
+}
+.iao-card__footer span:last-child{
+  color:var(--orange);
+  font-size:1rem
+}
 
 /* PANEL */
 .iao-panel{
@@ -182,7 +281,7 @@ body.iao-lock{overflow:hidden}
   .effort-grid{grid-template-columns:1fr}.iao-cta-panel{grid-template-columns:1fr}
 }
 @media(max-width:560px){
-  .iao-card{width:min(330px,80vw)}
+  .iao-card{width:min(92vw,430px);min-height:0;padding:24px 22px 20px}.iao-card__logo{width:96px}.iao-card__name{max-width:160px;font-size:.54rem}.iao-card__body{padding:22px 0 20px}.iao-card__body h2{font-size:2.45rem}.iao-card__meta{grid-template-columns:1fr 1fr 1fr}.iao-card__meta span{padding:10px 8px;font-size:.5rem}
   .iao-head__brand span{display:none}.iao-head__brand img{width:92px}
   .intro-copy h1{font-size:2.9rem}.intro-stats{grid-template-columns:1fr}
   .intro-instrument{min-height:38vh}

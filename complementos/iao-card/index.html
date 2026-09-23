@@ -8,13 +8,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=7">
+  <link rel="stylesheet" href="./iao-card.css?v=8">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
       <a class="iao-card" id="iaoCard" href="#iaoPanel" aria-expanded="false" aria-controls="iaoPanel" aria-label="Abrir Índice de Adaptabilidad Organizacional">
-        <img class="iao-card__logo" src="./assets/iao-logo-white.svg" alt="">
+        <div class="iao-card__top">
+          <img class="iao-card__logo" src="./assets/iao-logo-white.svg" alt="" aria-hidden="true">
+          <span class="iao-card__name">Índice de Adaptabilidad Organizacional</span>
+        </div>
+
+        <div class="iao-card__body">
+          <span class="iao-card__kicker">DIAGNÓSTICO ESTRATÉGICO</span>
+          <h2>¿Está tu organización preparada para seguir siendo relevante?</h2>
+          <p>Medimos la capacidad adaptativa para convertirla en información útil para la transformación.</p>
+        </div>
+
+        <div class="iao-card__meta">
+          <span><b>5</b> capacidades</span>
+          <span><b>5–6</b> semanas</span>
+          <span><b>20'</b> cuestionario</span>
+        </div>
+
+        <div class="iao-card__footer">
+          <span>Explorar diagnóstico</span>
+          <span aria-hidden="true">↗</span>
+        </div>
       </a>
 
       <section class="iao-panel" id="iaoPanel" aria-hidden="true">
