@@ -192,17 +192,42 @@
   }
 
   var phaseText=document.getElementById("phaseText");
+  var phaseTitle=document.getElementById("phaseTitle");
+  var phaseRange=document.getElementById("phaseRange");
+  var phaseHeaderState=document.getElementById("phaseHeaderState");
   var phaseCopy={
-    solid:"Estructura estable y predecible: alta dependencia de procesos, baja capacidad de reconfiguración y respuesta lenta ante cambios.",
-    liquid:"Inicia la Respuesta Eficiente (48,1%–62,0%): núcleo de la agilidad. Comienza a emerger un equilibrio más significativo en la coordinabilidad y aparecen respuestas más sincrónicas ante fluctuaciones.",
-    fluid:"La organización redistribuye capacidades con mayor facilidad y reduce fricciones entre estructuras, equipos y decisiones.",
-    adaptive:"El sistema aprende, se reconfigura y convierte la incertidumbre en una fuente recurrente de renovación."
+    solid:{
+      title:"Sólido",
+      range:"0%–48,0%",
+      body:"Estructura estable y predecible: alta dependencia de procesos, baja capacidad de reconfiguración y respuesta lenta ante cambios."
+    },
+    liquid:{
+      title:"Líquido · medio",
+      range:"48,1%–62,0%",
+      body:"Inicia la Respuesta Eficiente: núcleo de la agilidad. Comienza a emerger un equilibrio más significativo en la coordinabilidad y aparecen respuestas más sincrónicas ante fluctuaciones."
+    },
+    fluid:{
+      title:"Fluido",
+      range:"62,1%–75,0%",
+      body:"La organización redistribuye capacidades con mayor facilidad y reduce fricciones entre estructuras, equipos y decisiones."
+    },
+    adaptive:{
+      title:"Adaptativo",
+      range:"75,1%–100%",
+      body:"El sistema aprende, se reconfigura y convierte la incertidumbre en una fuente recurrente de renovación."
+    }
   };
   Array.prototype.forEach.call(document.querySelectorAll("#phaseTrack button"),function(btn){
     btn.addEventListener("click",function(){
+      var state=btn.getAttribute("data-phase");
+      var data=phaseCopy[state];
       Array.prototype.forEach.call(document.querySelectorAll("#phaseTrack button"),function(x){x.classList.remove("is-active");});
+      Array.prototype.forEach.call(document.querySelectorAll(".phase-scene"),function(x){x.classList.toggle("is-active",x.getAttribute("data-state")===state);});
       btn.classList.add("is-active");
-      phaseText.textContent=phaseCopy[btn.getAttribute("data-phase")];
+      phaseTitle.textContent=data.title;
+      phaseRange.textContent=data.range;
+      phaseText.textContent=data.body;
+      phaseHeaderState.textContent=data.title.toUpperCase();
     });
   });
 

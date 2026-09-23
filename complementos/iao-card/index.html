@@ -8,14 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=11">
+  <link rel="stylesheet" href="./iao-card.css?v=12">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
       <button class="iao-card" id="iaoCard" type="button" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false">
-        <span class="iao-card__micro iao-card__micro--tl">IAO / DIAGNOS</span>
-        <span class="iao-card__micro iao-card__micro--br">PROTEA LABS · 01</span>
         <span class="iao-card__corner iao-card__corner--tl" aria-hidden="true"></span>
         <span class="iao-card__corner iao-card__corner--br" aria-hidden="true"></span>
 
@@ -33,13 +31,10 @@
           <span class="iao-disc"><img src="./assets/iao-logo-white.svg" alt=""></span>
         </div>
 
-        <div class="iao-card__copy">
-          <span>ÍNDICE DE ADAPTABILIDAD ORGANIZACIONAL</span>
-          <strong>Diagnóstico para medir la capacidad de adaptación.</strong>
-          <small>5 capacidades · 5–6 semanas · lectura accionable</small>
+        <div class="iao-card__name">
+          <strong>Índice de Adaptabilidad Organizacional</strong>
+          <span>IAO</span>
         </div>
-
-        <span class="iao-card__open">ABRIR PRODUCTO ↗</span>
       </button>
 
       <section class="iao-modal" id="iaoModal" role="dialog" aria-modal="true" aria-labelledby="iaoModalTitle" aria-hidden="true">
@@ -119,14 +114,92 @@
               </header>
 
               <section class="lab-panel system-state">
-                <header><span>01</span><strong>ESTADO ACTUAL DEL SISTEMA</strong><small>LÍQUIDO · MEDIO</small></header>
-                <div class="phase-track" id="phaseTrack">
-                  <button type="button" data-phase="solid"><span class="particle particle--solid"></span><b>Sólido</b></button>
-                  <button type="button" data-phase="liquid" class="is-active"><span class="particle particle--liquid"></span><b>Líquido · medio</b></button>
-                  <button type="button" data-phase="fluid"><span class="particle particle--fluid"></span><b>Fluido</b></button>
-                  <button type="button" data-phase="adaptive"><span class="particle particle--adaptive"></span><b>Adaptativo</b></button>
+                <header>
+                  <span>01</span>
+                  <strong>ESTADO ACTUAL DEL SISTEMA</strong>
+                  <small id="phaseHeaderState">LÍQUIDO · MEDIO</small>
+                </header>
+
+                <div class="phase-analyzer">
+                  <div class="phase-current">
+                    <div class="phase-current__visual" aria-hidden="true">
+                      <svg class="phase-scene is-active" data-state="liquid" viewBox="0 0 420 230">
+                        <defs>
+                          <pattern id="liquidDots" width="30" height="26" patternUnits="userSpaceOnUse">
+                            <circle cx="8" cy="8" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
+                            <circle cx="23" cy="21" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
+                          </pattern>
+                        </defs>
+                        <path d="M75 40v142c0 16 12 28 28 28h214c16 0 28-12 28-28V40" fill="none" stroke="#0b376d" stroke-width="3"/>
+                        <rect x="82" y="92" width="256" height="111" fill="url(#liquidDots)"/>
+                        <path d="M84 92c42 13 77-11 122 0s78-12 130 0" fill="none" stroke="#ff5a00" stroke-width="3"/>
+                        <g fill="#ff5a00">
+                          <circle cx="116" cy="78" r="5"/><circle cx="184" cy="70" r="4"/><circle cx="246" cy="82" r="5"/><circle cx="304" cy="74" r="4"/>
+                        </g>
+                        <path d="M38 116h28M354 116h28" stroke="#0066ff" stroke-width="2"/>
+                        <path d="M58 110l8 6-8 6M362 110l-8 6 8 6" fill="none" stroke="#0066ff" stroke-width="2"/>
+                      </svg>
+
+                      <svg class="phase-scene" data-state="solid" viewBox="0 0 420 230">
+                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6">
+                          <circle cx="112" cy="70" r="11"/><circle cx="140" cy="70" r="11"/><circle cx="168" cy="70" r="11"/><circle cx="196" cy="70" r="11"/><circle cx="224" cy="70" r="11"/><circle cx="252" cy="70" r="11"/><circle cx="280" cy="70" r="11"/>
+                          <circle cx="112" cy="98" r="11"/><circle cx="140" cy="98" r="11"/><circle cx="168" cy="98" r="11"/><circle cx="196" cy="98" r="11"/><circle cx="224" cy="98" r="11"/><circle cx="252" cy="98" r="11"/><circle cx="280" cy="98" r="11"/>
+                          <circle cx="112" cy="126" r="11"/><circle cx="140" cy="126" r="11"/><circle cx="168" cy="126" r="11"/><circle cx="196" cy="126" r="11"/><circle cx="224" cy="126" r="11"/><circle cx="252" cy="126" r="11"/><circle cx="280" cy="126" r="11"/>
+                          <circle cx="112" cy="154" r="11"/><circle cx="140" cy="154" r="11"/><circle cx="168" cy="154" r="11"/><circle cx="196" cy="154" r="11"/><circle cx="224" cy="154" r="11"/><circle cx="252" cy="154" r="11"/><circle cx="280" cy="154" r="11"/>
+                        </g>
+                        <rect x="96" y="52" width="200" height="120" fill="none" stroke="#0b376d" stroke-width="3"/>
+                        <path d="M48 112h34M338 112h34" stroke="#9bb8d8" stroke-width="2"/>
+                      </svg>
+
+                      <svg class="phase-scene" data-state="fluid" viewBox="0 0 420 230">
+                        <rect x="72" y="38" width="276" height="160" rx="8" fill="none" stroke="#0b376d" stroke-width="3"/>
+                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6">
+                          <circle cx="111" cy="72" r="12"/><circle cx="163" cy="63" r="10"/><circle cx="215" cy="84" r="13"/><circle cx="284" cy="68" r="11"/>
+                          <circle cx="134" cy="124" r="11"/><circle cx="191" cy="145" r="13"/><circle cx="261" cy="129" r="10"/><circle cx="310" cy="154" r="12"/>
+                          <circle cx="102" cy="166" r="9"/><circle cx="242" cy="176" r="9"/>
+                        </g>
+                        <path d="M104 96c24 17 44 19 68 3s51-16 76 3 46 17 70-2" fill="none" stroke="#ff5a00" stroke-width="2" stroke-dasharray="5 6"/>
+                      </svg>
+
+                      <svg class="phase-scene" data-state="adaptive" viewBox="0 0 420 230">
+                        <rect x="72" y="38" width="276" height="160" rx="8" fill="none" stroke="#0b376d" stroke-width="3"/>
+                        <g stroke="#a7bfd9" stroke-width="1.2">
+                          <path d="M112 78L172 111L231 70L294 111L254 160L170 166L112 78"/>
+                          <path d="M172 111L254 160M231 70L170 166"/>
+                        </g>
+                        <g>
+                          <circle cx="112" cy="78" r="13" fill="#0066ff"/><circle cx="172" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
+                          <circle cx="231" cy="70" r="13" fill="#ff5a00"/><circle cx="294" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
+                          <circle cx="254" cy="160" r="13" fill="#0066ff"/><circle cx="170" cy="166" r="13" fill="#ff5a00"/>
+                        </g>
+                        <g fill="#fff" font-family="Arial" font-size="14" text-anchor="middle">
+                          <text x="112" y="83">+</text><text x="231" y="75">−</text><text x="254" y="165">+</text><text x="170" y="171">−</text>
+                        </g>
+                      </svg>
+                    </div>
+
+                    <div class="phase-current__readout">
+                      <span id="phaseRange">48,1%–62,0%</span>
+                      <strong id="phaseTitle">Líquido · medio</strong>
+                      <p id="phaseText">Inicia la Respuesta Eficiente: núcleo de la agilidad. Comienza a emerger un equilibrio más significativo en la coordinabilidad y aparecen respuestas más sincrónicas ante fluctuaciones.</p>
+                    </div>
+                  </div>
+
+                  <div class="phase-scale" id="phaseTrack" aria-label="Estados de adaptabilidad">
+                    <button type="button" data-phase="solid">
+                      <span class="phase-index">01</span><b>Sólido</b><small>estructura rígida</small>
+                    </button>
+                    <button type="button" data-phase="liquid" class="is-active">
+                      <span class="phase-index">02</span><b>Líquido · medio</b><small>respuesta eficiente</small>
+                    </button>
+                    <button type="button" data-phase="fluid">
+                      <span class="phase-index">03</span><b>Fluido</b><small>reconfiguración ágil</small>
+                    </button>
+                    <button type="button" data-phase="adaptive">
+                      <span class="phase-index">04</span><b>Adaptativo</b><small>aprende y evoluciona</small>
+                    </button>
+                  </div>
                 </div>
-                <p id="phaseText">Inicia la Respuesta Eficiente (48,1%–62,0%): núcleo de la agilidad. Comienza a emerger un equilibrio más significativo en la coordinabilidad y aparecen respuestas más sincrónicas ante fluctuaciones.</p>
               </section>
 
               <div class="results-grid">
@@ -240,6 +313,6 @@
     </section>
   </main>
 
-  <script src="./iao-card.js?v=11"></script>
+  <script src="./iao-card.js?v=12"></script>
 </body>
 </html>
