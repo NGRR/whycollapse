@@ -3,22 +3,22 @@
     {title:"Anticipación",body:"Percibir señales, cambios y oportunidades antes de que resulten evidentes.",x:380,y:110,labelX:380,labelY:76},
     {title:"Agilidad",body:"Responder con rapidez, coordinación y capacidad de decisión.",x:638,y:298,labelX:676,labelY:288},
     {title:"Aprendizaje",body:"Convertir la experiencia y la información en nuevas capacidades.",x:540,y:602,labelX:570,labelY:642},
-    {title:"Adecuación",body:"Reinventar la organización y renovar su propuesta de valor.",x:220,y:602,labelX:188,labelY:642},
-    {title:"Antifragilidad",body:"Aprender de la incertidumbre y fortalecerse; convertir las crisis en ventajas competitivas.",x:122,y:298,labelX:84,labelY:288}
+    {title:"Adecuación",body:"Reinventar la organización y renovar su propuesta de valor. Rediseño ágil de la propuesta de valor.",x:220,y:602,labelX:188,labelY:642},
+    {title:"Antifragilidad",body:"Aprender de la incertidumbre y fortalecerse. Capacidad de convertir las crisis en ventajas competitivas.",x:122,y:298,labelX:84,labelY:288}
   ];
 
   var SIGNALS=[
-    {title:"La IA se incorpora sin transformar la organización",body:"La tecnología avanza más rápido que los roles, capacidades y formas de trabajo.",cost:"Infraestructura costosa infrautilizada, frustración y resistencia."},
-    {title:"La innovación existe, pero no consigue escalar",body:"Hay ideas y pilotos, aunque pocas soluciones llegan al negocio.",cost:"Pruebas piloto que no impactan resultados ni generan nuevas vías de ingreso."},
-    {title:"La respuesta al mercado llega tarde",body:"Las decisiones pierden velocidad entre áreas, procesos y niveles jerárquicos.",cost:"Pérdida progresiva de competitividad frente a organizaciones más ágiles."},
-    {title:"La transformación no produce cambios sostenibles",body:"Las iniciativas avanzan, pero la organización vuelve a sus hábitos anteriores.",cost:"Fatiga por cambio, gasto recurrente y desconfianza en la dirección."},
-    {title:"La propuesta de valor pierde vigencia",body:"La organización conoce el cambio, pero no logra convertirlo en una nueva oferta.",cost:"Erosión de márgenes y fuga de clientes hacia alternativas más actuales."}
+    {title:"La IA se incorpora sin transformar la organización",body:"La tecnología avanza más rápido que los roles, capacidades y formas de trabajo.",cost:"Licencias e infraestructura tecnológica costosa infrautilizadas, con aumento de la frustración y resistencia en los equipos."},
+    {title:"La innovación existe, pero no consigue escalar",body:"Hay ideas y pilotos, aunque pocas soluciones llegan al negocio.",cost:"Inversión a fondo perdido en pruebas piloto que nunca impactan en la cuenta de resultados ni generan nuevas vías de ingresos."},
+    {title:"La respuesta al mercado llega tarde",body:"Las decisiones pierden velocidad entre áreas, procesos y niveles jerárquicos.",cost:"Pérdida paulatina de cuota de mercado e ingresos frente a competidores más ágiles que captan antes la demanda."},
+    {title:"La transformación no produce cambios sostenibles",body:"Las iniciativas avanzan, pero la organización vuelve a sus hábitos anteriores.",cost:"Gasto recurrente en consultoría e iniciativas que se diluyen, generando fatiga por cambio y desconfianza en la dirección."},
+    {title:"La propuesta de valor pierde vigencia",body:"La organización conoce el cambio, pero no logra convertirlo en una nueva oferta.",cost:"Erosión progresiva de los márgenes y fuga de clientes clave hacia alternativas más modernas y alineadas con sus necesidades."}
   ];
 
   var BENEFITS=[
     ["Una visión compartida","Comprender cómo responde realmente la organización ante los cambios."],
     ["Fricciones visibles","Detectar qué bloquea el aprendizaje, la agilidad y la renovación de la propuesta de valor."],
-    ["Prioridades claras","Concentrar el presupuesto solo en las palancas con impacto real."],
+    ["Prioridades claras","Inversión optimizada: concentra el presupuesto solo en las palancas con impacto real."],
     ["Decisiones fundamentadas","Sustituir percepciones aisladas por una lectura compartida y basada en evidencias."],
     ["Una hoja de ruta","Traducir los resultados en acciones, responsables y mecanismos de seguimiento."]
   ];
@@ -72,7 +72,7 @@
   SIGNALS.forEach(function(item,i){
     var article=document.createElement("article");
     article.className="signal-card";
-    article.innerHTML='<span class="signal-card__index">'+String(i+1).padStart(2,"0")+'</span><h3>'+item.title+'</h3><p>'+item.body+'</p><small>'+item.cost+'</small>';
+    article.innerHTML='<span class="signal-card__index">'+String(i+1).padStart(2,"0")+'</span><h3>'+item.title+'</h3><p>'+item.body+'</p><small><b>Consecuencia:</b><br>'+item.cost+'</small>';
     signalGrid.appendChild(article);
   });
 
@@ -110,7 +110,7 @@
     panel.setAttribute("aria-hidden",open?"false":"true");
     card.setAttribute("aria-expanded",open?"true":"false");
     document.body.classList.toggle("iao-lock",open);
-    if(open){activateView("overview");}
+    if(open){activateView("intro");}
   }
 
   card.addEventListener("click",function(){
@@ -119,12 +119,14 @@
     card.setAttribute("aria-expanded","true");
     document.body.classList.add("iao-lock");
   });
+
   close.addEventListener("click",function(){
     panel.classList.remove("is-open");
     panel.setAttribute("aria-hidden","true");
     card.setAttribute("aria-expanded","false");
     document.body.classList.remove("iao-lock");
   });
+
   panel.addEventListener("click",function(e){
     if(e.target===panel){
       window.location.hash="";
@@ -132,6 +134,7 @@
       card.focus();
     }
   });
+
   document.addEventListener("keydown",function(e){
     if(e.key==="Escape"&&window.location.hash==="#iaoPanel"){
       window.location.hash="";
@@ -139,6 +142,7 @@
       card.focus();
     }
   });
+
   window.addEventListener("hashchange",syncOpenState);
   syncOpenState();
 })();
