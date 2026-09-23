@@ -71,8 +71,7 @@
     if(current===1){animateResults();}
   }
 
-  cardLink.addEventListener("click",function(e){
-    e.preventDefault();
+  cardLink.addEventListener("click",function(){
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden","false");
     cardLink.setAttribute("aria-expanded","true");
@@ -83,12 +82,28 @@
 
   function closeModal(){
     modal.classList.remove("is-open");
+    if(window.location.hash==="#iaoModal"){
+      history.replaceState(null,"",window.location.pathname+window.location.search);
+    }
     modal.setAttribute("aria-hidden","true");
     cardLink.setAttribute("aria-expanded","false");
     document.body.classList.remove("iao-lock");
     cardLink.focus({preventScroll:true});
   }
   closeButtons.forEach(function(btn){btn.addEventListener("click",closeModal);});
+  window.addEventListener("hashchange",function(){
+    if(window.location.hash==="#iaoModal"){
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden","false");
+      cardLink.setAttribute("aria-expanded","true");
+      document.body.classList.add("iao-lock");
+    }else if(modal.classList.contains("is-open")){
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden","true");
+      cardLink.setAttribute("aria-expanded","false");
+      document.body.classList.remove("iao-lock");
+    }
+  });
   document.addEventListener("keydown",function(e){
     if(!modal.classList.contains("is-open")) return;
     if(e.key==="Escape") closeModal();
