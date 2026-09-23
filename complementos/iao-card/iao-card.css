@@ -39,19 +39,6 @@ a{color:inherit}
   box-shadow:0 18px 55px rgba(0,61,159,.09);
   transition:transform .4s var(--ease),box-shadow .3s ease,border-color .3s ease
 }
-.iao-card__hit{
-  position:absolute;
-  inset:0;
-  z-index:100;
-  display:block;
-  cursor:pointer;
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:rgba(0,102,255,.08);
-  text-decoration:none
-}
-.iao-card__hit:focus-visible{outline:3px solid rgba(0,102,255,.28);outline-offset:-5px}
-.iao-card>*:not(.iao-card__hit),
-.iao-card>*:not(.iao-card__hit) *{pointer-events:none}
 .iao-card:hover{transform:translateY(-5px);box-shadow:0 28px 70px rgba(0,61,159,.13);border-color:#8fb9e8}
 .iao-card::before{
   content:"";position:absolute;inset:18px;border:1px solid rgba(0,102,255,.1);pointer-events:none
@@ -59,7 +46,7 @@ a{color:inherit}
 .iao-card__corner{position:absolute;width:16px;height:16px}
 .iao-card__corner--tl{left:7px;top:7px;border-left:1px solid var(--blue);border-top:1px solid var(--blue)}
 .iao-card__corner--br{right:7px;bottom:7px;border-right:1px solid var(--blue);border-bottom:1px solid var(--blue)}
-.iao-card__instrument{position:relative;flex:1;min-height:475px;display:grid;place-items:center}
+.iao-card__instrument{position:relative;flex:1;min-height:440px;display:grid;place-items:center}
 .iao-card__instrument::before,.iao-card__instrument::after{content:"";position:absolute;background:rgba(0,102,255,.09)}
 .iao-card__instrument::before{left:3%;right:3%;height:1px}.iao-card__instrument::after{top:3%;bottom:3%;width:1px}
 .instrument-orbit{position:absolute;border:1px solid rgba(0,102,255,.2);border-radius:50%;animation:spin 30s linear infinite}
@@ -82,6 +69,20 @@ a{color:inherit}
 }
 .iao-card__name strong{max-width:290px;color:var(--navy);font:500 1.42rem/1.05 var(--head);letter-spacing:-.035em}
 .iao-card__name span{color:var(--orange);font:700 .62rem/1 var(--head);letter-spacing:.12em}
+.iao-card__cta{
+  position:relative;z-index:6;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  margin-top:16px;padding:13px 15px;
+  border:1px solid var(--blue);background:var(--blue);color:#fff;
+  text-decoration:none;cursor:pointer;touch-action:manipulation;
+  -webkit-tap-highlight-color:rgba(0,102,255,.12);
+  font:700 .62rem/1 var(--head);letter-spacing:.1em;text-transform:uppercase;
+  transition:background .22s ease,color .22s ease,transform .22s var(--ease)
+}
+.iao-card__cta:hover{background:#fff;color:var(--blue);transform:translateY(-1px)}
+.iao-card__cta:focus-visible{outline:3px solid rgba(0,102,255,.24);outline-offset:3px}
+.iao-card__cta span:last-child{color:var(--orange);font-size:.9rem}
+.iao-card__cta:hover span:last-child{color:var(--orange)}
 
 /* MODAL / LAB DECK */
 .iao-modal{position:fixed;inset:0;z-index:100;padding:22px;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
@@ -261,8 +262,8 @@ body.iao-lock{overflow:hidden}
 }
 @media(max-width:680px){
   .demo{padding:16px}
-  .iao-card{width:min(390px,92vw);min-height:580px}
-  .iao-card__instrument{min-height:430px}
+  .iao-card{width:min(390px,92vw);min-height:560px}
+  .iao-card__instrument{min-height:390px}
   .iao-modal__header{padding:12px 52px 11px 14px}
   .iao-modal__identity strong{display:none}.iao-logo-mask{width:70px}
   .iao-modal__counter{font-size:.52rem}
