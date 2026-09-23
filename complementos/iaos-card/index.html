@@ -9,30 +9,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://drive.google.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iaos-card.css?v=2">
+  <link rel="stylesheet" href="./iaos-card.css?v=3">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <button class="iaos-card" id="iaosCard" aria-expanded="false" aria-controls="iaosPanel">
-        <span class="corner corner--tl" aria-hidden="true"></span>
-        <span class="corner corner--br" aria-hidden="true"></span>
-
-        <span class="iaos-card__eyebrow">DIAGNOS / IAOS</span>
-        <strong class="iaos-card__title">Estilo de Adaptabilidad Individual</strong>
-        <span class="iaos-card__copy">Mapa técnico expandible</span>
-
-        <span class="iaos-card__art" aria-hidden="true">
-          <img class="iaos-card__asset" src="https://drive.google.com/thumbnail?id=1_DoI846riEFqFqyh2Mt3jWzJYjqUtUhN&sz=w900" alt="">
-          <span class="mini-ring mini-ring--1"></span>
-          <span class="mini-ring mini-ring--2"></span>
-          <span class="mini-ring mini-ring--3"></span>
-          <span class="mini-node mini-node--1"></span>
-          <span class="mini-node mini-node--2"></span>
-          <span class="mini-node mini-node--3"></span>
+      <button class="iaos-card" id="iaosCard" aria-expanded="false" aria-controls="iaosPanel" aria-label="Abrir diagnóstico IAOS">
+        <span class="iaos-card__organic" aria-hidden="true">
+          <img class="iaos-card__organic-layer iaos-card__organic-layer--a"
+               src="https://drive.google.com/thumbnail?id=12CFsXXy1iU6shCa8bXIgt_axRyslXxCF&sz=w1200"
+               alt="">
+          <img class="iaos-card__organic-layer iaos-card__organic-layer--b"
+               src="https://drive.google.com/thumbnail?id=1_DoI846riEFqFqyh2Mt3jWzJYjqUtUhN&sz=w1200"
+               alt="">
+          <img class="iaos-card__organic-layer iaos-card__organic-layer--c"
+               src="https://drive.google.com/thumbnail?id=1yYtEpCH17_FDJvHkT4-zSlldQBDMgQdd&sz=w1200"
+               alt="">
         </span>
-
-        <span class="iaos-card__cta">Abrir mapa <span aria-hidden="true">↗</span></span>
+        <span class="iaos-card__logo-wrap" aria-hidden="true">
+          <img class="iaos-card__logo" src="./assets/iao-logo-source.webp" alt="">
+        </span>
       </button>
 
       <section class="iaos-panel" id="iaosPanel" aria-hidden="true">
@@ -138,6 +134,6 @@
       </section>
     </section>
   </main>
-  <script src="./iaos-card.js?v=2"></script>
+  <script src="./iaos-card.js?v=3"></script>
 </body>
 </html>
