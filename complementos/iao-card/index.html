@@ -8,33 +8,57 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=8">
+  <link rel="stylesheet" href="./iao-card.css?v=9">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <a class="iao-card" id="iaoCard" href="#iaoPanel" aria-expanded="false" aria-controls="iaoPanel" aria-label="Abrir Índice de Adaptabilidad Organizacional">
-        <div class="iao-card__top">
-          <img class="iao-card__logo" src="./assets/iao-logo-white.svg" alt="" aria-hidden="true">
-          <span class="iao-card__name">Índice de Adaptabilidad Organizacional</span>
+
+      <a class="iao-card" id="iaoCard" href="#iaoPanel" aria-expanded="false" aria-controls="iaoPanel" aria-label="Explorar Índice de Adaptabilidad Organizacional">
+        <span class="iao-card__corner iao-card__corner--tl" aria-hidden="true"></span>
+        <span class="iao-card__corner iao-card__corner--br" aria-hidden="true"></span>
+
+        <header class="iao-card__head">
+          <span>DIAGNOS · IAO</span>
+          <small>INSTRUMENTO DE LECTURA</small>
+        </header>
+
+        <div class="iao-card__graphic" aria-hidden="true">
+          <svg viewBox="0 0 640 360">
+            <g class="mini-grid">
+              <circle cx="320" cy="180" r="132"></circle>
+              <circle cx="320" cy="180" r="96"></circle>
+              <circle cx="320" cy="180" r="62"></circle>
+              <line x1="320" y1="36" x2="320" y2="324"></line>
+              <line x1="176" y1="180" x2="464" y2="180"></line>
+            </g>
+            <g class="mini-radar">
+              <polygon points="320,67 429,146 387,275 253,275 211,146"></polygon>
+              <circle cx="320" cy="67" r="7"></circle>
+              <circle cx="429" cy="146" r="7"></circle>
+              <circle cx="387" cy="275" r="7"></circle>
+              <circle cx="253" cy="275" r="7"></circle>
+              <circle cx="211" cy="146" r="7"></circle>
+            </g>
+            <g class="mini-ticks">
+              <path d="M320 32v18M462 126l-17 6M408 312l-10-15M232 312l10-15M178 126l17 6"></path>
+            </g>
+          </svg>
+          <img src="./assets/iao-logo-white.svg" alt="">
+          <span class="iao-card__axis iao-card__axis--a">ANTICIPACIÓN</span>
+          <span class="iao-card__axis iao-card__axis--b">AGILIDAD</span>
+          <span class="iao-card__axis iao-card__axis--c">APRENDIZAJE</span>
+          <span class="iao-card__axis iao-card__axis--d">ADECUACIÓN</span>
+          <span class="iao-card__axis iao-card__axis--e">ANTIFRAGILIDAD</span>
         </div>
 
-        <div class="iao-card__body">
-          <span class="iao-card__kicker">DIAGNÓSTICO ESTRATÉGICO</span>
-          <h2>¿Está tu organización preparada para seguir siendo relevante?</h2>
-          <p>Medimos la capacidad adaptativa para convertirla en información útil para la transformación.</p>
-        </div>
-
-        <div class="iao-card__meta">
-          <span><b>5</b> capacidades</span>
-          <span><b>5–6</b> semanas</span>
-          <span><b>20'</b> cuestionario</span>
-        </div>
-
-        <div class="iao-card__footer">
-          <span>Explorar diagnóstico</span>
-          <span aria-hidden="true">↗</span>
-        </div>
+        <footer class="iao-card__foot">
+          <div>
+            <strong>Índice de Adaptabilidad Organizacional</strong>
+            <small>Medir · comprender · priorizar · actuar</small>
+          </div>
+          <span>Explorar ↗</span>
+        </footer>
       </a>
 
       <section class="iao-panel" id="iaoPanel" aria-hidden="true">
@@ -50,65 +74,29 @@
           </header>
 
           <nav class="iao-tabs" aria-label="Contenido IAO">
-            <button type="button" class="iao-tab is-active" data-view="intro"><b>01</b><span>Inicio</span></button>
-            <button type="button" class="iao-tab" data-view="signals"><b>02</b><span>Señales</span></button>
-            <button type="button" class="iao-tab" data-view="benefits"><b>03</b><span>Qué consigue</span></button>
-            <button type="button" class="iao-tab" data-view="capacities"><b>04</b><span>Capacidades</span></button>
-            <button type="button" class="iao-tab" data-view="process"><b>05</b><span>Proceso</span></button>
-            <button type="button" class="iao-tab" data-view="effort"><b>06</b><span>Dedicación</span></button>
+            <button type="button" class="iao-tab is-active" data-view="concept"><b>01</b><span>Qué es</span></button>
+            <button type="button" class="iao-tab" data-view="signals"><b>02</b><span>Qué revela</span></button>
+            <button type="button" class="iao-tab" data-view="value"><b>03</b><span>Qué entrega</span></button>
+            <button type="button" class="iao-tab" data-view="activation"><b>04</b><span>Cómo se activa</span></button>
           </nav>
 
           <div class="iao-main">
-            <section class="iao-view is-active" data-panel="intro">
-              <div class="intro-layout">
-                <div class="intro-copy">
+
+            <section class="iao-view is-active" data-panel="concept">
+              <div class="concept-layout">
+                <div class="concept-copy">
                   <span class="section-kicker">IAO / DIAGNÓSTICO ESTRATÉGICO</span>
                   <h1>¿Está tu organización preparada para seguir siendo relevante?</h1>
-                  <p>El IAO convierte la adaptabilidad en información útil para orientar decisiones de transformación.</p>
-                  <p class="intro-audience">Un diagnóstico estratégico para comités de dirección y líderes de transformación.</p>
+                  <p class="lead">El IAO mide cinco capacidades que, al combinarse, generan inteligencia adaptativa.</p>
+                  <p>Convierte la adaptabilidad en información útil para orientar decisiones de transformación y está dirigido a comités de dirección y líderes de transformación.</p>
 
-                  <div class="intro-stats">
+                  <div class="concept-facts">
                     <div><strong>5</strong><span>capacidades</span></div>
                     <div><strong>5–6</strong><span>semanas</span></div>
-                    <div><strong>20'</strong><span>cuestionario</span></div>
+                    <div><strong>20'</strong><span>cuestionario online</span></div>
                   </div>
                 </div>
 
-                <div class="intro-instrument" aria-hidden="true">
-                  <div class="instrument-ring instrument-ring--1"></div>
-                  <div class="instrument-ring instrument-ring--2"></div>
-                  <div class="instrument-ring instrument-ring--3"></div>
-                  <div class="instrument-axis instrument-axis--x"></div>
-                  <div class="instrument-axis instrument-axis--y"></div>
-                  <div class="instrument-node n1"></div>
-                  <div class="instrument-node n2"></div>
-                  <div class="instrument-node n3"></div>
-                  <div class="instrument-node n4"></div>
-                  <div class="instrument-node n5"></div>
-                  <img src="./assets/iao-logo-white.svg" alt="">
-                </div>
-              </div>
-            </section>
-
-            <section class="iao-view" data-panel="signals">
-              <header class="view-head">
-                <span class="section-kicker">CUANDO ADAPTARSE EMPIEZA A COSTAR</span>
-                <h2>Estas señales indican que la organización necesita comprender qué está frenando su capacidad de respuesta.</h2>
-              </header>
-              <div class="signal-list" id="signalGrid"></div>
-              <p class="view-note">El IAO hace visibles las capacidades y fricciones que explican estas dificultades. El coste de no actuar es fuga de talento, pérdida de competitividad y margen.</p>
-            </section>
-
-            <section class="iao-view" data-panel="benefits">
-              <header class="view-head">
-                <span class="section-kicker">QUÉ CONSIGUE TU ORGANIZACIÓN</span>
-                <h2>La adaptabilidad se convierte en información útil para decidir.</h2>
-              </header>
-              <div class="benefit-grid" id="benefitList"></div>
-            </section>
-
-            <section class="iao-view" data-panel="capacities">
-              <div class="capacities-layout">
                 <div class="capacity-visual">
                   <svg class="iao-radar" viewBox="0 0 760 760" role="img" aria-label="Cinco capacidades que sostienen la vigencia">
                     <g class="radar-grid">
@@ -124,26 +112,65 @@
                     </g>
                     <polygon points="380,158 575,320 487,529 278,548 183,319" class="radar-value"/>
                     <g id="capacityNodes"></g>
-                    <circle cx="380" cy="380" r="54" class="iao-core-ring"/>
-                    <circle cx="380" cy="380" r="28" class="iao-core"/>
+                    <circle cx="380" cy="380" r="56" class="iao-core-ring"/>
+                    <circle cx="380" cy="380" r="29" class="iao-core"/>
                     <text x="380" y="388" text-anchor="middle" class="iao-core-label">IAO</text>
                   </svg>
                 </div>
 
                 <aside class="capacity-detail" aria-live="polite">
-                  <span class="section-kicker">LAS CAPACIDADES QUE SOSTIENEN LA VIGENCIA</span>
+                  <span id="detailIndex">01</span>
                   <h2 id="detailTitle">Anticipación</h2>
                   <p id="detailBody">Percibir señales, cambios y oportunidades antes de que resulten evidentes.</p>
-                  <div class="capacity-meta">
-                    <span id="detailIndex">01</span>
-                    <small>Evaluación basada en datos cualitativos y cuantitativos.</small>
-                  </div>
-                  <p class="capacity-claim">Inteligencia adaptativa: percibir antes, aprender mejor y transformarse a tiempo.</p>
+                  <small>Inteligencia adaptativa: percibir antes, aprender mejor y transformarse a tiempo.</small>
                 </aside>
               </div>
             </section>
 
-            <section class="iao-view" data-panel="process">
+            <section class="iao-view" data-panel="signals">
+              <header class="view-head">
+                <span class="section-kicker">CUANDO ADAPTARSE EMPIEZA A COSTAR</span>
+                <h2>El IAO hace visibles las capacidades y fricciones que explican estas dificultades.</h2>
+                <p>La lectura conecta síntomas organizacionales con consecuencias concretas para el negocio.</p>
+              </header>
+
+              <div class="signal-system">
+                <div class="signal-orbit" aria-hidden="true">
+                  <span class="signal-core">IAO</span>
+                  <i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i>
+                </div>
+                <div class="signal-list" id="signalGrid"></div>
+              </div>
+
+              <p class="view-note">El coste de no actuar es fuga de talento, pérdida de competitividad y margen.</p>
+            </section>
+
+            <section class="iao-view" data-panel="value">
+              <header class="view-head">
+                <span class="section-kicker">QUÉ CONSIGUE TU ORGANIZACIÓN</span>
+                <h2>Una lectura compartida que termina en prioridades y decisiones.</h2>
+              </header>
+
+              <div class="value-layout">
+                <div class="benefit-grid" id="benefitList"></div>
+
+                <aside class="deliverables">
+                  <span>QUÉ RECIBE LA ORGANIZACIÓN</span>
+                  <div class="deliverable-wheel" aria-hidden="true">
+                    <span>IAO</span>
+                    <i></i><i></i><i></i><i></i>
+                  </div>
+                  <ul>
+                    <li>IAO global y por capacidades</li>
+                    <li>Radar y cruces por áreas o roles</li>
+                    <li>Brechas priorizadas por urgencia e impacto</li>
+                    <li>Hoja de ruta y tablero de seguimiento</li>
+                  </ul>
+                </aside>
+              </div>
+            </section>
+
+            <section class="iao-view" data-panel="activation">
               <header class="view-head">
                 <span class="section-kicker">DEL DIAGNÓSTICO A LA ACCIÓN SIN SATURAR A TUS EQUIPOS</span>
                 <h2>Un proceso breve y participativo que termina en decisiones concretas.</h2>
@@ -152,40 +179,25 @@
 
               <div class="process-track" id="processList"></div>
 
-              <aside class="deliverables">
-                <span>QUÉ RECIBE LA ORGANIZACIÓN</span>
-                <div>
-                  <p>IAO global y por capacidades</p>
-                  <p>Radar y cruces por áreas o roles</p>
-                  <p>Brechas priorizadas por urgencia e impacto</p>
-                  <p>Hoja de ruta y tablero de seguimiento</p>
+              <div class="activation-bottom">
+                <div class="effort-grid">
+                  <article><strong>20'</strong><span>Equipos</span><p>Cuestionario online.</p></article>
+                  <article><strong>45'</strong><span>Dirección</span><p>Entrevistas individuales.</p></article>
+                  <article><strong>2 × 3h</strong><span>Talleres</span><p>Trabajo colaborativo.</p></article>
+                  <article><strong>1h</strong><span>Contraparte</span><p>Dedicación semanal.</p></article>
                 </div>
-              </aside>
-            </section>
 
-            <section class="iao-view" data-panel="effort">
-              <header class="view-head">
-                <span class="section-kicker">QUÉ SUPONE PARA LA EMPRESA</span>
-                <h2>Proceso ligero con mínimo impacto en la agenda de los equipos.</h2>
-              </header>
-
-              <div class="effort-grid">
-                <article><strong>20'</strong><h3>Mínima dedicación de los equipos</h3><p>Solo 20 minutos para completar el cuestionario online.</p></article>
-                <article><strong>45'</strong><h3>Participación clave de la dirección</h3><p>Entrevistas individuales de 45 minutos y 2 talleres de trabajo colaborativo de 3 horas cada uno.</p></article>
-                <article><strong>1h</strong><h3>Liderazgo interno</h3><p>Un equipo contraparte de coordinación con 1 hora por semana para impulsar y socializar el proyecto internamente.</p></article>
-              </div>
-
-              <div class="iao-cta-panel">
-                <div>
+                <div class="iao-cta-panel">
                   <span>¿QUIERES CONOCER EL NIVEL DE ADAPTABILIDAD DE TU ORGANIZACIÓN?</span>
                   <h2>Solicita una sesión de diagnóstico de 30 minutos sin compromiso.</h2>
-                </div>
-                <div class="iao-contact">
-                  <a href="mailto:hola@protea.blue">hola@protea.blue</a>
-                  <a href="https://www.protea.blue/" target="_blank" rel="noopener">www.protea.blue</a>
+                  <div class="iao-contact">
+                    <a href="mailto:hola@protea.blue">hola@protea.blue</a>
+                    <a href="https://www.protea.blue/" target="_blank" rel="noopener">www.protea.blue</a>
+                  </div>
                 </div>
               </div>
             </section>
+
           </div>
 
           <footer class="iao-foot">
@@ -196,6 +208,7 @@
       </section>
     </section>
   </main>
-  <script src="./iao-card.js?v=7"></script>
+
+  <script src="./iao-card.js?v=9"></script>
 </body>
 </html>
