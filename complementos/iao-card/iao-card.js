@@ -70,7 +70,8 @@
     if(current===1){animateResults();}
   }
 
-  card.addEventListener("click",function(){
+  card.addEventListener("click",function(e){
+    e.preventDefault();
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden","false");
     card.setAttribute("aria-expanded","true");
