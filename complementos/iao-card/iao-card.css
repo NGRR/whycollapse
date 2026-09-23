@@ -28,31 +28,96 @@ a{color:inherit}
 
 /* COLLAPSED CARD */
 .iao-card{
-  display:block;text-decoration:none;
-  position:relative;width:min(520px,100%);min-height:310px;padding:32px 34px;
-  overflow:hidden;border:1px solid rgba(255,255,255,.24);border-radius:0;
-  color:#fff;text-align:left;cursor:pointer;
-  background:linear-gradient(110deg,rgba(0,17,51,.54),rgba(0,17,51,.18));
-  transition:transform .48s var(--ease),background .3s ease,border-color .3s ease
+  display:block;
+  text-decoration:none;
+  position:relative;
+  width:min(520px,100%);
+  min-height:310px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:0;
+  color:#fff;
+  background:var(--blue);
+  cursor:pointer;
+  isolation:isolate;
+  transition:transform .48s var(--ease),border-color .3s ease;
 }
-.iao-card:hover{transform:translateY(-5px);background:linear-gradient(110deg,rgba(0,17,51,.64),rgba(0,17,51,.24));border-color:rgba(255,255,255,.42)}
-.corner,.panel-corner{position:absolute;width:20px;height:20px;pointer-events:none}
-.corner--tl,.panel-corner--tl{left:8px;top:8px;border-left:1px solid rgba(255,255,255,.58);border-top:1px solid rgba(255,255,255,.58)}
-.corner--br,.panel-corner--br{right:8px;bottom:8px;border-right:1px solid rgba(255,255,255,.58);border-bottom:1px solid rgba(255,255,255,.58)}
-.iao-card__kicker,.iao-card__copy,.iao-card__cta{display:block}
-.iao-card__kicker{color:var(--orange);font-size:.68rem;font-weight:700;letter-spacing:.16em;margin-bottom:14px}
-.iao-card__title{display:block;max-width:15ch;font:600 clamp(2.05rem,4vw,3.35rem)/.94 var(--font-display);letter-spacing:-.025em}
-.iao-card__copy{max-width:31ch;margin-top:14px;color:rgba(255,255,255,.76);font-size:.88rem;line-height:1.52}
-.iao-card__cta{position:absolute;left:34px;bottom:26px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.iao-card__instrument{position:absolute;width:250px;height:250px;right:-58px;bottom:-52px;pointer-events:none}
-.instrument__ring,.instrument__tick{position:absolute;border-radius:50%}
-.instrument__ring{border:1px solid rgba(255,255,255,.52)}
-.instrument__ring--1{inset:8%}
-.instrument__ring--2{inset:26%;border-style:dashed;border-color:rgba(255,90,0,.9);animation:spin 18s linear infinite}
-.instrument__ring--3{inset:42%;border-color:rgba(255,255,255,.82);animation:spin-rev 12s linear infinite}
-.instrument__core{position:absolute;inset:42%;display:grid;place-items:center;border-radius:50%;background:var(--orange);color:#fff;font:600 15px/1 var(--font-display)}
-.instrument__tick{width:7px;height:7px;background:var(--orange)}
-.instrument__tick--1{left:22%;top:17%}.instrument__tick--2{right:9%;top:49%}.instrument__tick--3{left:47%;bottom:10%}.instrument__tick--4{left:12%;bottom:33%}
+.iao-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,17,51,.04),rgba(0,17,51,.13));
+}
+.iao-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.44);
+}
+.iao-card__organic{
+  position:absolute;
+  inset:-11%;
+  z-index:1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.iao-card__organic-layer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:120%;
+  height:120%;
+  object-fit:contain;
+  transform-origin:center;
+  filter:saturate(1.25) contrast(1.08);
+  will-change:transform;
+  transition:transform 1.1s var(--ease),opacity .55s ease;
+}
+.iao-card__organic-layer--a{
+  opacity:.94;
+  transform:translate(-57%,-49%) scale(1.27) rotate(-4deg);
+}
+.iao-card__organic-layer--b{
+  opacity:.82;
+  transform:translate(-43%,-51%) scale(1.39) rotate(7deg);
+}
+.iao-card__organic-layer--c{
+  opacity:.62;
+  transform:translate(-50%,-47%) scale(1.05) rotate(-9deg);
+}
+.iao-card:hover .iao-card__organic-layer--a{
+  transform:translate(-57%,-49%) scale(1.34) rotate(-2deg);
+}
+.iao-card:hover .iao-card__organic-layer--b{
+  transform:translate(-43%,-51%) scale(1.46) rotate(5deg);
+}
+.iao-card:hover .iao-card__organic-layer--c{
+  transform:translate(-50%,-47%) scale(1.11) rotate(-11deg);
+}
+.iao-card__logo-wrap{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  display:grid;
+  place-items:center;
+  padding:52px 68px;
+  pointer-events:none;
+}
+.iao-card__logo{
+  display:block;
+  width:min(100%,380px);
+  height:auto;
+  object-fit:contain;
+  filter:grayscale(1) brightness(7) contrast(1.5);
+  mix-blend-mode:screen;
+  opacity:.99;
+  transition:transform .55s var(--ease),opacity .3s ease;
+}
+.iao-card:hover .iao-card__logo{
+  transform:scale(1.025);
+  opacity:1;
+}
 
 /* EXPANDED VIEW */
 .iao-panel{
