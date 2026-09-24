@@ -4,29 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f7fbff">
-  <title>Protea · IAO Card</title>
+  <title>Protea · IAO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./iao-card.css?v=18">
+  <link rel="stylesheet" href="./iao-card.css?v=19">
 </head>
 <body>
   <main class="demo">
     <section class="stage">
-      <div class="uk-card uk-card-default uk-width-1-2@m iao-card" id="iaoCard">
-        <div class="uk-card-header iao-card__header">
-          <div class="uk-grid-small uk-flex-middle iao-card__header-grid">
-            <div class="uk-width-auto">
-              <span class="iao-card__avatar" aria-hidden="true">
-                <img width="54" height="54" src="./assets/iao-logo-white.svg" alt="">
-              </span>
-            </div>
-            <div class="uk-width-expand">
+
+      <article class="uk-card uk-card-default uk-width-1-2@m iao-card">
+        <header class="uk-card-header iao-card__header">
+          <div class="iao-card__header-grid">
+            <span class="iao-card__avatar" aria-hidden="true">
+              <img width="54" height="54" src="./assets/iao-logo-white.svg" alt="">
+            </span>
+            <div>
               <h3 class="uk-card-title uk-margin-remove-bottom">Índice de Adaptabilidad Organizacional</h3>
               <p class="uk-text-meta uk-margin-remove-top">IAO · Diagnóstico estratégico</p>
             </div>
           </div>
-        </div>
+        </header>
 
         <div class="uk-card-body iao-card__body">
           <div class="iao-card__instrument" aria-hidden="true">
@@ -40,24 +39,20 @@
             <span class="instrument-node n3"></span>
             <span class="instrument-node n4"></span>
             <span class="instrument-node n5"></span>
-            <span class="iao-card__core">
-              <span class="iao-logo-mask iao-logo-mask--white"></span>
-            </span>
+            <span class="iao-card__core"><span class="iao-logo-mask iao-logo-mask--white"></span></span>
           </div>
         </div>
 
-        <div class="uk-card-footer iao-card__footer">
-          <button class="uk-button uk-button-text iao-card__cta" id="iaoCardOpen" type="button" aria-haspopup="dialog" aria-controls="iaoModal" aria-expanded="false">
-            <span>Abrir diagnóstico</span>
+        <footer class="uk-card-footer iao-card__footer">
+          <button class="uk-button uk-button-text iao-card__cta" id="iaoCardOpen" type="button" aria-haspopup="dialog" aria-controls="iaoModal">
+            <span>Abrir catálogo IAO</span>
             <span aria-hidden="true">↗</span>
           </button>
-        </div>
-      </div>
+        </footer>
+      </article>
 
-      <section class="iao-modal" id="iaoModal" role="dialog" aria-modal="true" aria-labelledby="iaoModalTitle" aria-hidden="true">
-        <button class="iao-modal__backdrop" type="button" data-close aria-label="Cerrar"></button>
-
-        <div class="iao-modal__dialog">
+      <dialog class="iao-modal" id="iaoModal" aria-labelledby="iaoModalTitle">
+        <div class="iao-modal__shell">
           <header class="iao-modal__header">
             <div class="iao-modal__identity">
               <span class="iao-logo-mask" aria-hidden="true"></span>
@@ -66,33 +61,34 @@
                 <strong id="iaoModalTitle">Índice de Adaptabilidad Organizacional</strong>
               </div>
             </div>
-
-            <div class="iao-modal__counter"><span id="deckCurrent">01</span><i></i><span id="deckTotal">06</span></div>
-            <button class="iao-modal__close" type="button" data-close aria-label="Cerrar">×</button>
+            <div class="iao-modal__counter"><span id="deckCurrent">01</span><i></i><span id="deckTotal">07</span></div>
+            <form method="dialog">
+              <button class="iao-modal__close" type="submit" aria-label="Cerrar">×</button>
+            </form>
           </header>
 
-          <nav class="iao-deck-nav" aria-label="Secciones del producto">
+          <nav class="iao-deck-nav" aria-label="Catálogo IAO">
             <button type="button" data-slide="0" class="is-active"><b>01</b><span>Concepto</span></button>
-            <button type="button" data-slide="1"><b>02</b><span>Resultados</span></button>
-            <button type="button" data-slide="2"><b>03</b><span>Señales</span></button>
-            <button type="button" data-slide="3"><b>04</b><span>Valor</span></button>
-            <button type="button" data-slide="4"><b>05</b><span>Proceso</span></button>
-            <button type="button" data-slide="5"><b>06</b><span>Dedicación</span></button>
+            <button type="button" data-slide="1"><b>02</b><span>Señales</span></button>
+            <button type="button" data-slide="2"><b>03</b><span>Valor</span></button>
+            <button type="button" data-slide="3"><b>04</b><span>Capacidades</span></button>
+            <button type="button" data-slide="4"><b>05</b><span>Resultados</span></button>
+            <button type="button" data-slide="5"><b>06</b><span>Proceso</span></button>
+            <button type="button" data-slide="6"><b>07</b><span>Dedicación</span></button>
           </nav>
 
           <div class="iao-deck" id="iaoDeck">
 
             <article class="iao-slide iao-slide--concept is-active" data-index="0">
               <div class="concept-copy">
-                <span class="eyebrow">IAO / PRODUCTO</span>
+                <span class="eyebrow">IAO / DIAGNÓSTICO ESTRATÉGICO</span>
                 <h1>¿Está tu organización preparada para seguir siendo relevante?</h1>
-                <p class="lead">El IAO mide la capacidad adaptativa y la convierte en información útil para orientar decisiones de transformación.</p>
-                <p>Está diseñado para comités de dirección y líderes de transformación que necesitan distinguir síntomas, brechas y prioridades antes de intervenir.</p>
-
+                <p class="lead">Diagnóstico estratégico para medir y acelerar la capacidad adaptativa de tu organización.</p>
+                <p>El IAO convierte la adaptabilidad en información útil para orientar decisiones de transformación.</p>
                 <div class="fact-row">
                   <div><strong>5</strong><span>capacidades</span></div>
                   <div><strong>5–6</strong><span>semanas</span></div>
-                  <div><strong>20'</strong><span>cuestionario</span></div>
+                  <div><strong>20'</strong><span>cuestionario online</span></div>
                 </div>
               </div>
 
@@ -114,166 +110,204 @@
               </div>
             </article>
 
-            <article class="iao-slide iao-slide--results" data-index="1">
+            <article class="iao-slide" data-index="1">
+              <header class="slide-head">
+                <span class="eyebrow">CUANDO ADAPTARSE EMPIEZA A COSTAR</span>
+                <h2>Estas señales indican que la organización necesita comprender qué está frenando su capacidad de respuesta.</h2>
+              </header>
+
+              <div class="signals-list">
+                <article class="signal-row">
+                  <span class="signal-row__n">01</span>
+                  <div><h3>La IA se incorpora sin transformar la organización</h3><p>La tecnología avanza más rápido que los roles, capacidades y formas de trabajo.</p></div>
+                  <aside><b>Consecuencia</b><br>Licencias e infraestructura tecnológica costosa infrautilizadas, con aumento de la frustración y resistencia en los equipos.</aside>
+                </article>
+                <article class="signal-row">
+                  <span class="signal-row__n">02</span>
+                  <div><h3>La innovación existe, pero no consigue escalar</h3><p>Hay ideas y pilotos, aunque pocas soluciones llegan al negocio.</p></div>
+                  <aside><b>Consecuencia</b><br>Inversión a fondo perdido en pruebas piloto que nunca impactan en la cuenta de resultados ni generan nuevas vías de ingresos.</aside>
+                </article>
+                <article class="signal-row">
+                  <span class="signal-row__n">03</span>
+                  <div><h3>La respuesta al mercado llega tarde</h3><p>Las decisiones pierden velocidad entre áreas, procesos y niveles jerárquicos.</p></div>
+                  <aside><b>Consecuencia</b><br>Pérdida paulatina de cuota de mercado e ingresos frente a competidores más ágiles que captan antes la demanda.</aside>
+                </article>
+                <article class="signal-row">
+                  <span class="signal-row__n">04</span>
+                  <div><h3>La transformación no produce cambios sostenibles</h3><p>Las iniciativas avanzan, pero la organización vuelve a sus hábitos anteriores.</p></div>
+                  <aside><b>Consecuencia</b><br>Gasto recurrente en consultoría e iniciativas que se diluyen, generando fatiga por cambio y desconfianza en la dirección.</aside>
+                </article>
+                <article class="signal-row">
+                  <span class="signal-row__n">05</span>
+                  <div><h3>La propuesta de valor pierde vigencia</h3><p>La organización conoce el cambio, pero no logra convertirlo en una nueva oferta.</p></div>
+                  <aside><b>Consecuencia</b><br>Erosión progresiva de los márgenes y fuga de clientes clave hacia alternativas más modernas y alineadas con sus necesidades.</aside>
+                </article>
+              </div>
+              <p class="closing-note">El IAO hace visibles las capacidades y fricciones que explican estas dificultades. El coste de no actuar es fuga de talento, pérdida de competitividad y margen.</p>
+            </article>
+
+            <article class="iao-slide" data-index="2">
+              <header class="slide-head">
+                <span class="eyebrow">QUÉ CONSIGUE TU ORGANIZACIÓN</span>
+                <h2>Una lectura compartida para orientar decisiones de transformación.</h2>
+                <p>Un diagnóstico estratégico para comités de dirección y líderes de transformación.</p>
+              </header>
+
+              <div class="benefits-grid">
+                <article class="benefit-card"><span>01</span><h3>Una visión compartida</h3><p>Comprender cómo responde realmente la organización ante los cambios.</p></article>
+                <article class="benefit-card"><span>02</span><h3>Fricciones visibles</h3><p>Detectar qué bloquea el aprendizaje, la agilidad y la renovación de la propuesta de valor.</p></article>
+                <article class="benefit-card"><span>03</span><h3>Prioridades claras</h3><p>Inversión optimizada: concentra el presupuesto solo en las palancas con impacto real.</p></article>
+                <article class="benefit-card"><span>04</span><h3>Decisiones fundamentadas</h3><p>Sustituir percepciones aisladas por una lectura compartida y basada en evidencias.</p></article>
+                <article class="benefit-card benefit-card--wide"><span>05</span><h3>Una hoja de ruta</h3><p>Traducir los resultados en acciones, responsables y mecanismos de seguimiento.</p></article>
+              </div>
+            </article>
+
+            <article class="iao-slide" data-index="3">
+              <header class="slide-head">
+                <span class="eyebrow">LAS CAPACIDADES QUE SOSTIENEN LA VIGENCIA</span>
+                <h2>Cinco capacidades que, al combinarse, generan inteligencia adaptativa.</h2>
+                <p>Evaluación basada en datos cualitativos y cuantitativos. Usamos una plataforma propia.</p>
+              </header>
+
+              <div class="capacity-lab">
+                <div class="capacity-orbit" aria-hidden="true">
+                  <span class="capacity-core"><span class="iao-logo-mask iao-logo-mask--white"></span></span>
+                  <i class="cp cp1"></i><i class="cp cp2"></i><i class="cp cp3"></i><i class="cp cp4"></i><i class="cp cp5"></i>
+                </div>
+                <div class="capacity-list">
+                  <article><b>A1</b><h3>Anticipación</h3><p>Percibir señales, cambios y oportunidades antes de que resulten evidentes.</p></article>
+                  <article><b>A2</b><h3>Agilidad</h3><p>Responder con rapidez, coordinación y capacidad de decisión.</p></article>
+                  <article><b>A3</b><h3>Aprendizaje</h3><p>Convertir la experiencia y la información en nuevas capacidades.</p></article>
+                  <article><b>A4</b><h3>Adecuación</h3><p>Reinventar la organización y renovar su propuesta de valor. Rediseño ágil de la propuesta de valor.</p></article>
+                  <article><b>A5</b><h3>Antifragilidad</h3><p>Aprender de la incertidumbre y fortalecerse. Convertir las crisis en ventajas competitivas.</p></article>
+                </div>
+              </div>
+              <p class="closing-note">Inteligencia adaptativa: percibir antes, aprender mejor y transformarse a tiempo.</p>
+            </article>
+
+            <article class="iao-slide iao-slide--results" data-index="4">
               <header class="results-head">
                 <div>
-                  <span class="eyebrow">RESULTADOS / SIMULACIÓN DE LECTURA</span>
+                  <span class="eyebrow">LECTURA DE RESULTADOS / DEMO</span>
                   <h2>De datos a evolución real.</h2>
+                  <p>Visualización de ejemplo para mostrar cómo se organiza una lectura IAO.</p>
                 </div>
                 <div class="results-score">
                   <span class="score-ring" style="--score:58.19">
-                    <span class="score-ring__inner">
-                      <small>IAO</small>
-                      <strong data-count="58.19">0,00%</strong>
-                    </span>
+                    <span class="score-ring__inner"><small>IAO</small><strong data-count="58.19">58,19%</strong></span>
                   </span>
                 </div>
               </header>
 
               <section class="lab-panel system-state">
-                <header>
-                  <span>01</span>
-                  <strong>ESTADO ACTUAL DEL SISTEMA</strong>
-                  <small id="phaseHeaderState">LÍQUIDO · MEDIO</small>
-                </header>
-
+                <header><span>01</span><strong>ESTADO ACTUAL DEL SISTEMA</strong><small id="phaseHeaderState">LÍQUIDO · MEDIO</small></header>
                 <div class="phase-analyzer">
                   <div class="phase-current">
                     <div class="phase-current__visual" aria-hidden="true">
                       <svg class="phase-scene is-active" data-state="liquid" viewBox="0 0 420 230">
-                        <defs>
-                          <pattern id="liquidDots" width="30" height="26" patternUnits="userSpaceOnUse">
-                            <circle cx="8" cy="8" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
-                            <circle cx="23" cy="21" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
-                          </pattern>
-                        </defs>
+                        <defs><pattern id="liquidDots" width="30" height="26" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/><circle cx="23" cy="21" r="7" fill="#fff" stroke="#4674a7" stroke-width="1.5"/></pattern></defs>
                         <path d="M75 40v142c0 16 12 28 28 28h214c16 0 28-12 28-28V40" fill="none" stroke="#0b376d" stroke-width="3"/>
                         <rect x="82" y="92" width="256" height="111" fill="url(#liquidDots)"/>
                         <path d="M84 92c42 13 77-11 122 0s78-12 130 0" fill="none" stroke="#ff5a00" stroke-width="3"/>
-                        <g fill="#ff5a00">
-                          <circle cx="116" cy="78" r="5"/><circle cx="184" cy="70" r="4"/><circle cx="246" cy="82" r="5"/><circle cx="304" cy="74" r="4"/>
-                        </g>
+                        <g fill="#ff5a00"><circle cx="116" cy="78" r="5"/><circle cx="184" cy="70" r="4"/><circle cx="246" cy="82" r="5"/><circle cx="304" cy="74" r="4"/></g>
                         <path d="M38 116h28M354 116h28" stroke="#0066ff" stroke-width="2"/>
                         <path d="M58 110l8 6-8 6M362 110l-8 6 8 6" fill="none" stroke="#0066ff" stroke-width="2"/>
                       </svg>
-
                       <svg class="phase-scene" data-state="solid" viewBox="0 0 420 230">
-                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6">
-                          <circle cx="112" cy="70" r="11"/><circle cx="140" cy="70" r="11"/><circle cx="168" cy="70" r="11"/><circle cx="196" cy="70" r="11"/><circle cx="224" cy="70" r="11"/><circle cx="252" cy="70" r="11"/><circle cx="280" cy="70" r="11"/>
-                          <circle cx="112" cy="98" r="11"/><circle cx="140" cy="98" r="11"/><circle cx="168" cy="98" r="11"/><circle cx="196" cy="98" r="11"/><circle cx="224" cy="98" r="11"/><circle cx="252" cy="98" r="11"/><circle cx="280" cy="98" r="11"/>
-                          <circle cx="112" cy="126" r="11"/><circle cx="140" cy="126" r="11"/><circle cx="168" cy="126" r="11"/><circle cx="196" cy="126" r="11"/><circle cx="224" cy="126" r="11"/><circle cx="252" cy="126" r="11"/><circle cx="280" cy="126" r="11"/>
-                          <circle cx="112" cy="154" r="11"/><circle cx="140" cy="154" r="11"/><circle cx="168" cy="154" r="11"/><circle cx="196" cy="154" r="11"/><circle cx="224" cy="154" r="11"/><circle cx="252" cy="154" r="11"/><circle cx="280" cy="154" r="11"/>
-                        </g>
                         <rect x="96" y="52" width="200" height="120" fill="none" stroke="#0b376d" stroke-width="3"/>
-                        <path d="M48 112h34M338 112h34" stroke="#9bb8d8" stroke-width="2"/>
+                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6">
+                          <circle cx="120" cy="78" r="10"/><circle cx="148" cy="78" r="10"/><circle cx="176" cy="78" r="10"/><circle cx="204" cy="78" r="10"/><circle cx="232" cy="78" r="10"/><circle cx="260" cy="78" r="10"/>
+                          <circle cx="120" cy="106" r="10"/><circle cx="148" cy="106" r="10"/><circle cx="176" cy="106" r="10"/><circle cx="204" cy="106" r="10"/><circle cx="232" cy="106" r="10"/><circle cx="260" cy="106" r="10"/>
+                          <circle cx="120" cy="134" r="10"/><circle cx="148" cy="134" r="10"/><circle cx="176" cy="134" r="10"/><circle cx="204" cy="134" r="10"/><circle cx="232" cy="134" r="10"/><circle cx="260" cy="134" r="10"/>
+                        </g>
                       </svg>
-
                       <svg class="phase-scene" data-state="fluid" viewBox="0 0 420 230">
                         <rect x="72" y="38" width="276" height="160" rx="8" fill="none" stroke="#0b376d" stroke-width="3"/>
-                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6">
-                          <circle cx="111" cy="72" r="12"/><circle cx="163" cy="63" r="10"/><circle cx="215" cy="84" r="13"/><circle cx="284" cy="68" r="11"/>
-                          <circle cx="134" cy="124" r="11"/><circle cx="191" cy="145" r="13"/><circle cx="261" cy="129" r="10"/><circle cx="310" cy="154" r="12"/>
-                          <circle cx="102" cy="166" r="9"/><circle cx="242" cy="176" r="9"/>
-                        </g>
+                        <g fill="#fff" stroke="#4674a7" stroke-width="1.6"><circle cx="111" cy="72" r="12"/><circle cx="163" cy="63" r="10"/><circle cx="215" cy="84" r="13"/><circle cx="284" cy="68" r="11"/><circle cx="134" cy="124" r="11"/><circle cx="191" cy="145" r="13"/><circle cx="261" cy="129" r="10"/><circle cx="310" cy="154" r="12"/></g>
                         <path d="M104 96c24 17 44 19 68 3s51-16 76 3 46 17 70-2" fill="none" stroke="#ff5a00" stroke-width="2" stroke-dasharray="5 6"/>
                       </svg>
-
                       <svg class="phase-scene" data-state="adaptive" viewBox="0 0 420 230">
                         <rect x="72" y="38" width="276" height="160" rx="8" fill="none" stroke="#0b376d" stroke-width="3"/>
-                        <g stroke="#a7bfd9" stroke-width="1.2">
-                          <path d="M112 78L172 111L231 70L294 111L254 160L170 166L112 78"/>
-                          <path d="M172 111L254 160M231 70L170 166"/>
-                        </g>
-                        <g>
-                          <circle cx="112" cy="78" r="13" fill="#0066ff"/><circle cx="172" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
-                          <circle cx="231" cy="70" r="13" fill="#ff5a00"/><circle cx="294" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/>
-                          <circle cx="254" cy="160" r="13" fill="#0066ff"/><circle cx="170" cy="166" r="13" fill="#ff5a00"/>
-                        </g>
-                        <g fill="#fff" font-family="Arial" font-size="14" text-anchor="middle">
-                          <text x="112" y="83">+</text><text x="231" y="75">−</text><text x="254" y="165">+</text><text x="170" y="171">−</text>
-                        </g>
+                        <g stroke="#a7bfd9" stroke-width="1.2"><path d="M112 78L172 111L231 70L294 111L254 160L170 166L112 78"/><path d="M172 111L254 160M231 70L170 166"/></g>
+                        <g><circle cx="112" cy="78" r="13" fill="#0066ff"/><circle cx="172" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/><circle cx="231" cy="70" r="13" fill="#ff5a00"/><circle cx="294" cy="111" r="13" fill="#fff" stroke="#4674a7" stroke-width="1.5"/><circle cx="254" cy="160" r="13" fill="#0066ff"/><circle cx="170" cy="166" r="13" fill="#ff5a00"/></g>
                       </svg>
                     </div>
-
                     <div class="phase-current__readout">
                       <span id="phaseRange">48,1%–62,0%</span>
                       <strong id="phaseTitle">Líquido · medio</strong>
                       <p id="phaseText">Inicia la Respuesta Eficiente: núcleo de la agilidad. Comienza a emerger un equilibrio más significativo en la coordinabilidad y aparecen respuestas más sincrónicas ante fluctuaciones.</p>
                     </div>
                   </div>
-
-                  <div class="phase-scale" id="phaseTrack" aria-label="Estados de adaptabilidad">
-                    <button type="button" data-phase="solid">
-                      <span class="phase-index">01</span><b>Sólido</b><small>estructura rígida</small>
-                    </button>
-                    <button type="button" data-phase="liquid" class="is-active">
-                      <span class="phase-index">02</span><b>Líquido · medio</b><small>respuesta eficiente</small>
-                    </button>
-                    <button type="button" data-phase="fluid">
-                      <span class="phase-index">03</span><b>Fluido</b><small>reconfiguración ágil</small>
-                    </button>
-                    <button type="button" data-phase="adaptive">
-                      <span class="phase-index">04</span><b>Adaptativo</b><small>aprende y evoluciona</small>
-                    </button>
+                  <div class="phase-scale" id="phaseTrack">
+                    <button type="button" data-phase="solid"><span>01</span><b>Sólido</b><small>estructura rígida</small></button>
+                    <button type="button" data-phase="liquid" class="is-active"><span>02</span><b>Líquido · medio</b><small>respuesta eficiente</small></button>
+                    <button type="button" data-phase="fluid"><span>03</span><b>Fluido</b><small>reconfiguración ágil</small></button>
+                    <button type="button" data-phase="adaptive"><span>04</span><b>Adaptativo</b><small>aprende y evoluciona</small></button>
                   </div>
                 </div>
               </section>
 
               <div class="results-grid">
-                <section class="lab-panel radar-panel">
+                <section class="lab-panel">
                   <header><span>02</span><strong>AMINOÁCIDOS DE LA ADAPTABILIDAD</strong></header>
-                  <div class="radar-wrap">
-                    <svg class="results-radar" id="resultsRadar" viewBox="0 0 420 420" aria-label="Radar A1 a A5">
-                      <g class="radar-static" id="radarStatic"></g>
-                      <polygon id="radarPolygon" class="radar-data" points=""></polygon>
-                      <g id="radarDots"></g>
+                  <div class="radar-demo">
+                    <svg viewBox="0 0 420 420" aria-label="Radar de cinco capacidades">
+                      <g class="radar-grid">
+                        <polygon points="210,50 362,160 304,338 116,338 58,160"/>
+                        <polygon points="210,90 324,173 280,307 140,307 96,173"/>
+                        <polygon points="210,130 286,185 257,276 163,276 134,185"/>
+                        <line x1="210" y1="210" x2="210" y2="50"/><line x1="210" y1="210" x2="362" y2="160"/><line x1="210" y1="210" x2="304" y2="338"/><line x1="210" y1="210" x2="116" y2="338"/><line x1="210" y1="210" x2="58" y2="160"/>
+                      </g>
+                      <polygon class="radar-data" points="210,88 321,174 272,296 143,301 96,173"/>
+                      <g class="radar-labels"><text x="210" y="32">A1</text><text x="382" y="160">A2</text><text x="317" y="365">A3</text><text x="103" y="365">A4</text><text x="38" y="160">A5</text></g>
                     </svg>
-                    <div class="radar-legend" id="radarLegend"></div>
+                    <ul>
+                      <li><b>A1 Anticipación</b><span>61,09%</span></li>
+                      <li><b>A2 Agilidad</b><span>58,12%</span></li>
+                      <li><b>A3 Aprendizaje</b><span>53,17%</span></li>
+                      <li><b>A4 Adecuación</b><span>58,48%</span></li>
+                      <li><b>A5 Antifragilidad</b><span>60,09%</span></li>
+                    </ul>
                   </div>
                 </section>
 
-                <section class="lab-panel gauge-panel">
-                  <header><span>03</span><strong>ADAPTABILIDAD · FOCO EQUIPOS HUMANOS</strong></header>
+                <section class="lab-panel">
+                  <header><span>03</span><strong>ADAPTABILIDAD · EQUIPOS HUMANOS</strong></header>
                   <div class="team-gauge" style="--gauge:54.67">
                     <div class="team-gauge__arc"></div>
-                    <div class="team-gauge__value"><strong data-count="54.67">0,00%</strong><span>personas</span></div>
-                  </div>
-                </section>
-
-                <section class="lab-panel pie-panel">
-                  <header><span>04</span><strong>DISTRIBUCIÓN A1–A5</strong></header>
-                  <div class="pie-wrap">
-                    <div class="result-pie" id="resultPie"></div>
-                    <div class="pie-legend" id="pieLegend"></div>
+                    <div class="team-gauge__value"><strong data-count="54.67">54,67%</strong><span>personas</span></div>
                   </div>
                 </section>
               </div>
 
               <section class="lab-panel indicators-panel">
-                <header><span>05</span><strong>INDICADORES POR DIMENSIÓN</strong><small>FUERZA RELATIVA / %</small></header>
-                <div class="mini-bars" id="miniBars"></div>
+                <header><span>04</span><strong>INDICADORES POR DIMENSIÓN</strong><small>LECTURA RELATIVA / %</small></header>
+                <div class="mini-bars">
+                  <article><h4>A1 · Anticipación</h4><div class="barplot"><i style="--v:62"><b>62</b><small>AE</small></i><i style="--v:68"><b>68</b><small>RE</small></i><i style="--v:61"><b>61</b><small>VE</small></i><i style="--v:60"><b>60</b><small>SF</small></i></div></article>
+                  <article><h4>A2 · Agilidad</h4><div class="barplot"><i style="--v:61"><b>61</b><small>VD</small></i><i style="--v:58"><b>58</b><small>ADP</small></i><i style="--v:52"><b>52</b><small>REC</small></i><i style="--v:65"><b>65</b><small>SR</small></i></div></article>
+                  <article><h4>A3 · Aprendizaje</h4><div class="barplot"><i style="--v:58"><b>58</b><small>DR</small></i><i style="--v:51"><b>51</b><small>CC</small></i><i style="--v:51"><b>51</b><small>RC</small></i><i style="--v:52"><b>52</b><small>DO</small></i></div></article>
+                  <article><h4>A4 · Adecuación</h4><div class="barplot"><i style="--v:53"><b>53</b><small>FE</small></i><i style="--v:59"><b>59</b><small>CCI</small></i><i style="--v:63"><b>63</b><small>AC</small></i><i style="--v:66"><b>66</b><small>APV</small></i></div></article>
+                  <article><h4>A5 · Antifragilidad</h4><div class="barplot"><i style="--v:66"><b>66</b><small>CE</small></i><i style="--v:60"><b>60</b><small>REP</small></i><i style="--v:66"><b>66</b><small>CDI</small></i><i style="--v:62"><b>62</b><small>TO</small></i><i style="--v:56"><b>56</b><small>GAC</small></i></div></article>
+                </div>
               </section>
             </article>
 
-            <article class="iao-slide" data-index="2">
+            <article class="iao-slide" data-index="5">
               <header class="slide-head">
-                <span class="eyebrow">CUANDO ADAPTARSE EMPIEZA A COSTAR</span>
-                <h2>Las fricciones ya están dejando señales.</h2>
-                <p>El IAO conecta síntomas organizacionales con efectos concretos sobre velocidad, innovación, talento y vigencia.</p>
+                <span class="eyebrow">DEL DIAGNÓSTICO A LA ACCIÓN SIN SATURAR A TUS EQUIPOS</span>
+                <h2>Un proceso breve y participativo que termina en decisiones concretas.</h2>
+                <p>Proceso ejecutado en 5–6 semanas.</p>
               </header>
-              <div class="signals-list" id="signalsList"></div>
-              <p class="closing-note">El coste de no actuar es fuga de talento, pérdida de competitividad y margen.</p>
-            </article>
 
-            <article class="iao-slide" data-index="3">
-              <header class="slide-head">
-                <span class="eyebrow">QUÉ CONSIGUE TU ORGANIZACIÓN</span>
-                <h2>Una lectura compartida para decidir dónde intervenir.</h2>
-              </header>
-              <div class="benefits-grid" id="benefitsGrid"></div>
+              <div class="process-track">
+                <article><b>01</b><h3>Contextualizamos</h3><p>Definimos el desafío, el alcance y los colectivos que conviene escuchar.</p></article>
+                <article><b>02</b><h3>Medimos</h3><p>Obtenemos el IAO global y por capacidades, áreas, roles o equipos.</p></article>
+                <article><b>03</b><h3>Interpretamos</h3><p>Identificamos patrones, brechas y palancas de transformación.</p></article>
+                <article><b>04</b><h3>Priorizamos</h3><p>Construimos una hoja de ruta con iniciativas, responsables y seguimiento.</p></article>
+              </div>
 
               <section class="deliverables">
-                <span class="eyebrow">SALIDA DEL DIAGNÓSTICO</span>
+                <span class="eyebrow">QUÉ RECIBE LA ORGANIZACIÓN</span>
                 <div class="deliverables-grid">
                   <p>IAO global y por capacidades</p>
                   <p>Radar y cruces por áreas o roles</p>
@@ -283,31 +317,22 @@
               </section>
             </article>
 
-            <article class="iao-slide" data-index="4">
-              <header class="slide-head">
-                <span class="eyebrow">DEL DIAGNÓSTICO A LA ACCIÓN</span>
-                <h2>Un proceso breve y participativo que termina en decisiones concretas.</h2>
-                <p>Proceso ágil ejecutado en 5–6 semanas.</p>
-              </header>
-              <div class="process-track" id="processTrack"></div>
-            </article>
-
-            <article class="iao-slide" data-index="5">
+            <article class="iao-slide" data-index="6">
               <header class="slide-head">
                 <span class="eyebrow">QUÉ SUPONE PARA LA EMPRESA</span>
-                <h2>Mínimo impacto en la agenda de los equipos.</h2>
+                <h2>Proceso ligero con mínimo impacto en la agenda de los equipos.</h2>
               </header>
 
               <div class="effort-grid">
-                <article><strong>20'</strong><span>Equipos</span><p>Cuestionario online.</p></article>
+                <article><strong>20'</strong><span>Equipos</span><p>Solo 20 minutos para completar el cuestionario online.</p></article>
                 <article><strong>45'</strong><span>Dirección</span><p>Entrevistas individuales.</p></article>
-                <article><strong>2 × 3h</strong><span>Talleres</span><p>Trabajo colaborativo.</p></article>
-                <article><strong>1h</strong><span>Contraparte</span><p>Dedicación semanal.</p></article>
+                <article><strong>2 × 3h</strong><span>Talleres</span><p>Trabajo colaborativo con la dirección.</p></article>
+                <article><strong>1h</strong><span>Contraparte</span><p>Dedicación semanal para impulsar y socializar el proyecto.</p></article>
               </div>
 
               <section class="product-cta">
                 <div>
-                  <span class="eyebrow">SIGUIENTE PASO</span>
+                  <span class="eyebrow">¿QUIERES CONOCER EL NIVEL DE ADAPTABILIDAD DE TU ORGANIZACIÓN?</span>
                   <h2>Solicita una sesión de diagnóstico de 30 minutos sin compromiso.</h2>
                 </div>
                 <div class="product-cta__links">
@@ -315,7 +340,7 @@
                   <a href="https://www.protea.blue/" target="_blank" rel="noopener">www.protea.blue</a>
                 </div>
               </section>
-              <p class="product-claim">LA ADAPTABILIDAD ES EL GEN DE LA LONGEVIDAD DE LAS ORGANIZACIONES</p>
+              <p class="product-claim">LA ADAPTABILIDAD ES EL GEN DE LA LONGEVIDAD DE LAS ORGANIZACIONES · BARCELONA · VALENCIA · SANTIAGO DE CHILE</p>
             </article>
 
           </div>
@@ -326,10 +351,11 @@
             <button type="button" id="deckNext">SIGUIENTE →</button>
           </footer>
         </div>
-      </section>
+      </dialog>
+
     </section>
   </main>
 
-  <script src="./iao-card.js?v=18"></script>
+  <script src="./iao-card.js?v=19"></script>
 </body>
 </html>
