@@ -181,6 +181,8 @@ a{color:inherit}
   background:#fff
 }
 .iao-card__cta{
+  position:relative;
+  z-index:10;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -189,6 +191,9 @@ a{color:inherit}
   min-height:46px;
   padding:0;
   border:0;
+  border-radius:0;
+  appearance:none;
+  -webkit-appearance:none;
   background:transparent;
   color:var(--blue);
   text-decoration:none;
@@ -222,7 +227,7 @@ a{color:inherit}
 
 /* MODAL / LAB DECK */
 .iao-modal{position:fixed;inset:0;z-index:100;padding:22px;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
-.iao-modal.is-open,.iao-modal:target{opacity:1;pointer-events:auto}
+.iao-modal.is-open{opacity:1;pointer-events:auto}
 .iao-modal__backdrop{position:absolute;inset:0;border:0;background:rgba(0,40,95,.25);backdrop-filter:blur(9px);cursor:pointer}
 .iao-modal__dialog{
   position:relative;z-index:2;width:min(1180px,100%);height:min(94dvh,920px);
@@ -231,7 +236,7 @@ a{color:inherit}
   box-shadow:0 34px 100px rgba(0,61,159,.16);
   transform:translateY(18px) scale(.987);transition:transform .45s var(--ease)
 }
-.iao-modal.is-open .iao-modal__dialog,.iao-modal:target .iao-modal__dialog{transform:none}
+.iao-modal.is-open .iao-modal__dialog{transform:none}
 .iao-modal__header{
   position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;
   padding:15px 64px 14px 20px;border-bottom:1px solid var(--line);background:#fff

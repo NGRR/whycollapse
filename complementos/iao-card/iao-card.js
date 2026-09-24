@@ -1,7 +1,7 @@
 (function(){
   var modal=document.getElementById("iaoModal");
   var card=document.getElementById("iaoCard");
-  var cardLink=document.getElementById("iaoCardLink");
+  var cardOpen=document.getElementById("iaoCardOpen");
   var closeButtons=Array.prototype.slice.call(document.querySelectorAll("[data-close]"));
   var slides=Array.prototype.slice.call(document.querySelectorAll(".iao-slide"));
   var navButtons=Array.prototype.slice.call(document.querySelectorAll(".iao-deck-nav button"));
@@ -71,39 +71,28 @@
     if(current===1){animateResults();}
   }
 
-  cardLink.addEventListener("click",function(){
+  function openModal(){
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden","false");
-    cardLink.setAttribute("aria-expanded","true");
+    cardOpen.setAttribute("aria-expanded","true");
     document.body.classList.add("iao-lock");
     setSlide(0);
-    window.setTimeout(function(){document.querySelector(".iao-modal__close").focus({preventScroll:true});},40);
-  });
+    window.setTimeout(function(){
+      var closeButton=document.querySelector(".iao-modal__close");
+      if(closeButton){closeButton.focus({preventScroll:true});}
+    },40);
+  }
 
   function closeModal(){
     modal.classList.remove("is-open");
-    if(window.location.hash==="#iaoModal"){
-      history.replaceState(null,"",window.location.pathname+window.location.search);
-    }
     modal.setAttribute("aria-hidden","true");
-    cardLink.setAttribute("aria-expanded","false");
+    cardOpen.setAttribute("aria-expanded","false");
     document.body.classList.remove("iao-lock");
-    cardLink.focus({preventScroll:true});
+    cardOpen.focus({preventScroll:true});
   }
+
+  cardOpen.addEventListener("click",openModal);
   closeButtons.forEach(function(btn){btn.addEventListener("click",closeModal);});
-  window.addEventListener("hashchange",function(){
-    if(window.location.hash==="#iaoModal"){
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden","false");
-      cardLink.setAttribute("aria-expanded","true");
-      document.body.classList.add("iao-lock");
-    }else if(modal.classList.contains("is-open")){
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden","true");
-      cardLink.setAttribute("aria-expanded","false");
-      document.body.classList.remove("iao-lock");
-    }
-  });
   document.addEventListener("keydown",function(e){
     if(!modal.classList.contains("is-open")) return;
     if(e.key==="Escape") closeModal();
