@@ -1,0 +1,206 @@
+/* CHANGE-010. The navigation rail stays external to the four-column body grid. */
+.consolidation-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:0}
+.consolidation-content{grid-column:2 / 5;min-width:0;padding-left:32px}
+.consolidation-section{background:rgba(255,255,255,.94);scroll-margin-top:100px}
+
+/* CHANGE-010. El rail queda fuera; el canvas se recorta al primer cuarto del cuerpo. */
+.protea-review{--protea-body-blue:#0759f4;background:var(--protea-body-blue)}
+.protea-viva-background{
+  position:fixed;
+  z-index:0;
+  top:-10px;
+  bottom:-10px;
+  left:var(--protea-viva-left,132px);
+  width:var(--protea-viva-width,calc(100vw - 132px));
+  overflow:hidden;
+  pointer-events:none;
+  clip-path:inset(0 75% 0 0);
+  background:
+    radial-gradient(circle at 50% 46%,rgba(255,255,255,.055),transparent 31%),
+    var(--protea-body-blue);
+}
+#protea-viva-canvas{display:block;width:100%;height:100%}
+.protea-review .consolidation-section{
+  background-color:transparent!important;
+  background-image:none!important;
+  color:#fff;
+  border-bottom-color:rgba(255,255,255,.16);
+}
+.protea-review .consolidation-footer{
+  position:relative;
+  z-index:1;
+  background:transparent;
+  border-top-color:rgba(255,255,255,.18);
+  color:#fff;
+}
+.protea-review .consolidation-content :is(h2,h3,h4),
+.protea-review .contact-anchor :is(h2,h3),
+.protea-review .contact-step legend{color:#fff}
+.protea-review .consolidation-content :is(p,li,label,dd),
+.protea-review .contact-anchor :is(p,label,dd){color:rgba(255,255,255,.82)}
+.protea-review .consolidation-content .section-kicker,
+.protea-review .contact-anchor .section-kicker,
+.protea-review .consolidation-content .eyebrow{color:var(--protea-orange)}
+.protea-review .consolidation-content :is(.step-tension,.iao-questions,.thinking-formats),
+.protea-review .contact-review dt,
+.protea-review .team-person summary{color:#fff}
+.protea-review .mirada-statements strong,
+.protea-review .mirada-statements p:nth-child(even) strong{color:var(--protea-orange)}
+.protea-review :is(.adaptive-journey,.adaptive-step+.adaptive-step,.iao-evidence,.journey-close,.contact-anchor,.contact-review,.contact-review>div){border-color:rgba(255,255,255,.22)}
+.protea-review .adaptive-step:before{box-shadow:0 0 0 7px rgba(255,90,0,.16)}
+.protea-review .iao-report{background:linear-gradient(145deg,rgba(0,17,51,.96),rgba(7,89,244,.56));border-color:rgba(255,255,255,.3)}
+.protea-review .iao-report figcaption{color:rgba(255,255,255,.72)}
+.protea-review .team-source a,
+.protea-review .contact-privacy a{color:#fff;text-decoration-color:rgba(255,255,255,.5)}
+.protea-review .contact-progress li{border-top-color:rgba(255,255,255,.26);color:rgba(255,255,255,.58)}
+.protea-review .contact-progress li.is-active{border-top-color:#fff;color:#fff}
+.protea-review .contact-progress li.is-complete{border-top-color:var(--protea-orange);color:#fff}
+.protea-review .contact-field :is(input,textarea,select){border-bottom-color:rgba(255,255,255,.52);color:#fff}
+.protea-review .contact-field :is(input,textarea,select):focus{outline-color:var(--protea-orange)}
+.protea-review .contact-privacy input{accent-color:var(--protea-orange)}
+.protea-review .contact-delivery-note{color:rgba(255,255,255,.62)}
+.protea-review .consolidation-section .protea-button-primary{background:var(--protea-orange);border-color:var(--protea-orange);color:#fff}
+.protea-review .consolidation-section .protea-button{border-color:rgba(255,255,255,.72);color:#fff}
+.protea-review .consolidation-footer :is(.brand-mark,.site-footer-links a){color:#fff}
+.consolidation-content>h2,.contact-anchor>h2{font-size:clamp(42px,5vw,72px);line-height:1.02;margin-top:0;overflow-wrap:break-word}
+.consolidation-content h3{font-size:clamp(26px,3vw,38px);line-height:1.12}
+.consolidation-content h4{font-size:22px;line-height:1.2}
+.consolidation-content>p,.adaptive-step>p,.iao-evidence>p,.journey-close>p{max-width:680px}
+.consolidation-content figure{margin:32px 0}
+.consolidation-content figure img{display:block;width:100%;height:auto}
+.consolidation-content figcaption{margin-top:12px;font-size:13px;line-height:1.5;color:rgba(7,18,38,.65)}
+.consolidation-content .uk-button,.page-actions .uk-button{white-space:normal;max-width:100%;line-height:1.4;padding-top:15px;padding-bottom:15px}
+.mirada-statements{margin:56px 0}
+.mirada-statements p{font:400 clamp(25px,2.6vw,39px)/1.25 var(--font-head);letter-spacing:-.025em;margin:0;padding:30px 0}
+.mirada-statements strong{color:var(--protea-blue);font-weight:500}
+.mirada-statements p:nth-child(even) strong{color:var(--protea-orange)}
+.mirada-statements [data-reveal]{transition:opacity .65s ease,transform .65s ease}
+.mirada-statements .is-pending{opacity:.12;transform:translateY(16px)}
+.adaptive-journey{margin-top:56px;border-left:1px solid var(--protea-line)}
+.adaptive-step{position:relative;padding:0 0 54px 30px;scroll-margin-top:112px}
+.adaptive-step+.adaptive-step{padding-top:50px;border-top:1px solid var(--protea-line)}
+.adaptive-step:before{content:"";position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--protea-orange)}
+.adaptive-step+.adaptive-step:before{top:56px}
+.adaptive-step h3{margin:0 0 22px}
+.step-tension{font-size:23px;line-height:1.3;color:var(--protea-blue)}
+.step-outcome{padding-top:20px;border-top:1px solid var(--protea-line)}
+.iao-evidence{margin:34px 0 0;padding-top:28px;border-top:1px solid var(--protea-line)}
+.iao-evidence .iao-logo,.consolidation-content>.iao-logo{display:block;width:148px;height:auto;margin:0 0 22px}
+.iao-questions{font:500 clamp(21px,2.1vw,29px)/1.45 var(--font-head);color:var(--protea-blue)}
+.iao-report{position:relative;overflow:hidden;isolation:isolate;background:#fff;border:1px solid var(--protea-line);padding:10px;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+.iao-report:after{content:"";position:absolute;z-index:2;top:0;right:20px;width:64px;height:2px;background:var(--protea-orange);box-shadow:0 8px 22px rgba(255,90,0,.58);pointer-events:none}
+.iao-report img{filter:saturate(.82) contrast(1.06)}
+.iao-report figcaption{padding:2px 6px 5px}
+.editorial-list{padding-left:22px;font-size:18px}
+.editorial-list li{padding:5px 0}
+.journey-photo,.thinking-photo{position:relative;overflow:hidden;isolation:isolate;background:#001133;clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px))}
+.journey-photo:before,.thinking-photo:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(110deg,rgba(7,89,244,.54),rgba(7,89,244,.08) 58%,rgba(255,90,0,.18)),repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),rgba(255,255,255,.12) 25%);mix-blend-mode:screen}
+.journey-photo:after,.thinking-photo:after{content:"";position:absolute;z-index:2;top:16px;right:16px;width:56px;height:2px;background:var(--protea-orange);box-shadow:0 8px 24px rgba(255,90,0,.62);pointer-events:none}
+.journey-photo img,.thinking-photo img{position:relative;z-index:0;filter:saturate(.74) contrast(1.14) brightness(.88);transform:scale(1.006)}
+.journey-photo img{max-height:410px;object-fit:cover}
+.journey-close{padding-top:32px;border-top:1px solid var(--protea-line)}
+.thinking-photo img{aspect-ratio:16 / 9;object-fit:cover}
+.thinking-formats{font-family:var(--font-head);color:var(--protea-blue);line-height:1.7}
+.team-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 20px;margin-top:40px;align-items:start}
+.team-mobile-hint{display:none}
+.team-person{position:relative;min-width:0;box-sizing:border-box;overflow:hidden;padding:12px 12px 20px;background:linear-gradient(150deg,rgba(0,17,51,.96),rgba(0,47,142,.76));border:1px solid rgba(255,255,255,.22);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));transition:transform .3s ease,border-color .3s ease,background-color .3s ease}
+.team-person:before{content:"";position:absolute;z-index:2;top:18px;right:18px;width:9px;height:9px;border:1px solid var(--protea-orange);border-radius:50%;box-shadow:0 0 0 6px rgba(255,90,0,.12),0 0 18px rgba(255,90,0,.72);pointer-events:none}
+.team-person:after{content:"";position:absolute;z-index:2;left:12px;right:12px;top:45%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.52),var(--protea-orange),transparent);opacity:.62;pointer-events:none}
+.team-person>img{display:block;width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:50% 25%;background:#001133;opacity:.92;filter:grayscale(.12) saturate(.68) contrast(1.12) brightness(.86);transition:opacity .3s ease,filter .3s ease}
+.team-person:nth-child(3n + 2){margin-top:32px}
+.team-person:hover{transform:translateY(-6px);border-color:rgba(255,90,0,.72)}
+.team-person:hover>img,.team-person:focus-within>img{opacity:1;filter:grayscale(0) saturate(.82) contrast(1.08) brightness(.94)}
+.team-person h3{font-size:20px;line-height:1.2;margin:18px 4px 8px}
+.team-person p{font-size:15px;line-height:1.5;margin:0 4px}
+.team-person summary,.iao-faq summary{cursor:pointer;color:var(--protea-blue);font-weight:500}
+.team-person details{margin:14px 4px 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.2)}
+.team-person details p{margin:14px 0 0}
+.team-source{font-size:14px;margin-top:30px}
+.contact-anchor{margin-top:90px;padding-top:50px;border-top:1px solid var(--protea-line);scroll-margin-top:110px}
+.contact-progress{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:42px 0 54px;padding:0}
+.contact-progress li{border-top:1px solid var(--protea-line);padding-top:12px;color:rgba(7,18,38,.54);font:500 13px/1.35 var(--font-head);transition:border-color .2s ease,color .2s ease}
+.contact-progress li span{display:block;margin-bottom:6px;color:var(--protea-orange);font-size:15px}
+.contact-progress li.is-active{border-top-color:var(--protea-blue);color:var(--protea-blue)}
+.contact-progress li.is-complete{border-top-color:var(--protea-orange);color:var(--protea-ink)}
+.contact-progress-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.contact-step{min-width:0;border:0;margin:0;padding:0}
+.contact-step legend{display:block;width:100%;padding:0;font:500 clamp(27px,3vw,40px)/1.15 var(--font-head);color:var(--protea-ink)}
+.contact-step-intro{max-width:620px;margin-top:16px;color:rgba(7,18,38,.72)}
+.contact-step .contact-fields{margin-top:36px}
+.contact-step-actions{display:none;flex-wrap:wrap;gap:16px;align-items:center;margin:4px 0 30px}
+.protea-contact-form.is-enhanced .contact-step-actions{display:flex}
+.protea-contact-form.is-enhanced .contact-fallback-submit{display:none}
+.contact-review{display:none;margin:36px 0 30px;border-top:1px solid var(--protea-line)}
+.protea-contact-form.is-enhanced .contact-review{display:block}
+.contact-review>div{display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,2fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--protea-line)}
+.contact-review dt{font:500 14px/1.5 var(--font-head);color:var(--protea-blue)}
+.contact-review dd{min-width:0;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.contact-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:34px 0}
+.contact-field-full{grid-column:1 / -1}
+.contact-field label{display:block;font-size:15px;margin-bottom:10px}
+.contact-field input,.contact-field textarea,.contact-field select{box-sizing:border-box;display:block;width:100%;min-width:0;border:0;border-bottom:1px solid rgba(7,18,38,.38);border-radius:0;background:transparent;padding:10px 0;font:inherit;color:var(--protea-ink)}
+.contact-field input,.contact-field select{min-height:46px}
+.contact-field textarea{resize:vertical}
+.contact-field :is(input,textarea,select):focus{outline:2px solid var(--protea-blue);outline-offset:4px}
+.contact-privacy{font-size:14px;line-height:1.6}
+.contact-privacy input{margin-right:6px;accent-color:var(--protea-blue)}
+.contact-delivery-note{font-size:14px;color:rgba(7,18,38,.68)}
+.contact-status{color:var(--protea-ink);font-size:15px}
+.consolidation-footer .brand{margin-bottom:24px}
+.thinking-hero-grid{display:grid;grid-template-columns:3fr 2fr;gap:44px;align-items:center}
+.thinking-hero h1{font-size:clamp(44px,4.8vw,74px)}
+.thinking-hero-image{margin:0}
+.thinking-hero-image img{display:block;width:100%;aspect-ratio:3 / 4;object-fit:cover;object-position:65% 50%}
+.page-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:34px}
+.consolidation-content .book-credit{display:flex;align-items:center;gap:24px;margin:32px 0}
+.consolidation-content .book-credit img{width:105px;height:auto;flex-shrink:0}
+.other-topics{margin-top:64px;padding-top:30px;border-top:1px solid var(--protea-line)}
+.consolidation-content .profile-photo img{width:min(100%,320px);height:auto}
+.contract-process{counter-reset:contract;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.contract-process li{counter-increment:contract;border-top:1px solid var(--protea-line);padding-top:20px}
+.contract-process li:before{content:"0" counter(contract);display:block;color:var(--protea-orange);font:500 30px/1 var(--font-head);margin-bottom:16px}
+.contract-process strong,.contract-process span{display:block}
+.contract-process strong{font-family:var(--font-head);font-size:20px}
+.iao-faq details{padding:24px 0;border-bottom:1px solid var(--protea-line)}
+.iao-faq summary{font-size:21px}
+/* Local fit for the longer approved headline; type families and canvas unchanged. */
+@media(min-width:960px){.protea-review .hero-title{font-size:clamp(36px,3.55vw,62px);line-height:1.02}}
+.protea-review .hero-title span:nth-child(2),.protea-review .hero-title em{white-space:normal}
+.protea-review .hero-title span{overflow-wrap:normal}
+.protea-review .hero-copy-panel .protea-button-primary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding-top:12px!important;padding-bottom:12px!important}
+@media(max-width:959px){
+  .protea-viva-background{display:block;top:0;bottom:0;left:0;width:100vw;clip-path:none}
+  .consolidation-section>.uk-container{padding-left:24px;padding-right:24px}
+  .protea-review .hero-title{width:min(100%,440px);font-size:clamp(34px,6.5vw,48px)}
+  .consolidation-grid{grid-template-columns:minmax(0,1fr)}
+  .consolidation-content{grid-column:1;padding-left:0}
+  .consolidation-content>h2,.contact-anchor>h2{font-size:clamp(34px,6vw,52px)}
+  .thinking-hero-grid{grid-template-columns:1fr;gap:32px}
+  .thinking-hero-image img{aspect-ratio:16 / 9;object-position:center}
+  .consolidation-page .page-nav .mobile-menu-button span{background:var(--protea-blue)}
+}
+@media(max-width:639px){
+  .team-mobile-hint{display:block;margin:30px 0 14px;color:rgba(255,255,255,.68);font:500 12px/1.4 var(--font-head);letter-spacing:.08em;text-transform:uppercase}
+  .team-mosaic{display:flex;gap:16px;width:calc(100% + 24px);margin-top:0;margin-right:-24px;padding:0 24px 18px 0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:0;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.5) rgba(255,255,255,.12)}
+  .team-mosaic::-webkit-scrollbar{height:2px}
+  .team-mosaic::-webkit-scrollbar-track{background:rgba(255,255,255,.12)}
+  .team-mosaic::-webkit-scrollbar-thumb{background:rgba(255,255,255,.5)}
+  .team-mosaic:after{content:"";flex:0 0 8px}
+  .team-person{flex:0 0 min(82vw,310px);scroll-snap-align:start;scroll-snap-stop:always}
+  .team-person:nth-child(3n + 2){margin-top:0}
+  .team-person:nth-child(even){margin-top:0}
+  .team-person>img{height:auto;aspect-ratio:4 / 5;object-fit:contain;object-position:center top}
+  .team-person h3{font-size:19px}
+  .contact-fields{grid-template-columns:minmax(0,1fr)}
+  .adaptive-step{padding-left:22px}
+  .mirada-statements{margin:30px 0}
+  .mirada-statements p{font-size:26px;padding:24px 0}
+  .contact-anchor{margin-top:60px}
+  .contact-progress{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;margin:34px 0 42px}
+  .contact-review>div{grid-template-columns:minmax(0,1fr);gap:6px}
+  .consolidation-content .iao-report{padding:8px}
+  .contract-process{gap:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .mirada-statements [data-reveal]{transition:none;transform:none;opacity:1}
+}
