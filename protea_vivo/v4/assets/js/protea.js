@@ -44,6 +44,7 @@
     last: 0,
     acc: 0,
     pointer: { x: 0, y: 0, active: false, nx: 0, ny: 0 },
+    firstFrameReady: false,
     lens: { ax: 0, ay: 0, x: 0, y: 0, tx: 0, ty: 0, r: 170, angle: 0, spin: 0, magnet: 0 }
   };
 
@@ -524,6 +525,13 @@
     drawScientificOverlay();
     drawLensInterior();
     drawLensFrame();
+
+    // Signals actual first painted frame; the preloader waits on this event.
+    if (!state.firstFrameReady) {
+      state.firstFrameReady = true;
+      window.__PROTEA_HERO_READY__ = { at: performance.now(), width: canvas.width, height: canvas.height };
+      window.dispatchEvent(new Event('protea:hero-ready'));
+    }
   }
 
   function frame(now) {
@@ -590,5 +598,9 @@
       queueResize();
       startAnimation();
     })
-    .catch(err => console.error('No se pudieron cargar los assets del hero', err));
+    .catch(err => {
+      window.__PROTEA_HERO_FAILED__ = String(err);
+      window.dispatchEvent(new Event('protea:hero-error'));
+      console.error('No se pudieron cargar los assets del hero', err);
+    });
 })();

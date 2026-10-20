@@ -11,20 +11,19 @@
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
   /*
-   * LOADER V3 R16
-   * - El progreso depende de recursos realmente resueltos, no del reloj.
-   * - 3 s es sólo la permanencia mínima estética.
-   * - 30 s es un fail-safe; no es el mecanismo normal de liberación.
-   * - PerformanceObserver se usa para telemetría/auditoría, no como semáforo.
+   * V4 · Dos fases independientes:
+   * 1. Carga REAL de imágenes críticas, fuentes y primer frame del hero.
+   *    Sin permanencia mínima artificial ni imágenes de secciones posteriores.
+   * 2. Entrada cinematográfica de 2000 ms al terminar la carga.
+   *    El watchdog de 25 s sólo evita un bloqueo indefinido por red fallida.
+   * PerformanceObserver es telemetría; nunca simula la carga.
    */
   const CFG = Object.freeze({
     timing: {
-      minDisplay: reduceMotion ? 180 : 3000,
-      dock: reduceMotion ? 120 : 850,
-      settle: reduceMotion ? 20 : 70,
-      fade: reduceMotion ? 160 : 360,
-      maxWait: reduceMotion ? 2500 : 30000,
-      heroFrameWait: reduceMotion ? 900 : 8000
+      dock: reduceMotion ? 0 : 1380,
+      settle: reduceMotion ? 0 : 120,
+      fade: reduceMotion ? 160 : 500,
+      maxWait: 25000
     },
     drive: {
       artMobile: 960,
@@ -128,9 +127,17 @@
   const lens = host.querySelector('.v3-preloader__lens');
   const readiness = host.querySelector('.v3-preloader__readiness');
   const report = {
-    version: 'R16-real-loader',
+    version: 'V4-two-phase-loader',
     startedAt: performance.now(),
+    phase: 'loading',
+    criticalReadyAt: null,
+    revealStartedAt: null,
+    revealEndedAt: null,
+    loadDurationMs: null,
+    revealDurationMs: null,
     timedOut: false,
+    failedTasks: 0,
+    pendingTasks: 0,
     progress: 0,
     tasks: [],
     resources: []
@@ -320,7 +327,12 @@
       if (immediate) segment.style.transition = 'none';
     });
     if (immediate) requestAnimationFrame(() => segments.forEach((segment) => { segment.style.transition = 'opacity .12s linear'; }));
-    readiness.textContent = `LOAD ${String(Math.round(p * 100)).padStart(3, '0')}%`;
+    if (report.phase === 'loading') {
+      const elapsed = performance.now() - report.startedAt;
+      readiness.textContent = elapsed > 6500
+        ? `CARGANDO ${String(Math.round(p * 100)).padStart(3, '0')}%`
+        : `LOAD ${String(Math.round(p * 100)).padStart(3, '0')}%`;
+    }
   }
 
   function animateProgress() {
@@ -416,32 +428,25 @@
   }
 
   function waitForHeroFrame() {
-    const canvas = document.getElementById('protea-canvas');
-    if (!canvas) return Promise.resolve(false);
-    const deadline = performance.now() + CFG.timing.heroFrameWait;
+    // Actual first-render event, not a time-based or sampled-pixel assumption.
+    // The global 25-second watchdog guards the entire loading phase.
+    if (window.__PROTEA_HERO_READY__) return Promise.resolve(true);
+    if (window.__PROTEA_HERO_FAILED__) return Promise.resolve(false);
     return new Promise((resolve) => {
-      const probe = () => {
-        if (canvas.width > 2 && canvas.height > 2) {
-          try {
-            const ctx = canvas.getContext('2d');
-            const points = [
-              [canvas.width * .18, canvas.height * .22],
-              [canvas.width * .50, canvas.height * .50],
-              [canvas.width * .78, canvas.height * .64]
-            ];
-            const visible = points.some(([x, y]) => {
-              const d = ctx.getImageData(Math.max(0, Math.floor(x)), Math.max(0, Math.floor(y)), 1, 1).data;
-              return d[0] + d[1] + d[2] > 12;
-            });
-            if (visible) return resolve(true);
-          } catch (_) {
-            if (performance.now() - report.startedAt > 900) return resolve(true);
-          }
-        }
-        if (performance.now() >= deadline) return resolve(false);
-        window.setTimeout(probe, 80);
+      let done = false;
+      const finish = (ok) => {
+        if (done) return;
+        done = true;
+        window.removeEventListener('protea:hero-ready', onReady);
+        window.removeEventListener('protea:hero-error', onError);
+        resolve(ok);
       };
-      probe();
+      const onReady = () => finish(true);
+      const onError = () => finish(false);
+      window.addEventListener('protea:hero-ready', onReady, { once: true });
+      window.addEventListener('protea:hero-error', onError, { once: true });
+      if (window.__PROTEA_HERO_READY__) finish(true);
+      else if (window.__PROTEA_HERO_FAILED__) finish(false);
     });
   }
 
@@ -474,10 +479,15 @@
     const tasks = makeTasks();
     const total = tasks.reduce((sum, task) => sum + task.weight, 0) || 1;
     let complete = 0;
+    let settled = 0;
+    report.pendingTasks = tasks.length;
 
     const tracked = tasks.map((task) => Promise.resolve()
       .then(task.promiseFactory)
       .then((ok) => {
+        settled += 1;
+        report.pendingTasks = tasks.length - settled;
+        if (ok === false) report.failedTasks += 1;
         complete += task.weight;
         targetProgress = clamp(complete / total, 0, 1);
         report.progress = targetProgress;
@@ -485,6 +495,9 @@
         return ok;
       })
       .catch((error) => {
+        settled += 1;
+        report.pendingTasks = tasks.length - settled;
+        report.failedTasks += 1;
         complete += task.weight;
         targetProgress = clamp(complete / total, 0, 1);
         report.progress = targetProgress;
@@ -523,6 +536,7 @@
     window.removeEventListener('resize', syncLens);
     observer?.disconnect();
     report.completedAt = Math.round(performance.now() - report.startedAt);
+    report.phase = 'complete';
     host.remove();
     document.documentElement.classList.remove('v3-preloading');
     document.body.classList.remove('v3-preloading');
@@ -534,13 +548,29 @@
     window.addEventListener('resize', syncLens, { passive: true });
     progressFrame = requestAnimationFrame(animateProgress);
 
-    const minTime = wait(CFG.timing.minDisplay);
-    const readinessGate = runReadinessGate();
-    const [, outcome] = await Promise.all([minTime, readinessGate]);
+    // Fase 1: no minimum delay. Resolve when essential resources actually settle.
+    const outcome = await runReadinessGate();
+    report.criticalReadyAt = performance.now();
+    report.loadDurationMs = Math.round(report.criticalReadyAt - report.startedAt);
 
-    if (outcome === 'timeout') host.classList.add('is-load-timeout');
-    else host.classList.add('is-load-complete');
+    if (outcome === 'timeout') {
+      host.classList.add('is-load-timeout');
+      readiness.textContent = 'CONEXIÓN LENTA';
+    } else if (report.failedTasks > 0) {
+      host.classList.add('is-load-partial');
+      readiness.textContent = 'CARGA PARCIAL';
+    } else {
+      visualProgress = 1;
+      targetProgress = 1;
+      paintProgress();
+      host.classList.add('is-load-complete');
+      readiness.textContent = 'RECURSOS LISTOS';
+    }
 
+    // Fase 2: 1380 ms docking + 120 ms settle + 500 ms fade = 2000 ms.
+    // No resource is counted as ready just because this transition elapsed.
+    report.phase = 'reveal';
+    report.revealStartedAt = performance.now();
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     syncLens();
     prepareExplosion();
@@ -548,6 +578,8 @@
 
     host.classList.add('is-leaving');
     await wait(CFG.timing.fade);
+    report.revealEndedAt = performance.now();
+    report.revealDurationMs = Math.round(report.revealEndedAt - report.revealStartedAt);
     cleanup();
   }
 

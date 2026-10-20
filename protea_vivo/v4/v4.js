@@ -518,7 +518,8 @@
     runSequence().catch(forceRelease);
   }
 
-  initPreloader();
+  // La precarga V4 tiene un único controlador real: v4-loader.js.
+  // No activar el fallback temporizado heredado, que duplicaba su secuencia.
 
   /* Legacy guard: seven narrative items are rendered statically in V4. */
   const rail = document.querySelector('.section-rail');
