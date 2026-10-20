@@ -3,7 +3,10 @@
   const hero = document.getElementById('observatorio');
   if (!canvas || !hero) return;
 
-  const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+  // The default canvas remains compositor-synchronized in V4. An explicit
+  // debug override allows an A/B comparison with the former direct scanout.
+  const legacyCanvas = new URLSearchParams(location.search).get('legacy-canvas') === '1';
+  const ctx = canvas.getContext('2d', { alpha: false, desynchronized: legacyCanvas });
   let heroVisible = true;
   let pageVisible = !document.hidden;
   let animationFrame = 0;
