@@ -70,10 +70,22 @@
     const nextW = Math.max(1, Math.round(rect.width));
     const nextH = Math.max(1, Math.round(rect.height));
     const nextDpr = Math.min(window.devicePixelRatio || 1, CFG.dprMax);
-    if (nextW === state.w && nextH === state.h && nextDpr === state.dpr) {
-      render();
-      return;
-    }
+    if (nextW === state.w && nextH === state.h && nextDpr === state.dpr) return;
+
+    // Preserve the lens' current offset and movement while the canvas changes size.
+    // V3 restored the lens to its anchor on EVERY resize; in V4 the responsive
+    // header/viewport can resize a few times, which made the lens visibly jump.
+    const firstLayout = state.w <= 1 || state.h <= 1;
+    const previousW = state.w;
+    const previousH = state.h;
+    const lens = state.lens;
+    const offsetX = firstLayout ? 0 : lens.x - lens.ax;
+    const offsetY = firstLayout ? 0 : lens.y - lens.ay;
+    const targetOffsetX = firstLayout ? 0 : lens.tx - lens.ax;
+    const targetOffsetY = firstLayout ? 0 : lens.ty - lens.ay;
+    const pointerX = state.pointer.x;
+    const pointerY = state.pointer.y;
+    const pointerActive = state.pointer.active;
 
     state.w = nextW;
     state.h = nextH;
@@ -84,19 +96,19 @@
     canvas.style.height = `${state.h}px`;
     ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
 
-    const lens = state.lens;
     const mobile = isMobileLayout();
     lens.r = mobile ? clamp(Math.min(state.w * 0.38, state.h * 0.19), 96, 156) : clamp(Math.min(state.w * 0.34, state.h * 0.255), 118, 310);
     lens.ax = mobile ? state.w * 0.5 : state.w * 0.76 - 50;
     lens.ay = mobile ? state.h * 0.72 : state.h * 0.52;
-    lens.x = lens.ax;
-    lens.y = lens.ay;
-    lens.tx = lens.ax;
-    lens.ty = lens.ay;
-
-    state.pointer.x = lens.ax;
-    state.pointer.y = lens.ay;
-    state.pointer.active = false;
+    const ratioX = firstLayout ? 1 : state.w / previousW;
+    const ratioY = firstLayout ? 1 : state.h / previousH;
+    lens.x = lens.ax + offsetX * ratioX;
+    lens.y = lens.ay + offsetY * ratioY;
+    lens.tx = lens.ax + targetOffsetX * ratioX;
+    lens.ty = lens.ay + targetOffsetY * ratioY;
+    state.pointer.x = firstLayout ? lens.ax : pointerX * ratioX;
+    state.pointer.y = firstLayout ? lens.ay : pointerY * ratioY;
+    state.pointer.active = firstLayout ? false : pointerActive;
     updatePointerNorm();
     render();
   }

@@ -343,3 +343,12 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
   .protea-v4 .v4-feature-person img{max-width:300px}
   .protea-v4 .v4-footer-grid{grid-template-columns:1fr;gap:28px;padding:40px 0}
 }
+
+/* V4 · Stabilize the opening viewport without altering lens assets or animation. */
+@media(min-width:960px){
+  .protea-v4 .hero-section{padding-top:0}
+  .protea-v4 .hero-section .hero-copy-panel{min-height:100svh}
+}
+@media(max-width:959px){
+  .protea-v4 .hero-section{min-height:max(780px,100svh)}
+}

@@ -731,6 +731,7 @@
    */
   let mobileViewportFrame = 0;
   let orientationSettleTimer = 0;
+  let appliedViewportKey = '';
 
   const rebuildMobileViewport = () => {
     mobileViewportFrame = 0;
@@ -738,6 +739,12 @@
     const viewportWidth = Math.round(viewport?.width || window.innerWidth);
     const viewportHeight = Math.round(viewport?.height || window.innerHeight);
     const mobile = viewportWidth <= V3_SETTINGS.mobileBreakpoint;
+    const orientation = mobile && viewportWidth > viewportHeight ? 'landscape' : 'portrait';
+    // Browser bars change visualViewport.height continuously while scrolling.
+    // The V4 layout depends on width/orientation, not those transient height changes.
+    const viewportKey = `${mobile ? 'mobile' : 'desktop'}:${viewportWidth}:${mobile ? orientation : 'none'}`;
+    if (viewportKey === appliedViewportKey) return;
+    appliedViewportKey = viewportKey;
 
     if (!mobile) {
       document.body.removeAttribute('data-v3-orientation');
@@ -785,9 +792,10 @@
 
     requestAnimationFrame(() => {
       const navHeight = Math.round(siteNav?.getBoundingClientRect().height || (landscape ? 50 : 62));
-      const storyHeight = Math.round(mobileStoryNav?.getBoundingClientRect().height || (landscape ? 46 : 58));
+      // V4 intentionally has no bottom story navigation.
+      const storyHeight = 0;
       const minimum = landscape ? 280 : 520;
-      const criticalHeight = Math.max(minimum, viewportHeight - navHeight - storyHeight);
+      const criticalHeight = Math.max(minimum, viewportHeight - navHeight);
 
       document.documentElement.style.setProperty('--mobile-nav-h', `${navHeight}px`);
       document.documentElement.style.setProperty('--mobile-story-h', `${storyHeight}px`);

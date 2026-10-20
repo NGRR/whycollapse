@@ -458,9 +458,11 @@
     ].filter(Boolean);
     [...new Set(vivaAssets)].forEach((url) => add(`viva:${url.split('/').pop()}`, 1.35, () => warmImage(url, 'high')));
 
-    document.querySelectorAll('img[src]').forEach((img, index) => {
-      const team = Boolean(img.closest('.v3-team-card'));
-      add(`dom:${index}:${team ? 'team' : 'content'}`, team ? .8 : 1.4, () => waitForDomImage(img));
+    // V4 has substantially more editorial imagery than V3.
+    // Only images visible in the hero may block entry. All others remain
+    // native loading="lazy" and are loaded when they approach the viewport.
+    document.querySelectorAll('#observatorio img[src]').forEach((img, index) => {
+      add(`dom:hero:${index}`, 1.4, () => waitForDomImage(img));
     });
 
     if (document.fonts?.ready) add('fonts', .8, () => document.fonts.ready.then(() => true, () => false));
