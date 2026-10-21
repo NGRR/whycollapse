@@ -352,3 +352,32 @@ body.protea-v3{background:var(--v3-blue);overflow-x:hidden}
 @media(max-width:959px){
   .protea-v4 .hero-section{min-height:max(780px,100svh)}
 }
+
+
+/* V4 · Retratos del equipo — homologación fotográfica (2026-10-21).
+   La foto se conserva íntegra: recorte y contraste sólo en CSS.
+   Reutiliza los marcos cromáticos/diagramas de V3 para las seis cards.
+   No afecta al hero, a conferencias ni a las fotografías fuera del equipo. */
+.protea-v4 .v4-team-visual .v3-portrait {
+  aspect-ratio:.76;
+  isolation:isolate;
+  overflow:hidden;
+  background:#001f68;
+}
+.protea-v4 .v4-team-visual .v3-portrait>img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 40%;
+  filter:grayscale(.18) saturate(.76) contrast(1.13) brightness(.99);
+}
+.protea-v4 .v4-team-visual .v3-team-card:hover .v3-portrait>img {
+  filter:grayscale(.1) saturate(.84) contrast(1.14) brightness(1);
+}
+.protea-v4 .v4-team-visual .v3-chroma {
+  background:linear-gradient(135deg,rgba(255,90,0,.34),rgba(103,35,255,.16));
+  backdrop-filter:grayscale(1) contrast(1.8) saturate(1.3);
+  -webkit-backdrop-filter:grayscale(1) contrast(1.8) saturate(1.3);
+  opacity:.82;
+}
+.protea-v4 .v4-team-visual .v3-diagram {opacity:.72}
