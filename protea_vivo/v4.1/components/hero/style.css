@@ -1,0 +1,21 @@
+
+:root{--bg:#020826}
+*{box-sizing:border-box}
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+  background:var(--bg);
+}
+.hero-stage{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  background:#020826;
+}
+#heroCanvas{
+  display:block;
+  width:100%;
+  height:100%;
+}

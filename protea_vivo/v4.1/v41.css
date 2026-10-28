@@ -1,0 +1,16 @@
+/* PROTEA V4.1 · Primera pasada editorial. Solo estilos nuevos, sin alterar motores. */
+.protea-v4 .v41-details{margin:22px 0;padding:0 0 0 18px;border-left:2px solid rgba(255,90,0,.65);color:#fff}
+.protea-v4 .v41-details summary{cursor:pointer;list-style:revert;font:600 14px/1.5 Montserrat,sans-serif;color:#b8d7ff;padding:10px 8px}
+.protea-v4 .v41-details summary:focus-visible{outline:2px solid #ff5a00;outline-offset:4px}
+.protea-v4 .v41-details-copy{max-width:67ch;padding:0 8px 14px;color:#dceafb}
+.protea-v4 .v41-details-copy p{font-size:14px;line-height:1.65}
+.protea-v4 .v41-team-kicker{margin-top:42px}
+.protea-v4 .v41-ally{margin:30px 0 14px;padding:14px 20px;border-left:3px solid #ff5a00;background:rgba(0,33,90,.55);font-weight:500}
+.protea-v4 .v41-use-case{margin:24px 0 8px;max-width:60ch;font-size:16px}
+.protea-v4 .v41-reference-intro{max-width:60ch;color:#cee0fb;font-size:13px}
+.protea-v4 .v41-current-categories .v4-info-card{min-height:160px}
+.protea-v4 .v4-profile .v4-role{margin-bottom:12px}
+.protea-v4 .v4-profile .v3-team-name{margin-top:12px}
+.protea-v4 .v4-testimonials{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:12px 3px 24px;scrollbar-width:thin}
+.protea-v4 .v4-testimonials blockquote{flex:0 0 min(88%,400px);scroll-snap-align:start}
+@media(max-width:959px){.protea-v4 .v41-details{margin:14px 0;padding-left:12px}.protea-v4 .v41-current-categories .v4-info-card{min-height:0}}
