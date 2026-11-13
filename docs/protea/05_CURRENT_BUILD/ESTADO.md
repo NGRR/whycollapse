@@ -54,3 +54,12 @@ La comprobación visual anterior corresponde a CHANGE-001. `CHANGE-006` fue vali
 | P06 | Aprobación visual explícita de `PROTEA_v09_REVIEW` | Construcción completa | Nueva baseline APPROVED; no inferirla del permiso para hacer commit |
 
 Los formularios están maquetados y validan campos obligatorios, pero NO envían. La interfaz lo declara y nunca muestra una confirmación falsa. No se guardan datos personales en almacenamiento local. No se publicaron precios ni métricas ficticias.
+
+
+## Nota operativa posterior — V4.1 (2026-11-13)
+
+Este archivo contiene principalmente el estado histórico PROTEA_v09_REVIEW. La referencia para trabajar con versiones posteriores es `docs/protea/03_REFERENCIAS/GITHUB_CONECTOR_Y_COMMITS.md`, enlazada desde `AGENTS.md`. No confundir los estados anteriores con V4.1.
+
+- Último commit funcional confirmado antes de esta nota: `f50088a9a5cd2df59b341b03a7cc769416dd549c` (retrato de Constanza en V4.1, JPEG procedente de la imagen suministrada).
+- **Pendientes aún no aplicados:** nueva foto `coni3.png`; corregir el offset de navegación / scroll spy de V4.1 y, tras medir, el espaciado de las secciones. Los ajustes descritos en la conversación no constituyen cambios en Git.
+- V4 base permanece como comparación. Toda nueva modificación requiere validación por lectura de archivos y un SHA de commit real publicado en `main`.
