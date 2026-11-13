@@ -698,7 +698,9 @@
     railFrame = 0;
     if (!railSections.length) return;
 
-    const probe = window.innerHeight * 0.42;
+    // Follow the reading region, not the midpoint of a tall section.
+    // Align the rail's active state with the navigation landing position.
+    const probe = Math.min(window.innerHeight * 0.32, 240);
     let activeSection = railSections[0];
 
     for (const section of railSections) {
@@ -895,7 +897,16 @@
       if (!target) return;
       event.preventDefault();
       setActive(hashPart);
-      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      // A section top is not its reading start: UIkit and the content panel
+      // each add vertical padding. Land on the visible kicker / heading.
+      const readingAnchor = hashPart === 'observatorio'
+        ? target
+        : target.querySelector('.v3-section-head, .contact-anchor .section-kicker, .section-kicker, h2') || target;
+      const fixedHeader = window.innerWidth < 960 ? 78 : 0;
+      const readingOffset = fixedHeader + (window.innerWidth < 960 ? 22 : 96);
+      const readingY = readingAnchor.getBoundingClientRect().top + window.scrollY;
+      const y = hashPart === 'observatorio' ? 0 : Math.max(0, readingY - readingOffset);
+      window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
       history.replaceState(null, '', `${location.pathname}#${hashPart}`);
       if (window.UIkit && link.closest('#mobile-menu')) UIkit.offcanvas('#mobile-menu')?.hide();
     });

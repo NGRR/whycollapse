@@ -29,3 +29,10 @@ Motivo: feedback de Marcelo y Nicolás; reducir repetición, comunicar el trabaj
 - Imagen suministrada por Nicolás (`coni2.png`), transferida al repositorio con codificación JPEG de alta calidad; sin generación de contenido ni cambio de composición.
 - Clase `.v41-constanza-card` evita doble cromatización y doble capa gráfica en la fotografía ya intervenida.
 - No se cambia V4 ni el resto de los perfiles.
+
+## Revisión de fotografía y navegación (2026-11-13)
+- El retrato de Constanza en V4.1 cambia a `assets/img/client/constanza-tratamiento-v41-20261113-v2.jpg` (segunda fotografía `coni3.png` suministrada por Nicolás; JPEG de alta calidad generado por el transporte de activos, no copia bit a bit del PNG). La fotografía anterior continúa como recurso histórico no utilizado.
+- `v4.js`: el rail navega a la cabecera/etiqueta visible, no al inicio del bloque con padding; compensación de cabecera móvil. El scroll spy toma como referencia una banda superior de lectura.
+- `v41.css`: se reducen los paddings exteriores e interiores de las secciones, y la separación del contacto; se actualizan scroll margins para saltos nativos y subetapas.
+- No se modifica V4, los otros cinco perfiles, el hero ni el motor Protea Viva.
+- Pendiente: comprobar visualmente la posición del contenido y el scroll en móvil/escritorio (390, 768, 1024, 1440 px), y corregir según resultados.

@@ -27,3 +27,44 @@
 .protea-v4 .v4-team-visual .v41-constanza-card .v3-portrait > .v3-diagram {
   display:none!important;
 }
+
+
+/* V4.1 · Ajuste espacial y navegación entre secciones (2026-11-13).
+   La sección aterriza por su cabecera real desde v4.js, no por un
+   contenedor que acumula padding de UIkit + padding del panel. */
+.protea-v4 .v4-section {
+  min-height:0;
+  padding-top:clamp(42px,5vw,70px)!important;
+  padding-bottom:clamp(50px,6vw,84px)!important;
+  scroll-margin-top:90px;
+}
+.protea-v4 .v4-section .v3-content {
+  padding-top:clamp(22px,2.8vw,36px);
+  padding-bottom:clamp(35px,4.8vw,60px);
+}
+.protea-v4 .v3-contact {
+  min-height:0;
+  padding-top:clamp(40px,5vw,72px)!important;
+  padding-bottom:clamp(48px,6vw,84px)!important;
+}
+.protea-v4 .v3-contact .contact-anchor {
+  margin-top:0;
+  padding-top:20px;
+}
+.protea-v4 .v4-stage{scroll-margin-top:110px}
+@media(max-width:959px){
+  .protea-v4 .v4-section{
+    padding-top:40px!important;
+    padding-bottom:52px!important;
+    scroll-margin-top:88px;
+  }
+  .protea-v4 .v4-section .v3-content{
+    padding-top:24px;
+    padding-bottom:36px;
+  }
+  .protea-v4 .v3-contact{
+    padding-top:40px!important;
+    padding-bottom:54px!important;
+  }
+  .protea-v4 .v4-stage{scroll-margin-top:95px}
+}

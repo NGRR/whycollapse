@@ -63,3 +63,8 @@ Este archivo contiene principalmente el estado histórico PROTEA_v09_REVIEW. La 
 - Último commit funcional confirmado antes de esta nota: `f50088a9a5cd2df59b341b03a7cc769416dd549c` (retrato de Constanza en V4.1, JPEG procedente de la imagen suministrada).
 - **Pendientes aún no aplicados:** nueva foto `coni3.png`; corregir el offset de navegación / scroll spy de V4.1 y, tras medir, el espaciado de las secciones. Los ajustes descritos en la conversación no constituyen cambios en Git.
 - V4 base permanece como comparación. Toda nueva modificación requiere validación por lectura de archivos y un SHA de commit real publicado en `main`.
+
+
+## Seguimiento V4.1 · 2026-11-13 (fotografía y scroll)
+
+Después del estado histórico anterior, la revisión de V4.1 incorpora la fotografía `coni3.png` como recurso JPEG de alta calidad en `protea_vivo/v4.1/assets/img/client/constanza-tratamiento-v41-20261113-v2.jpg`, la referencia HTML, el alineamiento del scroll por cabecera visible y la compactación del espacio entre secciones. Se conserva V4 como comparación; sigue pendiente la comprobación visual en navegador real.
