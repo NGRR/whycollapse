@@ -23,3 +23,9 @@ Motivo: feedback de Marcelo y Nicolás; reducir repetición, comunicar el trabaj
 - Foto «Cyborg» de Marcelo, imagen de evento, gráfico IAO, logos y brochure siguen pendientes.
 - Formulario NO envía: requiere implementación en Squarespace Core y pruebas de recepción.
 - V4.1 no debe marcarse APPROVED sin validación de dirección de arte.
+
+## Actualización 2026-11-13 · Fotografía Constanza
+- Solo V4.1: el segundo perfil usa `assets/img/client/constanza-tratamiento-v41-20261113.jpg`.
+- Imagen suministrada por Nicolás (`coni2.png`), transferida al repositorio con codificación JPEG de alta calidad; sin generación de contenido ni cambio de composición.
+- Clase `.v41-constanza-card` evita doble cromatización y doble capa gráfica en la fotografía ya intervenida.
+- No se cambia V4 ni el resto de los perfiles.

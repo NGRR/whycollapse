@@ -14,3 +14,16 @@
 .protea-v4 .v4-testimonials{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:12px 3px 24px;scrollbar-width:thin}
 .protea-v4 .v4-testimonials blockquote{flex:0 0 min(88%,400px);scroll-snap-align:start}
 @media(max-width:959px){.protea-v4 .v41-details{margin:14px 0;padding-left:12px}.protea-v4 .v41-current-categories .v4-info-card{min-height:0}}
+
+
+/* V4.1 · Constanza: la fotografía entregada ya incluye la gráfica cromática.
+   Evitar duplicar filtros/overlays heredados de V4, sin afectar otros perfiles. */
+.protea-v4 .v4-team-visual .v41-constanza-card .v3-portrait > img {
+  filter:none!important;
+  object-fit:cover;
+  object-position:50% 40%;
+}
+.protea-v4 .v4-team-visual .v41-constanza-card .v3-portrait > .v3-chroma,
+.protea-v4 .v4-team-visual .v41-constanza-card .v3-portrait > .v3-diagram {
+  display:none!important;
+}
