@@ -26,3 +26,16 @@ Marcelo Lasagna: fundador. Constanza Collarte, Jimena Espinoza, Madis Ilstav, Ad
 [Política de privacidad de Protea](https://www.protea.blue/politica-de-privacidad): destino del enlace de los formularios. Su vigencia para el futuro flujo comercial debe validarse al configurar el envío.
 
 No se integraron vídeos ni testimonios adicionales. No se añadió fotografía de stock ni imágenes generadas.
+
+## Revisión V4.1 · Ilustraciones conceptuales (2026-11-13)
+
+Cuatro imágenes recibidas directamente de Nicolás para los instrumentos de trabajo. Se usaron como **ilustraciones conceptuales, no como documentación de clientes ni datos del IAO**:
+
+| Archivo fuente de conversación | Ruta en V4.1 | Módulo |
+| --- | --- | --- |
+| `002(1).png` | `assets/img/client/instrumento-comprender-v41.jpg` | Comprender · DIAGNOS |
+| `003(1).png` | `assets/img/client/instrumento-entrenar-v41.jpg` | Entrenar · TRAINING |
+| `004(1).png` | `assets/img/client/instrumento-experimentar-v41.jpg` | Experimentar · LAB |
+| `005(1).png` | `assets/img/client/instrumento-sostener-v41.jpg` | Sostener · HUB |
+
+La transferencia usó una vista JPEG de alta calidad procedente de los archivos PNG, para optimizar descarga web; **no** conserva bytes idénticos de PNG y no usa generación de imágenes. Se guardó como `.jpg`, sin enmascaramiento, y se añadieron filetes mediante CSS V4.1. Los originales siguen disponibles en los archivos aportados por el usuario.

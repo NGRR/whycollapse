@@ -68,3 +68,7 @@ Este archivo contiene principalmente el estado histórico PROTEA_v09_REVIEW. La 
 ## Seguimiento V4.1 · 2026-11-13 (fotografía y scroll)
 
 Después del estado histórico anterior, la revisión de V4.1 incorpora la fotografía `coni3.png` como recurso JPEG de alta calidad en `protea_vivo/v4.1/assets/img/client/constanza-tratamiento-v41-20261113-v2.jpg`, la referencia HTML, el alineamiento del scroll por cabecera visible y la compactación del espacio entre secciones. Se conserva V4 como comparación; sigue pendiente la comprobación visual en navegador real.
+
+## V4.1 · Revisión de navegación contextual y recursos (2026-11-13)
+
+Se añaden cuatro ilustraciones de instrumentos de trabajo, retícula 1/5–4/5, centraje dinámico de Protea Viva en primer quinto, navegación secundaria del rail con persistencia de ocho segundos, menú móvil en acordeón y scroll unificado para todas las anclas internas. **Versión REVIEW**; pendiente revisión visual y funcional de dirección de arte. El envío de contacto y la colección de Actualidad siguen pendientes de integración en Squarespace; no anunciar como operativos.

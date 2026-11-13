@@ -284,6 +284,13 @@
     state.width = Math.max(1, Math.round(rect.width));
     state.height = Math.max(1, Math.round(rect.height));
     state.mobile = matchMedia("(max-width: 959px)").matches;
+    // V4.1: exact alignment of the organism with the first of five
+    // grid columns. The scene is still a fixed full-screen canvas; only
+    // its spatial anchor changes, recomputed on resize at all widths.
+    if (!state.mobile && document.body.classList.contains("protea-v4")) {
+      const firstColumnCenterX = gridRect.left + gridRect.width * 0.10;
+      CONFIG.centerXDesktop = clamp((firstColumnCenterX - rect.left) / state.width, 0.02, 0.48);
+    }
     state.dpr = Math.min(devicePixelRatio || 1, CONFIG.maxDpr);
     canvas.width = Math.round(state.width * state.dpr);
     canvas.height = Math.round(state.height * state.dpr);

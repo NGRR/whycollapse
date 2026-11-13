@@ -889,27 +889,120 @@
   window.visualViewport?.addEventListener('resize', queueMobileViewportRebuild, { passive: true });
   queueMobileViewportRebuild();
 
-  sectionLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const hashPart = (link.getAttribute('href') || '').split('#')[1];
-      if (!hashPart) return;
-      const target = document.getElementById(hashPart);
-      if (!target) return;
-      event.preventDefault();
-      setActive(hashPart);
-      // A section top is not its reading start: UIkit and the content panel
-      // each add vertical padding. Land on the visible kicker / heading.
-      const readingAnchor = hashPart === 'observatorio'
-        ? target
-        : target.querySelector('.v3-section-head, .contact-anchor .section-kicker, .section-kicker, h2') || target;
-      const fixedHeader = window.innerWidth < 960 ? 78 : 0;
-      const readingOffset = fixedHeader + (window.innerWidth < 960 ? 22 : 96);
-      const readingY = readingAnchor.getBoundingClientRect().top + window.scrollY;
-      const y = hashPart === 'observatorio' ? 0 : Math.max(0, readingY - readingOffset);
-      window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
-      history.replaceState(null, '', `${location.pathname}#${hashPart}`);
-      if (window.UIkit && link.closest('#mobile-menu')) UIkit.offcanvas('#mobile-menu')?.hide();
+  /* V4.1: delegated scrolling for ALL internal links and flyout navigation.
+   * One shared scroll destination avoids divergent behavior between rail,
+   * content CTA, stage navigation, mobile links and footer.
+   */
+  const scrollToNarrativeAnchor = (id) => {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    const parent = target.closest('.v4-section, .v3-contact');
+    const sectionId = (parent?.id === 'colapso' || id === 'colapso')
+      ? 'observatorio'
+      : (parent?.id || id);
+    setActive(sectionId);
+
+    let reading = target;
+    if (id === 'observatorio') {
+      reading = target;
+    } else if (target.matches('.story-section')) {
+      reading = target.querySelector('.v3-section-head .section-kicker, .contact-anchor .section-kicker, .section-kicker, h2') || target;
+    } else if (target.matches('.v3-stage')) {
+      reading = target.querySelector('.v3-stage-copy h3, .v3-stage-index') || target;
+    }
+    const mobile = window.innerWidth < 960;
+    const offset = mobile ? 96 : 86;
+    const rawTop = reading.getBoundingClientRect().top + window.scrollY;
+    const y = id === 'observatorio' ? 0 : Math.max(0, rawTop - offset);
+    window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+    history.replaceState(null, '', `${location.pathname}${location.search}#${encodeURIComponent(id)}`);
+    scheduleNarrativeState();
+    return true;
+  };
+
+  const railGroups = [...document.querySelectorAll('.v41-rail-group.has-children')];
+  const railTimers = new Map();
+  const releaseRailGroup = (group, cooling = false) => {
+    window.clearTimeout(railTimers.get(group));
+    railTimers.delete(group);
+    group.classList.remove('is-open', 'is-pinned');
+    group.classList.toggle('is-cooling', cooling);
+  };
+  const openRailGroup = (group) => {
+    for (const other of railGroups) if (other !== group) releaseRailGroup(other);
+    group.classList.remove('is-cooling');
+    group.classList.add('is-open');
+  };
+  const holdRailGroup = (group) => {
+    openRailGroup(group);
+    group.classList.add('is-pinned');
+    window.clearTimeout(railTimers.get(group));
+    railTimers.set(group, window.setTimeout(() => {
+      // The tab stays visible for 8 s after selection, even during smooth scroll.
+      releaseRailGroup(group, true);
+    }, 8000));
+  };
+
+  railGroups.forEach((group) => {
+    group.addEventListener('pointerenter', () => openRailGroup(group));
+    group.addEventListener('pointerleave', () => {
+      group.classList.remove('is-cooling');
+      if (!group.classList.contains('is-pinned')) group.classList.remove('is-open');
     });
+    group.addEventListener('focusin', () => openRailGroup(group));
+    group.addEventListener('focusout', (event) => {
+      if (!group.contains(event.relatedTarget) && !group.classList.contains('is-pinned')) {
+        group.classList.remove('is-open');
+      }
+    });
+  });
+
+  document.querySelectorAll('.v41-mobile-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      if (!panel) return;
+      const next = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(next));
+      panel.hidden = !next;
+      const glyph = button.querySelector('span');
+      if (glyph) glyph.textContent = next ? '−' : '+';
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const rawHash = link.getAttribute('href').slice(1);
+    if (!rawHash) return;
+    let id;
+    try { id = decodeURIComponent(rawHash); } catch (_) { return; }
+    if (!document.getElementById(id)) return;
+    event.preventDefault();
+
+    const group = link.closest('.v41-rail-group.has-children');
+    if (group) holdRailGroup(group);
+    const offcanvasNode = link.closest('#mobile-menu');
+    if (offcanvasNode && window.UIkit) {
+      // UIkit temporarily locks body scrolling while the panel is visible.
+      // Scroll after the hide transition, with a once-only safety fallback.
+      let navigated = false;
+      const finish = () => {
+        if (navigated) return;
+        navigated = true;
+        scrollToNarrativeAnchor(id);
+      };
+      offcanvasNode.addEventListener('hidden', finish, { once: true });
+      window.UIkit.offcanvas('#mobile-menu')?.hide();
+      window.setTimeout(finish, 480);
+    } else {
+      scrollToNarrativeAnchor(id);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    railGroups.forEach((group) => releaseRailGroup(group));
   });
 
   /* Carrusel móvil del equipo. */

@@ -68,3 +68,215 @@
   }
   .protea-v4 .v4-stage{scroll-margin-top:95px}
 }
+
+
+/* ============================================================
+   V4.1 · Layout 1/5 · 4/5 y navegación anidada · 2026-11-13
+   Scope limitado a esta capa; sin alterar la baseline de V4.
+   ============================================================ */
+
+@media (min-width:960px) {
+  /* Primer quinto: organismo y marcador. Restantes cuatro: contenido. */
+  .protea-v4 .v3-body-section .consolidation-grid {
+    grid-template-columns:repeat(5,minmax(0,1fr));
+  }
+  .protea-v4 .v3-body-section .consolidation-grid > .v3-content {
+    grid-column:2 / 6;
+  }
+  .protea-v4 .v3-body-section .consolidation-grid > .v3-quarter-marker {
+    grid-column:1;
+  }
+
+  /* La navegación conserva siete filas; los subniveles flotan fuera
+     de la barra sin desplazar la retícula ni el canvas. */
+  .protea-v4 .section-rail {
+    overflow:visible!important;
+    isolation:isolate;
+  }
+  .protea-v4 .section-rail .v41-rail-group {
+    position:relative;
+    height:100%;
+    min-height:0;
+    isolation:auto;
+    z-index:1;
+    transition:transform .35s cubic-bezier(.2,.8,.15,1);
+  }
+  .protea-v4 .section-rail .v41-rail-group > .rail-item {
+    display:flex!important;
+    position:relative!important;
+    box-sizing:border-box;
+    width:100%;
+    height:100%!important;
+    z-index:3;
+    background-color:#fff;
+  }
+  .protea-v4 .section-rail .v41-rail-group.has-children:is(.is-open,.is-pinned,:hover:not(.is-cooling),:focus-within:not(.is-cooling)) {
+    transform:translateX(12px);
+    z-index:25;
+  }
+  .protea-v4 .section-rail .v41-rail-tabs {
+    position:absolute;
+    left:calc(100% - 2px);
+    top:50%;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    width:190px;
+    max-height:min(75vh,380px);
+    overflow-y:auto;
+    background:transparent;
+    box-shadow:10px 16px 30px rgba(0,12,44,.18);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translate(-22px,-50%);
+    transition:opacity .28s ease,transform .35s cubic-bezier(.2,.8,.15,1),visibility 0s linear .35s;
+  }
+  .protea-v4 .section-rail .v41-rail-group.has-children:is(.is-open,.is-pinned,:hover:not(.is-cooling),:focus-within:not(.is-cooling)) > .v41-rail-tabs {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translate(0,-50%);
+    transition-delay:0s;
+  }
+  .protea-v4 .section-rail .v41-rail-tab {
+    display:block;
+    position:relative;
+    padding:14px 16px;
+    min-height:44px;
+    box-sizing:border-box;
+    border-left:2px solid #ff5a00;
+    border-right:1px solid rgba(7,89,244,.15);
+    border-bottom:1px solid rgba(0,23,80,.12);
+    background:#fff;
+    color:#071226;
+    font:600 11px/1.25 var(--font-head,Montserrat,sans-serif);
+    letter-spacing:.025em;
+    text-decoration:none;
+    transform:translateX(-10px);
+    transition:background .2s ease,color .2s ease,transform .35s ease;
+    transition-delay:calc(var(--tab-index) * 35ms);
+  }
+  .protea-v4 .section-rail .v41-rail-group:is(.is-open,.is-pinned,:hover:not(.is-cooling),:focus-within:not(.is-cooling)) .v41-rail-tab {
+    transform:translateX(0);
+  }
+  .protea-v4 .section-rail .v41-rail-tab:hover,
+  .protea-v4 .section-rail .v41-rail-tab:focus-visible {
+    color:#0759f4;
+    background:#e8efff;
+    outline:0;
+    border-left-width:4px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .protea-v4 .section-rail .v41-rail-group,
+  .protea-v4 .section-rail .v41-rail-tabs,
+  .protea-v4 .section-rail .v41-rail-tab {transition:none!important}
+}
+
+/* El submenú móvil es vertical, dentro de la navegación existente. */
+.protea-v4 #mobile-menu .v41-mobile-row {
+  display:flex;
+  align-items:stretch;
+  gap:8px;
+}
+.protea-v4 #mobile-menu .v41-mobile-row > a {
+  flex:1;
+  min-width:0;
+}
+.protea-v4 #mobile-menu .v41-mobile-toggle {
+  flex:0 0 42px;
+  width:42px;
+  border:0;
+  border-left:1px solid rgba(255,255,255,.22);
+  background:transparent;
+  color:#ff813f;
+  font:400 23px/1 Montserrat,sans-serif;
+  cursor:pointer;
+}
+.protea-v4 #mobile-menu .v41-mobile-toggle:focus-visible {
+  outline:2px solid #ff5a00;
+  outline-offset:-3px;
+}
+.protea-v4 #mobile-menu .v41-mobile-sub {
+  margin:0 0 9px 11px;
+  padding:0 0 0 14px;
+  list-style:none;
+  border-left:2px solid #ff5a00;
+}
+.protea-v4 #mobile-menu .v41-mobile-sub[hidden] {display:none!important}
+.protea-v4 #mobile-menu .v41-mobile-sub > li {
+  border-top:1px solid rgba(255,255,255,.11);
+}
+.protea-v4 #mobile-menu .v41-mobile-sub > li > a {
+  display:block;
+  padding:11px 4px;
+  color:#cfdeff;
+  font:500 12px/1.35 var(--font-head,Montserrat,sans-serif);
+  letter-spacing:.025em;
+  text-transform:none;
+}
+
+/* Marco de tres ritmos: borde exterior punteado, vacío y borde interior sólido.
+   Las imágenes verticales se conservan completas, sin clipping ni máscara. */
+.protea-v4 .v3-stage-art.v41-instrument-art {
+  display:flex!important;
+  justify-content:center;
+  align-items:center;
+  min-height:0!important;
+  margin:0;
+  padding:6px;
+  overflow:visible;
+  transform:none!important;
+}
+.protea-v4 .v3-stage-art.v41-instrument-art::before,
+.protea-v4 .v3-stage-art.v41-instrument-art::after {
+  display:none!important;
+}
+.protea-v4 .v41-art-mat {
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  max-width:100%;
+  box-sizing:border-box;
+  isolation:isolate;
+  background:transparent;
+}
+.protea-v4 .v41-art-mat::before,
+.protea-v4 .v41-art-mat::after {
+  content:"";
+  position:absolute;
+  display:block;
+  pointer-events:none;
+}
+.protea-v4 .v41-art-mat::before {
+  inset:0;
+  border:1px dashed rgba(255,99,34,.95);
+}
+.protea-v4 .v41-art-mat::after {
+  inset:9px;
+  border:1px solid rgba(255,99,34,.94);
+}
+.protea-v4 .v41-art-mat > img.v41-instrument-image,
+.protea-v4 .v41-art-mat > img {
+  position:relative;
+  z-index:1;
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:min(560px,63vw);
+  object-fit:contain;
+  filter:none!important;
+  margin:0;
+  padding:0;
+}
+@media(max-width:959px){
+  .protea-v4 .v41-art-mat > img {max-height:min(620px,125vw)}
+  .protea-v4 .v41-art-mat {padding:18px}
+  .protea-v4 .v41-art-mat::after {inset:7px}
+}

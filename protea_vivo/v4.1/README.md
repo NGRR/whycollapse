@@ -36,3 +36,16 @@ Motivo: feedback de Marcelo y Nicolás; reducir repetición, comunicar el trabaj
 - `v41.css`: se reducen los paddings exteriores e interiores de las secciones, y la separación del contacto; se actualizan scroll margins para saltos nativos y subetapas.
 - No se modifica V4, los otros cinco perfiles, el hero ni el motor Protea Viva.
 - Pendiente: comprobar visualmente la posición del contenido y el scroll en móvil/escritorio (390, 768, 1024, 1440 px), y corregir según resultados.
+
+## Revisión 2026-11-13 · Instrumentos, retícula y navegación contextual
+
+**Alcance:** solo `protea_vivo/v4.1/` (REVIEW). No modifica V4.
+
+- Retícula de las secciones del cuerpo: **1/5 figura/marcador + 4/5 contenido** en escritorio. El motor local de Protea Viva calcula en cada redimensionamiento el centro del primer quinto de la grilla; no modifica parámetros del hero. Móvil mantiene lectura apilada y canvas actual.
+- Cuatro ilustraciones suministradas, asociadas secuencialmente a Comprender (002), Entrenar (003), Experimentar (004) y Sostener (005). Se insertan sin máscara ni recorte intencional, con dos filetes naranjas (exterior punteado e interior continuo) separados por aire.
+- Secciones con subnavegación: Protea (Qué es Protea, Conoce al equipo), Qué hacemos (cuatro etapas), IAO (atributos y método), Conferencias (otras conferencias, formatos, referencias). Las otras tres mantienen acceso simple.
+- Rail en escritorio: apertura contextual a la derecha mediante hover/foco, desplazamiento de la tarjeta principal; al seleccionar un destino, permanece desplegado durante ocho segundos y vuelve a reposo. `Escape` cierra.
+- Menú móvil: desplegables verticales controlados con botón independiente y `aria-expanded`. Los enlaces navegan después de cerrar el offcanvas.
+- Un solo controlador de scroll para rail, subniveles, botones del contenido, subnav DIAGNOS/Training/Lab/Hub y footer. Mantiene `location.search`, hash e interpretación de `prefers-reduced-motion`.
+- Nuevos anclajes: `#equipo`, `#atributos-iao`, `#metodo-iao`, `#formatos-conferencias`, `#referencias-conferencias`.
+- QA estructural de anclajes, referencias y sintaxis JavaScript; **pendiente** validación visual en navegador real, especialmente z-index del rail, anclaje móvil, comportamiento del temporizador y centrado del organismo en 960/1440/1920 px.
