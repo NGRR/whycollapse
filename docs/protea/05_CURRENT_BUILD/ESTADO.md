@@ -72,3 +72,14 @@ Después del estado histórico anterior, la revisión de V4.1 incorpora la fotog
 ## V4.1 · Revisión de navegación contextual y recursos (2026-11-13)
 
 Se añaden cuatro ilustraciones de instrumentos de trabajo, retícula 1/5–4/5, centraje dinámico de Protea Viva en primer quinto, navegación secundaria del rail con persistencia de ocho segundos, menú móvil en acordeón y scroll unificado para todas las anclas internas. **Versión REVIEW**; pendiente revisión visual y funcional de dirección de arte. El envío de contacto y la colección de Actualidad siguen pendientes de integración en Squarespace; no anunciar como operativos.
+
+
+## Logos de clientes · UIkit Switcher + Slideshow (2026-11-13)
+
+- Fuente documental: correo de Marcelo Lasagna, **«Logos clientes»**, recibido 10/11/2026; adjunto `Clientes_Protea_logos.pptx`.
+- Se extrajeron **71 logos PNG independientes**, directamente de los objetos de imagen embebidos (no capturas de páginas): 21 empresas, 7 universidades, 40 administraciones públicas, 3 organismos internacionales.
+- Cada PNG se conserva binariamente idéntico al objeto del PPTX; ver `assets/img/clientes/manifest.json` con procedencia de lámina/objeto y `assets/img/clientes/README.md` con inventario.
+- En `#experiencia`, el placeholder se reemplazó con un componente de diseño propio: cuatro tabs **UIkit Switcher** y 10 páginas **UIkit Slideshow** de hasta 8 logos en una retícula de 4×2 (móvil 2×4). Transición animada tipo slide, autoplay de 7 segundos, pausa en hover, botones y dotnav; sin overflow-x/scroll horizontal.
+- Logos sin filtros ni deformaciones, sobre tarjetas blancas y marco cromático coherente con Protea. No se inventaron clientes ni se alteraron identidades originales.
+- Se conservaron las marcas históricas proporcionadas; no afirmar contratos actualmente vigentes. Debe confirmarse el alcance de autorización antes del despliegue comercial definitivo.
+- V4 original intacta; V4.1 conserva sus otras secciones. **Pendiente QA visual y responsive** del switcher/slideshow en navegador real.

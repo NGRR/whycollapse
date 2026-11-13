@@ -49,3 +49,14 @@ Motivo: feedback de Marcelo y Nicolás; reducir repetición, comunicar el trabaj
 - Un solo controlador de scroll para rail, subniveles, botones del contenido, subnav DIAGNOS/Training/Lab/Hub y footer. Mantiene `location.search`, hash e interpretación de `prefers-reduced-motion`.
 - Nuevos anclajes: `#equipo`, `#atributos-iao`, `#metodo-iao`, `#formatos-conferencias`, `#referencias-conferencias`.
 - QA estructural de anclajes, referencias y sintaxis JavaScript; **pendiente** validación visual en navegador real, especialmente z-index del rail, anclaje móvil, comportamiento del temporizador y centrado del organismo en 960/1440/1920 px.
+
+
+## Logos de clientes · UIkit Switcher + Slideshow (2026-11-13)
+
+- Fuente documental: correo de Marcelo Lasagna, **«Logos clientes»**, recibido 10/11/2026; adjunto `Clientes_Protea_logos.pptx`.
+- Se extrajeron **71 logos PNG independientes**, directamente de los objetos de imagen embebidos (no capturas de páginas): 21 empresas, 7 universidades, 40 administraciones públicas, 3 organismos internacionales.
+- Cada PNG se conserva binariamente idéntico al objeto del PPTX; ver `assets/img/clientes/manifest.json` con procedencia de lámina/objeto y `assets/img/clientes/README.md` con inventario.
+- En `#experiencia`, el placeholder se reemplazó con un componente de diseño propio: cuatro tabs **UIkit Switcher** y 10 páginas **UIkit Slideshow** de hasta 8 logos en una retícula de 4×2 (móvil 2×4). Transición animada tipo slide, autoplay de 7 segundos, pausa en hover, botones y dotnav; sin overflow-x/scroll horizontal.
+- Logos sin filtros ni deformaciones, sobre tarjetas blancas y marco cromático coherente con Protea. No se inventaron clientes ni se alteraron identidades originales.
+- Se conservaron las marcas históricas proporcionadas; no afirmar contratos actualmente vigentes. Debe confirmarse el alcance de autorización antes del despliegue comercial definitivo.
+- V4 original intacta; V4.1 conserva sus otras secciones. **Pendiente QA visual y responsive** del switcher/slideshow en navegador real.

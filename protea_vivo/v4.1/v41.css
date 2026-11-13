@@ -280,3 +280,50 @@
   .protea-v4 .v41-art-mat {padding:18px}
   .protea-v4 .v41-art-mat::after {inset:7px}
 }
+
+
+/* V4.1 · Experiencia / logos originales extraídos del PPTX de Marcelo.
+   UIkit Switcher + Slideshow: animación de paneles, sin overflow-x/scroll. */
+.protea-v4 .v41-client-showcase {margin:40px 0 18px;max-width:100%;padding:26px 24px 20px;background:linear-gradient(135deg,#0b2454 0%,#062b62 57%,#102446 100%);border:1px solid rgba(131,185,255,.4);border-top:2px solid #f87926;border-radius:4px;box-shadow:0 25px 60px rgba(0,16,44,.16)}
+.protea-v4 .v41-client-intro {max-width:64ch;margin-bottom:22px}
+.protea-v4 .v41-client-intro .section-kicker {color:#ff8d45}
+.protea-v4 .v41-client-intro h3 {color:#fff;font:600 clamp(21px,2.1vw,29px)/1.2 Montserrat,sans-serif;letter-spacing:-.02em;margin:7px 0 11px}
+.protea-v4 .v41-client-intro p:not(.section-kicker) {color:#c9daf4;font-size:14px;line-height:1.65;margin:0}
+.protea-v4 .v41-client-tabs {margin:0 0 22px!important;gap:9px;display:flex;flex-wrap:wrap;align-items:center;list-style:none;padding:0}
+.protea-v4 .v41-client-tabs::before {display:none}
+.protea-v4 .v41-client-tabs>li {padding:0;margin:0}
+.protea-v4 .v41-client-tabs>li>a {display:inline-flex;gap:10px;align-items:center;border:1px solid rgba(183,207,245,.36);border-radius:0;background:rgba(1,20,53,.42);padding:11px 14px;color:#dce8fb;font:600 11px/1.2 Montserrat,sans-serif;letter-spacing:.012em;text-transform:none;transition:background .22s,border .22s,color .22s;text-decoration:none}
+.protea-v4 .v41-client-tabs>li>a strong {font-size:10px;color:#ff9c5d;font-weight:700;font-variant-numeric:tabular-nums}
+.protea-v4 .v41-client-tabs>li.uk-active>a,.protea-v4 .v41-client-tabs>li>a:hover,.protea-v4 .v41-client-tabs>li>a:focus-visible {background:#fff;border-color:#fff;color:#0d2a56;outline-offset:2px}
+.protea-v4 .v41-client-panels {list-style:none;padding:0;margin:0;min-width:0}
+.protea-v4 .v41-client-slidebox {border:1px solid rgba(255,255,255,.18);background:rgba(0,20,52,.22);padding:16px 18px 12px;min-width:0}
+.protea-v4 .v41-client-slide-meta {display:flex;justify-content:space-between;gap:16px;margin-bottom:12px;color:#e3efff;font:600 11px/1.4 Montserrat,sans-serif}
+.protea-v4 .v41-client-slide-meta span+span {color:#aec7e5;font-weight:400}
+.protea-v4 .v41-client-slides {height:332px!important;min-height:332px!important;max-height:332px!important;min-width:0;overflow:hidden!important;background:transparent!important}
+.protea-v4 .v41-client-slides>li {height:100%;padding:0!important}
+.protea-v4 .v41-client-logo-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;box-sizing:border-box;height:100%;padding:2px;align-items:stretch}
+.protea-v4 .v41-client-logo-grid[data-page-count="3"] {grid-template-columns:repeat(3,minmax(0,200px));grid-template-rows:minmax(0,1fr);justify-content:center;align-content:center}
+.protea-v4 .v41-client-logo-card {display:flex;min-width:0;min-height:0;justify-content:center;align-items:center;padding:12px 15px;background:#fff;border:1px solid #e4e9f0;box-sizing:border-box;overflow:hidden}
+.protea-v4 .v41-client-logo-card img {display:block;object-fit:contain;max-width:100%;max-height:100%;width:auto;height:auto;filter:none!important;opacity:1!important;transform:none!important;box-shadow:none!important}
+.protea-v4 .v41-client-controls {display:flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:11px 0 2px}
+.protea-v4 .v41-client-arrow {display:inline-flex;width:35px;height:35px;align-items:center;justify-content:center;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.36);color:#fff;transition:background .2s}
+.protea-v4 .v41-client-arrow:hover,.protea-v4 .v41-client-arrow:focus-visible {background:#f87926;color:#fff;border-color:#f87926}
+.protea-v4 .v41-client-dots {margin:0;padding:0;display:flex;align-items:center;gap:9px}
+.protea-v4 .v41-client-dots>* {padding:0}
+.protea-v4 .v41-client-dots>*>* {width:8px;height:8px;background:#d0dbee;border:1px solid #d0dbee}
+.protea-v4 .v41-client-dots>.uk-active>* {background:#ff813d;border-color:#ff813d}
+.protea-v4 .v41-client-source-note {font:400 11px/1.5 Roboto,sans-serif;color:#a9beda;margin:14px 0 0}
+@media(min-width:960px) and (max-width:1199px){.protea-v4 .v41-client-showcase{padding:22px 16px}.protea-v4 .v41-client-logo-card{padding:10px}}
+@media(max-width:760px){
+.protea-v4 .v41-client-showcase {padding:20px 13px 15px;margin-top:24px}
+.protea-v4 .v41-client-tabs {gap:7px}
+.protea-v4 .v41-client-tabs>li {flex:1 1 calc(50% - 7px)}
+.protea-v4 .v41-client-tabs>li>a {display:flex;justify-content:space-between;padding:12px 9px;font-size:10px;min-height:45px}
+.protea-v4 .v41-client-slidebox {padding:11px 9px 8px}
+.protea-v4 .v41-client-slides {height:510px!important;min-height:510px!important;max-height:510px!important}
+.protea-v4 .v41-client-logo-grid {grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:9px}
+.protea-v4 .v41-client-logo-grid[data-page-count="3"] {grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));align-content:center}
+.protea-v4 .v41-client-logo-card {padding:9px}
+.protea-v4 .v41-client-slide-meta {font-size:10px;gap:7px}
+}
+@media(prefers-reduced-motion:reduce){.protea-v4 .v41-client-slides>li{transition:none!important}.protea-v4 .v41-client-tabs>li>a{transition:none!important}}
