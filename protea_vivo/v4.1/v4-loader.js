@@ -555,10 +555,10 @@
 
     if (outcome === 'timeout') {
       host.classList.add('is-load-timeout');
-      readiness.textContent = 'CONEXIÓN LENTA';
+      readiness.textContent = 'INICIANDO';
     } else if (report.failedTasks > 0) {
       host.classList.add('is-load-partial');
-      readiness.textContent = 'CARGA PARCIAL';
+      readiness.textContent = 'INICIANDO';
     } else {
       visualProgress = 1;
       targetProgress = 1;

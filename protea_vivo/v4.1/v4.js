@@ -1035,7 +1035,7 @@
     revealTargets.forEach((target) => target.classList.add('is-visible'));
   }
 
-  /* Contacto guiado heredado de la consolidada. No persiste ni envía datos todavía. */
+  /* Contacto guiado: prepara un mensaje en la aplicación de correo del visitante. No realiza envíos automáticos ni persiste datos. */
   const proteaForm = document.querySelector('[data-contact-form="protea"][data-progressive-contact]');
   if (proteaForm) {
     const steps = [...proteaForm.querySelectorAll('[data-contact-step]')];
@@ -1140,8 +1140,21 @@
     proteaForm.addEventListener('submit', (event) => {
       event.preventDefault();
       syncReview();
-      const status = proteaForm.querySelector('.contact-status');
-      if (status) status.textContent = 'El envío todavía no está disponible. Tus datos no se han enviado.';
+      const invalidStep = steps.findIndex((step) => [...step.querySelectorAll('input, textarea, select')].some((field) => !field.checkValidity()));
+      if (invalidStep !== -1) {
+        showStep(invalidStep);
+        validateStep(steps[invalidStep]);
+        return;
+      }
+      const subject = 'Consulta a Protea';
+      const body = [
+        'Situación: ' + getReviewValue('situacion'),
+        'Señales: ' + getReviewValue('senales'),
+        'Organización: ' + getReviewValue('organizacion'),
+        'Nombre: ' + getReviewValue('nombre'),
+        'Correo: ' + getReviewValue('correo')
+      ].join('\n\n');
+      window.location.href = 'mailto:contacto@protea.blue?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });
 
     proteaForm.classList.add('is-enhanced');
