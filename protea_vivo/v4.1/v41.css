@@ -327,3 +327,6 @@
 .protea-v4 .v41-client-slide-meta {font-size:10px;gap:7px}
 }
 @media(prefers-reduced-motion:reduce){.protea-v4 .v41-client-slides>li{transition:none!important}.protea-v4 .v41-client-tabs>li>a{transition:none!important}}
+/* V4.1 · Imágenes entregadas 2026-11-14. Conserva el sistema visual. */
+.protea-v4 .v41-eai-diagram img{width:100%;height:auto;object-fit:contain}
+.protea-v4 .v41-marcelo-talk img{object-position:50% 50%!important}

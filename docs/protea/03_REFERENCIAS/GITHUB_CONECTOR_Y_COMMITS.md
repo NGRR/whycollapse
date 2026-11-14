@@ -48,3 +48,7 @@ No publicar presigned URLs temporales ni credenciales en el repositorio. Los enl
 5. Responder con el enlace a la página y el **SHA real del commit**; no anunciar un commit que no se haya creado y publicado.
 
 **Esta fuente es conocimiento operativo de Protea almacenado en Git.** Es recuperable directamente por ruta desde el conector, siempre que esté disponible en la sesión.
+
+
+## Actualización del transporte binario · 2026-11-14
+Método verificado sin recodificación: codificar los bytes originales locales en base64, con líneas de hasta 200.000 caracteres prefijadas por `DATA:`; usar archivos de texto temporales accesibles mediante Library; leer por rangos de dos líneas con `files__read`, quitar prefijos y saltos, concatenar, y crear el blob Git con `encoding: "base64"`. Validar el SHA devuelto contra SHA-1 de `blob <longitud>\\0<bytes originales>`. Eliminar los archivos temporales propios de staging al terminar. Está verificado con tres PNG de hasta 2.16 MB; no depende de Adobe ni de salida de red del contenedor. No utilizar archivos temporales ajenos ni exponer credenciales.

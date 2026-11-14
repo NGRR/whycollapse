@@ -83,3 +83,10 @@ Se añaden cuatro ilustraciones de instrumentos de trabajo, retícula 1/5–4/5,
 - Logos sin filtros ni deformaciones, sobre tarjetas blancas y marco cromático coherente con Protea. No se inventaron clientes ni se alteraron identidades originales.
 - Se conservaron las marcas históricas proporcionadas; no afirmar contratos actualmente vigentes. Debe confirmarse el alcance de autorización antes del despliegue comercial definitivo.
 - V4 original intacta; V4.1 conserva sus otras secciones. **Pendiente QA visual y responsive** del switcher/slideshow en navegador real.
+
+
+## Revisión de recursos EAI y Marcelo · 2026-11-14
+- Sección IAO: sustituido `iao-mapa.png` por `assets/img/client/iao-eai-esquema-v41.png`, mapa de Estilo de Adaptabilidad Individual (EAI) suministrado por Nicolás. El pie identifica EAI, no lo presenta como gráfica de resultados del IAO. Conservados los cinco atributos y las 21 variables del texto.
+- Equipo y semblanza de Conferencias: `assets/img/client/marcelo-retrato-v41.png` (retrato B/N). Cabecera de Conferencias: `assets/img/client/marcelo-conferencia-v41.png` (escenario). Se actualizan las tres apariciones con dos fotografías. Se conserva el tratamiento gráfico de las tarjetas y se centra la imagen de escenario.
+- Tres PNG originales, verificados mediante SHA de blob Git contra los bytes locales: EAI `ad0a2b42fc7bf13635fd618230a5c03e53254162`; conferencia `2cf155c4fe8096d62fe17f39a4faa1377815e365`; retrato `e88bde2669a49553ad08aa63bc0a27059e6a6698`. No se recodificaron ni generaron imágenes.
+- Alcance: V4.1 exclusivamente; V4, los otros perfiles, canvas, navegación y slideshow de clientes permanecen intactos. Pendiente inspección visual en navegador.
