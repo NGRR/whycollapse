@@ -4,6 +4,8 @@ Antes de editar `protea_vivo/`, leer `docs/protea/MANIFIESTO.md`, `docs/protea/0
 
 **Acceso GitHub y commits:** leer `docs/protea/03_REFERENCIAS/GITHUB_CONECTOR_Y_COMMITS.md` antes de afirmar que el repositorio no es accesible o de aplicar cambios por conector. La imposibilidad de usar `git` desde la terminal no implica ausencia de acceso mediante las herramientas conectadas. Verificar siempre HEAD y commit publicado.
 
+**Commit obligatorio:** toda intervención autorizada que modifique el repositorio debe concluir con un commit nuevo y la actualización verificada de la rama de trabajo (`main`, salvo indicación expresa). No entregar instrucciones o parches en lugar de ejecutar un cambio autorizado si el conector permite escribir. Informar el SHA real y el alcance del commit; si existe un bloqueo, documentarlo sin afirmar que se publicó. Las consultas de solo lectura no requieren commits vacíos.
+
 La intención y las decisiones visuales aprobadas son autoritativas. La IA ejecuta cambios delimitados; Nicolás mantiene la dirección de arte y la aprobación. No reinterpretar, refactorizar, normalizar ni optimizar componentes fuera del alcance solicitado. No instalar dependencias ni introducir otro sistema visual.
 
 Separar REVIEW de APPLY cuando la revisión sea ambigua. Una solicitud explícita y concreta ya autoriza su ejecución; no pedir una segunda autorización de rutina. Documentar el alcance antes de aplicar.

@@ -52,3 +52,7 @@ No publicar presigned URLs temporales ni credenciales en el repositorio. Los enl
 
 ## Actualización del transporte binario · 2026-11-14
 Método verificado sin recodificación: codificar los bytes originales locales en base64, con líneas de hasta 200.000 caracteres prefijadas por `DATA:`; usar archivos de texto temporales accesibles mediante Library; leer por rangos de dos líneas con `files__read`, quitar prefijos y saltos, concatenar, y crear el blob Git con `encoding: "base64"`. Validar el SHA devuelto contra SHA-1 de `blob <longitud>\\0<bytes originales>`. Eliminar los archivos temporales propios de staging al terminar. Está verificado con tres PNG de hasta 2.16 MB; no depende de Adobe ni de salida de red del contenedor. No utilizar archivos temporales ajenos ni exponer credenciales.
+
+
+## Regla permanente de cierre · 2026-11-14
+**Commit obligatorio:** toda intervención autorizada que modifique el repositorio debe concluir con un commit nuevo y la actualización verificada de la rama de trabajo (`main`, salvo indicación expresa). No entregar instrucciones o parches en lugar de ejecutar un cambio autorizado si el conector permite escribir. Informar el SHA real y el alcance del commit; si existe un bloqueo, documentarlo sin afirmar que se publicó. Las consultas de solo lectura no requieren commits vacíos.

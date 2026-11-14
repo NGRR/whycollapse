@@ -67,3 +67,7 @@ Motivo: feedback de Marcelo y Nicolás; reducir repetición, comunicar el trabaj
 - Equipo y semblanza de Conferencias: `assets/img/client/marcelo-retrato-v41.png` (retrato B/N). Cabecera de Conferencias: `assets/img/client/marcelo-conferencia-v41.png` (escenario). Se actualizan las tres apariciones con dos fotografías. Se conserva el tratamiento gráfico de las tarjetas y se centra la imagen de escenario.
 - Tres PNG originales, verificados mediante SHA de blob Git contra los bytes locales: EAI `ad0a2b42fc7bf13635fd618230a5c03e53254162`; conferencia `2cf155c4fe8096d62fe17f39a4faa1377815e365`; retrato `e88bde2669a49553ad08aa63bc0a27059e6a6698`. No se recodificaron ni generaron imágenes.
 - Alcance: V4.1 exclusivamente; V4, los otros perfiles, canvas, navegación y slideshow de clientes permanecen intactos. Pendiente inspección visual en navegador.
+
+
+## Corrección de alcance · 2026-11-14
+Por indicación expresa de Nicolás, se restaura exclusivamente la tarjeta de Marcelo Lasagna en el equipo a su estado anterior (`5751a39`): imagen de V3, referencia original de Drive y capas cromáticas originales. El retrato nuevo en blanco y negro permanece en la semblanza de Conferencias y la fotografía nueva de escenario en su cabecera. El esquema EAI y el resto del sitio permanecen sin cambios. Se incorpora la regla de commit obligatorio en `AGENTS.md`. Estado REVIEW; comprobación visual pendiente.
