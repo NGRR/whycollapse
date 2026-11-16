@@ -120,3 +120,7 @@ CHANGE-017: siete identificadores de sección (01–07) con índice tipográfico
 
 ## Perímetro monocromo e índices negros · 2026-11-16
 CHANGE-018: índices 01–07 y contadores editoriales en negro; rail, nodos y estados, marcadores flotantes, navegación móvil, pie y guía SVG lateral en negro/gris sobre blanco. Los acentos azul/naranja se mantienen en el cuerpo editorial y sus cotas. La figura roja animada (motor, texturas, geometría, filtros y posición) permanece intacta, al igual que el hero protegido. Estado REVIEW; QA visual pendiente.
+
+
+## Retiro del esquema EAI · 2026-11-16
+CHANGE-019: por solicitud expresa se retira el esquema EAI de la sección IAO, incluida su imagen de respaldo, mapa interactivo, pie, diálogos y referencias HTML a CSS/JS propios. Se mantienen los cinco atributos, las 21 variables y los bloques de resultados y metodología del IAO. Los recursos originales permanecen en el repositorio sin carga desde la página para preservar reversibilidad. Resto de la versión intacto. Estado REVIEW; comprobación visual pendiente.

@@ -85,3 +85,7 @@ Por solicitud expresa se retiran las notas y advertencias internas visibles del 
 
 ## EAI interactivo integrado en IAO · 2026-11-16
 Se reemplaza el esquema estático y su lightbox por el componente SVG de la segunda revisión del prototipo (`4e8194b`). Mismas dos composiciones, 23 conceptos, once fichas y doce etiquetas no interactivas; dimensiones y descriptores sin cambios. CSS/JS propios en `components/eai/`, IDs prefijados. Adaptación por ancho disponible y ampliación nativa del mismo mapa, sin duplicar nodos; PNG original como respaldo cuando JS no inicia. Sin cambios fuera de IAO y su integración. Descriptores interpretativos pendientes de validación por Protea. Estado REVIEW, QA visual en navegador pendiente.
+
+
+## Retiro del esquema EAI · 2026-11-16
+CHANGE-019: por solicitud expresa se retira el esquema EAI de la sección IAO, incluida su imagen de respaldo, mapa interactivo, pie, diálogos y referencias HTML a CSS/JS propios. Se mantienen los cinco atributos, las 21 variables y los bloques de resultados y metodología del IAO. Los recursos originales permanecen en el repositorio sin carga desde la página para preservar reversibilidad. Resto de la versión intacto. Estado REVIEW; comprobación visual pendiente.
