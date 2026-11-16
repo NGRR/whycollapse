@@ -289,7 +289,13 @@
     // its spatial anchor changes, recomputed on resize at all widths.
     if (!state.mobile && document.body.classList.contains("protea-v4")) {
       const firstColumnCenterX = gridRect.left + gridRect.width * 0.10;
-      CONFIG.centerXDesktop = clamp((firstColumnCenterX - rect.left) / state.width, 0.02, 0.48);
+      // V4.2: desplazamiento solicitado, limitado por el rail para que
+      // el núcleo no desaparezca detrás de la navegación en pantallas estrechas.
+      const rail = document.querySelector(".section-rail");
+      const railRight = rail ? rail.getBoundingClientRect().right : 0;
+      const visibleCenterX = Math.min(firstColumnCenterX, Math.max(firstColumnCenterX - 200, railRight + 56));
+      CONFIG.centerXDesktop = clamp((visibleCenterX - rect.left) / state.width, 0.02, 0.48);
+      stage.style.setProperty("--v42-figure-x", `${Math.round(state.width * CONFIG.centerXDesktop)}px`);
     }
     state.dpr = Math.min(devicePixelRatio || 1, CONFIG.maxDpr);
     canvas.width = Math.round(state.width * state.dpr);

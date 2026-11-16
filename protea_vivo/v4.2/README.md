@@ -104,3 +104,7 @@ CHANGE-013: se corrige el gradiente inyectado por v4.js en el panel de contenido
 
 ## Protea Viva, acentos científicos y referencias · 2026-11-16
 CHANGE-014: se recupera la figura animada en el primer quinto de escritorio mediante opacidad 1 y ajuste de luminosidad para fondo blanco; no se modifica motor, geometría, etapas ni archivos de imagen. Se mantiene la ocultación móvil donde no existe quinto lateral. Cotas, signos, letras e índices emplean acentos #0066FF y #FF5A00. Las cinco referencias conservan texto, atribuciones y slideshow, ahora sobre panel azul noche #001133 con texto blanco. Fondo del cuerpo continúa blanco plano. Estado REVIEW y QA visual pendiente.
+
+
+## Protea Viva sobre azul · 2026-11-16
+CHANGE-015: desplazamiento hacia la izquierda de hasta 200 px en escritorio, limitado por el rail; fondo azul noche #001133 que aparece al entrar en el tramo narrativo, cotas centradas con la figura y contraste cromático adaptado. Paneles blancos, hero y móvil conservados. Caché de CSS/JS actualizada. Estado REVIEW; validación visual pendiente.

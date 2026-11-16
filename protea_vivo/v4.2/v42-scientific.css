@@ -144,3 +144,38 @@ body.protea-v42.protea-v4 #conferencias .v41-reference-controls .v41-client-dots
 @media(max-width:959px){
   body.protea-v42 #protea-viva-canvas{opacity:0!important}
 }
+
+/* CHANGE-015 · contraste y aparición de azul pleno detrás de Protea Viva.
+   Se mantiene el motor de crecimiento y los paneles editoriales blancos. */
+@media(min-width:960px){
+  body.protea-v42 .protea-viva-background{
+    background:#fff!important;background-image:none!important;
+    isolation:isolate;overflow:visible!important
+  }
+  body.protea-v42 .protea-viva-background::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:var(--v42-navy,#001133);opacity:0;transition:opacity .85s ease
+  }
+  body.protea-v42 .protea-viva-background::after{
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:url("assets/img/protea/scientific-guide-v42.svg") no-repeat;
+    background-size:min(34vw,540px) auto;
+    background-position:calc(var(--v42-figure-x,360px) - min(17vw,270px)) center;
+    opacity:.85;transition:opacity .85s ease
+  }
+  body.protea-v42 #protea-viva-canvas{
+    position:relative;z-index:2;opacity:1!important;
+    filter:brightness(.73) contrast(1.18) saturate(1.18)!important;
+    transition:filter .85s ease;pointer-events:none
+  }
+  body.protea-v42.is-protea-viva-active .protea-viva-background::before{opacity:1}
+  body.protea-v42.is-protea-viva-active .protea-viva-background::after{opacity:.42}
+  body.protea-v42.is-protea-viva-active #protea-viva-canvas{
+    filter:brightness(1.06) contrast(1.16) saturate(1.22)!important
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.protea-v42 .protea-viva-background::before,
+  body.protea-v42 .protea-viva-background::after,
+  body.protea-v42 #protea-viva-canvas{transition:none!important}
+}
