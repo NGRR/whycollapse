@@ -9,7 +9,7 @@
   const V3_SETTINGS = Object.freeze({
     mobileBreakpoint: 959,
     sectionPanel: {
-      background: 'linear-gradient(90deg,rgba(8,8,8,.22),rgba(8,8,8,.76) 50%,rgba(8,8,8,.88) 100%)'
+      background: '#ffffff'
     },
     preloader: {
       timing: {

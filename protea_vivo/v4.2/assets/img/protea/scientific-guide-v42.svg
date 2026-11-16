@@ -1,15 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 760" fill="none">
-  <g stroke="#d8d8d8" stroke-width="1">
-    <path d="M52 45V715M250 45V715M448 45V715M22 110H478M22 380H478M22 650H478"/>
-    <path stroke-dasharray="3 7" d="M110 45V715M390 45V715M22 245H478M22 515H478"/>
-    <ellipse cx="250" cy="380" rx="164" ry="257"/>
-    <ellipse cx="250" cy="380" rx="126" ry="207"/>
-    <path d="M52 110L250 380 448 650M448 110L250 380 52 650"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 780" fill="none">
+  <!-- Cotas compositivas, no mediciones de datos. -->
+  <g stroke="#dedede" stroke-width="1">
+    <path d="M76 70V710M444 70V710M36 140H484M36 390H484M36 640H484"/>
+    <path d="M110 70V710M410 70V710M76 260H444M76 520H444M260 34V746" stroke-dasharray="4 8"/>
   </g>
-  <g stroke="#999" stroke-width="1">
-    <path d="M22 45H10V715H22M478 45H490V715H478M52 27V16H448V27M52 733V744H448V733"/>
-    <path d="M45 110H59M52 103V117M441 110H455M448 103V117M45 650H59M52 643V657M441 650H455M448 643V657M242 380H258M250 372V388"/>
-    <path stroke-dasharray="2 5" d="M86 380H414M250 123V637"/>
+  <g stroke="#a0a0a0" stroke-width="1">
+    <path d="M76 38V70M444 38V70M76 710V742M444 710V742M76 52H444M76 728H444"/>
+    <path d="M70 58L82 46M438 58L450 46M70 734L82 722M438 734L450 722"/>
+    <path d="M23 140H76M23 390H76M23 640H76M444 140H497M444 390H497M444 640H497M36 140V640M484 140V640"/>
+    <path d="M30 146L42 134M30 396L42 384M30 646L42 634M478 146L490 134M478 396L490 384M478 646L490 634"/>
+    <path d="M182 327V453M338 327V453M182 390H338M176 396L188 384M332 396L344 384"/>
+    <path d="M250 390H270M260 380V400"/>
   </g>
-  <g fill="#999"><circle cx="86" cy="380" r="3"/><circle cx="414" cy="380" r="3"/><circle cx="250" cy="123" r="3"/><circle cx="250" cy="637" r="3"/></g>
+  <g stroke="#c8c8c8" stroke-width="1">
+    <path d="M182 108C216 210 216 570 182 672M338 108C304 210 304 570 338 672"/>
+    <path d="M208 126C232 230 232 550 208 654M312 126C288 230 288 550 312 654" stroke-dasharray="3 6"/>
+  </g>
+  <g fill="#999"><circle cx="76" cy="140" r="2.5"/><circle cx="76" cy="640" r="2.5"/><circle cx="444" cy="140" r="2.5"/><circle cx="444" cy="640" r="2.5"/></g>
 </svg>

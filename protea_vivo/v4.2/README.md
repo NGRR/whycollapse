@@ -96,3 +96,7 @@ Se reemplaza el esquema estático y su lightbox por el componente SVG de la segu
 
 ## Monocromo científico claro · 2026-11-16
 Fondo blanco y texto negro en el cuerpo, rail, menú móvil, contacto y pie. Guías vectoriales, cotas, nodos y estados de trazo derivados del lenguaje EAI; canvas del cuerpo en tinta monocroma sin modificar su motor. Hero, precarga, EAI interactivo, contenido, retícula y otras versiones intactos; logos originales conservados. Nueva capa `v42-scientific.css` y SVG decorativo local. Ver `docs/protea/04_CHANGELOG/CHANGE-012.md`. Estado REVIEW; QA visual y funcional pendiente.
+
+
+## Blanco plano y cotas · 2026-11-16
+CHANGE-013: se corrige el gradiente inyectado por v4.js en el panel de contenido (blanco plano). Cotas vectoriales con marcas oblicuas y prolongaciones, imágenes con su color intrínseco, CTA y botones en naranja original #FF5A00. El canvas del cuerpo se oculta visualmente, conservando su motor; hero y EAI conservan estructura e interacción. Control de caché CSS/JS actualizado. Estado REVIEW; validación visual pendiente.
