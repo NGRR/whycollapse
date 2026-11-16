@@ -2,9 +2,10 @@
    Capa de dirección de arte posterior a v42.css. No modifica el hero protegido,
    motores canvas, geometría, navegación, contenido ni el mapa EAI. */
 html:has(body.protea-v42){background:#fff;color-scheme:light}
-body.protea-v42.protea-v4{--v42-ink:#111;--v42-muted:#535353;--v42-line:#bcbcbc;--v42-guide:#e5e5e5;--v42-accent:#ff5a00;--v42-accent-hover:#e34d00;--v42-accent-text:#a93600;background:#fff!important;color:var(--v42-ink);color-scheme:light}
+body.protea-v42.protea-v4{--v42-ink:#111;--v42-muted:#535353;--v42-line:#bcbcbc;--v42-guide:#e5e5e5;--v42-accent:#ff5a00;--v42-blue:#0066ff;--v42-navy:#001133;--v42-accent-hover:#e34d00;--v42-accent-text:#a93600;background:#fff!important;color:var(--v42-ink);color-scheme:light}
 body.protea-v42 .protea-viva-background{background:#fff url("assets/img/protea/scientific-guide-v42.svg") left 16% center / min(38vw,580px) auto no-repeat!important}
-body.protea-v42 #protea-viva-canvas{filter:none!important;opacity:0!important}
+/* La escena transparente original se conserva; se oscurecen sus luces para fondo blanco. */
+body.protea-v42 #protea-viva-canvas{filter:brightness(.73) saturate(1.12)!important;opacity:1!important}
 body.protea-v42 .v3-body-section{background:transparent!important;border-bottom:1px solid var(--v42-line)!important}
 body.protea-v42.protea-v3 .v3-content{background:#fff!important;background-image:none!important;box-shadow:none!important;border-left:1px solid var(--v42-guide);backdrop-filter:none}
 body.protea-v42 .v3-footer{background:#fff!important;border-top:1px solid var(--v42-ink)!important}
@@ -106,3 +107,40 @@ body.protea-v42 .v3-body-section :is(input,textarea,select){accent-color:var(--v
 body.protea-v42 .v3-body-section .v3-signal-options input:checked+span::before{background:var(--v42-accent)!important;border-color:var(--v42-accent-text)!important}
 body.protea-v42 .v3-body-section .contact-progress li.is-active{background:#fff!important;border-color:var(--v42-accent)!important}
 body.protea-v42 :is(.v3-body-section,#observatorio,.v3-footer,.v4-mobile-header,#mobile-menu,.section-rail,.v41-eai-ui) :focus-visible{outline:2px solid var(--v42-accent-text)!important;outline-offset:4px}
+
+/* CHANGE-014 · recuperación de Protea Viva y acentos científicos.
+   Los bloques editoriales siguen en blanco sólido; el canvas vive en el 1/5 original. */
+body.protea-v42.protea-v4 .v3-body-section :is(.section-kicker,.eyebrow,.v3-stage-index small,.v4-subnav small){color:var(--v42-blue)!important}
+body.protea-v42.protea-v4 .v3-body-section :is(.v3-stage-index>span,.v4-count){color:var(--v42-blue)!important}
+body.protea-v42 .v3-section-head::before{background:var(--v42-accent)}
+body.protea-v42 .v3-section-head::after{background:var(--v42-blue)}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a,.v41-client-showcase)::before{background:var(--v42-accent)}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a,.v41-client-showcase)::after{background:var(--v42-blue)}
+body.protea-v42 .v3-stage-art::after{background:var(--v42-accent)!important;box-shadow:-34px 25px 0 -3px var(--v42-blue),-76px -9px 0 -4px #aaa!important}
+body.protea-v42 .v3-body-section .v3-team-name::before{background:var(--v42-blue)!important}
+body.protea-v42 .v3-body-section :is(.v4-process li,.v4-list li)::before{color:var(--v42-blue)!important}
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker span{color:var(--v42-blue)!important}
+body.protea-v42.protea-v3 .v3-marker-track>.v3-quarter-marker{border-left-color:var(--v42-accent)!important}
+body.protea-v42 .v3-quarter-marker i{background:var(--v42-blue)!important}
+body.protea-v42.protea-v4 .section-rail .rail-item.is-active span{color:var(--v42-blue)!important}
+body.protea-v42.protea-v4 .section-rail .rail-item.is-active::after{background:var(--v42-accent)!important;border-color:var(--v42-accent)!important}
+/* Reseñas: excepción de alto contraste delimitada al slideshow de Conferencias. */
+body.protea-v42.protea-v4 #conferencias .v41-reference-slides>li>blockquote{
+  position:relative;background:var(--v42-navy)!important;background-image:none!important;
+  color:#fff!important;border:1px solid var(--v42-navy)!important;border-left:3px solid var(--v42-accent)!important;
+  box-shadow:none!important;overflow:hidden
+}
+body.protea-v42.protea-v4 #conferencias .v41-reference-slides>li>blockquote::before{
+  content:"";position:absolute;left:14px;top:13px;width:24px;height:7px;
+  border-top:1px solid var(--v42-accent);border-left:1px solid var(--v42-accent);pointer-events:none
+}
+body.protea-v42.protea-v4 #conferencias .v41-reference-slides>li>blockquote::after{
+  content:"";position:absolute;right:14px;bottom:13px;width:24px;height:7px;
+  border-right:1px solid #77adff;border-bottom:1px solid #77adff;pointer-events:none
+}
+body.protea-v42.protea-v4 #conferencias .v41-reference-slides blockquote p{color:#fff!important}
+body.protea-v42.protea-v4 #conferencias .v41-reference-slides blockquote cite{color:#b7d5ff!important}
+body.protea-v42.protea-v4 #conferencias .v41-reference-controls .v41-client-dots>.uk-active>*{background:var(--v42-blue)!important;border-color:var(--v42-blue)!important}
+@media(max-width:959px){
+  body.protea-v42 #protea-viva-canvas{opacity:0!important}
+}

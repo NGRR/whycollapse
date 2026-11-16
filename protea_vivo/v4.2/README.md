@@ -100,3 +100,7 @@ Fondo blanco y texto negro en el cuerpo, rail, menú móvil, contacto y pie. Gu�
 
 ## Blanco plano y cotas · 2026-11-16
 CHANGE-013: se corrige el gradiente inyectado por v4.js en el panel de contenido (blanco plano). Cotas vectoriales con marcas oblicuas y prolongaciones, imágenes con su color intrínseco, CTA y botones en naranja original #FF5A00. El canvas del cuerpo se oculta visualmente, conservando su motor; hero y EAI conservan estructura e interacción. Control de caché CSS/JS actualizado. Estado REVIEW; validación visual pendiente.
+
+
+## Protea Viva, acentos científicos y referencias · 2026-11-16
+CHANGE-014: se recupera la figura animada en el primer quinto de escritorio mediante opacidad 1 y ajuste de luminosidad para fondo blanco; no se modifica motor, geometría, etapas ni archivos de imagen. Se mantiene la ocultación móvil donde no existe quinto lateral. Cotas, signos, letras e índices emplean acentos #0066FF y #FF5A00. Las cinco referencias conservan texto, atribuciones y slideshow, ahora sobre panel azul noche #001133 con texto blanco. Fondo del cuerpo continúa blanco plano. Estado REVIEW y QA visual pendiente.
