@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" rel="stylesheet"/>
   <link href="assets/css/protea.css" rel="stylesheet"/><link href="assets/css/protea-live.css" rel="stylesheet"/><link href="assets/css/protea-consolidacion.css" rel="stylesheet"/>
   <link href="v4.css?v=20261021-team-portraits" rel="stylesheet"/><link href="v4-ui.css" rel="stylesheet"/><link href="v41.css?v=20261114-references-lightbox" rel="stylesheet"/>
+<link href="components/eai/eai.css?v=20261116-r2" rel="stylesheet"/>
 </head><body class="protea-review protea-v3 protea-v4">
   <div class="protea-shell">
     <aside aria-label="Navegación principal" class="section-rail uk-visible@m"><div aria-hidden="true" class="rail-stem"><i></i></div>
@@ -112,15 +113,13 @@
     <div class="v4-divider"></div><p class="section-kicker" id="atributos-iao">QUÉ MIDE</p><h3>Los cinco atributos de una organización adaptativa</h3>
   <div class="v4-info-grid"><article class="v4-info-card" data-reveal><h3>Anticipación</h3><p>Reconocer señales y prepararse para lo que emerge.</p></article><article class="v4-info-card" data-reveal><h3>Agilidad</h3><p>Responder con rapidez, coordinación y criterio.</p></article><article class="v4-info-card" data-reveal><h3>Aprendizaje</h3><p>Convertir la experiencia en conocimiento y nuevas capacidades.</p></article><article class="v4-info-card" data-reveal><h3>Adecuación</h3><p>Mantener vigente la propuesta de valor.</p></article><article class="v4-info-card" data-reveal><h3>Antifragilidad</h3><p>Fortalecerse y generar oportunidades ante la adversidad.</p></article></div>
   <p class="v4-count">5 atributos · 21 variables</p>
-  <figure class="v4-feature-image v41-eai-diagram">
-    <div class="v41-eai-lightbox" uk-lightbox="animation: fade">
-      <a class="v41-eai-zoom" href="assets/img/client/iao-eai-esquema-v41.png" data-type="image" data-caption="Estilo de Adaptabilidad Individual (EAI) · Mapa de estilos individuales." aria-label="Ampliar el esquema EAI">
-        <img src="assets/img/client/iao-eai-esquema-v41.png" loading="lazy" alt="Mapa de estilos de adaptabilidad individual (EAI): percepción, coordinación creativa y comprensión" width="1672" height="941"/>
-        <span class="v41-eai-zoom-label"><span uk-icon="icon: expand; ratio: .85" aria-hidden="true"></span> Ampliar esquema</span>
-      </a>
-    </div>
-    <figcaption>Estilo de Adaptabilidad Individual (EAI) · Mapa de estilos individuales.</figcaption>
-  </figure>
+  <figure class="v4-feature-image v41-eai-diagram v41-eai-component" id="v41-eai-component" aria-label="Estilo de Adaptabilidad Individual">
+  <div class="v41-eai-inline" id="v41-eai-inline">
+    <div class="v41-eai-artboard" id="v41-eai-artboard"><div id="v41-eai-fallback"><img src="assets/img/client/iao-eai-esquema-v41.png" loading="lazy" alt="Mapa de estilos de adaptabilidad individual (EAI): percepción, coordinación creativa y comprensión" width="1672" height="941"/></div><svg hidden id="v41-eai-map" viewBox="0 0 1648 928" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Mapa EAI con estilos y dimensiones interactivos"></svg></div>
+    <button hidden type="button" class="v41-eai-expand" id="v41-eai-expand" aria-haspopup="dialog"><span uk-icon="icon: expand; ratio: .85" aria-hidden="true"></span> Ampliar esquema</button>
+  </div>
+  <figcaption>Estilo de Adaptabilidad Individual (EAI) · Mapa de estilos individuales.</figcaption>
+</figure>
   <div class="v4-divider"></div><p class="section-kicker">QUÉ ENTREGA</p><h3>Información para decidir</h3>
   <ul class="v4-list"><li>Resultados por atributo y mapa de capacidades.</li><li>Comparaciones entre áreas y equipos cuando el alcance lo permita.</li><li>Prioridades y Plan Adaptativo para orientar la acción.</li></ul>
     <div class="v4-divider"></div><p class="section-kicker" id="metodo-iao">CÓMO SE APLICA</p><h3>Del diagnóstico a la acción</h3>
@@ -500,4 +499,7 @@
   });
 </script>
   <script src="v4-loader.js?v=20261114-clean-public"></script><script src="assets/js/protea-viva-background.js?v=20261113-fifth-center"></script><script src="v4.js?v=20261114-clean-public"></script>
+<dialog class="v41-eai-ui v41-eai-expanded" id="v41-eai-expanded" aria-labelledby="v41-eai-expanded-title"><div class="v41-eai-expanded-head"><span id="v41-eai-expanded-title">Estilo de Adaptabilidad Individual (EAI)</span><button type="button" id="v41-eai-expanded-close" aria-label="Cerrar esquema ampliado">×</button></div><div id="v41-eai-expanded-body"></div></dialog>
+<dialog class="v41-eai-ui v41-eai-detail" id="v41-eai-detail" aria-labelledby="v41-eai-detail-title"><div class="detail-head"><p class="eyebrow" id="v41-eai-detail-type"></p><button type="button" id="v41-eai-close" aria-label="Cerrar detalle">×</button></div><h2 id="v41-eai-detail-title"></h2><p id="v41-eai-detail-desc"></p><div id="v41-eai-detail-expressions"></div><p class="detail-source">Lectura conceptual del EAI</p></dialog>
+<script src="components/eai/eai.js?v=20261116-r2" defer></script>
 </body></html>

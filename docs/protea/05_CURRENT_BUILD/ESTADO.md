@@ -104,3 +104,7 @@ Por solicitud expresa se retiran las notas y advertencias internas visibles del 
 - Conferencias: reemplazado el scroll horizontal de `.v4-testimonials` por `.v41-reference-slideshow`, UIkit Slideshow (slide manual, una cita por página, flechas, cinco puntos, gestos del componente). Se preservan las cinco citas y atribuciones sin alteración; reproducción automática desactivada para facilitar la lectura. Se elimina el override CSS de scroll-snap.
 - IAO: `.v41-eai-lightbox` abre el PNG original a tamaño adaptado a la pantalla mediante UIkit Lightbox, con enlace a la misma imagen, rótulo de ampliación y cierre nativo. Sin recorte del esquema ni imágenes nuevas.
 - Cambios limitados a V4.1. No se añaden dependencias. Pendiente QA visual en navegador (tamaño de citas, controles, ampliación y cierre); la revisión editorial de atribuciones sigue documentada.
+
+
+## EAI interactivo integrado en IAO · 2026-11-16
+Se reemplaza el esquema estático y su lightbox por el componente SVG de la segunda revisión del prototipo (`4e8194b`). Mismas dos composiciones, 23 conceptos, once fichas y doce etiquetas no interactivas; dimensiones y descriptores sin cambios. CSS/JS propios en `components/eai/`, IDs prefijados. Adaptación por ancho disponible y ampliación nativa del mismo mapa, sin duplicar nodos; PNG original como respaldo cuando JS no inicia. Sin cambios fuera de IAO y su integración. Descriptores interpretativos pendientes de validación por Protea. Estado REVIEW, QA visual en navegador pendiente.
