@@ -3,7 +3,7 @@
    motores canvas, geometría, navegación, contenido ni el mapa EAI. */
 html:has(body.protea-v42){background:#fff;color-scheme:light}
 body.protea-v42.protea-v4{--v42-ink:#111;--v42-muted:#535353;--v42-line:#bcbcbc;--v42-guide:#e5e5e5;--v42-accent:#ff5a00;--v42-blue:#0066ff;--v42-navy:#001133;--v42-accent-hover:#e34d00;--v42-accent-text:#a93600;background:#fff!important;color:var(--v42-ink);color-scheme:light}
-body.protea-v42 .protea-viva-background{background:#fff url("assets/img/protea/scientific-guide-v42.svg") left 16% center / min(38vw,580px) auto no-repeat!important}
+body.protea-v42 .protea-viva-background{background:#fff url("assets/img/protea/scientific-guide-v42.svg?v=20261116-monochrome") left 16% center / min(38vw,580px) auto no-repeat!important}
 /* La escena transparente original se conserva; se oscurecen sus luces para fondo blanco. */
 body.protea-v42 #protea-viva-canvas{filter:brightness(.73) saturate(1.12)!important;opacity:1!important}
 body.protea-v42 .v3-body-section{background:transparent!important;border-bottom:1px solid var(--v42-line)!important}
@@ -157,7 +157,7 @@ body.protea-v42.protea-v4 #conferencias .v41-reference-controls .v41-client-dots
     left:var(--v42-figure-x,360px);top:50%;
     width:min(34vw,540px,64vh);aspect-ratio:520/780;
     transform:translate(-50%,-50%);
-    background:url("assets/img/protea/scientific-guide-v42.svg") center/100% 100% no-repeat;
+    background:url("assets/img/protea/scientific-guide-v42.svg?v=20261116-monochrome") center/100% 100% no-repeat;
     opacity:.85
   }
   body.protea-v42 #protea-viva-canvas,
@@ -208,7 +208,7 @@ body.protea-v42.protea-v4 :is(#colapso,#becoming-adaptive,#iao,#conferencias,#ac
   min-width:2.1em;font-size:clamp(25px,2.6vw,42px);font-weight:600;
   padding:4px 10px 4px 0;letter-spacing:-.055em;font-variant-numeric:tabular-nums;
   border-right:2px solid var(--v42-section-accent);
-  color:var(--v42-section-text)!important;
+  color:#111!important;
 }
 body.protea-v42.protea-v4 :is(#colapso,#becoming-adaptive,#iao,#conferencias,#actualidad,#experiencia,#contacto-final) .v3-content .v42-section-name{
   color:#111!important;font-size:clamp(11px,1.15vw,15px);letter-spacing:.12em;
@@ -236,3 +236,42 @@ body.protea-v42.protea-v4 #contacto-final .v3-content .v3-contact-card>.v42-sect
     padding:10px 0;margin-bottom:20px;
   }
 }
+
+/* CHANGE-018 · jerarquía monocroma del perímetro y de los índices.
+   Acentos cromáticos exclusivos del cuerpo editorial; Protea Viva intacta. */
+body.protea-v42.protea-v4 .v3-body-section :is(.v4-count,.contact-progress li>span){color:#111!important}
+body.protea-v42.protea-v4 .v3-body-section .v4-process li::before{color:#111!important}
+
+/* Rail: negro en todos los estados, incluido el activo. */
+body.protea-v42.protea-v4 .section-rail{color:#111!important;background:#fff!important;border-right-color:#111!important}
+body.protea-v42.protea-v4 .section-rail :is(.rail-item,.rail-item span,.rail-item small,.v41-rail-tab){color:#111!important}
+body.protea-v42.protea-v4 .section-rail .v41-rail-group>.rail-item{background:#fff!important;background-image:none!important;box-shadow:none!important;border-bottom-color:#d1d1d1!important}
+body.protea-v42.protea-v4 .section-rail .v41-rail-group>.rail-item:is(:hover,:focus-visible,.is-active){background:#f2f2f2!important;background-image:none!important;color:#111!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .section-rail .rail-item:is(:hover,:focus-visible,.is-active) :is(span,small){color:#111!important}
+body.protea-v42.protea-v4 .section-rail .rail-item::before,
+body.protea-v42.protea-v4 .section-rail .rail-stem i{background:#111!important;background-image:none!important}
+body.protea-v42.protea-v4 .section-rail .rail-item::after{background:#fff!important;background-image:none!important;border-color:#111!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .section-rail .rail-item.is-active::after{background:#111!important;border-color:#111!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .section-rail .rail-stem{background:rgba(0,0,0,.2)!important}
+body.protea-v42.protea-v4 .section-rail .v41-rail-tab{background:#fff!important;border-left-color:#111!important;color:#111!important}
+body.protea-v42.protea-v4 .section-rail .v41-rail-tab:is(:hover,:focus-visible){background:#ededed!important;border-left-color:#111!important}
+body.protea-v42 .living-stem{background:rgba(0,0,0,.23)!important}
+body.protea-v42 .living-stem span{background:#111!important;box-shadow:0 0 0 8px rgba(0,0,0,.08)!important}
+
+/* Marcadores flotantes del primer quinto; independencia total del canvas. */
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker{color:#111!important;background:#fff!important;border-color:#111!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker :is(span,small,mark,b){color:#111!important}
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker mark{background:#fff!important;border-color:#111!important}
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker::after,
+body.protea-v42.protea-v4 .v3-marker-track>.v3-quarter-marker i{background:#111!important;background-image:none!important}
+body.protea-v42.protea-v4 .v3-marker-substage{color:#111!important;border-top-color:#bcbcbc!important}
+
+/* Navegación móvil y pie: blanco, tinta negra y estados neutros. */
+body.protea-v42.protea-v4 :is(.v4-mobile-header,#mobile-menu,.mobile-story-nav,.v3-footer){color:#111!important}
+body.protea-v42.protea-v4 :is(.v4-mobile-header,#mobile-menu,.mobile-story-nav,.v3-footer) :is(a,span,small,button,.brand-mark,.brand-claim){color:#111!important}
+body.protea-v42.protea-v4 .v4-mobile-header .mobile-menu-button{border-color:#111!important}
+body.protea-v42.protea-v4 #mobile-menu .v41-mobile-sub{border-left-color:#111!important}
+body.protea-v42.protea-v4 .mobile-story-nav{background:#fff!important;border-color:#111!important}
+body.protea-v42.protea-v4 .mobile-story-nav a:is(.is-active,[aria-current="step"]){color:#111!important;background:#eaeaea!important;background-image:none!important}
+body.protea-v42.protea-v4 .mobile-story-nav a:is(.is-active,[aria-current="step"]) .uk-icon{background:transparent!important}
+body.protea-v42.protea-v4 :is(.section-rail,.v4-mobile-header,#mobile-menu,.mobile-story-nav,.v3-footer) :focus-visible{outline-color:#111!important}

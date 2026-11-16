@@ -116,3 +116,7 @@ CHANGE-016: figura +100 px respecto al centro efectivo de CHANGE-015; marco SVG 
 
 ## Cotas de transición entre secciones · 2026-11-16
 CHANGE-017: siete identificadores de sección (01–07) con índice tipográfico, líneas de medición, remates y acentos alternados naranja/azul. Se aplica en la zona editorial de escritorio y móvil; Contacto conserva su tarjeta. Hero, primer quinto, motor de Protea Viva, EAI y contenido intactos. Estado REVIEW; QA visual pendiente.
+
+
+## Perímetro monocromo e índices negros · 2026-11-16
+CHANGE-018: índices 01–07 y contadores editoriales en negro; rail, nodos y estados, marcadores flotantes, navegación móvil, pie y guía SVG lateral en negro/gris sobre blanco. Los acentos azul/naranja se mantienen en el cuerpo editorial y sus cotas. La figura roja animada (motor, texturas, geometría, filtros y posición) permanece intacta, al igual que el hero protegido. Estado REVIEW; QA visual pendiente.

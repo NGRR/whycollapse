@@ -18,19 +18,19 @@
   </g>
   <g fill="#999"><circle cx="76" cy="140" r="2.5"/><circle cx="76" cy="640" r="2.5"/><circle cx="444" cy="140" r="2.5"/><circle cx="444" cy="640" r="2.5"/></g>
   <!-- Índices gráficos ornamentales, sin datos ni magnitudes. -->
-  <g stroke="#0066ff" stroke-width="1.2">
+  <g stroke="#111111" stroke-width="1.2">
     <path d="M70 58L82 46M438 734L450 722M250 390H270M260 380V400"/>
     <path d="M444 260H456M450 254V266"/>
   </g>
-  <g stroke="#ff5a00" stroke-width="1.2">
+  <g stroke="#111111" stroke-width="1.2">
     <path d="M438 58L450 46M70 734L82 722M176 396L188 384M332 396L344 384"/>
     <path d="M64 520H76M70 514V526"/>
   </g>
   <g font-family="Arial, sans-serif" font-size="13">
-    <text x="89" y="43" fill="#0066ff">α</text>
-    <text x="424" y="43" fill="#ff5a00">β</text>
-    <text x="269" y="380" fill="#0066ff">+</text>
-    <text x="89" y="748" fill="#ff5a00">α</text>
-    <text x="424" y="748" fill="#0066ff">β</text>
+    <text x="89" y="43" fill="#111111">α</text>
+    <text x="424" y="43" fill="#111111">β</text>
+    <text x="269" y="380" fill="#111111">+</text>
+    <text x="89" y="748" fill="#111111">α</text>
+    <text x="424" y="748" fill="#111111">β</text>
   </g>
 </svg>
