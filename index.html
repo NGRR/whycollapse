@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Why Collapse · Protea V3</title>
+  <title>Why Collapse · Protea</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root{
@@ -223,6 +223,7 @@
     .v4-review-diff{display:inline-block;margin-top:18px;color:#fff;font-size:12px;font-weight:650;text-decoration:underline;text-underline-offset:3px}
     .v4-review-diff:hover,.v4-review-diff:focus-visible{color:#fba983}
     @media(max-width:560px){.v4-review-versions{grid-template-columns:1fr}}
+    .creative{margin:16px 0 34px}.creative-card{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:center;padding:24px 27px;background:#0b0b0b;border:1px solid #9d9d9d;color:#fff;border-radius:14px}.creative-card small{display:block;font-size:10px;letter-spacing:.14em;color:#bbb;font-weight:700}.creative-card strong{display:block;font-size:clamp(23px,3.5vw,33px);letter-spacing:-.04em;margin:8px 0}.creative-card p{font-size:13px;line-height:1.5;color:#ddd;margin:0 0 15px}.creative-card span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.creative-card:hover,.creative-card:focus-visible{background:#fff;color:#111;outline:2px solid #fff;outline-offset:3px}.creative-card:hover :is(p,small),.creative-card:focus-visible :is(p,small){color:#333}.creative-mark{position:relative;display:grid;place-items:center;width:132px;height:132px;justify-self:end}.creative-mark i{position:absolute;inset:8px;border:1px solid currentColor;border-radius:50%}.creative-mark i:nth-child(2){inset:22px;border-style:dashed}.creative-mark i:nth-child(3){inset:37px}.creative-mark b{font-family:Georgia,serif;font-size:32px;font-weight:400}@media(max-width:560px){.creative-card{grid-template-columns:1fr 70px;padding:20px}.creative-mark{width:65px;height:65px}.creative-mark i:nth-child(2){inset:15px}.creative-mark i:nth-child(3){inset:22px}.creative-mark b{font-size:17px}}
   </style>
 </head>
 <body>
@@ -232,41 +233,24 @@
       <p>Propuesta web Protea.</p>
     </header>
 
-    <section class="v4-review v4-review-group" aria-label="Revisiones de Protea V4">
-      <span class="v4-review-kicker">PROTEA EN PROCESO · V4 Y SUBREVISIÓN V4.1</span>
-      <strong>Protea · Revisión V4</strong>
-      <span>Conservamos la versión anterior y añadimos una primera síntesis editorial para revisar con Marcelo.</span>
-      <div class="v4-review-versions">
-        <a href="./protea_vivo/v4/" class="v4-review-version" aria-label="Abrir V4 original"><small>BASE DE COMPARACIÓN</small><b>V4 · Original</b><span>Contenido completo y composición actual</span></a>
-        <a href="./protea_vivo/v4.1/" class="v4-review-version v4-review-version-new" aria-label="Abrir subrevisión V4.1"><small>NUEVA · REVISIÓN EDITORIAL</small><b>V4.1 · Síntesis</b><span>Menos repetición, misma arquitectura y recursos</span></a>
-      </div>
-      <a class="v4-review-diff" href="./protea_vivo/v4.1/comparar.html">Comparar: qué permanece, qué cambia y qué está pendiente →</a>
-    </section>
-
-    <a class="featured" href="./protea_vivo/v3/">
-      <small>Propuesta final · V3 · 16 septiembre 2026</small>
+    <a class="featured" href="./protea_vivo/v4.1/">
+      <small>Propuesta principal · V4.1</small>
       <strong>Protea · Becoming Adaptive</strong>
-      <p>Dirección de arte consolidada, navegación narrativa, Protea Viva, equipo, Adaptive Thinking y contacto guiado en una sola propuesta.</p>
+      <p>Versión consolidada: relato editorial, navegación contextual, EAI interactivo, equipo, referencias y experiencia.</p>
       <span class="open">Abrir propuesta →</span>
     </a>
 
-    <section class="changes" aria-labelledby="changes-title">
-      <h2 id="changes-title">Cambios importantes</h2>
-      <ul>
-        <li>Hero conservado con entrada mediante lente y preloader propio.</li>
-        <li>Protea Viva fija como plano de profundidad durante el recorrido.</li>
-        <li>Rail narrativo de seis estados y marcadores persistentes 02–06.</li>
-        <li>Becoming Adaptive organizado en IAO, Training, Lab y Hub.</li>
-        <li>Equipo de cinco perfiles: grid escritorio y carrusel móvil.</li>
-        <li>Adaptive Thinking integrado con salida pública de Marcelo.</li>
-        <li>Contacto progresivo y navegación móvil despejada antes del formulario.</li>
-        <li>V3 reducida a cinco archivos y tiempos del preloader centralizados.</li>
-      </ul>
+    <section class="creative" aria-labelledby="creative-title">
+      <a href="./protea_vivo/v4.2/" class="creative-card">
+        <div><small>EXPERIMENTO CREATIVO · V4.2</small><strong id="creative-title">Protea · Monocromo</strong><p>Dirección de arte en alto contraste. Interfaz en blanco y negro, hero original e imágenes a color.</p><span>Explorar V4.2 →</span></div>
+        <div class="creative-mark" aria-hidden="true"><i></i><i></i><i></i><b>α</b></div>
+      </a>
     </section>
 
     <section class="secondary" aria-labelledby="secondary-title">
       <h2 id="secondary-title">Otras propuestas y recursos</h2>
       <div class="secondary-grid">
+        <a href="./protea_vivo/v3/"><strong>Protea V3</strong><small>versión anterior</small></a>
         <a href="./protea_vivo/"><strong>Consolidación</strong><small>base</small></a>
         <a href="./protea_vivo/materia-viva.html"><strong>Materia Viva</strong><small>exploración</small></a>
         <a href="./protea_vivov2/cliente/"><strong>Ajustes cliente</strong><small>v2</small></a>

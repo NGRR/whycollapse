@@ -1,0 +1,712 @@
+[
+  {
+    "category": "Empresas",
+    "name": "CCU",
+    "slug": "ccu",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ccu.png",
+    "source_slide": 1,
+    "source_image": 1,
+    "bytes": 12940,
+    "blob_sha": "9e708aec89e0a274aec84c7ababadfce35de3fe0"
+  },
+  {
+    "category": "Empresas",
+    "name": "SUEZ",
+    "slug": "suez",
+    "path": "protea_vivo/v4.1/assets/img/clientes/suez.png",
+    "source_slide": 1,
+    "source_image": 2,
+    "bytes": 48112,
+    "blob_sha": "2a0ce1faa0c56d92e42448ce486114429beb0823"
+  },
+  {
+    "category": "Empresas",
+    "name": "Aguas Andinas",
+    "slug": "aguas-andinas",
+    "path": "protea_vivo/v4.1/assets/img/clientes/aguas-andinas.png",
+    "source_slide": 1,
+    "source_image": 3,
+    "bytes": 21124,
+    "blob_sha": "25e276b3dc635a61ee8405a6bd71102c86a06f49"
+  },
+  {
+    "category": "Empresas",
+    "name": "Arauco",
+    "slug": "arauco",
+    "path": "protea_vivo/v4.1/assets/img/clientes/arauco.png",
+    "source_slide": 1,
+    "source_image": 4,
+    "bytes": 6644,
+    "blob_sha": "35786b5706399de5da1526e5aab2edfd726f5a69"
+  },
+  {
+    "category": "Empresas",
+    "name": "Caja Los Andes",
+    "slug": "caja-los-andes",
+    "path": "protea_vivo/v4.1/assets/img/clientes/caja-los-andes.png",
+    "source_slide": 1,
+    "source_image": 5,
+    "bytes": 61363,
+    "blob_sha": "0e3fae8d516dbd1bda8f716e7ba89d4855def012"
+  },
+  {
+    "category": "Empresas",
+    "name": "Tottus",
+    "slug": "tottus",
+    "path": "protea_vivo/v4.1/assets/img/clientes/tottus.png",
+    "source_slide": 1,
+    "source_image": 6,
+    "bytes": 16903,
+    "blob_sha": "fe0f79ba8dd84d24821c548efb7d7f46665295d2"
+  },
+  {
+    "category": "Empresas",
+    "name": "Freeport-McMoRan",
+    "slug": "freeport-mcmoran",
+    "path": "protea_vivo/v4.1/assets/img/clientes/freeport-mcmoran.png",
+    "source_slide": 1,
+    "source_image": 7,
+    "bytes": 5047,
+    "blob_sha": "41ff1167e05412ed152f8311bd5c9390ac972c61"
+  },
+  {
+    "category": "Empresas",
+    "name": "Agrosuper",
+    "slug": "agrosuper",
+    "path": "protea_vivo/v4.1/assets/img/clientes/agrosuper.png",
+    "source_slide": 1,
+    "source_image": 8,
+    "bytes": 24877,
+    "blob_sha": "51f891c7c10ecdcc61de71f67d6add401037b2a7"
+  },
+  {
+    "category": "Empresas",
+    "name": "CAP Acero",
+    "slug": "cap-acero",
+    "path": "protea_vivo/v4.1/assets/img/clientes/cap-acero.png",
+    "source_slide": 1,
+    "source_image": 9,
+    "bytes": 9812,
+    "blob_sha": "b2d52bbc660fa840ab7a4263f3bfd45fdfec5675"
+  },
+  {
+    "category": "Empresas",
+    "name": "Sodexo",
+    "slug": "sodexo",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sodexo.png",
+    "source_slide": 1,
+    "source_image": 10,
+    "bytes": 22214,
+    "blob_sha": "bc776f9d533b5f19d727ac3fbdad36791bfc26e5"
+  },
+  {
+    "category": "Empresas",
+    "name": "Aperimax",
+    "slug": "aperimax",
+    "path": "protea_vivo/v4.1/assets/img/clientes/aperimax.png",
+    "source_slide": 1,
+    "source_image": 11,
+    "bytes": 13806,
+    "blob_sha": "acfba03ac35955da3c8a6da755f11c956cebedc5"
+  },
+  {
+    "category": "Empresas",
+    "name": "Anabática Renovables",
+    "slug": "anabatica-renovables",
+    "path": "protea_vivo/v4.1/assets/img/clientes/anabatica-renovables.png",
+    "source_slide": 1,
+    "source_image": 12,
+    "bytes": 18061,
+    "blob_sha": "4587b13c22e56ff7c78987e4ded113281d3a3dc8"
+  },
+  {
+    "category": "Empresas",
+    "name": "CIDERE Biobío",
+    "slug": "cidere-biobio",
+    "path": "protea_vivo/v4.1/assets/img/clientes/cidere-biobio.png",
+    "source_slide": 2,
+    "source_image": 1,
+    "bytes": 57819,
+    "blob_sha": "85ff065720de3bb91e20fee280bc71826e6fcefc"
+  },
+  {
+    "category": "Empresas",
+    "name": "Cetaqua",
+    "slug": "cetaqua",
+    "path": "protea_vivo/v4.1/assets/img/clientes/cetaqua.png",
+    "source_slide": 2,
+    "source_image": 2,
+    "bytes": 42244,
+    "blob_sha": "70c5e65bf1662e98b6a0a47850f791650cf9b545"
+  },
+  {
+    "category": "Empresas",
+    "name": "Socialab",
+    "slug": "socialab",
+    "path": "protea_vivo/v4.1/assets/img/clientes/socialab.png",
+    "source_slide": 2,
+    "source_image": 3,
+    "bytes": 14196,
+    "blob_sha": "fd67819603e47077fca6af531dee8f57289166bc"
+  },
+  {
+    "category": "Empresas",
+    "name": "iF",
+    "slug": "if",
+    "path": "protea_vivo/v4.1/assets/img/clientes/if.png",
+    "source_slide": 2,
+    "source_image": 4,
+    "bytes": 39271,
+    "blob_sha": "5868828ff83fa1593726d45a75314f9fcd77fbab"
+  },
+  {
+    "category": "Empresas",
+    "name": "Abra Laboratorio de Aprendizaje",
+    "slug": "abra-laboratorio-de-aprendizaje",
+    "path": "protea_vivo/v4.1/assets/img/clientes/abra-laboratorio-de-aprendizaje.png",
+    "source_slide": 2,
+    "source_image": 5,
+    "bytes": 92901,
+    "blob_sha": "3c9e10cce6cd483ea776b2b7b8f2876fd4262a50"
+  },
+  {
+    "category": "Empresas",
+    "name": "FEDETUR Chile",
+    "slug": "fedetur-chile",
+    "path": "protea_vivo/v4.1/assets/img/clientes/fedetur-chile.png",
+    "source_slide": 2,
+    "source_image": 6,
+    "bytes": 8427,
+    "blob_sha": "6916da3b785a8941de2e868eb4a97897cf0e2812"
+  },
+  {
+    "category": "Empresas",
+    "name": "OTIC SOFOFA",
+    "slug": "otic-sofofa",
+    "path": "protea_vivo/v4.1/assets/img/clientes/otic-sofofa.png",
+    "source_slide": 2,
+    "source_image": 7,
+    "bytes": 87467,
+    "blob_sha": "8bcf7a3e0ba8ac3d9e8c719a4a922c5a56c88d0a"
+  },
+  {
+    "category": "Empresas",
+    "name": "Moov",
+    "slug": "moov",
+    "path": "protea_vivo/v4.1/assets/img/clientes/moov.png",
+    "source_slide": 2,
+    "source_image": 8,
+    "bytes": 20958,
+    "blob_sha": "f5d4dd612d1a43fa7409a3482706d39ef46fdd7e"
+  },
+  {
+    "category": "Empresas",
+    "name": "Agencia de Sostenibilidad Energética",
+    "slug": "agencia-de-sostenibilidad-energetica",
+    "path": "protea_vivo/v4.1/assets/img/clientes/agencia-de-sostenibilidad-energetica.png",
+    "source_slide": 2,
+    "source_image": 9,
+    "bytes": 13545,
+    "blob_sha": "89fe642a2e632cd9bc5f5ae283a7a02b68403366"
+  },
+  {
+    "category": "Universidades",
+    "name": "Duoc UC",
+    "slug": "duoc-uc",
+    "path": "protea_vivo/v4.1/assets/img/clientes/duoc-uc.png",
+    "source_slide": 3,
+    "source_image": 1,
+    "bytes": 37412,
+    "blob_sha": "3319e01333d752eaa96b6ac2d28ad8dc13ce92ca"
+  },
+  {
+    "category": "Universidades",
+    "name": "Universidad San Sebastián",
+    "slug": "universidad-san-sebastian",
+    "path": "protea_vivo/v4.1/assets/img/clientes/universidad-san-sebastian.png",
+    "source_slide": 3,
+    "source_image": 2,
+    "bytes": 41717,
+    "blob_sha": "3b5857f8aae7428a53456c54d145233ec3611f44"
+  },
+  {
+    "category": "Universidades",
+    "name": "Universidad Técnica Federico Santa María",
+    "slug": "universidad-tecnica-federico-santa-maria",
+    "path": "protea_vivo/v4.1/assets/img/clientes/universidad-tecnica-federico-santa-maria.png",
+    "source_slide": 3,
+    "source_image": 3,
+    "bytes": 41540,
+    "blob_sha": "b4b9491f7b1702fc5aa42df0d43c1418bde22ccc"
+  },
+  {
+    "category": "Universidades",
+    "name": "Universidad Andrés Bello",
+    "slug": "universidad-andres-bello",
+    "path": "protea_vivo/v4.1/assets/img/clientes/universidad-andres-bello.png",
+    "source_slide": 3,
+    "source_image": 4,
+    "bytes": 5778,
+    "blob_sha": "bc0102edaa45e7221b4863e2ea4e62e535b4516f"
+  },
+  {
+    "category": "Universidades",
+    "name": "Universitat Politècnica de València",
+    "slug": "universitat-politecnica-de-valencia",
+    "path": "protea_vivo/v4.1/assets/img/clientes/universitat-politecnica-de-valencia.png",
+    "source_slide": 3,
+    "source_image": 5,
+    "bytes": 18561,
+    "blob_sha": "1ddaf3427a1f36f7f9200ec5f6d83fa225ffa101"
+  },
+  {
+    "category": "Universidades",
+    "name": "Escuela de Gobierno UHE",
+    "slug": "escuela-de-gobierno-uhe",
+    "path": "protea_vivo/v4.1/assets/img/clientes/escuela-de-gobierno-uhe.png",
+    "source_slide": 3,
+    "source_image": 6,
+    "bytes": 27096,
+    "blob_sha": "7e0cbb454762ec82f1707cf420f8d0ed37700921"
+  },
+  {
+    "category": "Universidades",
+    "name": "Escuela Superior de Administración Pública (ESAP)",
+    "slug": "escuela-superior-de-administracion-publica-esap",
+    "path": "protea_vivo/v4.1/assets/img/clientes/escuela-superior-de-administracion-publica-esap.png",
+    "source_slide": 3,
+    "source_image": 7,
+    "bytes": 10289,
+    "blob_sha": "a3f71293f27326f3d21986ad2d7c1ba9a8374c93"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Generalitat de Catalunya",
+    "slug": "generalitat-de-catalunya",
+    "path": "protea_vivo/v4.1/assets/img/clientes/generalitat-de-catalunya.png",
+    "source_slide": 4,
+    "source_image": 1,
+    "bytes": 22968,
+    "blob_sha": "3648044ebc7b11bd7c77fa1c9e92061d3cd6bce4"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Departament d’Educació de Catalunya",
+    "slug": "departament-d-educacio-de-catalunya",
+    "path": "protea_vivo/v4.1/assets/img/clientes/departament-d-educacio-de-catalunya.png",
+    "source_slide": 4,
+    "source_image": 2,
+    "bytes": 35172,
+    "blob_sha": "d43b81ecb308749cf8ba3d86edeb0a44436bc589"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Departament de la Presidència de Catalunya",
+    "slug": "departament-de-la-presidencia-de-catalunya",
+    "path": "protea_vivo/v4.1/assets/img/clientes/departament-de-la-presidencia-de-catalunya.png",
+    "source_slide": 4,
+    "source_image": 3,
+    "bytes": 26947,
+    "blob_sha": "4d9d3a72029adb4d4d32ff85c93a5d92effc5733"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Escola d’Administració Pública de Catalunya",
+    "slug": "escola-d-administracio-publica-de-catalunya",
+    "path": "protea_vivo/v4.1/assets/img/clientes/escola-d-administracio-publica-de-catalunya.png",
+    "source_slide": 4,
+    "source_image": 4,
+    "bytes": 35827,
+    "blob_sha": "de41ccfba2b2fdc688cbc6fa18d51dc6366a74ea"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Centre d’Estudis Jurídics i Formació Especialitzada",
+    "slug": "centre-d-estudis-juridics-i-formacio-especialitzada",
+    "path": "protea_vivo/v4.1/assets/img/clientes/centre-d-estudis-juridics-i-formacio-especialitzada.png",
+    "source_slide": 4,
+    "source_image": 5,
+    "bytes": 65429,
+    "blob_sha": "64a68a90a51d81d262a34d29e496a1b6fbd265f7"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Institut Valencià d’Administració Pública",
+    "slug": "institut-valencia-d-administracio-publica",
+    "path": "protea_vivo/v4.1/assets/img/clientes/institut-valencia-d-administracio-publica.png",
+    "source_slide": 4,
+    "source_image": 6,
+    "bytes": 6071,
+    "blob_sha": "57b78616cc337ca135f50178bc109d4c18155358"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Diputació de Barcelona",
+    "slug": "diputacio-de-barcelona",
+    "path": "protea_vivo/v4.1/assets/img/clientes/diputacio-de-barcelona.png",
+    "source_slide": 4,
+    "source_image": 7,
+    "bytes": 8774,
+    "blob_sha": "6ac7fc27c91a8f5045cfd38c471f355b035581cf"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ayuntamiento de Fuenlabrada",
+    "slug": "ayuntamiento-de-fuenlabrada",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ayuntamiento-de-fuenlabrada.png",
+    "source_slide": 4,
+    "source_image": 8,
+    "bytes": 19567,
+    "blob_sha": "69cd35f5aa4b6d12975fa3e5fbb905f95cf6f722"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ajuntament de Mataró",
+    "slug": "ajuntament-de-mataro",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ajuntament-de-mataro.png",
+    "source_slide": 4,
+    "source_image": 9,
+    "bytes": 32317,
+    "blob_sha": "429f0fd4aeceae5c52eabc8e983a0c2a9e062f86"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Consell Comarcal del Vallès Oriental",
+    "slug": "consell-comarcal-del-valles-oriental",
+    "path": "protea_vivo/v4.1/assets/img/clientes/consell-comarcal-del-valles-oriental.png",
+    "source_slide": 4,
+    "source_image": 10,
+    "bytes": 48102,
+    "blob_sha": "a3b0dda52d30ba03591a666f444a4acb431b7c8e"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Instituto Andaluz de Administración Pública",
+    "slug": "instituto-andaluz-de-administracion-publica",
+    "path": "protea_vivo/v4.1/assets/img/clientes/instituto-andaluz-de-administracion-publica.png",
+    "source_slide": 4,
+    "source_image": 11,
+    "bytes": 25990,
+    "blob_sha": "025329ba54d9384831491690f85ca19c0b534776"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SENAME",
+    "slug": "sename",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sename.png",
+    "source_slide": 5,
+    "source_image": 1,
+    "bytes": 14576,
+    "blob_sha": "3e48ad838bbb16fbe37916e67510d1e24955d11e"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ministerio de Economía, Fomento y Turismo",
+    "slug": "ministerio-de-economia-fomento-y-turismo",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ministerio-de-economia-fomento-y-turismo.png",
+    "source_slide": 5,
+    "source_image": 2,
+    "bytes": 14997,
+    "blob_sha": "3bb505f9b6dfd3aa4d1d602c503d0375ad2565da"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ministerio Secretaría General de la Presidencia",
+    "slug": "ministerio-secretaria-general-de-la-presidencia",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ministerio-secretaria-general-de-la-presidencia.png",
+    "source_slide": 5,
+    "source_image": 3,
+    "bytes": 23379,
+    "blob_sha": "350d51b98372c49b10b935fb565e4a6b0c4a7f65"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SERNAPESCA",
+    "slug": "sernapesca",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sernapesca.png",
+    "source_slide": 5,
+    "source_image": 4,
+    "bytes": 12503,
+    "blob_sha": "1b55567608f0da1709551c2c0aabac072e41a9ed"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SENADIS",
+    "slug": "senadis",
+    "path": "protea_vivo/v4.1/assets/img/clientes/senadis.png",
+    "source_slide": 5,
+    "source_image": 5,
+    "bytes": 14777,
+    "blob_sha": "7eda74b06a3bbf271447b2dcc797e45832d6bdff"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SERNAC",
+    "slug": "sernac",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sernac.png",
+    "source_slide": 5,
+    "source_image": 6,
+    "bytes": 19474,
+    "blob_sha": "3a5ada12a87db5803a7bf52999a8f5ca1a191730"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "FOSIS",
+    "slug": "fosis",
+    "path": "protea_vivo/v4.1/assets/img/clientes/fosis.png",
+    "source_slide": 5,
+    "source_image": 7,
+    "bytes": 15387,
+    "blob_sha": "3aa16af579ab46d684c18c3e8b1efe9412d21144"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Instituto de Previsión Social (IPS)",
+    "slug": "instituto-de-prevision-social-ips",
+    "path": "protea_vivo/v4.1/assets/img/clientes/instituto-de-prevision-social-ips.png",
+    "source_slide": 5,
+    "source_image": 8,
+    "bytes": 12570,
+    "blob_sha": "8d709585f0e32ecf9227381d9da5517d2eac0828"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ministerio del Medio Ambiente",
+    "slug": "ministerio-del-medio-ambiente",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ministerio-del-medio-ambiente.png",
+    "source_slide": 5,
+    "source_image": 9,
+    "bytes": 50943,
+    "blob_sha": "dc518b24946d246ad8f4daff9dbe4a43c2ed8317"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SERNATUR",
+    "slug": "sernatur",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sernatur.png",
+    "source_slide": 5,
+    "source_image": 10,
+    "bytes": 17444,
+    "blob_sha": "022879a8af5f38a2391955f1e510f7ee42420945"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Subsecretaría de Telecomunicaciones",
+    "slug": "subsecretaria-de-telecomunicaciones",
+    "path": "protea_vivo/v4.1/assets/img/clientes/subsecretaria-de-telecomunicaciones.png",
+    "source_slide": 5,
+    "source_image": 11,
+    "bytes": 15405,
+    "blob_sha": "bcec6264a11c186bd10cb80e19814668e8026631"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Fundación para la Innovación Agraria",
+    "slug": "fundacion-para-la-innovacion-agraria",
+    "path": "protea_vivo/v4.1/assets/img/clientes/fundacion-para-la-innovacion-agraria.png",
+    "source_slide": 5,
+    "source_image": 12,
+    "bytes": 10492,
+    "blob_sha": "a6950db833b0f28dc8aa8270f528f6ba87740484"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Laboratorio de Gobierno",
+    "slug": "laboratorio-de-gobierno",
+    "path": "protea_vivo/v4.1/assets/img/clientes/laboratorio-de-gobierno.png",
+    "source_slide": 6,
+    "source_image": 1,
+    "bytes": 9378,
+    "blob_sha": "8e1de59d485132613a8e4817fdb88efdafacfbfc"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Quiero Mi Barrio",
+    "slug": "quiero-mi-barrio",
+    "path": "protea_vivo/v4.1/assets/img/clientes/quiero-mi-barrio.png",
+    "source_slide": 6,
+    "source_image": 2,
+    "bytes": 14162,
+    "blob_sha": "d9aaa4fae7fece466c5f084fc2f18adf97e95a9d"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "CORFO",
+    "slug": "corfo",
+    "path": "protea_vivo/v4.1/assets/img/clientes/corfo.png",
+    "source_slide": 6,
+    "source_image": 3,
+    "bytes": 6671,
+    "blob_sha": "18bc7ed2e4383ef61e7a847bb9fa7410ff4a4b61"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Municipalidad de Conchalí",
+    "slug": "municipalidad-de-conchali",
+    "path": "protea_vivo/v4.1/assets/img/clientes/municipalidad-de-conchali.png",
+    "source_slide": 6,
+    "source_image": 4,
+    "bytes": 26987,
+    "blob_sha": "2bf0f978b160f89b5dcb5f5b071d21a1ec6206c6"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Innova Biobío",
+    "slug": "innova-biobio",
+    "path": "protea_vivo/v4.1/assets/img/clientes/innova-biobio.png",
+    "source_slide": 6,
+    "source_image": 5,
+    "bytes": 29226,
+    "blob_sha": "790362546f526d63baf8ff6cacff258bed84cc90"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Gobierno Regional de Los Lagos",
+    "slug": "gobierno-regional-de-los-lagos",
+    "path": "protea_vivo/v4.1/assets/img/clientes/gobierno-regional-de-los-lagos.png",
+    "source_slide": 6,
+    "source_image": 6,
+    "bytes": 26477,
+    "blob_sha": "702dcb4f56fda1738033317a7f64ee59f42f865b"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Gobierno Regional de Los Ríos",
+    "slug": "gobierno-regional-de-los-rios",
+    "path": "protea_vivo/v4.1/assets/img/clientes/gobierno-regional-de-los-rios.png",
+    "source_slide": 6,
+    "source_image": 7,
+    "bytes": 39431,
+    "blob_sha": "13f2bca2748a666bd669d83d428d2b0b18948b7e"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Desarrolla Biobío",
+    "slug": "desarrolla-biobio",
+    "path": "protea_vivo/v4.1/assets/img/clientes/desarrolla-biobio.png",
+    "source_slide": 6,
+    "source_image": 8,
+    "bytes": 98530,
+    "blob_sha": "4691a350dcfbb6ea12c3ada57ee734b9b7fd3a7f"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Fiscalía de Chile",
+    "slug": "fiscalia-de-chile",
+    "path": "protea_vivo/v4.1/assets/img/clientes/fiscalia-de-chile.png",
+    "source_slide": 6,
+    "source_image": 9,
+    "bytes": 45909,
+    "blob_sha": "0f6570904f6586c363af528b54a30799f04f2953"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Poder Judicial de Chile",
+    "slug": "poder-judicial-de-chile",
+    "path": "protea_vivo/v4.1/assets/img/clientes/poder-judicial-de-chile.png",
+    "source_slide": 6,
+    "source_image": 10,
+    "bytes": 17981,
+    "blob_sha": "4bb782ed62ad5236870a62c575410fd5a6d230a8"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Transforma Turismo",
+    "slug": "transforma-turismo",
+    "path": "protea_vivo/v4.1/assets/img/clientes/transforma-turismo.png",
+    "source_slide": 6,
+    "source_image": 11,
+    "bytes": 37701,
+    "blob_sha": "7e7c260316dedf8e3c554db639e9d9f783d98d42"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Secretaría de la Función Pública (Paraguay)",
+    "slug": "secretaria-de-la-funcion-publica-paraguay",
+    "path": "protea_vivo/v4.1/assets/img/clientes/secretaria-de-la-funcion-publica-paraguay.png",
+    "source_slide": 7,
+    "source_image": 1,
+    "bytes": 33799,
+    "blob_sha": "960b414ae39d3994007c58dd3bb6c243cb27b6ec"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Ministerio de Hacienda (Paraguay)",
+    "slug": "ministerio-de-hacienda-paraguay",
+    "path": "protea_vivo/v4.1/assets/img/clientes/ministerio-de-hacienda-paraguay.png",
+    "source_slide": 7,
+    "source_image": 2,
+    "bytes": 34308,
+    "blob_sha": "1ae5544209e60915cd3d450224a07d4704b35b07"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Presidencia del Consejo de Ministros (Perú)",
+    "slug": "presidencia-del-consejo-de-ministros-peru",
+    "path": "protea_vivo/v4.1/assets/img/clientes/presidencia-del-consejo-de-ministros-peru.png",
+    "source_slide": 7,
+    "source_image": 3,
+    "bytes": 20323,
+    "blob_sha": "4c1b0df88ca302c281a26c60deb054bf97de2bc8"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Contraloría General de la República del Perú",
+    "slug": "contraloria-general-de-la-republica-del-peru",
+    "path": "protea_vivo/v4.1/assets/img/clientes/contraloria-general-de-la-republica-del-peru.png",
+    "source_slide": 7,
+    "source_image": 4,
+    "bytes": 18469,
+    "blob_sha": "1c5b7fc674bf6fa1a53430580f48ff42e563a9a3"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "SINAFOCAL (Paraguay)",
+    "slug": "sinafocal-paraguay",
+    "path": "protea_vivo/v4.1/assets/img/clientes/sinafocal-paraguay.png",
+    "source_slide": 7,
+    "source_image": 5,
+    "bytes": 16700,
+    "blob_sha": "39c800d12a4ba445a538970fb254f60b5c0f8271"
+  },
+  {
+    "category": "Administraciones públicas",
+    "name": "Secretaría Nacional de Gestión de la Política (Ecuador)",
+    "slug": "secretaria-nacional-de-gestion-de-la-politica-ecuador",
+    "path": "protea_vivo/v4.1/assets/img/clientes/secretaria-nacional-de-gestion-de-la-politica-ecuador.png",
+    "source_slide": 7,
+    "source_image": 6,
+    "bytes": 24891,
+    "blob_sha": "9b12c58c8e66f1ecca94ef6ffe43224546824a01"
+  },
+  {
+    "category": "Organismos internacionales",
+    "name": "Banco Interamericano de Desarrollo (BID)",
+    "slug": "banco-interamericano-de-desarrollo-bid",
+    "path": "protea_vivo/v4.1/assets/img/clientes/banco-interamericano-de-desarrollo-bid.png",
+    "source_slide": 8,
+    "source_image": 1,
+    "bytes": 17749,
+    "blob_sha": "efb843165d2590ece46a3deadec97c9432c364c9"
+  },
+  {
+    "category": "Organismos internacionales",
+    "name": "CAF · Banco de Desarrollo de América Latina y el Caribe",
+    "slug": "caf-banco-de-desarrollo-de-america-latina-y-el-caribe",
+    "path": "protea_vivo/v4.1/assets/img/clientes/caf-banco-de-desarrollo-de-america-latina-y-el-caribe.png",
+    "source_slide": 8,
+    "source_image": 2,
+    "bytes": 32849,
+    "blob_sha": "e1ca4c8bfaec667d97f4a075e5b78639c1020f06"
+  },
+  {
+    "category": "Organismos internacionales",
+    "name": "Secretaría General Iberoamericana (SEGIB)",
+    "slug": "secretaria-general-iberoamericana-segib",
+    "path": "protea_vivo/v4.1/assets/img/clientes/secretaria-general-iberoamericana-segib.png",
+    "source_slide": 8,
+    "source_image": 3,
+    "bytes": 21402,
+    "blob_sha": "83467cd7fb7f9c194e4eef369eec6c5045724408"
+  }
+]
