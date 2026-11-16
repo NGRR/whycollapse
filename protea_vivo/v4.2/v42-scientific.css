@@ -1,0 +1,77 @@
+/* V4.2 — lámina científica clara / 2026-11-16.
+   Capa de dirección de arte posterior a v42.css. No modifica el hero protegido,
+   motores canvas, geometría, navegación, contenido ni el mapa EAI. */
+html:has(body.protea-v42){background:#fff;color-scheme:light}
+body.protea-v42.protea-v4{--v42-ink:#111;--v42-muted:#535353;--v42-line:#bcbcbc;--v42-guide:#e5e5e5;background:#fff!important;color:var(--v42-ink);color-scheme:light}
+body.protea-v42 .protea-viva-background{background:#fff url("assets/img/protea/scientific-guide-v42.svg") left 16% center / min(38vw,580px) auto no-repeat!important}
+body.protea-v42 #protea-viva-canvas{filter:grayscale(1) brightness(0)!important;opacity:.27}
+body.protea-v42 .v3-body-section{background:transparent!important;border-bottom:1px solid var(--v42-line)!important}
+body.protea-v42.protea-v3 .v3-content{background:rgba(255,255,255,.96)!important;box-shadow:none!important;border-left:1px solid var(--v42-guide);backdrop-filter:none}
+body.protea-v42 .v3-footer{background:#fff!important;border-top:1px solid var(--v42-ink)!important}
+body.protea-v42 :is(.v3-body-section,.v3-footer,.v4-mobile-header,#mobile-menu,.v3-marker-track){color:var(--v42-ink)!important}
+/* Texto negro en superficies claras; el SVG EAI conserva sus fills y estados. */
+body.protea-v42.protea-v4 :is(.v3-body-section,.v3-footer,.v4-mobile-header,#mobile-menu,.v3-marker-track) :is(h1,h2,h3,h4,h5,h6,p,li,small,strong,b,em,span,a,label,legend,dt,dd,summary,cite,figcaption,button,mark):not(.v41-eai-artboard *){
+  color:var(--v42-ink)!important;text-shadow:none!important
+}
+body.protea-v42.protea-v4 :is(.v3-body-section,.v3-footer) :is(figcaption,.v4-role,.v41-client-slide-meta span+span,.contact-progress-status){color:var(--v42-muted)!important}
+body.protea-v42 .v3-body-section :is(.section-kicker,.eyebrow,.v4-count,.v3-stage-index,.v4-subnav small),body.protea-v42 .v3-quarter-marker{font-variant-numeric:tabular-nums}
+body.protea-v42 :is(.v3-body-section,.v3-footer) a:not(.uk-button):hover{text-decoration:underline;text-underline-offset:4px}
+body.protea-v42 :is(.v3-body-section,.v3-footer,#mobile-menu,.section-rail) :focus-visible{outline:2px solid #111!important;outline-offset:4px}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v41-ally,.v41-use-case,.v41-details,.v3-contact-card,.contact-review,.contact-progress,.contact-step,.v41-client-showcase,.v41-client-slidebox,.v41-reference-slides blockquote,.v3-stage-outcome,.v3-journey-close,.v4-feature-person,.v4-programs,.v4-subnav a,.v3-signal-options label,.v41-client-tabs>li>a,.v41-client-arrow){background:#fff!important;background-image:none!important;border-color:var(--v42-line)!important;box-shadow:none!important}
+body.protea-v42 .v3-body-section :is(.v4-divider,.v3-team-name,.v4-process li,.v4-list li,.v41-details,.v41-ally,.v41-client-showcase,.v41-reference-slides blockquote,.contact-review>div),body.protea-v42 .v4-footer-legal{border-color:var(--v42-line)!important}
+body.protea-v42 .v3-body-section :is(.v4-process li,.v4-list li)::before{color:#111!important}
+body.protea-v42 .v3-body-section .v4-divider{background:#bcbcbc!important;height:1px}
+body.protea-v42 .v3-body-section .v3-team-name::before{background:#111!important;box-shadow:none!important}
+/* EAI: ejes guía, puntos de unión, cotas y trazos activos. */
+body.protea-v42 .v3-section-head{position:relative;border-top:1px solid #111;padding-top:14px}
+body.protea-v42 .v3-section-head::before{content:"";position:absolute;width:7px;height:7px;left:0;top:-4px;background:#111;border-radius:50%;pointer-events:none}
+body.protea-v42 .v3-section-head::after{content:"";position:absolute;top:-7px;right:0;width:14px;height:14px;background:linear-gradient(#111,#111) center/1px 100% no-repeat,linear-gradient(#111,#111) center/100% 1px no-repeat;pointer-events:none}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a,.v41-client-showcase){position:relative;border:1px solid var(--v42-line)!important}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a,.v41-client-showcase)::after{content:"";position:absolute;right:-1px;top:-1px;width:13px;height:13px;border-right:1px solid #111;border-top:1px solid #111;pointer-events:none}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a){transition:border-color .18s ease,background-color .18s ease}
+body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a):is(:hover,:focus-within){border-color:#111!important;background:#f5f5f5!important}
+body.protea-v42 .v3-stage-art::before{border-color:var(--v42-line)!important}
+body.protea-v42 .v3-stage-art::after{background:#111!important;box-shadow:-34px 25px 0 -3px #777,-76px -9px 0 -4px #aaa!important}
+body.protea-v42 .v3-body-section :is(.v3-portrait,.v4-feature-image img){background:#fff!important;border-color:#aaa!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .v3-body-section img:not(.v41-client-logo-card img){filter:grayscale(1)!important}
+body.protea-v42 .v3-body-section .v3-chroma{background:rgba(255,255,255,.18)!important;mix-blend-mode:normal!important;backdrop-filter:grayscale(1) contrast(1.35)!important;-webkit-backdrop-filter:grayscale(1) contrast(1.35)!important;border-color:#111!important}
+body.protea-v42 .v3-body-section .v3-diagram{background:linear-gradient(90deg,transparent 14%,#777 14.2%,transparent 14.4%),linear-gradient(0deg,transparent 74%,#777 74.2%,transparent 74.4%)!important}
+body.protea-v42 .v3-body-section .v3-diagram::before,body.protea-v42 .v3-body-section .v3-diagram::after{border-color:#111!important}
+body.protea-v42 .v3-body-section .v3-diagram::after{background:#111!important}
+/* Rail y marcadores: una lectura de nodo activo, no bloques oscuros. */
+body.protea-v42 .section-rail{background:#fff!important;border-color:#aaa!important}
+body.protea-v42 .section-rail .v41-rail-group>.rail-item:is(:hover,:focus-visible,.is-active),body.protea-v42 .section-rail .v41-rail-tab:is(:hover,:focus-visible){background:#f0f0f0!important;color:#111!important;border-left-color:#111!important}
+body.protea-v42 .section-rail .rail-item:is(:hover,:focus-visible,.is-active) :is(span,small){color:#111!important}
+body.protea-v42 .section-rail .rail-item.is-active::after{background:#111!important;border-color:#111!important}
+body.protea-v42 .section-rail .rail-item.is-active::before,body.protea-v42 .section-rail .rail-stem i{background:#111!important}
+body.protea-v42.protea-v3 .v3-marker-track>.v3-quarter-marker{background:rgba(255,255,255,.97)!important;border-color:#aaa!important;border-left-color:#111!important;box-shadow:none!important}
+body.protea-v42 .v3-marker-track>.v3-quarter-marker::after,body.protea-v42 .v3-quarter-marker i{background:linear-gradient(90deg,#111,#bbb)!important}
+body.protea-v42 .v3-quarter-marker mark{background:#fff!important;border-left-color:#111!important}
+body.protea-v42 .v4-mobile-header,body.protea-v42 #mobile-menu .uk-offcanvas-bar{background:#fff!important;border-color:#aaa!important}
+body.protea-v42 :is(.v4-mobile-header,#mobile-menu) :is(.mobile-menu-button span,.v41-mobile-toggle::before,.v41-mobile-toggle::after){background:#111!important}
+body.protea-v42 #mobile-menu :is(.v41-mobile-row,.v41-mobile-sub,.mobile-menu-list li){border-color:#bcbcbc!important}
+body.protea-v42 #mobile-menu :is(.v41-mobile-row,.v41-mobile-sub,.v41-mobile-toggle){background:transparent!important}
+body.protea-v42 .v3-body-section :is(.uk-button,.protea-button,.v41-eai-expand){background:#fff!important;color:#111!important;border:1px solid #111!important;box-shadow:none!important}
+body.protea-v42.protea-v4 .v3-body-section :is(.uk-button,.protea-button,.v41-eai-expand):is(:hover,:focus-visible){background:#ededed!important;color:#111!important;border-color:#111!important}
+body.protea-v42 .v3-body-section :is(.uk-button-primary,.protea-button-primary){border-width:2px!important}
+body.protea-v42 .v3-body-section :is(input,textarea,select):not([type=checkbox]):not([type=radio]){background:#fff!important;color:#111!important;border-color:#777!important;box-shadow:none!important}
+body.protea-v42 .v3-body-section :is(input,textarea)::placeholder{color:#666!important}
+body.protea-v42 .v3-body-section select option{background:#fff;color:#111}
+body.protea-v42 .v3-body-section :is(input,textarea,select){accent-color:#111!important}
+body.protea-v42 .v3-body-section .v3-signal-options input+span::before{background:#fff!important;border-color:#777!important}
+body.protea-v42 .v3-body-section .v3-signal-options input:checked+span::before{background:#111!important;border-color:#111!important}
+body.protea-v42 .v3-body-section .v3-textarea-cta-icon{background:#fff!important;color:#111!important;border:1px solid #111}
+body.protea-v42 .v3-body-section .contact-progress li{background:#fff!important;border-color:#aaa!important}
+body.protea-v42 .v3-body-section .contact-progress li.is-active{border-color:#111!important;background:#ededed!important}
+body.protea-v42 .v41-client-tabs>li.uk-active>a,body.protea-v42 .v41-client-tabs>li>a:is(:hover,:focus-visible),body.protea-v42 .v41-client-arrow:is(:hover,:focus-visible){background:#ededed!important;border-color:#111!important;color:#111!important}
+body.protea-v42 .v41-client-dots>*>*{background:transparent!important;border-color:#777!important}
+body.protea-v42 .v41-client-dots>.uk-active>*{background:#111!important;border-color:#111!important}
+body.protea-v42 .v41-client-logo-card img{filter:none!important}
+body.protea-v42 .v41-eai-ui,body.protea-v42 .v41-eai-artboard,body.protea-v42 .v41-eai-expanded-head{background:#fff!important}
+body.protea-v42 .v41-eai-ui button:focus-visible{outline:2px solid #111!important}
+@media(max-width:959px){
+  body.protea-v42 .protea-viva-background{background:#fff!important}
+  body.protea-v42 #protea-viva-canvas{opacity:.10}
+  body.protea-v42.protea-v3 .v3-content{background:rgba(255,255,255,.98)!important;border-left:0}
+}
+@media(prefers-reduced-motion:reduce){body.protea-v42 .v3-body-section :is(.v4-info-card,.v4-conf-card,.v4-subnav a){transition:none}}

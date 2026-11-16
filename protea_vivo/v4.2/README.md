@@ -92,3 +92,7 @@ Por solicitud expresa se retiran las notas y advertencias internas visibles del 
 
 ## EAI interactivo integrado en IAO · 2026-11-16
 Se reemplaza el esquema estático y su lightbox por el componente SVG de la segunda revisión del prototipo (`4e8194b`). Mismas dos composiciones, 23 conceptos, once fichas y doce etiquetas no interactivas; dimensiones y descriptores sin cambios. CSS/JS propios en `components/eai/`, IDs prefijados. Adaptación por ancho disponible y ampliación nativa del mismo mapa, sin duplicar nodos; PNG original como respaldo cuando JS no inicia. Sin cambios fuera de IAO y su integración. Descriptores interpretativos pendientes de validación por Protea. Estado REVIEW, QA visual en navegador pendiente.
+
+
+## Monocromo científico claro · 2026-11-16
+Fondo blanco y texto negro en el cuerpo, rail, menú móvil, contacto y pie. Guías vectoriales, cotas, nodos y estados de trazo derivados del lenguaje EAI; canvas del cuerpo en tinta monocroma sin modificar su motor. Hero, precarga, EAI interactivo, contenido, retícula y otras versiones intactos; logos originales conservados. Nueva capa `v42-scientific.css` y SVG decorativo local. Ver `docs/protea/04_CHANGELOG/CHANGE-012.md`. Estado REVIEW; QA visual y funcional pendiente.
