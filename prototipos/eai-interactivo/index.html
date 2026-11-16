@@ -3,23 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Estilo de Adaptabilidad Individual · Prototipo interactivo</title>
-<link rel="stylesheet" href="style.css">
-<script src="app.js" defer></script>
+<title>Protea · Estilo de Adaptabilidad Individual</title>
+<meta name="description" content="Mapa de estilos individuales: percepción, coordinación creativa y comprensión.">
+<link rel="stylesheet" href="style.css?v=20261116-r2">
+<script src="app.js?v=20261116-r2" defer></script>
 </head>
 <body><main>
-<header class="masthead"><a href="../../">← Why Collapse</a><span>PROTEA / EAI</span><span class="edition">ESTUDIO 01 — INTERACTIVO</span></header>
-<section class="intro"><div><p class="eyebrow">MAPA DE ESTILOS INDIVIDUALES</p><h1>Estilo de Adaptabilidad<br class="wide"> Individual (EAI)</h1></div><p>Selecciona las dimensiones, expresiones y estilos para explorar sus conexiones en el mapa.</p></section>
-<section class="plate" aria-label="Mapa interactivo">
-<div class="toolbar"><div class="views" role="group" aria-label="Vista del esquema">
-<button type="button" data-view="all" aria-pressed="true">Mapa completo</button><button type="button" data-view="p" aria-pressed="false">Percepción</button><button type="button" data-view="c" aria-pressed="false">Coordinación creativa</button><button type="button" data-view="a" aria-pressed="false">Comprensión</button>
-</div><button type="button" id="reset">Restablecer ↗</button></div>
-<div class="artboard"><svg id="map" viewBox="0 0 1648 928" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Mapa EAI con nodos seleccionables"></svg><noscript>Activa JavaScript para explorar el mapa vectorial.</noscript></div>
-<div class="plate-footer"><span>α / β — ESTILO DE ADAPTABILIDAD INDIVIDUAL</span><span id="view-label" aria-live="polite">VISTA GENERAL</span></div>
+<header class="masthead"><span>PROTEA / EAI</span><span>MAPA DE ESTILOS INDIVIDUALES</span></header>
+<section class="intro"><div><p class="eyebrow">BECOMING ADAPTIVE</p><h1>Estilo de Adaptabilidad Individual <span>(EAI)</span></h1></div><p>Tres dimensiones de la adaptabilidad individual y sus relaciones.</p></section>
+<section class="plate" aria-label="Mapa de estilos individuales">
+<div class="artboard"><svg id="map" viewBox="0 0 1648 928" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Mapa EAI con estilos y dimensiones interactivos"></svg><noscript>Percepción · Coordinación creativa · Comprensión</noscript></div>
 </section>
-<section class="explorer" aria-label="Lectura del mapa">
-<div class="inspector" aria-live="polite" aria-atomic="true"><p class="eyebrow" id="detail-type">LECTURA DEL MAPA</p><h2 id="detail-title">Tres dimensiones, un mapa</h2><p id="detail-desc">Selecciona un concepto para destacar las relaciones representadas en el esquema.</p><div class="related" id="related"></div></div>
-<div class="selector"><p class="eyebrow">ÍNDICE DE CONCEPTOS</p><div id="concept-list"></div></div>
-</section>
-<footer><span>PROTEA — EAI</span><span>Exploración conceptual del esquema. No calcula perfiles ni puntuaciones.</span><a href="../../">Volver al índice ↑</a></footer>
+<dialog id="detail" aria-labelledby="detail-title"><div class="detail-head"><p class="eyebrow" id="detail-type"></p><button type="button" id="close" aria-label="Cerrar detalle">×</button></div><h2 id="detail-title"></h2><p id="detail-desc"></p><div id="detail-expressions"></div><p class="detail-source">Lectura conceptual del EAI</p></dialog>
+<footer><span>PROTEA — BECOMING ADAPTIVE</span><span>ESTILO DE ADAPTABILIDAD INDIVIDUAL</span></footer>
 </main></body></html>
