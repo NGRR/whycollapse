@@ -166,3 +166,73 @@ body.protea-v42.protea-v4 #conferencias .v41-reference-controls .v41-client-dots
     filter:none!important;pointer-events:none
   }
 }
+
+/* CHANGE-017 · cotas de transición / siete secciones del cuerpo.
+   La guía fija de Protea Viva y el hero no forman parte de esta capa. */
+body.protea-v42.protea-v4 .v3-body-section{
+  --v42-section-accent:#0066ff;
+  --v42-section-text:#0755c5;
+  --v42-section-detail:#ff5a00;
+}
+body.protea-v42.protea-v4 .v3-body-section:is(#colapso,#iao,#actualidad,#contacto-final){
+  --v42-section-accent:#ff5a00;
+  --v42-section-text:#a93600;
+  --v42-section-detail:#0066ff;
+}
+/* Cota horizontal, acotada al área de contenido, no al primer quinto. */
+body.protea-v42.protea-v4 .v3-body-section>.uk-container .v3-content>.v3-section-head{
+  position:relative;max-width:none;
+  margin:0 0 24px;padding:14px 0 12px;
+  border-top:1px solid #9e9e9e;
+  border-bottom:1px solid #dedede;
+}
+body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head::before,
+body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head::after{
+  position:absolute;content:"";width:13px;height:13px;top:-7px;
+  background:none;transform:none;pointer-events:none;
+}
+body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head::before{
+  left:0;border-left:2px solid var(--v42-section-accent);border-top:2px solid var(--v42-section-accent);
+}
+body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head::after{
+  right:0;border-right:2px solid var(--v42-section-detail);border-top:2px solid var(--v42-section-detail);
+}
+body.protea-v42.protea-v4 :is(#colapso,#becoming-adaptive,#iao,#conferencias,#actualidad,#experiencia,#contacto-final) .v3-content .v42-section-label{
+  display:flex;align-items:center;gap:clamp(10px,1.5vw,20px);
+  min-width:0;width:100%;margin:0!important;
+  font-family:var(--font-head,Montserrat,sans-serif);
+  font-weight:600;line-height:1.2;letter-spacing:.08em;
+}
+body.protea-v42.protea-v4 :is(#colapso,#becoming-adaptive,#iao,#conferencias,#actualidad,#experiencia,#contacto-final) .v3-content .v42-section-index{
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+  min-width:2.1em;font-size:clamp(25px,2.6vw,42px);font-weight:600;
+  padding:4px 10px 4px 0;letter-spacing:-.055em;font-variant-numeric:tabular-nums;
+  border-right:2px solid var(--v42-section-accent);
+  color:var(--v42-section-text)!important;
+}
+body.protea-v42.protea-v4 :is(#colapso,#becoming-adaptive,#iao,#conferencias,#actualidad,#experiencia,#contacto-final) .v3-content .v42-section-name{
+  color:#111!important;font-size:clamp(11px,1.15vw,15px);letter-spacing:.12em;
+}
+body.protea-v42.protea-v4 .v3-body-section .v42-section-label::after{
+  content:"";flex:1 1 20px;min-width:16px;height:9px;
+  border-top:1px dashed #bcbcbc;border-right:2px solid var(--v42-section-detail);
+  pointer-events:none;
+}
+/* Contacto conserva su propia tarjeta; emplea el mismo encabezado de cota. */
+body.protea-v42.protea-v4 #contacto-final .v3-content .v3-contact-card>.v42-section-label{
+  border-top:1px solid #9e9e9e;border-bottom:1px solid #dedede;
+  padding:14px 0 12px;margin-bottom:20px!important;
+}
+@media(min-width:960px){
+  body.protea-v42.protea-v4 .v3-body-section .v3-content{
+    border-left:1px solid #c6c6c6;
+  }
+  body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head{
+    margin-bottom:30px;
+  }
+}
+@media(max-width:959px){
+  body.protea-v42.protea-v4 .v3-body-section .v3-content>.v3-section-head{
+    padding:10px 0;margin-bottom:20px;
+  }
+}

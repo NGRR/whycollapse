@@ -112,3 +112,7 @@ CHANGE-015: desplazamiento hacia la izquierda de hasta 200 px en escritorio, lim
 
 ## Protea Viva en tinta roja · 2026-11-16
 CHANGE-016: figura +100 px respecto al centro efectivo de CHANGE-015; marco SVG centrado en ese mismo eje. Fondo blanco plano sin capa azul; dibujo procedural rojo sobre transparencia y extracción cromática de las texturas rasterizadas al cargarlas, sin modificar originales. Motor, etapas, hero y tratamiento móvil conservados. Estado REVIEW; QA visual pendiente.
+
+
+## Cotas de transición entre secciones · 2026-11-16
+CHANGE-017: siete identificadores de sección (01–07) con índice tipográfico, líneas de medición, remates y acentos alternados naranja/azul. Se aplica en la zona editorial de escritorio y móvil; Contacto conserva su tarjeta. Hero, primer quinto, motor de Protea Viva, EAI y contenido intactos. Estado REVIEW; QA visual pendiente.
