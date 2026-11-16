@@ -48,7 +48,7 @@ body.protea-v42.protea-v3 .v3-marker-track>.v3-quarter-marker{background:rgba(25
 body.protea-v42 .v3-marker-track>.v3-quarter-marker::after,body.protea-v42 .v3-quarter-marker i{background:linear-gradient(90deg,#111,#bbb)!important}
 body.protea-v42 .v3-quarter-marker mark{background:#fff!important;border-left-color:#111!important}
 body.protea-v42 .v4-mobile-header,body.protea-v42 #mobile-menu .uk-offcanvas-bar{background:#fff!important;border-color:#aaa!important}
-body.protea-v42 :is(.v4-mobile-header,#mobile-menu) :is(.mobile-menu-button span,.v41-mobile-toggle::before,.v41-mobile-toggle::after){background:#111!important}
+body.protea-v42 .v4-mobile-header .mobile-menu-button span,body.protea-v42 #mobile-menu .v41-mobile-toggle::before,body.protea-v42 #mobile-menu .v41-mobile-toggle::after{background:#111!important}
 body.protea-v42 #mobile-menu :is(.v41-mobile-row,.v41-mobile-sub,.mobile-menu-list li){border-color:#bcbcbc!important}
 body.protea-v42 #mobile-menu :is(.v41-mobile-row,.v41-mobile-sub,.v41-mobile-toggle){background:transparent!important}
 body.protea-v42 .v3-body-section :is(.uk-button,.protea-button,.v41-eai-expand){background:#fff!important;color:#111!important;border:1px solid #111!important;box-shadow:none!important}
