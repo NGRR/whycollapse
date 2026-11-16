@@ -260,11 +260,46 @@
     }
   }
 
+  // CH-016: extraer tinta roja de las texturas sin alterar archivos originales.
+  // Se procesa una vez por carga, nunca por fotograma.
+  function redInkPixels(data) {
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      const chroma = r - Math.max(g, b);
+      const mask = smoothstep(9, 64, chroma) * smoothstep(18, 92, r);
+      data[i + 3] = Math.round(data[i + 3] * mask);
+      // Mantener variación tonal roja, sin azul, blanco ni gris del fondo.
+      data[i] = Math.round(lerp(153, 237, r / 255));
+      data[i + 1] = Math.round(lerp(15, 60, g / 255));
+      data[i + 2] = Math.round(lerp(20, 35, g / 255));
+    }
+    return data;
+  }
+
+  function redInkTexture(image) {
+    const surface = document.createElement("canvas");
+    surface.width = image.naturalWidth;
+    surface.height = image.naturalHeight;
+    const ink = surface.getContext("2d", { willReadFrequently: true });
+    if (!ink || !surface.width || !surface.height) return null;
+    ink.drawImage(image, 0, 0);
+    const pixels = ink.getImageData(0, 0, surface.width, surface.height);
+    redInkPixels(pixels.data);
+    ink.putImageData(pixels, 0, 0);
+    return surface;
+  }
+
   function loadImage(path) {
     return new Promise((resolve) => {
       const image = new Image();
       image.decoding = "async";
-      image.onload = () => resolve(image);
+      image.onload = () => {
+        try { resolve(redInkTexture(image)); }
+        catch (error) {
+          console.warn("Protea Viva: no se pudo extraer la tinta roja de", path, error);
+          resolve(null); // conservar dibujo procedural, nunca reintroducir fondo azul.
+        }
+      };
       image.onerror = () => resolve(null);
       image.src = path;
     });
@@ -293,9 +328,11 @@
       // el núcleo no desaparezca detrás de la navegación en pantallas estrechas.
       const rail = document.querySelector(".section-rail");
       const railRight = rail ? rail.getBoundingClientRect().right : 0;
-      const visibleCenterX = Math.min(firstColumnCenterX, Math.max(firstColumnCenterX - 200, railRight + 56));
+      const previousCenterX = Math.min(firstColumnCenterX, Math.max(firstColumnCenterX - 200, railRight + 56));
+      // CHANGE-016: +100 px respecto al centro efectivo de CHANGE-015.
+      const visibleCenterX = previousCenterX + 100;
       CONFIG.centerXDesktop = clamp((visibleCenterX - rect.left) / state.width, 0.02, 0.48);
-      stage.style.setProperty("--v42-figure-x", `${Math.round(state.width * CONFIG.centerXDesktop)}px`);
+      stage.style.setProperty("--v42-figure-x", `${Math.round(rect.left - stage.getBoundingClientRect().left + state.width * CONFIG.centerXDesktop)}px`);
     }
     state.dpr = Math.min(devicePixelRatio || 1, CONFIG.maxDpr);
     canvas.width = Math.round(state.width * state.dpr);
@@ -374,7 +411,7 @@
   function drawRoots(time, spin, geo, alphaMultiplier = 1) {
     const growth = CONFIG.initialRootStage + (1 - CONFIG.initialRootStage) * smoothstep(0, 0.48, state.progress);
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.lineCap = "round";
     for (const root of state.roots) {
       const local = smoothstep(root.reveal, root.reveal + 0.20, growth);
@@ -391,7 +428,7 @@
       ctx.beginPath();
       ctx.moveTo(x1, y1);
       ctx.quadraticCurveTo(cx, cy, x2, y2);
-      ctx.strokeStyle = `rgba(255, 66, 48, ${(0.13 + local * 0.29) * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(218, 32, 27, ${(0.13 + local * 0.29) * alphaMultiplier})`;
       ctx.lineWidth = Math.max(0.34, root.width * (0.5 + local * 0.8));
       ctx.stroke();
     }
@@ -410,7 +447,7 @@
     });
 
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
@@ -443,27 +480,27 @@
       }
 
       const pulse = 0.86 + Math.sin(time * 0.0012 + spec.seed) * 0.14;
-      let strokeR = 255;
-      let strokeG = 52 + spec.brightness * 34;
-      let strokeB = 43;
+      let strokeR = 184 + spec.brightness * 48;
+      let strokeG = 22 + spec.brightness * 24;
+      let strokeB = 27;
       let finalAlpha = alphaDepth * reveal * (0.18 + spec.brightness * 0.24) * pulse * clarity * alphaMultiplier;
       let lineWidth = spec.width * (isFront ? 1.0 : 0.68) * (0.70 + reveal * 0.54) * lerp(1, 0.88, cleaned);
 
       if (spec.scaffold && introFade > 0.001) {
         const tintMix = 0.88 * introFade;
         if (spec.introTone === "white") {
-          strokeG = lerp(strokeG, 245, tintMix);
-          strokeB = lerp(strokeB, 255, tintMix);
+          strokeG = lerp(strokeG, 28, tintMix);
+          strokeB = lerp(strokeB, 36, tintMix);
         } else {
-          strokeG = lerp(strokeG, 172, tintMix);
-          strokeB = lerp(strokeB, 92, tintMix * 0.85);
+          strokeG = lerp(strokeG, 61, tintMix);
+          strokeB = lerp(strokeB, 24, tintMix * 0.85);
         }
         const introAlpha = (isFront ? 0.58 : 0.34) * introFade * alphaMultiplier;
         finalAlpha = Math.max(finalAlpha, introAlpha);
         lineWidth *= isFront ? (1.55 - 0.35 * (1 - introFade)) : (1.28 - 0.18 * (1 - introFade));
       }
 
-      ctx.strokeStyle = `rgba(${strokeR}, ${strokeG}, ${strokeB}, ${finalAlpha})`;
+      ctx.strokeStyle = `rgba(${strokeR}, ${strokeG}, ${strokeB}, ${Math.min(1, finalAlpha * 1.35)})`;
       ctx.lineWidth = lineWidth;
       ctx.setLineDash(spec.dash && cleaned < 0.75 ? [2.2, 5.4] : []);
       ctx.stroke();
@@ -518,11 +555,11 @@
       const center = petal.centerPoints.slice(0, visibleSlices + 1);
       const depthAlpha = isFront ? 1 : 0.34;
       ctx.save();
-      ctx.globalCompositeOperation = "lighter";
+      ctx.globalCompositeOperation = "source-over";
       const fill = ctx.createLinearGradient(petal.attach.x, petal.attach.y, center.at(-1).x, center.at(-1).y);
-      fill.addColorStop(0, `rgba(255, 104, 26, ${depthAlpha * bloom * 0.105 * alphaMultiplier})`);
-      fill.addColorStop(0.48, `rgba(255, 38, 92, ${depthAlpha * bloom * 0.082 * alphaMultiplier})`);
-      fill.addColorStop(1, `rgba(122, 18, 255, ${depthAlpha * bloom * 0.025 * alphaMultiplier})`);
+      fill.addColorStop(0, `rgba(218, 32, 27, ${depthAlpha * bloom * 0.105 * alphaMultiplier})`);
+      fill.addColorStop(0.48, `rgba(218, 32, 27, ${depthAlpha * bloom * 0.082 * alphaMultiplier})`);
+      fill.addColorStop(1, `rgba(167, 22, 30, ${depthAlpha * bloom * 0.025 * alphaMultiplier})`);
       ctx.beginPath();
       ctx.moveTo(left[0].x, left[0].y);
       for (let i = 1; i < left.length; i += 1) ctx.lineTo(left[i].x, left[i].y);
@@ -530,16 +567,16 @@
       ctx.closePath();
       ctx.fillStyle = fill;
       ctx.fill();
-      ctx.strokeStyle = `rgba(255, 34, 92, ${depthAlpha * bloom * 0.13 * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(218, 32, 27, ${depthAlpha * bloom * 0.13 * alphaMultiplier})`;
       ctx.lineWidth = isFront ? 4.0 : 2.0;
       ctx.stroke();
-      ctx.strokeStyle = `rgba(255, 101, 30, ${depthAlpha * bloom * 0.72 * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(218, 32, 27, ${depthAlpha * bloom * 0.72 * alphaMultiplier})`;
       ctx.lineWidth = isFront ? 1.45 : 0.78;
       ctx.stroke();
       ctx.beginPath();
       ctx.moveTo(center[0].x, center[0].y);
       for (let i = 1; i < center.length; i += 1) ctx.lineTo(center[i].x, center[i].y);
-      ctx.strokeStyle = `rgba(255, 127, 28, ${depthAlpha * bloom * 0.72 * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(218, 32, 27, ${depthAlpha * bloom * 0.72 * alphaMultiplier})`;
       ctx.lineWidth = isFront ? 1.16 : 0.62;
       ctx.stroke();
       for (let v = 1; v <= spec.veins; v += 1) {
@@ -554,7 +591,7 @@
         ctx.quadraticCurveTo(lerp(c.x, l.x, 0.58) + bend, lerp(c.y, l.y, 0.58) - 3, l.x, l.y);
         ctx.moveTo(c.x, c.y);
         ctx.quadraticCurveTo(lerp(c.x, r.x, 0.58) - bend, lerp(c.y, r.y, 0.58) - 3, r.x, r.y);
-        ctx.strokeStyle = `rgba(255, 54, 72, ${depthAlpha * bloom * 0.31 * alphaMultiplier})`;
+        ctx.strokeStyle = `rgba(218, 32, 27, ${depthAlpha * bloom * 0.31 * alphaMultiplier})`;
         ctx.lineWidth = 0.58;
         ctx.stroke();
       }
@@ -570,17 +607,17 @@
     const ry = geo.h * 0.155 * (0.52 + reveal * 0.48);
     const phase = spin * 0.48;
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.translate(center.x, center.y - ry * 0.16);
     ctx.rotate(Math.sin(phase) * 0.035);
     const shell = new Path2D();
     shell.ellipse(0, 0, rx, ry, 0, 0, TAU);
     const shellFill = ctx.createRadialGradient(-rx * 0.18, -ry * 0.22, 0, 0, 0, Math.max(rx, ry));
-    shellFill.addColorStop(0, `rgba(255, 55, 82, ${0.082 * reveal * alphaMultiplier})`);
-    shellFill.addColorStop(0.62, `rgba(207, 26, 133, ${0.048 * reveal * alphaMultiplier})`);
-    shellFill.addColorStop(1, `rgba(79, 11, 255, ${0.012 * reveal * alphaMultiplier})`);
+    shellFill.addColorStop(0, `rgba(218, 32, 27, ${0.082 * reveal * alphaMultiplier})`);
+    shellFill.addColorStop(0.62, `rgba(185, 24, 30, ${0.048 * reveal * alphaMultiplier})`);
+    shellFill.addColorStop(1, `rgba(145, 20, 27, ${0.012 * reveal * alphaMultiplier})`);
     ctx.fillStyle = shellFill; ctx.fill(shell);
-    ctx.strokeStyle = `rgba(255, 82, 40, ${0.54 * reveal * alphaMultiplier})`;
+    ctx.strokeStyle = `rgba(218, 32, 27, ${0.54 * reveal * alphaMultiplier})`;
     ctx.lineWidth = 1.35; ctx.stroke(shell);
     ctx.save(); ctx.clip(shell);
     for (const cell of state.podCells) {
@@ -589,7 +626,7 @@
       const y = cell.y * ry * 0.94;
       ctx.beginPath();
       ctx.ellipse(x, y, rx * cell.rx * pulse, ry * cell.ry * pulse, cell.rotation + Math.sin(phase) * 0.16, 0, TAU);
-      ctx.strokeStyle = `rgba(255, ${48 + Math.round((cell.y + 1) * 18)}, 72, ${reveal * 0.31 * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(207, ${24 + Math.round((cell.y + 1) * 12)}, 29, ${reveal * 0.31 * alphaMultiplier})`;
       ctx.lineWidth = 0.62;
       ctx.stroke();
     }
@@ -599,7 +636,7 @@
 
   function drawClusters(time, spin, geo, alphaMultiplier = 1) {
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     for (const cluster of state.clusters) {
       const center = mainSpinePoint(cluster.t, spin, geo);
       for (const particle of cluster.particles) {
@@ -615,7 +652,7 @@
         const pulse = 0.82 + Math.sin(time * 0.002 + particle.orbitPhase * 5) * 0.18;
         const size = particle.size * (0.55 + settle * 0.65) * pulse;
         ctx.beginPath(); ctx.arc(x, y, size, 0, TAU);
-        ctx.fillStyle = `rgba(255, 88, 30, ${(0.28 + settle * 0.46) * alphaMultiplier})`; ctx.fill();
+        ctx.fillStyle = `rgba(218, 32, 27, ${(0.28 + settle * 0.46) * alphaMultiplier})`; ctx.fill();
       }
     }
     ctx.restore();
@@ -626,7 +663,7 @@
     const cleaned = smoothstep(0.84, 1, state.progress);
     if (reveal <= 0) return;
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
 
     const orbitCount = state.mobile ? 6 : 9;
     for (let i = 0; i < orbitCount; i += 1) {
@@ -645,7 +682,7 @@
       ctx.rotate(Math.sin(angle) * 0.78 + i * 0.11);
       ctx.beginPath();
       ctx.ellipse(0, 0, rx, ry, 0, 0, TAU);
-      ctx.strokeStyle = `rgba(255, 45, 72, ${reveal * (isFront ? 0.10 : 0.05) * orbitClarity * alphaMultiplier})`;
+      ctx.strokeStyle = `rgba(218, 32, 27, ${reveal * (isFront ? 0.10 : 0.05) * orbitClarity * alphaMultiplier})`;
       ctx.lineWidth = isFront ? 0.78 : 0.48;
       ctx.setLineDash(i % 4 === 0 ? [3, 7] : []);
       ctx.stroke();
@@ -671,12 +708,12 @@
       const glow = 0.45 + 0.55 * (depth * 0.5 + 0.5);
       ctx.beginPath();
       ctx.arc(x, y, orbiter.size * (0.65 + glow * 0.36), 0, TAU);
-      ctx.fillStyle = `rgba(255, ${68 + glow * 45}, 28, ${local * (isFront ? 0.42 : 0.18) * allow * alphaMultiplier})`;
+      ctx.fillStyle = `rgba(231, ${32 + glow * 22}, 24, ${local * (isFront ? 0.42 : 0.18) * allow * alphaMultiplier})`;
       ctx.fill();
       if (orbiter.ring && (orbiter.major || cleaned < 0.7)) {
         ctx.beginPath();
         ctx.arc(x, y, orbiter.size * 4.0, 0, TAU);
-        ctx.strokeStyle = `rgba(255, 45, 86, ${local * (isFront ? 0.20 : 0.08) * allow * alphaMultiplier})`;
+        ctx.strokeStyle = `rgba(218, 32, 27, ${local * (isFront ? 0.20 : 0.08) * allow * alphaMultiplier})`;
         ctx.lineWidth = isFront ? 0.72 : 0.5;
         ctx.stroke();
       }
@@ -691,7 +728,7 @@
   }
 
   function fittedRect(image, geo, scale = 1, yOffset = 0) {
-    const aspect = image.naturalWidth / image.naturalHeight;
+    const aspect = (image.naturalWidth || image.width) / (image.naturalHeight || image.height);
     const h = geo.h * scale;
     const w = h * aspect;
     return { x: geo.cx - w * 0.5, y: geo.cy - h * 0.5 + yOffset, w, h };
@@ -968,9 +1005,9 @@
     const strength = smoothstep(0.18, 0.88, state.progress);
     if (strength <= 0) return;
     const gradient = ctx.createRadialGradient(geo.cx, geo.cy + geo.h * 0.12, 0, geo.cx, geo.cy + geo.h * 0.12, geo.w * 0.72);
-    gradient.addColorStop(0, `rgba(255, 30, 90, ${0.075 * strength})`);
-    gradient.addColorStop(0.45, `rgba(255, 50, 45, ${0.032 * strength})`);
-    gradient.addColorStop(1, "rgba(255, 50, 45, 0)");
+    gradient.addColorStop(0, `rgba(218, 32, 27, ${0.075 * strength})`);
+    gradient.addColorStop(0.45, `rgba(218, 32, 27, ${0.032 * strength})`);
+    gradient.addColorStop(1, "rgba(218, 32, 27, 0)");
     ctx.save(); ctx.globalCompositeOperation = "screen"; ctx.fillStyle = gradient; ctx.fillRect(geo.cx - geo.w, geo.cy - geo.h * 0.5, geo.w * 2, geo.h); ctx.restore();
   }
 
@@ -988,7 +1025,7 @@
     const sSpin = strandSpin(time);
     const oSpin = orbitalSpin(time);
 
-    drawGlow(geo);
+    // Sin halo de fondo: tinta roja sobre transparencia.
 
     if (CONFIG.showGrowthLayers) drawGrowthLayers(time, geo);
 

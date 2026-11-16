@@ -108,3 +108,7 @@ CHANGE-014: se recupera la figura animada en el primer quinto de escritorio medi
 
 ## Protea Viva sobre azul · 2026-11-16
 CHANGE-015: desplazamiento hacia la izquierda de hasta 200 px en escritorio, limitado por el rail; fondo azul noche #001133 que aparece al entrar en el tramo narrativo, cotas centradas con la figura y contraste cromático adaptado. Paneles blancos, hero y móvil conservados. Caché de CSS/JS actualizada. Estado REVIEW; validación visual pendiente.
+
+
+## Protea Viva en tinta roja · 2026-11-16
+CHANGE-016: figura +100 px respecto al centro efectivo de CHANGE-015; marco SVG centrado en ese mismo eje. Fondo blanco plano sin capa azul; dibujo procedural rojo sobre transparencia y extracción cromática de las texturas rasterizadas al cargarlas, sin modificar originales. Motor, etapas, hero y tratamiento móvil conservados. Estado REVIEW; QA visual pendiente.
